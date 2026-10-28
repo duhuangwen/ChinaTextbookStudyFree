@@ -23,7 +23,7 @@ final class AssetsSitePathHandler implements WebViewAssetLoader.PathHandler {
 
     @Override
     public WebResourceResponse handle(String path) {
-        String assetPath = EmbeddedAssetPath.resolve(path);
+        String assetPath = EmbeddedAssetPath.resolveAsset(path);
         if (assetPath == null) return notFound();
         if (assetPath.startsWith("audio/") || assetPath.startsWith("story-images/")
                 || assetPath.startsWith("textbook-pages/")) {

@@ -39,7 +39,12 @@ tasks.register('prepareEmbeddedWeb', Sync) {
             throw new GradleException('Missing apps/web/out. Build the Web export before the APK.')
         }
     }
-    from embeddedWebDir
+    from(embeddedWebDir) {
+        exclude '_next/**'
+    }
+    from(new File(embeddedWebDir, '_next')) {
+        into 'next-static'
+    }
     into layout.projectDirectory.dir('src/main/assets/www')
 }
 tasks.named('preBuild').configure { dependsOn 'prepareEmbeddedWeb' }

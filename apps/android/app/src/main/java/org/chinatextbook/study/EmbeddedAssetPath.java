@@ -22,6 +22,13 @@ final class EmbeddedAssetPath {
         return relative;
     }
 
+    static String resolveAsset(String requestPath) {
+        String relative = resolve(requestPath);
+        return relative != null && relative.startsWith("_next/")
+                ? "next-static/" + relative.substring("_next/".length())
+                : relative;
+    }
+
     static String mimeType(String path) {
         String lower = path.toLowerCase();
         if (lower.endsWith(".html")) return "text/html";

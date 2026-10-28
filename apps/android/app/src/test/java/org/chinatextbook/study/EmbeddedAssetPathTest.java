@@ -10,8 +10,8 @@ public class EmbeddedAssetPathTest {
                 EmbeddedAssetPath.resolve("/lesson/g1up/lesson"));
     }
     @Test public void keepsHashedAssetsAndTypes() {
-        assertEquals("_next/static/chunks/app.js",
-                EmbeddedAssetPath.resolve("/_next/static/chunks/app.js"));
+        assertEquals("next-static/static/chunks/app.js",
+                EmbeddedAssetPath.resolveAsset("/_next/static/chunks/app.js"));
         assertEquals("text/javascript", EmbeddedAssetPath.mimeType("app.js"));
         assertEquals("image/png", EmbeddedAssetPath.mimeType("icon.png"));
     }
