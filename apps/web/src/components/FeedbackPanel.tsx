@@ -160,8 +160,8 @@ export function FeedbackPanel({
           <div className="flex-1">
             <MathText text={explanation} />
           </div>
-          {explanationAudio && (
-            <TTSButton src={explanationAudio} size="sm" label="重听讲解" className="mt-0.5" />
+          {explanation && (
+            <TTSButton src={explanationAudio} text={explanation} size="sm" label="重听讲解" className="mt-0.5" />
           )}
         </motion.div>
         {/* autoFocus：让桌面端直接按 Enter/空格 继续（键盘快捷键 web-lesson-3） */}

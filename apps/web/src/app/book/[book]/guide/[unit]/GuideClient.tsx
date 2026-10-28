@@ -133,8 +133,8 @@ export function GuideClient({ book, unit, summaries }: GuideClientProps) {
             {/* 标题 + TTS */}
             <div className="mt-8 flex items-center gap-3 justify-center">
               <div className="text-2xl font-extrabold text-ink tracking-tight">这是什么？</div>
-              {current.audio?.core_concept && (
-                <TTSButton src={current.audio.core_concept} autoPlay preload size="md" />
+              {current.core_concept && (
+                <TTSButton src={current.audio?.core_concept} text={current.core_concept} autoPlay preload size="md" />
               )}
             </div>
 
@@ -151,9 +151,10 @@ export function GuideClient({ book, unit, summaries }: GuideClientProps) {
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-primary">
                     记住这个
                   </span>
-                  {current.audio?.key_formula && (
+                  {current.key_formula && (
                     <TTSButton
-                      src={current.audio.key_formula}
+                      src={current.audio?.key_formula}
+                      text={current.key_formula}
                       size="sm"
                       className="ml-auto"
                       label="朗读公式"
@@ -170,8 +171,8 @@ export function GuideClient({ book, unit, summaries }: GuideClientProps) {
             {current.tips && (
               <div className="mt-6 rounded-2xl bg-gold/10 border-2 border-gold/25 p-4 max-w-lg w-full">
                 <div className="flex items-start gap-2">
-                  {current.audio?.tips && (
-                    <TTSButton src={current.audio.tips} size="sm" className="mt-0.5" />
+                  {current.tips && (
+                    <TTSButton src={current.audio?.tips} text={current.tips} size="sm" className="mt-0.5" />
                   )}
                   <div className="min-w-0 flex-1">
                     <div className="text-[10px] font-extrabold uppercase tracking-wider text-gold mb-1">
@@ -194,9 +195,10 @@ export function GuideClient({ book, unit, summaries }: GuideClientProps) {
                 <ul className="space-y-1.5">
                   {current.common_mistakes.map((m, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-ink leading-snug">
-                      {current.audio?.common_mistakes?.[i] && (
+                      {m && (
                         <TTSButton
-                          src={current.audio.common_mistakes[i]}
+                          src={current.audio?.common_mistakes?.[i]}
+                          text={m}
                           size="sm"
                           className="mt-0.5"
                         />

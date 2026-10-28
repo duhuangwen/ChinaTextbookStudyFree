@@ -1,21 +1,39 @@
 name: Android APK
 on:
   push:
-    paths: ['apps/android/**', '.github/workflows/android.yml']
+    paths:
+      - 'apps/android/**'
+      - 'apps/web/**'
+      - 'packages/core/**'
+      - 'scripts/install-web-data.py'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/android.yml'
   pull_request:
-    paths: ['apps/android/**', '.github/workflows/android.yml']
+    paths:
+      - 'apps/android/**'
+      - 'apps/web/**'
+      - 'packages/core/**'
+      - 'scripts/install-web-data.py'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/android.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: apps/android
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
       - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
         with:
           distribution: temurin
@@ -24,6 +42,15 @@ jobs:
           cache-dependency-path: |
             apps/android/**/*.gradle
             apps/android/gradle/wrapper/gradle-wrapper.properties
+      - name: Install Web dependencies
+        working-directory: .
+        run: npm ci --ignore-scripts
+      - name: Install complete course data
+        working-directory: .
+        run: python3 scripts/install-web-data.py
+      - name: Build self-contained Web bundle
+        working-directory: apps/web
+        run: npx next build
       - name: Test, lint and build installable debug APK
         run: ./gradlew --no-daemon testDebugUnitTest lintDebug assembleDebug
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

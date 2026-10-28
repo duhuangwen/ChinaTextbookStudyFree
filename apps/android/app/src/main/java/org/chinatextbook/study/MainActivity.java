@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowInsets;
@@ -24,18 +25,22 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import androidx.webkit.WebViewAssetLoader;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.webkit.JavascriptInterface;
+import java.util.Locale;
 
 /** Small online Android client; lesson media remains on the configured HTTPS site. */
 public class MainActivity extends Activity {
     private static final int MICROPHONE = 10;
     private static final int PICK_FILE = 11;
     private final OriginPolicy policy = new OriginPolicy(BuildConfig.WEB_APP_URL);
+    private WebViewAssetLoader assetLoader;
     private WebView web;
     private ProgressBar loading;
     private LinearLayout errorPanel;
@@ -44,6 +49,9 @@ public class MainActivity extends Activity {
     private boolean resumed;
     private boolean awaitingRuntimePermission;
     private boolean television;
+    private TextToSpeech speech;
+    private boolean speechReady;
+    private String pendingSpeech;
     private String retryUrl = BuildConfig.WEB_APP_URL;
 
     @Override @SuppressLint("SetJavaScriptEnabled")
@@ -56,6 +64,11 @@ public class MainActivity extends Activity {
         FrameLayout root = new FrameLayout(this);
         root.setBackgroundColor(Color.WHITE);
         web = new WebView(this);
+        assetLoader = new WebViewAssetLoader.Builder()
+                .addPathHandler("/", new AssetsSitePathHandler(getAssets()))
+                .build();
+        initializeSpeech();
+        web.addJavascriptInterface(new TtsBridge(), "AndroidTts");
         root.addView(web, new FrameLayout.LayoutParams(-1, -1));
         loading = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
         root.addView(loading, new FrameLayout.LayoutParams(-1, dp(3), Gravity.TOP));
@@ -101,6 +114,11 @@ public class MainActivity extends Activity {
         }
         WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG);
         web.setWebViewClient(new WebViewClient() {
+            @Override public WebResourceResponse shouldInterceptRequest(
+                    WebView view, WebResourceRequest request) {
+                WebResourceResponse local = assetLoader.shouldInterceptRequest(request.getUrl());
+                return local != null ? local : super.shouldInterceptRequest(view, request);
+            }
             @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (policy.isTrusted(url)) return false;
                 openExternal(url);
@@ -176,6 +194,42 @@ public class MainActivity extends Activity {
     }
 
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
+    private void initializeSpeech() {
+        speech = new TextToSpeech(getApplicationContext(), status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int language = speech.setLanguage(Locale.SIMPLIFIED_CHINESE);
+                speechReady = language != TextToSpeech.LANG_MISSING_DATA
+                        && language != TextToSpeech.LANG_NOT_SUPPORTED;
+                speech.setSpeechRate(0.9f);
+            }
+            if (speechReady && pendingSpeech != null) {
+                String text = pendingSpeech;
+                pendingSpeech = null;
+                speakText(text);
+            }
+        });
+    }
+    private void speakText(String text) {
+        if (!speechReady || speech == null) {
+            pendingSpeech = text;
+            return;
+        }
+        speech.speak(text, TextToSpeech.QUEUE_FLUSH, null, "cstf-" + System.nanoTime());
+    }
+    private final class TtsBridge {
+        @JavascriptInterface public boolean speak(String text) {
+            String value = text == null ? "" : text.trim();
+            if (value.isEmpty()) return false;
+            runOnUiThread(() -> speakText(value));
+            return true;
+        }
+        @JavascriptInterface public void stop() {
+            runOnUiThread(() -> {
+                pendingSpeech = null;
+                if (speech != null) speech.stop();
+            });
+        }
+    }
     private void showError() { loading.setVisibility(View.GONE); errorPanel.setVisibility(View.VISIBLE); }
     private void openExternal(String url) {
         if (!OriginPolicy.isExternalHttps(url)) return;
@@ -225,6 +279,11 @@ public class MainActivity extends Activity {
     @Override protected void onDestroy() {
         cancelMicrophone();
         if (fileCallback != null) fileCallback.onReceiveValue(null);
+        if (speech != null) {
+            speech.stop();
+            speech.shutdown();
+            speech = null;
+        }
         if (web != null) { web.stopLoading(); web.destroy(); }
         super.onDestroy();
     }

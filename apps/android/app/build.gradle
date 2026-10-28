@@ -1,6 +1,8 @@
 plugins { id 'com.android.application' }
 
-def webAppUrl = providers.gradleProperty('webAppUrl').getOrElse('https://d3nmsqi4n72idj.cloudfront.net/')
+def remoteWebAppUrl = providers.gradleProperty('webAppUrl').orNull
+def embeddedWeb = remoteWebAppUrl == null
+def webAppUrl = embeddedWeb ? 'https://appassets.androidplatform.net/' : remoteWebAppUrl
 def parsedUrl = new URI(webAppUrl)
 if (parsedUrl.scheme != 'https' || !parsedUrl.host || parsedUrl.userInfo || parsedUrl.query || parsedUrl.fragment) {
     throw new GradleException('webAppUrl must be an HTTPS URL without credentials, query or fragment')
@@ -13,8 +15,9 @@ android {
         minSdk 23
         targetSdk 35
         versionCode 1
-        versionName '0.1.0'
+        versionName '0.2.0'
         buildConfigField 'String', 'WEB_APP_URL', '"' + webAppUrl.replace('\\', '\\\\').replace('"', '\\"') + '"'
+        buildConfigField 'boolean', 'EMBEDDED_WEB', embeddedWeb ? 'true' : 'false'
     }
     buildFeatures { buildConfig true }
     compileOptions {
@@ -23,4 +26,19 @@ android {
     }
     buildTypes { release { minifyEnabled false } }
 }
-dependencies { testImplementation 'junit:junit:4.13.2' }
+dependencies {
+    implementation 'androidx.webkit:webkit:1.12.1'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+def embeddedWebDir = rootProject.file('../web/out')
+tasks.register('prepareEmbeddedWeb', Sync) {
+    doFirst {
+        if (!embeddedWebDir.isDirectory()) {
+            throw new GradleException('Missing apps/web/out. Build the Web export before the APK.')
+        }
+    }
+    from embeddedWebDir
+    into layout.projectDirectory.dir('src/main/assets/www')
+}
+tasks.named('preBuild').configure { dependsOn 'prepareEmbeddedWeb' }

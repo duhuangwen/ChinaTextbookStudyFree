@@ -97,7 +97,7 @@ export function FillBlankQuestion({
         <div className="text-xl font-bold text-ink leading-relaxed whitespace-pre-wrap flex-1">
           <MathText text={question.question} />
         </div>
-        <TTSButton src={question.audio?.question} className="mt-1" label="朗读题目" />
+        <TTSButton src={question.audio?.question} text={question.question} className="mt-1" label="朗读题目" />
       </div>
 
       <motion.div

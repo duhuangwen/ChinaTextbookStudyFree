@@ -86,7 +86,7 @@ export function ChoiceQuestion({
         <div className="text-2xl font-bold text-ink leading-relaxed flex-1">
           <MathText text={question.question} />
         </div>
-        <TTSButton src={question.audio?.question} className="mt-1" label="朗读题目" />
+        <TTSButton src={question.audio?.question} text={question.question} className="mt-1" label="朗读题目" />
       </div>
 
       <div className="space-y-3">
@@ -156,10 +156,11 @@ export function ChoiceQuestion({
                   />
                 ))}
               </motion.button>
-              {optionAudio && (
+              {(optionAudio || display) && (
                 <div className="flex items-center">
                   <TTSButton
                     src={optionAudio}
+                    text={display}
                     size="sm"
                     label={`朗读选项 ${letter}`}
                   />

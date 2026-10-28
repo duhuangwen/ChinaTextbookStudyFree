@@ -2312,6 +2312,7 @@ function IntroCard({
                 </div>
                 <TTSButton
                   src={knowledge.audio?.common_mistakes?.[i] ?? null}
+                  text={m}
                   size="sm"
                   label="朗读"
                   disabled={narration.status === "playing" || narration.status === "loading"}
@@ -2547,8 +2548,8 @@ function IntroCard({
                 <h1 className="text-3xl font-extrabold text-ink leading-tight">
                   {current.title}
                 </h1>
-                {current.titleAudio && (
-                  <TTSButton src={current.titleAudio} label="朗读讲解"
+                {current.title && (
+                  <TTSButton src={current.titleAudio} text={current.title} label="朗读讲解"
                     disabled={narration.status === "playing" || narration.status === "loading"}
                     onPlay={narration.locked ? narration.start : undefined} />
                 )}

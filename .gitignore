@@ -70,3 +70,4 @@ release-assets/
 
 # Local build verification and audio conversion cache
 deploy-output/
+apps/android/app/src/main/assets/www/

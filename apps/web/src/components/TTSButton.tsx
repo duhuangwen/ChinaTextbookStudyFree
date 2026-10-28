@@ -4,10 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Volume } from "@/components/icons";
 import { cn } from "@/lib/cn";
-import { playTTS, preloadTTS, stopTTS } from "@/lib/tts";
+import { playSpeechText, playTTSResult, preloadTTS, stopTTS } from "@/lib/tts";
 
 interface TTSButtonProps {
   src?: string | null;
+  /** Used by native TTS when no pre-generated media is bundled. */
+  text?: string | null;
   /** 进入视图时自动预加载 */
   preload?: boolean;
   /** 进入视图时自动播放一次（每次 src 变化触发） */
@@ -25,6 +27,7 @@ interface TTSButtonProps {
  */
 export function TTSButton({
   src,
+  text,
   preload = true,
   autoPlay = false,
   size = "md",
@@ -43,33 +46,40 @@ export function TTSButton({
 
   useEffect(() => {
     setPlaying(false);
+    const playbackKey = src ?? text ?? null;
     return () => {
       generationRef.current++;
-      if (src && playingSourceRef.current === src) {
+      if (playbackKey && playingSourceRef.current === playbackKey) {
         stopTTS(src ?? undefined);
         playingSourceRef.current = null;
       }
     };
-  }, [src]);
+  }, [src, text]);
 
   useEffect(() => {
-    if (!autoPlay || !src) return;
+    if (!autoPlay || (!src && !text)) return;
     void play();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [src, autoPlay]);
+  }, [src, text, autoPlay]);
 
-  if (!src) return null;
+  if (!src && !text) return null;
 
   async function play(e?: React.MouseEvent) {
     e?.stopPropagation();
     e?.preventDefault();
     if (disabled) return;
     if (onPlay) { onPlay(); return; }
-    if (!src) return;
     const generation = ++generationRef.current;
-    playingSourceRef.current = src;
+    playingSourceRef.current = src ?? text ?? null;
     setPlaying(true);
-    await playTTS(src);
+    if (src) {
+      const result = await playTTSResult(src);
+      if ((result === "error" || result === "missing" || result === "blocked") && text) {
+        await playSpeechText(text);
+      }
+    } else {
+      await playSpeechText(text);
+    }
     if (generation === generationRef.current) {
       playingSourceRef.current = null;
       setPlaying(false);

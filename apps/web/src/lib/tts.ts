@@ -20,6 +20,15 @@ export type TTSPlaybackResult = "ended" | "interrupted" | "error" | "blocked" | 
 const preloaded = new Map<string, HTMLAudioElement>();
 const PRELOAD_MAX = 16;
 
+declare global {
+  interface Window {
+    AndroidTts?: {
+      speak(text: string): boolean;
+      stop(): void;
+    };
+  }
+}
+
 function playbackSources(src: string): string[] {
   // Persisted mistake questions can still point at the previous Ogg/Opus assets.
   if (/^\/audio\/.+\.opus(?:[?#].*)?$/i.test(src)) {
@@ -55,6 +64,10 @@ export function preloadTTS(src: string | undefined | null) {
 }
 
 export function stopTTS(expectedSrc?: string | null) {
+  if (typeof window !== "undefined") {
+    window.AndroidTts?.stop();
+    window.speechSynthesis?.cancel();
+  }
   if (expectedSrc && currentSrc !== expectedSrc) return;
   const a = getEl();
   if (!a) return;
@@ -62,6 +75,26 @@ export function stopTTS(expectedSrc?: string | null) {
   a.pause();
   a.currentTime = 0;
   currentSrc = null;
+}
+
+/** Native Android TTS fallback for embedded builds without generated MP3 files. */
+export function playSpeechText(text: string | undefined | null): Promise<TTSPlaybackResult> {
+  if (!text?.trim()) return Promise.resolve("missing");
+  if (isMuted()) return Promise.resolve("muted");
+  if (typeof window === "undefined") return Promise.resolve("missing");
+  if (window.AndroidTts?.speak(text)) return Promise.resolve("ended");
+  if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === "undefined") {
+    return Promise.resolve("missing");
+  }
+  return new Promise(resolve => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "zh-CN";
+    utterance.rate = 0.9;
+    utterance.onend = () => resolve("ended");
+    utterance.onerror = () => resolve("error");
+    window.speechSynthesis!.cancel();
+    window.speechSynthesis!.speak(utterance);
+  });
 }
 
 /** Distinguish a genuine listen from an interruption or unavailable audio. */

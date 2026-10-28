@@ -85,7 +85,8 @@ const bootScript = `
   } catch (e) {}
   if ("serviceWorker" in navigator) {
     var localHost = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "::1";
-    if (!localHost) {
+    var embeddedApp = localHost || location.hostname === "appassets.androidplatform.net";
+    if (!embeddedApp) {
       window.addEventListener("load", function () {
         navigator.serviceWorker.register("/sw.js").catch(function () {});
       });
