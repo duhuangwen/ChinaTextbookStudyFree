@@ -24,6 +24,7 @@ import { playSfx } from "@/lib/sfx";
 import { haptic } from "@/lib/haptic";
 import { playTTS } from "@/lib/tts";
 import { useAutoNarrate } from "@/lib/useAutoNarrate";
+import { useTvQuestionFocus } from "@/lib/useTvQuestionFocus";
 import { shouldIgnoreKey } from "./keyboard";
 import type { QuestionRendererProps } from "./QuestionRenderer";
 
@@ -43,6 +44,7 @@ export function MatchingQuestion({
   const disabled = phase === "checked";
   const options = question.options ?? [];
   const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
   const left = options.slice(0, 4);
   const right = options.slice(4, 8);
   const pairTotal = Math.min(left.length, right.length, 4);
@@ -179,6 +181,7 @@ export function MatchingQuestion({
               <AnimatePresence key={k} initial={false}>
                 {!gone && (
                   <motion.button
+                    ref={i === 0 ? tvFocusRef : undefined}
                     type="button"
                     disabled={disabled || isVanishing}
                     onClick={() => pickLeft(k)}

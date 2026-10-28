@@ -32,8 +32,9 @@ export function AppShell({ children, right, centerMaxWidth = 640 }: AppShellProp
   const showRight = right !== null;
   return (
     <div
+      data-tv-has-right={showRight ? "true" : "false"}
       className={
-        "min-h-screen w-full md:mx-auto md:grid md:max-w-[1240px] md:gap-4 md:px-4 md:py-6 lg:gap-6 lg:px-6 " +
+        "app-shell min-h-screen w-full md:mx-auto md:grid md:max-w-[1240px] md:gap-4 md:px-4 md:py-6 lg:gap-6 lg:px-6 " +
         "md:[grid-template-columns:88px_minmax(0,1fr)] " +
         (showRight
           ? "lg:[grid-template-columns:260px_minmax(0,1fr)_360px]"
@@ -46,7 +47,7 @@ export function AppShell({ children, right, centerMaxWidth = 640 }: AppShellProp
 
       <div className="min-w-0">
         <div
-          className="mx-auto w-full md:max-w-[640px] lg:max-w-[var(--center-max)]"
+          className="app-shell-center mx-auto w-full md:max-w-[640px] lg:max-w-[var(--center-max)]"
           style={{ "--center-max": `${centerMaxWidth}px` } as CSSProperties}
         >
           {children}

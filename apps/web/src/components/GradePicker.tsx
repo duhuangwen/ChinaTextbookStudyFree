@@ -48,8 +48,8 @@ export function GradePicker() {
   }
 
   return (
-    <div className="fixed inset-0 z-40 bg-bg flex flex-col">
-      <div className="flex-1 flex flex-col items-center justify-start pt-12 px-5 overflow-y-auto pb-32">
+    <div className="fixed inset-0 z-40 bg-bg flex flex-col tv-grade-picker">
+      <div className="flex-1 flex flex-col items-center justify-start pt-12 px-5 overflow-y-auto pb-32 tv-grade-content">
         {/* 顶部 mascot + 气泡 */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -64,7 +64,7 @@ export function GradePicker() {
         </motion.div>
 
         {/* 6 个选项 */}
-        <div className="w-full max-w-md flex flex-col gap-3">
+        <div className="w-full max-w-md flex flex-col gap-3 tv-grade-options">
           {OPTIONS.map((opt, i) => {
             const Icon = opt.Icon;
             const selected = picked === opt.grade;
@@ -72,6 +72,7 @@ export function GradePicker() {
               <motion.button
                 key={opt.grade}
                 type="button"
+                data-tv-autofocus={opt.grade === 1 ? "true" : undefined}
                 initial={{ opacity: 0, x: 12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + i * 0.05 }}

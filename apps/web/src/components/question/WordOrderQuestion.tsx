@@ -22,6 +22,7 @@ import { playSfx } from "@/lib/sfx";
 import { haptic } from "@/lib/haptic";
 import { playTTS } from "@/lib/tts";
 import { useAutoNarrate } from "@/lib/useAutoNarrate";
+import { useTvQuestionFocus } from "@/lib/useTvQuestionFocus";
 import type { QuestionRendererProps } from "./QuestionRenderer";
 
 export function WordOrderQuestion({
@@ -35,6 +36,7 @@ export function WordOrderQuestion({
   const disabled = phase === "checked";
   const options = question.options ?? [];
   const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   // 已选索引列表（指向 options 中的 index）
   const [picked, setPicked] = useState<number[]>([]);
@@ -140,6 +142,7 @@ export function WordOrderQuestion({
         {remaining.map(i => (
           <motion.button
             key={`opt-${i}`}
+            ref={remaining[0] === i ? tvFocusRef : undefined}
             type="button"
             layout
             whileTap={!disabled ? { scale: 0.98 } : undefined}

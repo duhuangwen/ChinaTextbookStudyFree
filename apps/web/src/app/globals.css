@@ -251,6 +251,136 @@ button:focus-visible,
   outline-offset: 3px;
 }
 
+/* ============================================================
+ * Android TV / 10-foot mode
+ *
+ * The same learning pages are reused, but TV mode gets a larger root font,
+ * generous overscan-safe margins, a wide three-column shell and a focus ring
+ * that stays visible for programmatic D-pad focus as well as keyboard focus.
+ * ============================================================ */
+.tv-control-hint {
+  display: none;
+}
+
+html.tv-mode {
+  font-size: clamp(18px, 1vw, 22px);
+}
+
+html.tv-mode a,
+html.tv-mode button,
+html.tv-mode [role="button"],
+html.tv-mode [tabindex] {
+  scroll-margin: 8vh 6vw;
+}
+
+html.tv-mode :focus {
+  outline: 4px solid #ffc800 !important;
+  outline-offset: 5px !important;
+  border-radius: 10px;
+  transition: outline-offset 80ms ease, filter 80ms ease;
+  filter: drop-shadow(0 0 10px rgba(255, 200, 0, 0.55));
+}
+
+html.tv-mode .tv-control-hint {
+  display: block;
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top));
+  left: 50%;
+  z-index: 300;
+  transform: translateX(-50%);
+  pointer-events: none;
+  white-space: nowrap;
+  border-radius: 999px;
+  background: rgba(33, 37, 41, 0.88);
+  color: #fff;
+  padding: 0.55rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: tvHint 7s ease-in-out 1 forwards;
+}
+
+html.tv-mode .tv-control-hint span {
+  margin-right: 0.55rem;
+  color: #ffe365;
+}
+
+@keyframes tvHint {
+  0%, 8% { opacity: 0; transform: translate(-50%, -8px); }
+  16%, 78% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -8px); }
+}
+
+@media (min-width: 960px) and (min-height: 540px) {
+  html.tv-mode main {
+    padding-left: max(0.5rem, 1.5vw);
+    padding-right: max(0.5rem, 1.5vw);
+  }
+
+  html.tv-mode .app-shell {
+    max-width: min(1900px, 95vw);
+    gap: clamp(1.25rem, 1.8vw, 2.25rem);
+    padding-top: clamp(1.75rem, 3.5vh, 3rem);
+    padding-bottom: clamp(1.75rem, 3.5vh, 3rem);
+  }
+
+  html.tv-mode .app-shell[data-tv-has-right="true"] {
+    grid-template-columns: clamp(210px, 14vw, 280px) minmax(0, 1fr) clamp(310px, 21vw, 410px);
+  }
+
+  html.tv-mode .app-shell[data-tv-has-right="false"] {
+    grid-template-columns: clamp(210px, 14vw, 280px) minmax(0, 1fr);
+  }
+
+  html.tv-mode .app-shell > aside {
+    top: clamp(1.75rem, 3.5vh, 3rem);
+    height: calc(100vh - clamp(3.5rem, 7vh, 6rem));
+  }
+
+  html.tv-mode .app-shell-center {
+    max-width: min(980px, 100%) !important;
+  }
+
+  html.tv-mode [role="dialog"] {
+    max-width: min(760px, 82vw) !important;
+    padding: clamp(1.4rem, 2.4vw, 2.2rem);
+  }
+
+  html.tv-mode .tv-grade-picker {
+    padding: max(2.5vh, 1rem) max(4vw, 2rem);
+  }
+
+  html.tv-mode .tv-grade-content {
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 2rem;
+  }
+
+  html.tv-mode .tv-grade-content > :first-child {
+    max-width: min(900px, 82vw);
+  }
+
+  html.tv-mode .tv-grade-options {
+    max-width: min(1000px, 86vw);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.9rem, 1.4vw, 1.5rem);
+  }
+
+  html.tv-mode .tv-grade-options > button {
+    min-height: 8.5vh;
+    padding: 1rem 1.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.tv-mode .tv-control-hint {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* sr-only：屏幕阅读器可见但视觉隐藏（aria-live 兜底等） */
 .sr-only {
   position: absolute;

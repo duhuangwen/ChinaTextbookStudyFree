@@ -3,8 +3,10 @@ package org.chinatextbook.study;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.UiModeManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
@@ -41,11 +43,16 @@ public class MainActivity extends Activity {
     private ValueCallback<Uri[]> fileCallback;
     private boolean resumed;
     private boolean awaitingRuntimePermission;
+    private boolean television;
     private String retryUrl = BuildConfig.WEB_APP_URL;
 
     @Override @SuppressLint("SetJavaScriptEnabled")
     public void onCreate(Bundle state) {
         super.onCreate(state);
+        UiModeManager uiMode = (UiModeManager) getSystemService(UI_MODE_SERVICE);
+        int uiModeType = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_TYPE_MASK);
+        television = uiModeType == Configuration.UI_MODE_TYPE_TELEVISION ||
+                (uiMode != null && uiMode.getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION);
         FrameLayout root = new FrameLayout(this);
         root.setBackgroundColor(Color.WHITE);
         web = new WebView(this);
@@ -88,6 +95,10 @@ public class MainActivity extends Activity {
         settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
+        if (television) {
+            // Lets the shared web app enable its D-pad navigation without a bridge.
+            settings.setUserAgentString(settings.getUserAgentString() + " ChinaStudyFreeTV");
+        }
         WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG);
         web.setWebViewClient(new WebViewClient() {
             @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -113,6 +124,10 @@ public class MainActivity extends Activity {
             }
             @Override public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse response) {
                 if (request.isForMainFrame() && response.getStatusCode() >= 400) showError();
+            }
+            @Override public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                if (television) view.requestFocus(View.FOCUS_DOWN);
             }
         });
         web.setWebChromeClient(new WebChromeClient() {

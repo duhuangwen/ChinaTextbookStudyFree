@@ -61,7 +61,7 @@ nvidia-smi
 ```powershell
 # 任选一个工作目录
 cd D:\
-git clone https://github.com/wuwangzhang1216/ChinaTextbookStudyFree.git
+git clone https://github.com/duhuangwen/ChinaTextbookStudyFree.git
 cd ChinaTextbookStudyFree
 
 # 建 venv

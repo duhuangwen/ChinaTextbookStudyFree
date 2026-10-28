@@ -661,6 +661,7 @@ function UnitPath({
               <PathNode
                 lesson={lesson}
                 status={status}
+                tvAutofocus={status === "current"}
                 stars={stars[lesson.id] ?? 0}
                 breatheDelay={idx * 0.12}
                 color={unitColor(entry.unitOrderIndex)}
@@ -711,6 +712,7 @@ function snakeOffset(index: number): number {
 interface PathNodeProps {
   lesson: PathLessonMeta;
   status: LessonStatus;
+  tvAutofocus?: boolean;
   stars: number;
   breatheDelay: number;
   /** 所属单元的循环色（web-shell-15）：current 节点底色/阴影/光晕随单元色 */
@@ -724,7 +726,7 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${(n >> 16) & 0xff}, ${(n >> 8) & 0xff}, ${n & 0xff}, ${alpha})`;
 }
 
-function PathNode({ lesson, status, stars, breatheDelay, color, onSelect }: PathNodeProps) {
+function PathNode({ lesson, status, tvAutofocus, stars, breatheDelay, color, onSelect }: PathNodeProps) {
   const isLocked = status === "locked";
   const isCurrent = status === "current";
   const isCompleted = status === "completed";
@@ -794,6 +796,7 @@ function PathNode({ lesson, status, stars, breatheDelay, color, onSelect }: Path
   return (
     <button
       type="button"
+      data-tv-autofocus={tvAutofocus ? "true" : undefined}
       onClick={() => {
         playSfx("tap");
         haptic("light");

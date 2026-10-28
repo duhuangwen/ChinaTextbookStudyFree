@@ -131,6 +131,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
                       key={book.id}
                       href={`/book/${book.id}/`}
                       hapticIntensity="medium"
+                      tvAutofocus={subjectId === "math" && book === subjectBooks[0]}
                       className="duo-chunky-card group relative block rounded-2xl lg:rounded-3xl select-none overflow-hidden"
                       style={{
                         backgroundColor: theme.bg,

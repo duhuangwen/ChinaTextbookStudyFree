@@ -8,6 +8,7 @@ import { TTSButton } from "@/components/TTSButton";
 import { playSfx } from "@/lib/sfx";
 import { haptic } from "@/lib/haptic";
 import { useAutoNarrate } from "@/lib/useAutoNarrate";
+import { useTvQuestionFocus } from "@/lib/useTvQuestionFocus";
 import { shouldIgnoreKey } from "./keyboard";
 import type { QuestionRendererProps } from "./QuestionRenderer";
 
@@ -37,6 +38,7 @@ export function FillBlankQuestion({
 }: QuestionRendererProps) {
   const disabled = phase === "checked";
   const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   function handleKey(k: string) {
     if (locked || disabled) return;
@@ -122,6 +124,7 @@ export function FillBlankQuestion({
         {KEYPAD_KEYS.map(({ key: k, span }) => (
           <motion.button
             key={k}
+            ref={k === "1" ? tvFocusRef : undefined}
             type="button"
             disabled={disabled}
             onClick={() => handleKey(k)}

@@ -1,11 +1,13 @@
 ![聪聪学堂 · 学习，从好奇心开始。小学全科，免费开源。](docs/banner.svg)
 
-**在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
+**在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑、手机、平板和电视浏览器；安卓 APK 同时提供 Android TV 启动入口。
+
+**GitHub 仓库：[duhuangwen/ChinaTextbookStudyFree](https://github.com/duhuangwen/ChinaTextbookStudyFree)**
 
 <details>
 <summary>版本与资源说明</summary>
 
-> **版本说明（2026-10-05）**：当前线上 Web 已部署 [`main`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/tree/main) 的判分与音频兼容更新，并保留首次听完讲解才解锁的边框光环体验。下文本地启动步骤使用 `main`。
+> **版本说明（2026-10-05）**：当前线上 Web 已部署 [`main`](https://github.com/duhuangwen/ChinaTextbookStudyFree/tree/main) 的判分与音频兼容更新，并保留首次听完讲解才解锁的边框光环体验。下文本地启动步骤使用 `main`。
 >
 > **完整资源包：[v1.2.0-assets](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/tag/v1.2.0-assets)**。包含新版 188 篇语文阅读、936 道配套题及既有四科资源；无需先安装旧版本。Release 中的 `web-source.zip` 是资源包发布时的源码快照，早于当前线上语音兼容和界面修复。详见 [安装与升级说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/release-install.md)。
 
@@ -155,12 +157,14 @@
 
 **安卓自行安装**：用 Android Studio 打开 `apps/android`，或从 GitHub Actions 下载构建成功的调试 APK。当前是加载 HTTPS 课堂的在线客户端；构建步骤、录音权限和已知限制见 [安卓工程说明](docs/android.md)。
 
+**Android TV / 雷鸟电视**：同一 APK 支持遥控器方向键焦点导航、电视启动器和横屏大屏布局。电视侧载与构建说明见 [Android TV 部分](docs/android.md#android-tv--雷鸟电视)。
+
 ### 1. 克隆仓库
 
 以下步骤启动当前线上版本。需要 Node.js 20+、Python 3.9+，以及带 `libmp3lame` 的 FFmpeg；请将 Python 和 FFmpeg 加入系统 PATH。
 
 ```bash
-git clone --branch main https://github.com/wuwangzhang1216/ChinaTextbookStudyFree.git
+git clone --branch main https://github.com/duhuangwen/ChinaTextbookStudyFree.git
 cd ChinaTextbookStudyFree
 ```
 
@@ -203,9 +207,9 @@ npm run dev
 
 ### 电脑、手机与部署
 
-电脑使用侧栏和宽屏阅读布局，手机使用底部导航和单列阅读。此前线上版本已检查 23 类页面 × 7 种尺寸（320×568 至 1920×1080），并测试完整答题、阅读、刷新恢复、错题、商店和家长时间限制。2026-10-05 的 `main` 更新另通过 45 项线上 HTTP 检查、完整文件与媒体引用核对，并验证 320、390 和 1440 像素宽度的课程讲解播放与边框进度。手机尺寸模拟不等于真机验收：真实 iPhone/Android、抖音内置浏览器的播放和麦克风权限仍需复核。详见 [Web 深测报告](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/web-deep-qa-2026-10-03.md)。
+电脑使用侧栏和宽屏阅读布局，手机使用底部导航和单列阅读。此前线上版本已检查 23 类页面 × 7 种尺寸（320×568 至 1920×1080），并测试完整答题、阅读、刷新恢复、错题、商店和家长时间限制。2026-10-05 的 `main` 更新另通过 45 项线上 HTTP 检查、完整文件与媒体引用核对，并验证 320、390 和 1440 像素宽度的课程讲解播放与边框进度。手机尺寸模拟不等于真机验收：真实 iPhone/Android、抖音内置浏览器的播放和麦克风权限仍需复核。详见[上游历史 Web 深测报告](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/web-deep-qa-2026-10-03.md)。
 
-线上使用东京区域的私有 S3 + CloudFront HTTPS，使用 AWS 提供的链接；没有 EC2/Lightsail、数据库或业务后端。按存储、请求和流量计费，没有 $7.50/月的服务器固定费用。部署步骤见 [AWS Web 部署说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/main/docs/aws-web-deployment.md)。
+线上使用东京区域的私有 S3 + CloudFront HTTPS，使用 AWS 提供的链接；没有 EC2/Lightsail、数据库或业务后端。按存储、请求和流量计费，没有 $7.50/月的服务器固定费用。部署步骤见 [AWS Web 部署说明](https://github.com/duhuangwen/ChinaTextbookStudyFree/blob/main/docs/aws-web-deployment.md)。
 
 ### 4. 运行 iOS 端
 
@@ -269,7 +273,7 @@ open ChinaTextbookStudy.xcodeproj
 ### 5. （可选）运行数据生成 Pipeline
 
 语文课外阅读的课文难度校准、题库审计，以及 GPT-6 Luna / Muse / Gemini TTS
-修订流程见 [内容质量审计与升级说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/content-quality-review.md)。
+修订流程见[上游历史内容质量审计与升级说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/content-quality-review.md)。
 新版流程先生成各年级样例，审核、配图和配音完成后再替换，并保留原数据备份。
 
 如需从教材 PDF 重新生成题库数据：
@@ -417,7 +421,7 @@ ChinaStudyFree/
 - [x] 留存机制（每日任务 / 本周报告 / 连胜提醒推送）
 - [ ] 道德与法治内容
 - [x] 语文扩展阅读升级与题库质量审计
-- [ ] 持续教师复核、补齐知识讲解与题量：审计发现 1,498 课缺讲解、1,183 课仅 1 题，见 [待修记录](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/content-review-followups.md)
+- [ ] 持续教师复核、补齐知识讲解与题量：审计发现 1,498 课缺讲解、1,183 课仅 1 题，见[上游历史待修记录](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/content-review-followups.md)
 - [ ] 离线版 / 校园内网部署包
 - [ ] 云端学习记录与跨设备同步
 - [ ] 老师端与班级学习报告

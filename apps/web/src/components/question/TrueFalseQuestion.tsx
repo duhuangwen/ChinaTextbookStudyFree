@@ -9,6 +9,7 @@ import { TTSButton } from "@/components/TTSButton";
 import { playSfx } from "@/lib/sfx";
 import { haptic } from "@/lib/haptic";
 import { useAutoNarrate } from "@/lib/useAutoNarrate";
+import { useTvQuestionFocus } from "@/lib/useTvQuestionFocus";
 import { shouldIgnoreKey } from "./keyboard";
 import type { QuestionRendererProps } from "./QuestionRenderer";
 
@@ -24,6 +25,7 @@ export function TrueFalseQuestion({
 }: QuestionRendererProps) {
   const correctIsTrue = TRUE_VALUES.has(question.answer.trim());
   const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   function select(label: "对" | "错") {
     if (locked || phase !== "answering") return;
@@ -64,6 +66,7 @@ export function TrueFalseQuestion({
     return (
       <motion.button
         key={label}
+        ref={label === "对" ? tvFocusRef : undefined}
         type="button"
         disabled={phase === "checked"}
         onClick={() => select(label)}

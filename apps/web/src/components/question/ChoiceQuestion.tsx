@@ -9,6 +9,7 @@ import { playSfx } from "@/lib/sfx";
 import { haptic } from "@/lib/haptic";
 import { playTTS } from "@/lib/tts";
 import { useAutoNarrate } from "@/lib/useAutoNarrate";
+import { useTvQuestionFocus } from "@/lib/useTvQuestionFocus";
 import { shouldIgnoreKey } from "./keyboard";
 import { correctChoiceLetter } from "@/lib/grade";
 import type { QuestionRendererProps } from "./QuestionRenderer";
@@ -30,6 +31,7 @@ export function ChoiceQuestion({
   const correctLetter = correctChoiceLetter(question);
   const [ripples, setRipples] = useState<Record<string, Ripple[]>>({});
   const idRef = useRef(0);
+  const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   // 自动朗读题干（只在进入该题时一次；点选项立即打断）
   const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
@@ -109,6 +111,7 @@ export function ChoiceQuestion({
           return (
             <div key={idx} className="flex items-stretch gap-2">
               <motion.button
+                ref={idx === 0 ? tvFocusRef : undefined}
                 type="button"
                 disabled={phase === "checked"}
                 onClick={e => handleTap(letter, e)}

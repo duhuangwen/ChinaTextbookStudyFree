@@ -20,6 +20,8 @@ interface SoundLinkProps extends LinkProps, AnchorProps {
   sfx?: SfxName;
   /** 触感强度，默认 "light" */
   hapticIntensity?: HapticKind;
+  /** Let TV mode start on the first useful learning card. */
+  tvAutofocus?: boolean;
 }
 
 export function SoundLink({
@@ -27,11 +29,13 @@ export function SoundLink({
   onClick,
   sfx = "tap",
   hapticIntensity = "light",
+  tvAutofocus = false,
   ...rest
 }: SoundLinkProps) {
   return (
     <Link
       {...rest}
+      data-tv-autofocus={tvAutofocus ? "true" : undefined}
       onClick={e => {
         playSfx(sfx);
         haptic(hapticIntensity);

@@ -8,6 +8,7 @@ import { DailyRewardWatcher } from "@/components/DailyRewardWatcher";
 import { AchievementWatcher } from "@/components/AchievementWatcher";
 import { IntroAudioUnlock } from "@/components/IntroAudioUnlock";
 import { LeagueWatcher } from "@/components/LeagueWatcher";
+import { TvModeProvider } from "@/components/TvModeProvider";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -47,6 +48,24 @@ export const viewport: Viewport = {
 const bootScript = `
 (function () {
   try {
+    var tvOverride = localStorage.getItem("csf-tv-mode");
+    var tvQuery = new URLSearchParams(location.search).get("tv");
+    if (tvQuery === "1" || tvQuery === "on") {
+      localStorage.setItem("csf-tv-mode", "on");
+      tvOverride = "on";
+    } else if (tvQuery === "0" || tvQuery === "off") {
+      localStorage.setItem("csf-tv-mode", "off");
+      tvOverride = "off";
+    }
+    var tvUa = /ChinaStudyFreeTV|Android\\s*TV|Google\\s*TV|GoogleTV|Smart[\\s-]?TV|Tizen|Web0S|webOS|NetCast|HbbTV|BRAVIA|AFT[A-Z]|Fire\\s*TV|Leanback|CRKey/i.test(navigator.userAgent);
+    var wideTouch = innerWidth >= 1280 && innerHeight >= 600 && innerWidth / Math.max(1, innerHeight) >= 1.45 &&
+      matchMedia("(pointer: coarse)").matches && matchMedia("(hover: none)").matches;
+    if (tvOverride === "on" || (tvOverride !== "off" && (tvUa || wideTouch))) {
+      document.documentElement.classList.add("tv-mode");
+      document.documentElement.dataset.tvMode = "on";
+    }
+  } catch (e) {}
+  try {
     var DARK_THEMES = { theme_midnight: "#0F1419", theme_obsidian: "#08090C" };
     var equipped = "";
     try {
@@ -65,9 +84,12 @@ const bootScript = `
     }
   } catch (e) {}
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
-      navigator.serviceWorker.register("/sw.js").catch(function () {});
-    });
+    var localHost = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "::1";
+    if (!localHost) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/sw.js").catch(function () {});
+      });
+    }
   }
 })();
 `;
@@ -82,14 +104,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           课程 / 阅读器等沉浸页导航隐藏时不再留 64px 死空隙 */}
       <body className="min-h-screen bg-bg-soft">
         <ThemeProvider>
-          <ToastProvider>
-            <DailyRewardWatcher />
-            <AchievementWatcher />
-            <LeagueWatcher />
-            <IntroAudioUnlock />
-            {children}
-            <BottomNav />
-          </ToastProvider>
+          <TvModeProvider>
+            <ToastProvider>
+              <DailyRewardWatcher />
+              <AchievementWatcher />
+              <LeagueWatcher />
+              <IntroAudioUnlock />
+              {children}
+              <BottomNav />
+              <div className="tv-control-hint" aria-hidden="true">
+                <span>遥控器</span>
+                方向键移动 · OK 确认 · 返回键退出
+              </div>
+            </ToastProvider>
+          </TvModeProvider>
         </ThemeProvider>
       </body>
     </html>

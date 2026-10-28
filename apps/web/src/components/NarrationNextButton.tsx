@@ -41,6 +41,7 @@ export function NarrationNextButton({ locked, progress, isLast, onClick }: {
     <div ref={ref} className="relative flex-1 min-w-0">
       <motion.button
         type="button"
+        data-tv-autofocus="true"
         disabled={locked}
         aria-label={label}
         aria-describedby={locked ? hintId : undefined}
