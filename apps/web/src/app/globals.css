@@ -7,6 +7,7 @@
 
 :root {
   --font-sans: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Arial Rounded MT Bold", "PingFang SC", "Microsoft YaHei", sans-serif;
 
   /* 美妆主题色（ThemeProvider 会在 hydrate 后覆盖；这是 SSR 默认值） */
   --theme-primary: #58CC02;
@@ -56,7 +57,7 @@ body {
   font-family: var(--font-sans);
 }
 
-/* 英文数字用 Nunito，中文 fallback 到 PingFang；display 类用于标题和按钮 */
+/* 系统圆体优先，中文 fallback 到 PingFang；display 类用于标题和按钮 */
 .font-display,
 h1,
 h2,
