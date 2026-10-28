@@ -17,6 +17,7 @@ import { DailyGoalRing } from "@/components/DailyGoalRing";
 import { DailyQuestsPanel } from "@/components/DailyQuestsPanel";
 import { AchievementWall } from "@/components/AchievementWall";
 import { WeeklyReportCard } from "@/components/WeeklyReportCard";
+import { OfflineMediaPanel } from "@/components/OfflineMediaPanel";
 import { AppShell } from "@/components/layout/AppShell";
 import {
   ArrowLeft,
@@ -85,6 +86,8 @@ export function ProfileClient() {
         <div className="lg:hidden mb-6">
           <DailyQuestsPanel />
         </div>
+
+        <OfflineMediaPanel />
 
         {/* 顶部：聪聪 + 问候 + 每日目标环 */}
         <div className="flex items-center gap-6 mb-8">

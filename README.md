@@ -159,6 +159,8 @@
 
 **Android TV / 雷鸟电视**：同一 APK 支持遥控器方向键焦点导航、电视启动器和横屏大屏布局。电视侧载与构建说明见 [Android TV 部分](docs/android.md#android-tv--雷鸟电视)。
 
+**离线媒体**：课本扫描图、故事插画和完整预生成音频可从 U 盘一次性导入 APK；进入「我的」→「离线课本与语音」即可操作，详见 [U 盘导入说明](docs/android.md#u-盘导入课本页插画和语音)。
+
 ### 1. 克隆仓库
 
 以下步骤启动当前线上版本。需要 Node.js 20+、Python 3.9+，以及带 `libmp3lame` 的 FFmpeg；请将 Python 和 FFmpeg 加入系统 PATH。

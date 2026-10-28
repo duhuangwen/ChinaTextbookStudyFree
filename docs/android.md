@@ -38,6 +38,18 @@ cd ../../apps/android && ./gradlew assembleDebug
 
 `install-web-data.py` 只下载约 4.9 MB 的 `data.zip`，不会下载 2 GB 音频和图片。APK 内含全部互动课程、题库、页面、字体、图标和课程 JSON；没有预生成 MP3 时，题目和讲解的喇叭按钮调用电视系统 TTS。课本原页、故事插画和预生成语音不打包进 APK，相关页面仍可显示文字内容。GitHub Actions 的 `Android APK` 工作流会自动执行这些步骤。
 
+## U 盘导入课本页、插画和语音
+
+进入「我的」→「离线课本与语音」→「从 U 盘导入」。可以一次多选以下三个官方压缩包，也可以逐个导入：
+
+- [`audio.tar.gz`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/download/v1.2.0-assets/audio.tar.gz)
+- [`story-images.zip`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/download/v1.2.0-assets/story-images.zip)
+- [`textbook-pages.zip`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/download/v1.2.0-assets/textbook-pages.zip)
+
+也可把 `audio/`、`story-images/`、`textbook-pages/` 三个目录放在一个 ZIP 中。导入采用系统文件选择器，不需要申请全盘存储权限；应用会先校验三个官方文件名的 SHA-256，再流式解压到私有目录，完成后即使拔掉 U 盘或重启电视仍可使用。建议电视至少预留 2.5 GB 空间。
+
+音视频目录中的 `.opus` 文件由 Android WebView 直接播放；若目标固件的 WebView 不支持 Opus，可使用系统 TTS 兜底，或改用预转码 MP3 媒体包。导入接口只接受这三个媒体目录及常见音视频扩展名，并拒绝绝对路径、目录穿越和符号链接式路径。
+
 ## Android TV / 雷鸟电视
 
 TV 支持代码随 Web 静态站一起打包，因此默认 APK 不需要先部署线上站点。

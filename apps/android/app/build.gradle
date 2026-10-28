@@ -14,8 +14,8 @@ android {
         applicationId 'org.chinatextbook.study'
         minSdk 23
         targetSdk 35
-        versionCode 1
-        versionName '0.2.0'
+        versionCode 3
+        versionName '0.3.0'
         buildConfigField 'String', 'WEB_APP_URL', '"' + webAppUrl.replace('\\', '\\\\').replace('"', '\\"') + '"'
         buildConfigField 'boolean', 'EMBEDDED_WEB', embeddedWeb ? 'true' : 'false'
     }
@@ -28,6 +28,7 @@ android {
 }
 dependencies {
     implementation 'androidx.webkit:webkit:1.12.1'
+    implementation 'org.apache.commons:commons-compress:1.27.1'
     testImplementation 'junit:junit:4.13.2'
 }
 

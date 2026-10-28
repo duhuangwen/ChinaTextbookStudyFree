@@ -3,15 +3,19 @@ package org.chinatextbook.study;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.UiModeManager;
 import android.content.ActivityNotFoundException;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.speech.tts.TextToSpeech;
 import android.view.Gravity;
 import android.view.View;
@@ -33,22 +37,30 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.webkit.JavascriptInterface;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-/** Small online Android client; lesson media remains on the configured HTTPS site. */
+/** Embedded Android/Android TV client with optional USB media import. */
 public class MainActivity extends Activity {
     private static final int MICROPHONE = 10;
     private static final int PICK_FILE = 11;
+    private static final int PICK_MEDIA = 12;
     private final OriginPolicy policy = new OriginPolicy(BuildConfig.WEB_APP_URL);
     private WebViewAssetLoader assetLoader;
     private WebView web;
     private ProgressBar loading;
     private LinearLayout errorPanel;
+    private File mediaRoot;
     private PermissionRequest microphoneRequest;
     private ValueCallback<Uri[]> fileCallback;
     private boolean resumed;
     private boolean awaitingRuntimePermission;
     private boolean television;
+    private boolean importingMedia;
     private TextToSpeech speech;
     private boolean speechReady;
     private String pendingSpeech;
@@ -64,11 +76,13 @@ public class MainActivity extends Activity {
         FrameLayout root = new FrameLayout(this);
         root.setBackgroundColor(Color.WHITE);
         web = new WebView(this);
+        mediaRoot = MediaLibrary.root(getFilesDir());
         assetLoader = new WebViewAssetLoader.Builder()
-                .addPathHandler("/", new AssetsSitePathHandler(getAssets()))
+                .addPathHandler("/", new AssetsSitePathHandler(getAssets(), mediaRoot))
                 .build();
         initializeSpeech();
         web.addJavascriptInterface(new TtsBridge(), "AndroidTts");
+        web.addJavascriptInterface(new MediaImportBridge(), "MediaImport");
         root.addView(web, new FrameLayout.LayoutParams(-1, -1));
         loading = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
         root.addView(loading, new FrameLayout.LayoutParams(-1, dp(3), Gravity.TOP));
@@ -230,6 +244,122 @@ public class MainActivity extends Activity {
             });
         }
     }
+
+    private final class MediaImportBridge {
+        @JavascriptInterface public boolean open() {
+            runOnUiThread(MainActivity.this::openMediaPicker);
+            return true;
+        }
+        @JavascriptInterface public String status() {
+            return MediaLibrary.statusJson(getFilesDir());
+        }
+        @JavascriptInterface public boolean clear() {
+            runOnUiThread(MainActivity.this::confirmClearMedia);
+            return true;
+        }
+    }
+
+    private void openMediaPicker() {
+        if (importingMedia) {
+            Toast.makeText(this, R.string.media_import_running, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        try {
+            startActivityForResult(intent, PICK_MEDIA);
+        } catch (ActivityNotFoundException error) {
+            Toast.makeText(this, R.string.file_picker_missing, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void importMedia(List<Uri> uris) {
+        if (importingMedia || uris.isEmpty()) return;
+        importingMedia = true;
+        loading.setIndeterminate(true);
+        loading.setVisibility(View.VISIBLE);
+        Toast.makeText(this, R.string.media_import_started, Toast.LENGTH_LONG).show();
+        new Thread(() -> {
+            int files = 0;
+            long bytes = 0;
+            String failure = null;
+            for (Uri uri : uris) {
+                String name = mediaDisplayName(uri);
+                try {
+                    String expected = MediaArchiveImporter.expectedSha256(name);
+                    if (expected != null) {
+                        InputStream verify = getContentResolver().openInputStream(uri);
+                        if (verify == null) throw new IOException("Cannot open " + name);
+                        if (!expected.equalsIgnoreCase(MediaArchiveImporter.sha256(verify))) {
+                            throw new IOException("SHA-256 mismatch");
+                        }
+                    }
+                    MediaArchiveImporter.Result result;
+                    try (InputStream input = getContentResolver().openInputStream(uri)) {
+                        if (input == null) throw new IOException("Cannot open " + name);
+                        result = MediaArchiveImporter.importArchive(mediaRoot, input, null);
+                    }
+                    if (result.files == 0) throw new IOException("No media found");
+                    files += result.files;
+                    bytes += result.bytes;
+                } catch (Exception error) {
+                    failure = name + ": " + error.getMessage();
+                    break;
+                }
+            }
+            final int importedFiles = files;
+            final long importedBytes = bytes;
+            final String importFailure = failure;
+            runOnUiThread(() -> {
+                importingMedia = false;
+                loading.setIndeterminate(false);
+                loading.setVisibility(View.GONE);
+                if (importFailure != null) {
+                    Toast.makeText(this,
+                            getString(R.string.media_import_failed, importFailure),
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this,
+                            getString(R.string.media_import_done, importedFiles,
+                                    importedBytes / (1024 * 1024)),
+                            Toast.LENGTH_LONG).show();
+                }
+                if (web != null) web.reload();
+            });
+        }, "cstf-media-import").start();
+    }
+
+    private String mediaDisplayName(Uri uri) {
+        try (Cursor cursor = getContentResolver().query(
+                uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                int index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                if (index >= 0) return cursor.getString(index);
+            }
+        } catch (RuntimeException ignored) {}
+        String fallback = uri.getLastPathSegment();
+        return fallback == null ? "media archive" : fallback;
+    }
+
+    private void confirmClearMedia() {
+        if (importingMedia) {
+            Toast.makeText(this, R.string.media_import_running, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.media_clear_title)
+                .setMessage(R.string.media_clear_message)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.media_clear_confirm, (dialog, which) -> {
+                    MediaLibrary.deleteTree(mediaRoot);
+                    Toast.makeText(this, R.string.media_clear_done, Toast.LENGTH_SHORT).show();
+                    if (web != null) web.reload();
+                })
+                .show();
+    }
     private void showError() { loading.setVisibility(View.GONE); errorPanel.setVisibility(View.VISIBLE); }
     private void openExternal(String url) {
         if (!OriginPolicy.isExternalHttps(url)) return;
@@ -256,6 +386,19 @@ public class MainActivity extends Activity {
     }
     @Override protected void onActivityResult(int code, int result, Intent data) {
         super.onActivityResult(code, result, data);
+        if (code == PICK_MEDIA && result == RESULT_OK && data != null) {
+            List<Uri> uris = new ArrayList<>();
+            ClipData clip = data.getClipData();
+            if (clip != null) {
+                for (int i = 0; i < clip.getItemCount(); i++) {
+                    uris.add(clip.getItemAt(i).getUri());
+                }
+            } else if (data.getData() != null) {
+                uris.add(data.getData());
+            }
+            importMedia(uris);
+            return;
+        }
         if (code == PICK_FILE && fileCallback != null) {
             fileCallback.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(result, data));
             fileCallback = null;
@@ -275,7 +418,13 @@ public class MainActivity extends Activity {
         if (web != null) web.onPause();
         super.onPause();
     }
-    @Override public void onBackPressed() { if (web.canGoBack()) web.goBack(); else super.onBackPressed(); }
+    @Override public void onBackPressed() {
+        if (importingMedia) {
+            Toast.makeText(this, R.string.media_import_running, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (web.canGoBack()) web.goBack(); else super.onBackPressed();
+    }
     @Override protected void onDestroy() {
         cancelMicrophone();
         if (fileCallback != null) fileCallback.onReceiveValue(null);

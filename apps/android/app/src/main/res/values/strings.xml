@@ -4,4 +4,12 @@
     <string name="retry">重新加载</string>
     <string name="file_picker_missing">此设备没有可用的文件选择器。</string>
     <string name="download_in_browser">请在浏览器中使用备份导出功能；当前安卓版本暂不支持此下载。</string>
+    <string name="media_import_started">正在导入离线资源，请保持电视通电并勿拔出 U 盘。</string>
+    <string name="media_import_running">离线资源正在导入，请稍候。</string>
+    <string name="media_import_done">导入完成：%1$d 个文件，约 %2$d MB。</string>
+    <string name="media_import_failed">导入失败：%1$s</string>
+    <string name="media_clear_title">删除离线资源</string>
+    <string name="media_clear_message">将删除已导入的音频、课本页和故事插画。课程题库不会删除。</string>
+    <string name="media_clear_confirm">删除</string>
+    <string name="media_clear_done">离线资源已删除</string>
 </resources>
