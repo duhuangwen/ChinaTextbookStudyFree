@@ -157,6 +157,9 @@ final class MediaArchiveImporter {
         String name = raw.replace('\\', '/');
         while (name.startsWith("./")) name = name.substring(2);
         if (name.startsWith("/") || name.contains(":")) return null;
+        for (String part : name.split("/")) {
+            if (part.equals("..")) return null;
+        }
         if (name.startsWith("apps/web/public/")) name = name.substring("apps/web/public/".length());
 
         String relative = null;
