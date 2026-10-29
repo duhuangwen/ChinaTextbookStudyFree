@@ -80,10 +80,10 @@ export function SideNav() {
         className="block px-3 py-3 mb-2"
         aria-label="聪聪学堂 · 回到首页"
       >
-        <span className="hidden lg:inline text-2xl font-extrabold text-primary tracking-tightest">
+        <span className="tv-logo-word hidden lg:inline text-2xl font-extrabold text-primary tracking-tightest">
           聪聪学堂
         </span>
-        <span className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-primary/10 text-primary font-extrabold text-lg">
+        <span className="tv-logo-short lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-primary/10 text-primary font-extrabold text-lg">
           聪
         </span>
       </Link>
@@ -100,7 +100,7 @@ export function SideNav() {
               haptic("light");
             }}
             className={cn(
-              "group flex items-center justify-center lg:justify-start gap-3 px-3 h-14 rounded-2xl border-2 transition-colors select-none",
+              "tv-nav-item group flex items-center justify-center lg:justify-start gap-3 px-3 h-14 rounded-2xl border-2 transition-colors select-none",
               active
                 ? "border-secondary/50 bg-secondary/10 text-secondary-dark"
                 : "border-transparent text-ink-light hover:bg-bg-soft"
@@ -116,7 +116,7 @@ export function SideNav() {
             />
             <span
               className={cn(
-                "hidden lg:inline text-base font-extrabold",
+                "tv-nav-label hidden lg:inline text-base font-extrabold",
                 active ? "text-secondary-dark" : "text-ink-light group-hover:text-ink"
               )}
             >

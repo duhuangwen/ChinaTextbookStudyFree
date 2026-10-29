@@ -314,24 +314,37 @@ html.tv-mode .tv-control-hint span {
 }
 
 @media (min-width: 960px) and (min-height: 540px) {
+  html.tv-mode .tv-logo-word,
+  html.tv-mode .tv-nav-label {
+    display: inline !important;
+  }
+
+  html.tv-mode .tv-logo-short {
+    display: none !important;
+  }
+
+  html.tv-mode .tv-nav-item {
+    justify-content: flex-start !important;
+    min-height: 3.6rem;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
   html.tv-mode main {
     padding-left: max(0.5rem, 1.5vw);
     padding-right: max(0.5rem, 1.5vw);
   }
 
   html.tv-mode .app-shell {
-    max-width: min(1900px, 95vw);
+    max-width: min(1900px, 96vw);
     gap: clamp(1.25rem, 1.8vw, 2.25rem);
     padding-top: clamp(1.75rem, 3.5vh, 3rem);
     padding-bottom: clamp(1.75rem, 3.5vh, 3rem);
   }
 
-  html.tv-mode .app-shell[data-tv-has-right="true"] {
-    grid-template-columns: clamp(210px, 14vw, 280px) minmax(0, 1fr) clamp(310px, 21vw, 410px);
-  }
-
+  html.tv-mode .app-shell[data-tv-has-right="true"],
   html.tv-mode .app-shell[data-tv-has-right="false"] {
-    grid-template-columns: clamp(210px, 14vw, 280px) minmax(0, 1fr);
+    grid-template-columns: clamp(220px, 16vw, 300px) minmax(0, 1fr);
   }
 
   html.tv-mode .app-shell > aside {
@@ -372,6 +385,16 @@ html.tv-mode .tv-control-hint span {
   html.tv-mode .tv-grade-options > button {
     min-height: 8.5vh;
     padding: 1rem 1.35rem;
+  }
+}
+
+@media (min-width: 1600px) and (min-height: 540px) {
+  html.tv-mode .app-shell[data-tv-has-right="true"] {
+    grid-template-columns: clamp(260px, 14vw, 300px) minmax(0, 1fr) clamp(330px, 21vw, 410px);
+  }
+
+  html.tv-mode .app-shell[data-tv-has-right="true"] > aside:last-child {
+    display: block !important;
   }
 }
 

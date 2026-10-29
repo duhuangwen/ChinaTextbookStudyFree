@@ -30,21 +30,29 @@ function isVisible(element: HTMLElement): boolean {
 function activeScope(): Document | Element {
   return (
     document.querySelector<HTMLElement>('[role="dialog"][aria-modal="true"]') ??
-    document.querySelector<HTMLElement>("main") ??
     document
   );
 }
 
-function focusables(): HTMLElement[] {
-  return Array.from(activeScope().querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+function focusablesIn(scope: Document | Element): HTMLElement[] {
+  return Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
     element => !element.closest("[inert], [aria-hidden='true']") && isVisible(element),
   );
+}
+
+function focusables(): HTMLElement[] {
+  return focusablesIn(activeScope());
 }
 
 function preferredFocus(): HTMLElement | null {
   const scope = activeScope();
   const marked = scope.querySelector<HTMLElement>("[data-tv-autofocus]");
   if (marked && isVisible(marked) && !marked.hasAttribute("disabled")) return marked;
+  const main = document.querySelector<HTMLElement>("main");
+  if (main) {
+    const contentFocus = focusablesIn(main)[0];
+    if (contentFocus) return contentFocus;
+  }
   return focusables()[0] ?? null;
 }
 

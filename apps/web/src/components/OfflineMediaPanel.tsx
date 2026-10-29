@@ -84,7 +84,7 @@ export function OfflineMediaPanel() {
       <div className="mt-4 flex flex-wrap gap-3">
         <button
           type="button"
-          data-tv-autofocus={!status.audio ? "true" : undefined}
+          data-tv-autofocus="true"
           onClick={() => {
             playSfx("tap");
             window.MediaImport?.open();
