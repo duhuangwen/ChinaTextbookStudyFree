@@ -101,7 +101,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
       </div>
       <div className="w-full">
 
-        <div className="space-y-6">
+        <div className="tv-subject-grid space-y-6">
           {SUBJECT_ORDER.map(subjectId => {
             const subjectBooks = bySubject.get(subjectId);
             if (!subjectBooks || subjectBooks.length === 0) return null;
@@ -111,7 +111,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
             return (
               <section key={subjectId}>
                 {/* 学科分组 header */}
-                <div className="flex items-center gap-2.5 mb-3 px-1">
+                <div className="tv-subject-label flex items-center gap-2.5 mb-3 px-1">
                   <div
                     className="w-1.5 h-6 rounded-full shrink-0"
                     style={{ backgroundColor: theme.bg }}
@@ -120,7 +120,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
                     <div className="text-base lg:text-xl font-extrabold text-ink">
                       {subject.label}
                     </div>
-                    <div className="text-[11px] lg:text-xs text-ink-light mt-0.5">{theme.tagline}</div>
+                    <div className="tv-hide text-[11px] lg:text-xs text-ink-light mt-0.5">{theme.tagline}</div>
                   </div>
                 </div>
 

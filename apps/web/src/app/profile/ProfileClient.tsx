@@ -81,7 +81,7 @@ export function ProfileClient() {
         </div>
       </div>
 
-      <div className="max-w-2xl lg:max-w-4xl mx-auto px-4 py-8">
+      <div className="tv-profile max-w-2xl lg:max-w-4xl mx-auto px-4 py-8">
         {/* 📋 每日任务（移动端专属入口；桌面端在首页右栏 RightRail 展示同一组件） */}
         <div className="lg:hidden mb-6">
           <DailyQuestsPanel />
@@ -90,8 +90,9 @@ export function ProfileClient() {
         <OfflineMediaPanel />
 
         {/* 顶部：聪聪 + 问候 + 每日目标环 */}
-        <div className="flex items-center gap-6 mb-8">
+        <div className="tv-profile-hero flex items-center gap-6 mb-8">
           <motion.div
+            className="tv-hide"
             initial={{ x: -40, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ type: "spring", damping: 18 }}
@@ -109,7 +110,7 @@ export function ProfileClient() {
         </div>
 
         {/* 统计卡片网格 */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        <div className="tv-profile-stats grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
           <StatCard
             icon={<Lightning className="w-6 h-6" />}
             label="总经验"
@@ -137,7 +138,7 @@ export function ProfileClient() {
         </div>
 
         {/* 桌面 2x2 网格：商店 / 成就 / 错题本 / 家长设置 */}
-        <div className="lg:grid lg:grid-cols-2 lg:gap-5">
+        <div className="tv-profile-grid lg:grid lg:grid-cols-2 lg:gap-5">
         {/* 累计宝石 + 商店入口 */}
         <SoundLink
           href="/shop"
@@ -158,7 +159,7 @@ export function ProfileClient() {
         </SoundLink>
 
         {/* 本周报告 */}
-        <div className="mb-6 lg:mb-0">
+        <div className="tv-profile-late mb-6 lg:mb-0">
           {hydrated && <WeeklyReportCard />}
         </div>
 
@@ -182,7 +183,7 @@ export function ProfileClient() {
         </section>
 
         {/* 成就墙（占满整行） */}
-        <div className="lg:col-span-2 mb-6 lg:mb-0">
+        <div className="tv-profile-wide lg:col-span-2 mb-6 lg:mb-0">
           {hydrated && <AchievementWall />}
         </div>
 
@@ -207,7 +208,7 @@ export function ProfileClient() {
 
         {/* 外观：免费深色模式三态开关（跟随系统 / 亮 / 暗） */}
         <section
-          className="bg-white rounded-3xl border-2 border-bg-softer p-5 mb-6 lg:mb-0"
+          className="tv-profile-late bg-white rounded-3xl border-2 border-bg-softer p-5 mb-6 lg:mb-0"
           style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
         >
           <div className="flex items-center justify-between mb-1">
@@ -221,7 +222,7 @@ export function ProfileClient() {
 
         {/* 家长设置：每日学习时间上限（默认关闭，家长自愿启用） */}
         <section
-          className="bg-white rounded-3xl border-2 border-bg-softer p-5"
+          className="tv-profile-late bg-white rounded-3xl border-2 border-bg-softer p-5"
           style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
         >
           <div className="flex items-center justify-between mb-1">
@@ -269,7 +270,7 @@ export function ProfileClient() {
         <BackupSection />
 
         {/* 🚩 已报告的问题（E2）：本地列表 + 一键导出 */}
-        <div className="lg:col-span-2 mt-6 lg:mt-0">
+        <div className="tv-profile-late tv-profile-span2 lg:col-span-2 mt-6 lg:mt-0">
           {hydrated && <ReportsSection />}
         </div>
         </div>
@@ -360,7 +361,7 @@ function BackupSection() {
 
   return (
     <section
-      className="bg-white rounded-3xl border-2 border-bg-softer p-5 mt-6 lg:mt-0"
+      className="tv-profile-late bg-white rounded-3xl border-2 border-bg-softer p-5 mt-6 lg:mt-0"
       style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
     >
       <div className="flex items-center justify-between mb-1">

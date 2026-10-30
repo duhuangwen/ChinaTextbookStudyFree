@@ -127,7 +127,7 @@ export function SideNav() {
       })}
 
       {/* 底部：深色模式三态开关（md 窄栏收成纯图标） */}
-      <div className="mt-auto pt-4 pb-2 px-1">
+      <div className="tv-nav-extra mt-auto pt-4 pb-2 px-1">
         <ThemeModeToggle compact />
       </div>
     </nav>

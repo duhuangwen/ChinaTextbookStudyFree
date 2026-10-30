@@ -26,6 +26,7 @@ import {
 import type { Lesson } from "@/types";
 import type { PathLessonMeta } from "@cstf/core";
 import { gradeAnswer } from "@/lib/grade";
+import { exitToParent } from "@/lib/tvMode";
 import { useProgressStore, MAX_HEARTS, HEART_REFILL_COST } from "@/store/progress";
 import { QuestionRenderer, type QuestionPhase } from "@/components/question/QuestionRenderer";
 import { Mascot } from "@/components/Mascot";
@@ -242,7 +243,7 @@ export function JumpClient() {
   function exitToPath() {
     playSfx("tap");
     haptic("light");
-    router.push(bookId ? `/book/${bookId}/` : "/");
+    exitToParent(router, bookId ? `/book/${bookId}/` : "/");
   }
 
   function handleGateRefill() {
@@ -382,8 +383,10 @@ export function JumpClient() {
           <button
             type="button"
             onClick={exitToPath}
-            className="h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
+            className="tv-hide h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
             aria-label="退出跳级测试"
+            data-tv-skip-default
+            data-tv-back
           >
             <Close className="w-5 h-5" />
           </button>
@@ -420,10 +423,11 @@ export function JumpClient() {
       </div>
 
       {/* 题目区 */}
-      <div className="flex-1 flex flex-col items-center justify-start px-5 py-4 pb-40">
-        <div className="w-full max-w-md lg:max-w-2xl">
+      <div className="tv-question-wrap flex-1 flex flex-col items-center justify-start px-5 py-4 pb-40">
+        <div className="tv-question-area w-full max-w-md lg:max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
+              className="tv-question-stage"
               key={`${seed}-${index}`}
               initial={{ x: 30, y: 8, opacity: 0 }}
               animate={{ x: 0, y: 0, opacity: 1 }}
@@ -453,7 +457,7 @@ export function JumpClient() {
 
       {/* 底部：只有「检查」——跳级测试没有跳过 */}
       {phase === "answering" && (
-        <div className="bg-white border-t-2 border-bg-softer">
+        <div className="tv-lesson-footer bg-white border-t-2 border-bg-softer">
           <div className="max-w-md lg:max-w-2xl mx-auto px-5 py-4">
             <button
               onClick={handleCheck}

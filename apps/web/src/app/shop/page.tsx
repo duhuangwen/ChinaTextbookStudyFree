@@ -155,7 +155,7 @@ export default function ShopPage() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 py-4 lg:py-2 lg:px-0">
+      <div className="tv-shop max-w-3xl mx-auto px-4 py-4 lg:py-2 lg:px-0">
         {/* ⚡ 红心 & 连胜 —— 功能性道具（护盾 / 补心），与纯美妆分区 */}
         <PowerUpsSection />
 
@@ -204,7 +204,7 @@ export default function ShopPage() {
         </div>
 
         {/* 2 列：左大预览 + 右网格 */}
-        <div className="lg:grid lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] lg:gap-4 lg:items-start">
+        <div className="tv-shop-main lg:grid lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] lg:gap-4 lg:items-start">
           {/* 大预览面板 */}
           <div className="mb-6 lg:mb-0 lg:sticky lg:top-24 relative">
             <PreviewPane
@@ -223,7 +223,7 @@ export default function ShopPage() {
 
           {/* 右侧网格 */}
           <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="tv-shop-items grid grid-cols-2 sm:grid-cols-3 gap-3">
               {items.map(item => {
                 const owned = !!ownedCosmetics[item.id];
                 const equipped = isEquipped(item);
@@ -245,7 +245,7 @@ export default function ShopPage() {
             </div>
 
             {/* 底部说明 */}
-            <p className="text-center text-xs text-ink-softer mt-8 max-w-md mx-auto inline-flex items-start gap-1.5">
+            <p className="tv-hide text-center text-xs text-ink-softer mt-8 max-w-md mx-auto inline-flex items-start gap-1.5">
               <Gem className="w-3 h-3 text-secondary mt-0.5 shrink-0" />
               <span>
                 宝石全部通过学习获得：通关 +3 / 二星 +5 / 三星 +10 / 首次完美 +15 / 每日目标 +20 /
@@ -360,7 +360,7 @@ function PowerUpCard({
 }) {
   return (
     <div
-      className="bg-white rounded-2xl border-2 border-bg-softer p-4 flex flex-col"
+      className="tv-powerup bg-white rounded-2xl border-2 border-bg-softer p-4 flex flex-col"
       style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
     >
       <div className="flex items-center gap-2.5">

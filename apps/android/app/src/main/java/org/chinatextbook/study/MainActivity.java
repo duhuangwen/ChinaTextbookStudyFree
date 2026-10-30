@@ -125,6 +125,9 @@ public class MainActivity extends Activity {
         if (television) {
             // Lets the shared web app enable its D-pad navigation without a bridge.
             settings.setUserAgentString(settings.getUserAgentString() + " ChinaStudyFreeTV");
+            // Honour the page's TV viewport (width=1280) and scale it to the screen.
+            settings.setUseWideViewPort(true);
+            settings.setLoadWithOverviewMode(true);
         }
         WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG);
         web.setWebViewClient(new WebViewClient() {
@@ -423,7 +426,11 @@ public class MainActivity extends Activity {
             Toast.makeText(this, R.string.media_import_running, Toast.LENGTH_SHORT).show();
             return;
         }
-        if (web.canGoBack()) web.goBack(); else super.onBackPressed();
+        // Back never reaches the page as a key event; let an open web dialog close first.
+        web.evaluateJavascript("!!(window.__cstfHandleBack && window.__cstfHandleBack())", handled -> {
+            if ("true".equals(handled)) return;
+            if (web.canGoBack()) web.goBack(); else MainActivity.super.onBackPressed();
+        });
     }
     @Override protected void onDestroy() {
         cancelMicrophone();

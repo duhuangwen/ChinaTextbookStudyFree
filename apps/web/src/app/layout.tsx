@@ -56,6 +56,20 @@ const bootScript = `
       document.documentElement.classList.add("tv-mode");
       document.documentElement.dataset.tvMode = "on";
     }
+    // The Android TV shell enables wide viewports; a 1280px layout (720px tall)
+    // gets the lg desktop layouts instead of the 960x540 phone column. Hydration
+    // inserts its own device-width meta later, so keep rewriting every copy.
+    if (/ChinaStudyFreeTV/.test(navigator.userAgent)) {
+      var tvViewport = "width=1280";
+      var pinViewport = function () {
+        var metas = document.querySelectorAll('meta[name="viewport"]');
+        for (var i = 0; i < metas.length; i++) {
+          if (metas[i].getAttribute("content") !== tvViewport) metas[i].setAttribute("content", tvViewport);
+        }
+      };
+      pinViewport();
+      new MutationObserver(pinViewport).observe(document.head, { childList: true, subtree: true, attributes: true, attributeFilter: ["content"] });
+    }
   } catch (e) {}
   try {
     var DARK_THEMES = { theme_midnight: "#0F1419", theme_obsidian: "#08090C" };

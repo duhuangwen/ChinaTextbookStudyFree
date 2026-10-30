@@ -70,7 +70,7 @@ export function StatsBar({ compact = false }: StatsBarProps = {}) {
 
   return (
     <>
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-1.5" data-tv-skip-default>
         {/* 红心胶囊 */}
         <motion.button
           type="button"

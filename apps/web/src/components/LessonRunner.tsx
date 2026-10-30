@@ -23,6 +23,7 @@ import {
 import type { Lesson, KnowledgeSummary } from "@/types";
 import { gradeAnswer } from "@/lib/grade";
 import { cn } from "@/lib/cn";
+import { exitToParent } from "@/lib/tvMode";
 import { MathText } from "@/components/MathText";
 import { useProgressStore, MAX_HEARTS, HEART_REFILL_COST, type LessonOutcome } from "@/store/progress";
 import {
@@ -177,7 +178,7 @@ function StarDistanceHint({
   if (!label) return null;
 
   return (
-    <div className="max-w-md lg:max-w-2xl mx-auto w-full px-5 pt-2">
+    <div className="tv-hide max-w-md lg:max-w-2xl mx-auto w-full px-5 pt-2">
       <motion.div
         initial={{ opacity: 0, y: -4 }}
         animate={
@@ -247,6 +248,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
   useSyncMute();
   useProgressTicker(); // 红心实时恢复
   const router = useRouter();
+  const leaveLesson = () => exitToParent(router, `/book/${lesson.bookId}/`);
   const recordComplete = useProgressStore(s => s.recordLessonComplete);
   const addMistake = useProgressStore(s => s.addMistake);
   const loseHeart = useProgressStore(s => s.loseHeart);
@@ -906,7 +908,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
     // 零进度（一题都没答过）直接退出，不弹确认（web-lesson-16）
     if (attemptedRef.current.size === 0 && solved.length === 0) {
       clearLessonSession();
-      router.push(`/book/${lesson.bookId}/`);
+      leaveLesson();
       return;
     }
     setExitConfirmMounted(true);
@@ -918,7 +920,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
     playSfx("tap");
     haptic("medium");
     clearLessonSession();
-    router.push(`/book/${lesson.bookId}/`);
+    leaveLesson();
   }
 
   // ===== 断心遮罩的三个出口 =====
@@ -950,7 +952,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
     setGateOpen(false);
     // 遮罩承诺过「回来接着上次继续」→ 保留 activeLesson 直接返回（与 iOS onQuit 一致）。
     // 绝不能走 setFailed(true)：那会连带清掉整节课的进度。
-    router.push(`/book/${lesson.bookId}/`);
+    leaveLesson();
   }
 
   // ============ 首次加载占位（等待 persist 恢复）============
@@ -968,7 +970,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
       <CompletionScreen
         lesson={lesson}
         stats={sessionStats}
-        onBack={() => router.push(`/book/${lesson.bookId}/`)}
+        onBack={leaveLesson}
       />
     );
   }
@@ -979,7 +981,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
       <FailScreen
         lesson={lesson}
         onRetry={resetSession}
-        onBack={() => router.push(`/book/${lesson.bookId}/`)}
+        onBack={leaveLesson}
       />
     );
   }
@@ -991,7 +993,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
         lesson={lesson}
         knowledge={lesson.knowledge}
         onStart={() => setShowIntro(false)}
-        onExit={() => router.push(`/book/${lesson.bookId}/`)}
+        onExit={leaveLesson}
       />
     );
   }
@@ -1172,8 +1174,10 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
           <button
             type="button"
             onClick={handleRequestExit}
-            className="h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
+            className="tv-hide h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
             aria-label="退出课程"
+            data-tv-skip-default
+            data-tv-back
           >
             <Close className="w-5 h-5" />
           </button>
@@ -1272,6 +1276,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
               }}
               className="h-8 w-8 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors"
               aria-label="课程设置"
+              data-tv-skip-default
             >
               <GearIcon className="w-5 h-5" />
             </button>
@@ -1287,7 +1292,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
       />
 
       {/* 吉祥物 + 气泡 */}
-      <div className="max-w-md lg:max-w-2xl mx-auto w-full px-5 pt-2 flex items-end gap-3 min-h-[96px]">
+      <div className="tv-hide max-w-md lg:max-w-2xl mx-auto w-full px-5 pt-2 flex items-end gap-3 min-h-[96px]">
         <Mascot
           mood={phase === "checked" ? mascotMood : "happy"}
           size={72}
@@ -1305,7 +1310,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
 
       {/* Question area */}
       <div className="flex-1 flex flex-col items-center justify-start px-5 py-4">
-        <div className="w-full max-w-md lg:max-w-2xl">
+        <div className="tv-question-area w-full max-w-md lg:max-w-2xl">
           {/* "NEW WORD" 紫色胶囊 tag —— 仿 Duolingo 题型标签 */}
           <div className="mb-3 inline-flex items-center gap-1.5 flex-wrap">
             {/* ⚔️ 单元挑战徽章（紫金） */}
@@ -1335,6 +1340,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
           <AnimatePresence mode="wait">
             <motion.div
               key={serveKey}
+              className="tv-question-stage"
               initial={{ x: 30, y: 8, opacity: 0 }}
               animate={{ x: 0, y: 0, opacity: 1 }}
               exit={{ x: -30, y: 0, opacity: 0 }}
@@ -1362,7 +1368,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
 
       {/* Bottom: SKIP / CHECK 双按钮（仿 Duolingo 真机底栏） */}
       {phase === "answering" && (
-        <div className="bg-white border-t-2 border-bg-softer">
+        <div className="tv-lesson-footer bg-white border-t-2 border-bg-softer">
           <div className="max-w-md lg:max-w-2xl mx-auto px-5 py-4 flex items-center gap-3">
             <button
               type="button"
@@ -1375,6 +1381,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
             <button
               onClick={handleCheck}
               disabled={!answer.trim()}
+              data-tv-primary
               className={answer.trim() ? "flex-1 btn-chunky-primary" : "flex-1 btn-chunky-disabled"}
             >
               检查
@@ -2423,8 +2430,10 @@ function IntroCard({
               haptic("light");
               onExit();
             }}
-            className="w-11 h-11 inline-flex items-center justify-center text-ink-light hover:text-ink transition-colors shrink-0"
+            className="tv-hide w-11 h-11 inline-flex items-center justify-center text-ink-light hover:text-ink transition-colors shrink-0"
             aria-label="退出课程"
+            data-tv-skip-default
+            data-tv-back
           >
             <Close className="w-6 h-6" />
           </button>
@@ -2475,7 +2484,7 @@ function IntroCard({
               className="flex flex-col items-center text-center"
             >
               {/* 吉祥物 + 气泡 */}
-              <div className="flex items-end gap-2 mb-2 min-h-[96px]">
+              <div className="tv-hide flex items-end gap-2 mb-2 min-h-[96px]">
                 <motion.div
                   initial={{ y: 14, scale: 0.8, opacity: 0 }}
                   animate={{ y: 0, scale: 1, opacity: 1 }}
@@ -2512,7 +2521,7 @@ function IntroCard({
                 initial={{ scale: 0.5, rotate: -20, opacity: 0 }}
                 animate={{ scale: 1, rotate: 0, opacity: 1 }}
                 transition={{ type: "spring", damping: 10, stiffness: 220, delay: 0.12 }}
-                className="relative mb-4"
+                className="tv-hide relative mb-4"
               >
                 {/* 脉冲光圈 */}
                 <motion.div
@@ -2570,7 +2579,7 @@ function IntroCard({
       </div>
 
       {/* 底部：上一步 + 主按钮 */}
-      <div className="bg-white border-t-2 border-bg-softer" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <div className="tv-lesson-footer bg-white border-t-2 border-bg-softer" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         {narration.locked && (narration.muted || narration.status === "error") && <div className="max-w-md lg:max-w-2xl mx-auto px-5 pt-3 text-center text-sm text-ink-light" role="status">
           {narration.locked && narration.muted ? (
             <><span>当前已静音，可以阅读后继续。</span><button type="button" onClick={narration.continueWithoutAudio} className="ml-3 font-bold text-secondary-dark underline">阅读后继续</button></>

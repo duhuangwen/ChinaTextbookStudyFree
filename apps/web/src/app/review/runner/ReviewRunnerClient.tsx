@@ -21,6 +21,7 @@ import { motion, AnimatePresence, useAnimation, useReducedMotion } from "framer-
 import type { Question } from "@/types";
 import { gradeAnswer } from "@/lib/grade";
 import { getDueSrsEntries } from "@/lib/srs";
+import { exitToParent } from "@/lib/tvMode";
 import {
   useProgressStore,
   REVIEW_XP_PER_CORRECT,
@@ -194,7 +195,7 @@ export function ReviewRunnerClient() {
       const correct = [...attempts.values()].filter(Boolean).length;
       awardReviewXP(correct, attempts.size);
     }
-    router.push("/review/");
+    exitToParent(router, "/review/");
   }
 
   // ============ 加载占位 ============
@@ -238,8 +239,10 @@ export function ReviewRunnerClient() {
           <button
             type="button"
             onClick={handleExit}
-            className="h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
+            className="tv-hide h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
             aria-label="退出复习"
+            data-tv-skip-default
+            data-tv-back
           >
             <Close className="w-5 h-5" />
           </button>
@@ -267,10 +270,11 @@ export function ReviewRunnerClient() {
       </div>
 
       {/* 题目区 */}
-      <div className="flex-1 flex flex-col items-center justify-start px-5 py-4 pb-40">
-        <div className="w-full max-w-md lg:max-w-2xl">
+      <div className="tv-question-wrap flex-1 flex flex-col items-center justify-start px-5 py-4 pb-40">
+        <div className="tv-question-area w-full max-w-md lg:max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
+              className="tv-question-stage"
               key={`${current.key}-${solvedCount}-${queue.length}`}
               initial={{ x: 30, y: 8, opacity: 0 }}
               animate={{ x: 0, y: 0, opacity: 1 }}
@@ -298,7 +302,7 @@ export function ReviewRunnerClient() {
 
       {/* 底部：检查按钮（答题中） */}
       {phase === "answering" && (
-        <div className="bg-white border-t-2 border-bg-softer">
+        <div className="tv-lesson-footer bg-white border-t-2 border-bg-softer">
           <div className="max-w-md lg:max-w-2xl mx-auto px-5 py-4">
             <button
               onClick={handleCheck}

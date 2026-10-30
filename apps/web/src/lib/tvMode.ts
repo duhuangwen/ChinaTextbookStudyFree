@@ -36,6 +36,16 @@ export function shouldEnableTvMode(env: TvModeEnvironment): boolean {
   );
 }
 
+/**
+ * Leaves a full-screen flow (lesson, review, jump test) for its parent page.
+ * On TV the remote's Back walks history, so pushing the parent again would
+ * make the next Back land back inside the flow; step back instead.
+ */
+export function exitToParent(router: { back(): void; push(href: string): void }, href: string): void {
+  if (document.documentElement.classList.contains("tv-mode") && window.history.length > 1) router.back();
+  else router.push(href);
+}
+
 export function readTvModeOverride(): string | null {
   if (typeof window === "undefined") return null;
   try {

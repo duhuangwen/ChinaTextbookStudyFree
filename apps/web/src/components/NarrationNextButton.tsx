@@ -42,10 +42,14 @@ export function NarrationNextButton({ locked, progress, isLast, onClick }: {
       <motion.button
         type="button"
         data-tv-autofocus="true"
-        disabled={locked}
+        // aria-disabled keeps the button focusable while narration plays; a real
+        // `disabled` drops D-pad focus onto whatever control comes first.
+        aria-disabled={locked}
         aria-label={label}
         aria-describedby={locked ? hintId : undefined}
-        onClick={onClick}
+        onClick={() => {
+          if (!locked) onClick();
+        }}
         whileTap={locked ? undefined : { scale: 0.96 }}
         className={`w-full btn-chunky-primary flex items-center justify-center gap-2 ${locked ? "!cursor-wait !bg-primary/75" : ""}`}
       >

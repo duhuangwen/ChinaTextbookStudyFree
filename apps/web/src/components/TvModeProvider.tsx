@@ -48,12 +48,50 @@ function preferredFocus(): HTMLElement | null {
   const scope = activeScope();
   const marked = scope.querySelector<HTMLElement>("[data-tv-autofocus]");
   if (marked && isVisible(marked) && !marked.hasAttribute("disabled")) return marked;
+  // A disabled primary button (narration still playing) must not hand default
+  // focus to a destructive control such as "退出课程": one OK press would leave.
   const main = document.querySelector<HTMLElement>("main");
   if (main) {
-    const contentFocus = focusablesIn(main)[0];
+    const contentFocus = focusablesIn(main).find(element => !element.closest("[data-tv-skip-default]"));
     if (contentFocus) return contentFocus;
   }
-  return focusables()[0] ?? null;
+  return focusables().find(element => !element.closest("[data-tv-skip-default]")) ?? null;
+}
+
+function isFullyVisible(element: HTMLElement): boolean {
+  const rect = element.getBoundingClientRect();
+  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth;
+}
+
+function isPinned(element: HTMLElement): boolean {
+  for (let node: HTMLElement | null = element; node; node = node.parentElement) {
+    const position = window.getComputedStyle(node).position;
+    if (position === "sticky" || position === "fixed") return true;
+  }
+  return false;
+}
+
+/**
+ * Android's Back key never reaches the page as a keydown, so the native shell
+ * asks here first: an open modal is dismissed like Escape, and a page that
+ * marks its own exit control with `data-tv-back` (the lesson ✕, which asks
+ * before discarding progress) handles Back instead of a bare history.back().
+ */
+function handleNativeBack(): boolean {
+  if (document.querySelector('[role="dialog"][aria-modal="true"]')) {
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
+    return true;
+  }
+  const pageBack = document.querySelector<HTMLElement>("[data-tv-back]");
+  if (!pageBack) return false;
+  pageBack.click();
+  return true;
+}
+
+declare global {
+  interface Window {
+    __cstfHandleBack?: () => boolean;
+  }
 }
 
 function isEditingElement(element: Element | null): boolean {
@@ -116,20 +154,42 @@ export function TvModeProvider({ children }: { children: React.ReactNode }) {
         active && items.includes(active) ? active : preferredFocus();
       if (!current) return;
 
+      // Up/down never hops between the sidebar and the page; only left/right crosses over.
+      const vertical = direction === "up" || direction === "down";
+      const region = current.closest(".app-shell > aside");
       const candidate = pickDirectionalCandidate(
         current.getBoundingClientRect(),
         items
-          .filter(item => item !== current)
-          .map(item => ({ element: item, ...item.getBoundingClientRect().toJSON() })),
+          .filter(item => item !== current && (!vertical || item.closest(".app-shell > aside") === region))
+          .map(item => ({
+            element: item,
+            ...item.getBoundingClientRect().toJSON(),
+            primary: item.hasAttribute("data-tv-primary"),
+          })),
         direction,
       );
 
       event.preventDefault();
+      // Long reading text has nothing focusable; page through it before focus
+      // leaves for the edge or drops into the pinned footer.
+      const canScroll = direction === "down"
+        ? window.scrollY + window.innerHeight < document.documentElement.scrollHeight - 1
+        : window.scrollY > 0;
+      const entersPinned = candidate && isPinned(candidate.element) && !isPinned(current);
+      if (vertical && canScroll && (!candidate || entersPinned)) {
+        window.scrollBy({
+          top: (direction === "down" ? 1 : -1) * window.innerHeight * 0.6,
+          behavior: "smooth",
+        });
+        return;
+      }
       if (!candidate) {
         current.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
         return;
       }
       candidate.element.focus({ preventScroll: true });
+      // Scrolling a sticky sidebar item would only shift the content beside it.
+      if (isPinned(candidate.element) || isFullyVisible(candidate.element)) return;
       candidate.element.scrollIntoView({
         block: "center",
         inline: "center",
@@ -165,6 +225,7 @@ export function TvModeProvider({ children }: { children: React.ReactNode }) {
       userMoved = true;
     };
 
+    window.__cstfHandleBack = handleNativeBack;
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("pointerdown", onPointerDown, true);
     document.addEventListener("focusin", onFocusIn);
@@ -173,6 +234,7 @@ export function TvModeProvider({ children }: { children: React.ReactNode }) {
       cancelAnimationFrame(firstFrame);
       cancelAnimationFrame(secondFrame);
       observer.disconnect();
+      delete window.__cstfHandleBack;
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("pointerdown", onPointerDown, true);
       document.removeEventListener("focusin", onFocusIn);
