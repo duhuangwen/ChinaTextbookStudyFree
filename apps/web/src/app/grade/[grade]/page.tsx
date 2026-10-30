@@ -60,7 +60,7 @@ const THEMES: Record<SubjectId, SubjectTheme> = {
   },
 };
 
-const SUBJECT_ORDER: SubjectId[] = ["math", "chinese", "english", "science"];
+const SUBJECT_ORDER: SubjectId[] = ["chinese", "math", "english", "science"];
 
 export default async function GradePage({ params }: { params: Promise<{ grade: string }> }) {
   const { grade } = await params;
@@ -70,7 +70,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
 
   const gradeName = ["", "一", "二", "三", "四", "五", "六"][gradeNum];
 
-  // 按学科分组 —— math/chinese/english/science
+  // 按学科分组 —— chinese/math/english/science
   const bySubject = new Map<SubjectId, Book[]>();
   for (const b of allBooks) {
     const sid = (b.subject ?? "math") as SubjectId;
@@ -81,6 +81,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
   for (const [, arr] of bySubject) {
     arr.sort((a, b) => (a.semester === "up" ? -1 : 1) - (b.semester === "up" ? -1 : 1));
   }
+  const firstSubject = SUBJECT_ORDER.find(id => (bySubject.get(id)?.length ?? 0) > 0);
 
   return (
     <AppShell centerMaxWidth={840}>
@@ -131,7 +132,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
                       key={book.id}
                       href={`/book/${book.id}/`}
                       hapticIntensity="medium"
-                      tvAutofocus={subjectId === "math" && book === subjectBooks[0]}
+                      tvAutofocus={subjectId === firstSubject && book === subjectBooks[0]}
                       className="duo-chunky-card group relative block rounded-2xl lg:rounded-3xl select-none overflow-hidden"
                       style={{
                         backgroundColor: theme.bg,
