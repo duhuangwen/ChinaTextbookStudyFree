@@ -16,6 +16,8 @@
  * 所有参数都精心调校以贴近多邻国的温暖、清亮、圆润的音色。
  */
 
+import { isTvUserAgent } from "./tvMode";
+
 export type SfxName =
   | "correct"
   | "wrong"
@@ -35,8 +37,17 @@ let compressor: DynamicsCompressorNode | null = null;
 /** 混响"发送"输入口——任何源连接到此即获得房间混响 */
 let reverbIn: GainNode | null = null;
 
+/**
+ * `new AudioContext()` synchronously asks the audio HAL for output parameters. On a 雷鸟 TV
+ * (WebView 119) that call intermittently never returned on the first key press, freezing the
+ * page's main thread — JS, input and the shell heartbeat together — so TVs go without SFX.
+ */
+function webAudioUnsafe(): boolean {
+  return isTvUserAgent(navigator.userAgent);
+}
+
 function ensureCtx(): AudioContext | null {
-  if (typeof window === "undefined") return null;
+  if (typeof window === "undefined" || webAudioUnsafe()) return null;
   if (!ctx) {
     const AC =
       window.AudioContext ||
@@ -528,7 +539,7 @@ export function playSfx(name: SfxName, opts: { volume?: number } = {}) {
 
 /** 挂一次性全局手势监听，确保 iOS/Safari 解锁 AudioContext */
 export function primeAudioOnFirstGesture() {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || webAudioUnsafe()) return;
   const prime = () => {
     ensureCtx();
     window.removeEventListener("pointerdown", prime);

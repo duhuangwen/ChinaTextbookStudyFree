@@ -21,6 +21,11 @@ export interface TvModeEnvironment {
   override: string | null;
 }
 
+/** True only for user agents that identify a TV, not for TV-like viewports. */
+export function isTvUserAgent(userAgent: string): boolean {
+  return TV_USER_AGENT.test(userAgent);
+}
+
 export function shouldEnableTvMode(env: TvModeEnvironment): boolean {
   if (env.override === "on") return true;
   if (env.override === "off") return false;
