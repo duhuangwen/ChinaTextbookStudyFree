@@ -15,7 +15,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.provider.OpenableColumns;
+import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.view.Gravity;
 import android.view.View;
@@ -49,6 +53,7 @@ public class MainActivity extends Activity {
     private static final int MICROPHONE = 10;
     private static final int PICK_FILE = 11;
     private static final int PICK_MEDIA = 12;
+    private static final int STORAGE = 13;
     private final OriginPolicy policy = new OriginPolicy(BuildConfig.WEB_APP_URL);
     private WebViewAssetLoader assetLoader;
     private WebView web;
@@ -61,6 +66,7 @@ public class MainActivity extends Activity {
     private boolean awaitingRuntimePermission;
     private boolean television;
     private boolean importingMedia;
+    private boolean pendingUsbScan;
     private TextToSpeech speech;
     private boolean speechReady;
     private String pendingSpeech;
@@ -267,16 +273,134 @@ public class MainActivity extends Activity {
             Toast.makeText(this, R.string.media_import_running, Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        // Many TV firmwares strip DocumentsUI, and the system then shows an empty "no app" chooser.
+        if (television || !startSystemPicker()) openUsbArchives();
+    }
+
+    private void openSystemPicker() {
+        if (!startSystemPicker()) Toast.makeText(this, R.string.file_picker_missing, Toast.LENGTH_LONG).show();
+    }
+
+    private boolean startSystemPicker() {
+        return startPicker(Intent.ACTION_OPEN_DOCUMENT) || startPicker(Intent.ACTION_GET_CONTENT);
+    }
+
+    private boolean startPicker(String action) {
+        Intent intent = new Intent(action);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("*/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        if (getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).isEmpty()) {
+            return false;
+        }
         try {
             startActivityForResult(intent, PICK_MEDIA);
-        } catch (ActivityNotFoundException error) {
-            Toast.makeText(this, R.string.file_picker_missing, Toast.LENGTH_LONG).show();
+            return true;
+        } catch (ActivityNotFoundException | SecurityException error) {
+            return false;
         }
+    }
+
+    private void openUsbArchives() {
+        if (!hasStorageAccess()) {
+            explainStorageAccess();
+            return;
+        }
+        showArchiveChooser(UsbArchiveScanner.find(storageRoots()));
+    }
+
+    private boolean hasStorageAccess() {
+        if (Build.VERSION.SDK_INT >= 30) return Environment.isExternalStorageManager();
+        return checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void explainStorageAccess() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.usb_access_title)
+                .setMessage(Build.VERSION.SDK_INT >= 30
+                        ? R.string.usb_access_message_settings : R.string.usb_access_message)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setNeutralButton(R.string.usb_use_system_picker, (dialog, which) -> openSystemPicker())
+                .setPositiveButton(R.string.usb_access_grant, (dialog, which) -> requestStorageAccess())
+                .show();
+    }
+
+    private void requestStorageAccess() {
+        if (Build.VERSION.SDK_INT < 30) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE);
+            return;
+        }
+        Uri app = Uri.fromParts("package", getPackageName(), null);
+        pendingUsbScan = startSettings(new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, app))
+                || startSettings(new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
+                || startSettings(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, app));
+        if (!pendingUsbScan) Toast.makeText(this, R.string.usb_access_settings_missing, Toast.LENGTH_LONG).show();
+    }
+
+    private boolean startSettings(Intent intent) {
+        try {
+            startActivity(intent);
+            return true;
+        } catch (ActivityNotFoundException | SecurityException error) {
+            return false;
+        }
+    }
+
+    private List<File> storageRoots() {
+        List<File> roots = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= 30) {
+            StorageManager storage = getSystemService(StorageManager.class);
+            if (storage != null) {
+                for (StorageVolume volume : storage.getStorageVolumes()) addRoot(roots, volume.getDirectory());
+            }
+        }
+        for (File dir : getExternalFilesDirs(null)) addRoot(roots, UsbArchiveScanner.volumeRoot(dir));
+        // Vendor TV images often mount USB drives outside StorageManager's public volumes.
+        for (String parent : new String[]{"/storage", "/mnt/usb", "/mnt/usb_storage"}) {
+            File[] children = new File(parent).listFiles();
+            if (children == null) continue;
+            for (File child : children) {
+                String name = child.getName();
+                if (!name.equals("emulated") && !name.equals("self")) addRoot(roots, child);
+            }
+        }
+        return roots;
+    }
+
+    private static void addRoot(List<File> roots, File root) {
+        if (root != null && !roots.contains(root)) roots.add(root);
+    }
+
+    private void showArchiveChooser(List<File> archives) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle(R.string.usb_pick_title)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setNeutralButton(R.string.usb_use_system_picker, (dialog, which) -> openSystemPicker());
+        if (archives.isEmpty()) {
+            builder.setMessage(R.string.usb_none_found)
+                    .setPositiveButton(R.string.usb_rescan, (dialog, which) -> openUsbArchives())
+                    .show();
+            return;
+        }
+        String[] labels = new String[archives.size()];
+        boolean[] checked = new boolean[archives.size()];
+        for (int i = 0; i < labels.length; i++) {
+            File archive = archives.get(i);
+            labels[i] = getString(R.string.usb_archive_item, archive.getName(),
+                    Math.max(1, archive.length() / (1024 * 1024)), archive.getParent());
+            checked[i] = MediaArchiveImporter.expectedSha256(archive.getName()) != null;
+        }
+        builder.setMultiChoiceItems(labels, checked, (dialog, which, isChecked) -> checked[which] = isChecked)
+                .setPositiveButton(R.string.usb_import, (dialog, which) -> {
+                    List<Uri> uris = new ArrayList<>();
+                    for (int i = 0; i < checked.length; i++) {
+                        if (checked[i]) uris.add(Uri.fromFile(archives.get(i)));
+                    }
+                    if (uris.isEmpty()) Toast.makeText(this, R.string.usb_none_selected, Toast.LENGTH_SHORT).show();
+                    else importMedia(uris);
+                })
+                .show();
     }
 
     private void importMedia(List<Uri> uris) {
@@ -385,6 +509,9 @@ public class MainActivity extends Activity {
             boolean granted = results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED;
             // Permission dialogs can temporarily pause the Activity. Finish on resume in that case.
             if (!granted || resumed) completeMicrophone(granted);
+        } else if (code == STORAGE) {
+            if (results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED) openUsbArchives();
+            else Toast.makeText(this, R.string.usb_access_denied, Toast.LENGTH_LONG).show();
         }
     }
     @Override protected void onActivityResult(int code, int result, Intent data) {
@@ -413,6 +540,11 @@ public class MainActivity extends Activity {
         if (web != null) web.onResume();
         if (microphoneRequest != null && !awaitingRuntimePermission) {
             completeMicrophone(checkSelfPermission(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED);
+        }
+        if (pendingUsbScan) {
+            pendingUsbScan = false;
+            if (hasStorageAccess()) openUsbArchives();
+            else Toast.makeText(this, R.string.usb_access_denied, Toast.LENGTH_LONG).show();
         }
     }
     @Override protected void onPause() {

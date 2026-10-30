@@ -46,7 +46,19 @@ cd ../../apps/android && ./gradlew assembleDebug
 - [`story-images.zip`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/download/v1.2.0-assets/story-images.zip)
 - [`textbook-pages.zip`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/download/v1.2.0-assets/textbook-pages.zip)
 
-也可把 `audio/`、`story-images/`、`textbook-pages/` 三个目录放在一个 ZIP 中。导入采用系统文件选择器，不需要申请全盘存储权限；应用会先校验三个官方文件名的 SHA-256，再流式解压到私有目录，完成后即使拔掉 U 盘或重启电视仍可使用。建议电视至少预留 2.5 GB 空间。
+也可把 `audio/`、`story-images/`、`textbook-pages/` 三个目录放在一个 ZIP 中。应用会先校验三个官方文件名的 SHA-256，再流式解压到私有目录，完成后即使拔掉 U 盘或重启电视仍可使用。建议电视至少预留 2.5 GB 空间。
+
+选择文件的方式：
+
+- 手机/平板：优先使用系统文件选择器（`ACTION_OPEN_DOCUMENT`），没有时改用 `ACTION_GET_CONTENT` 交给已安装的文件管理器，这两种方式都不需要存储权限。两者都不可用时，回退到下面的 U 盘扫描。
+- 电视：很多电视固件裁掉了系统文件选择器（点击后会提示“您没有可执行此操作的应用”），所以电视上直接扫描已挂载存储卷（含 U 盘）的根目录及前两级文件夹，列出 `.zip` / `.tar.gz` 文件供多选，官方压缩包默认勾选。对话框里也保留了「系统文件选择器」入口。
+- 扫描 U 盘需要存储权限：Android 6–10 会弹出存储权限申请；Android 11 及以上需要在跳转到的系统设置页中为本应用打开「允许访问所有文件」（`MANAGE_EXTERNAL_STORAGE`），之后按返回键回到应用会自动开始扫描。权限只用来读取所选压缩包，不会写入 U 盘。
+- 如果电视固件连这个设置页也没有，可以用 ADB 授权：
+
+  ```sh
+  adb shell appops set --uid org.chinatextbook.study MANAGE_EXTERNAL_STORAGE allow   # Android 11+
+  adb shell pm grant org.chinatextbook.study android.permission.READ_EXTERNAL_STORAGE # Android 6–10
+  ```
 
 音视频目录中的 `.opus` 文件由 Android WebView 直接播放；若目标固件的 WebView 不支持 Opus，可使用系统 TTS 兜底，或改用预转码 MP3 媒体包。导入接口只接受这三个媒体目录及常见音视频扩展名，并拒绝绝对路径、目录穿越和符号链接式路径。
 

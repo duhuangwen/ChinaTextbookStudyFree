@@ -12,4 +12,17 @@
     <string name="media_clear_message">将删除已导入的音频、课本页和故事插画。课程题库不会删除。</string>
     <string name="media_clear_confirm">删除</string>
     <string name="media_clear_done">离线资源已删除</string>
+    <string name="usb_access_title">读取 U 盘</string>
+    <string name="usb_access_message">需要允许读取存储空间，才能在 U 盘中查找离线资源压缩包。</string>
+    <string name="usb_access_message_settings">需要在接下来的系统设置页中为本应用打开「允许访问所有文件」，才能在 U 盘中查找离线资源压缩包。开启后按返回键回到应用即可。</string>
+    <string name="usb_access_grant">去授权</string>
+    <string name="usb_access_denied">未获得存储权限，无法读取 U 盘。</string>
+    <string name="usb_access_settings_missing">无法打开权限设置页，请参考使用说明通过 ADB 授权。</string>
+    <string name="usb_use_system_picker">系统文件选择器</string>
+    <string name="usb_pick_title">选择要导入的压缩包</string>
+    <string name="usb_none_found">没有找到 .zip 或 .tar.gz 压缩包。请确认 U 盘已插好，压缩包放在 U 盘根目录或前两级文件夹中。</string>
+    <string name="usb_rescan">重新查找</string>
+    <string name="usb_import">导入</string>
+    <string name="usb_none_selected">请至少选择一个压缩包。</string>
+    <string name="usb_archive_item">%1$s（%2$d MB）\n%3$s</string>
 </resources>
