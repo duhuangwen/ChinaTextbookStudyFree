@@ -17,6 +17,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Process;
 import android.os.SystemClock;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
@@ -37,6 +40,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import androidx.webkit.WebViewAssetLoader;
+import androidx.webkit.WebViewCompat;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -78,6 +82,15 @@ public class MainActivity extends Activity {
     private boolean speechReady;
     private String pendingSpeech;
     private String retryUrl = BuildConfig.WEB_APP_URL;
+    private static final long HEARTBEAT_MILLIS = 2000;
+    private static final long BACK_TIMEOUT_MILLIS = 2500;
+    private final DiagnosticTrail trail = new DiagnosticTrail(12);
+    private final HangWatchdog watchdog = new HangWatchdog(8000);
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable heartbeat = this::heartbeat;
+    private int pingId;
+    private int backRequest;
+    private AlertDialog hangDialog;
 
     @Override @SuppressLint("SetJavaScriptEnabled")
     public void onCreate(Bundle state) {
@@ -96,6 +109,7 @@ public class MainActivity extends Activity {
         initializeSpeech();
         web.addJavascriptInterface(new TtsBridge(), "AndroidTts");
         web.addJavascriptInterface(new MediaImportBridge(), "MediaImport");
+        web.addJavascriptInterface(new DiagnosticsBridge(), "CstfDiag");
         root.addView(web, new FrameLayout.LayoutParams(-1, -1));
         loading = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
         root.addView(loading, new FrameLayout.LayoutParams(-1, dp(3), Gravity.TOP));
@@ -165,6 +179,8 @@ public class MainActivity extends Activity {
                 cancelMicrophone();
                 if (!policy.isTrusted(url)) { view.stopLoading(); return; }
                 retryUrl = url;
+                trail.mark(System.currentTimeMillis(), "page:start " + Uri.parse(url).getPath());
+                restartWatchdog();
                 errorPanel.setVisibility(View.GONE);
                 loading.setVisibility(View.VISIBLE);
             }
@@ -176,6 +192,7 @@ public class MainActivity extends Activity {
             }
             @Override public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                trail.mark(System.currentTimeMillis(), "page:done");
                 if (television) view.requestFocus(View.FOCUS_DOWN);
             }
         });
@@ -585,6 +602,83 @@ public class MainActivity extends Activity {
                 })
                 .show();
     }
+    private final class DiagnosticsBridge {
+        @JavascriptInterface public void mark(String step) {
+            trail.mark(System.currentTimeMillis(), step);
+        }
+    }
+
+    private void restartWatchdog() {
+        pingId++;
+        watchdog.reset();
+        handler.removeCallbacks(heartbeat);
+        if (resumed) handler.postDelayed(heartbeat, HEARTBEAT_MILLIS);
+    }
+
+    private void heartbeat() {
+        if (!resumed || web == null) return;
+        long now = SystemClock.elapsedRealtime();
+        if (watchdog.isHung(now)) {
+            showHangDialog();
+            return;
+        }
+        if (watchdog.shouldPing()) {
+            final int id = pingId;
+            watchdog.pinged(now);
+            web.evaluateJavascript("1", value -> {
+                if (id == pingId) watchdog.ponged();
+            });
+        }
+        handler.postDelayed(heartbeat, HEARTBEAT_MILLIS);
+    }
+
+    private void showHangDialog() {
+        if (isFinishing() || (hangDialog != null && hangDialog.isShowing())) return;
+        handler.removeCallbacks(heartbeat);
+        backRequest++;
+        trail.mark(System.currentTimeMillis(), "native:hang");
+        hangDialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.hang_title)
+                .setMessage(getString(R.string.hang_message, diagnosticSummary()))
+                .setCancelable(false)
+                .setPositiveButton(R.string.hang_restart, (dialog, which) -> restartApp(true))
+                .setNeutralButton(R.string.hang_wait, (dialog, which) -> restartWatchdog())
+                .setNegativeButton(R.string.hang_exit, (dialog, which) -> restartApp(false))
+                .show();
+    }
+
+    // A stuck renderer ignores reload(), and it lives as long as this process, so only a new process recovers.
+    private void restartApp(boolean relaunch) {
+        if (relaunch) {
+            Intent launch = new Intent(this, MainActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(launch);
+        }
+        finishAndRemoveTask();
+        Process.killProcess(Process.myPid());
+    }
+
+    private String diagnosticSummary() {
+        StringBuilder summary = new StringBuilder()
+                .append("Android ").append(Build.VERSION.RELEASE)
+                .append(" (API ").append(Build.VERSION.SDK_INT).append(")\n")
+                .append("WebView ").append(webViewVersion()).append('\n')
+                .append("App ").append(BuildConfig.VERSION_NAME).append('\n')
+                .append("Page ").append(web.getUrl() == null ? "-" : Uri.parse(web.getUrl()).getPath()).append('\n');
+        for (String step : trail.snapshot()) summary.append(step).append('\n');
+        return summary.toString();
+    }
+
+    private String webViewVersion() {
+        android.content.pm.PackageInfo info = WebViewCompat.getCurrentWebViewPackage(this);
+        if (info != null) return info.packageName + " " + info.versionName;
+        String agent = web.getSettings().getUserAgentString();
+        int chrome = agent.indexOf("Chrome/");
+        if (chrome < 0) return "unknown";
+        int end = agent.indexOf(' ', chrome);
+        return agent.substring(chrome, end < 0 ? agent.length() : end);
+    }
+
     private void showError() { loading.setVisibility(View.GONE); errorPanel.setVisibility(View.VISIBLE); }
     private void openExternal(String url) {
         if (!OriginPolicy.isExternalHttps(url)) return;
@@ -644,9 +738,11 @@ public class MainActivity extends Activity {
             if (hasStorageAccess()) openUsbArchives();
             else Toast.makeText(this, R.string.usb_access_denied, Toast.LENGTH_LONG).show();
         }
+        restartWatchdog();
     }
     @Override protected void onPause() {
         resumed = false;
+        handler.removeCallbacks(heartbeat);
         if (!awaitingRuntimePermission) cancelMicrophone();
         if (web != null) web.onPause();
         super.onPause();
@@ -657,12 +753,21 @@ public class MainActivity extends Activity {
             return;
         }
         // Back never reaches the page as a key event; let an open web dialog close first.
+        final int request = ++backRequest;
+        // A stuck page never answers, which used to swallow Back entirely.
+        handler.postDelayed(() -> {
+            if (request == backRequest) showHangDialog();
+        }, BACK_TIMEOUT_MILLIS);
         web.evaluateJavascript("!!(window.__cstfHandleBack && window.__cstfHandleBack())", handled -> {
+            if (request != backRequest) return;
+            backRequest++;
             if ("true".equals(handled)) return;
             if (web.canGoBack()) web.goBack(); else MainActivity.super.onBackPressed();
         });
     }
     @Override protected void onDestroy() {
+        handler.removeCallbacksAndMessages(null);
+        if (hangDialog != null) hangDialog.dismiss();
         cancelMicrophone();
         if (fileCallback != null) fileCallback.onReceiveValue(null);
         if (speech != null) {

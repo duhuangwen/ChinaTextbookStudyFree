@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { detectTvMode } from "@/lib/tvMode";
 import { pickDirectionalCandidate, type TvDirection } from "@/lib/tvNavigation";
+import { describeElement, diagMark, installErrorMarks } from "@/lib/diagnostics";
 
 const FOCUSABLE =
   "a[href], button:not([disabled]), input:not([disabled]):not([type='hidden']), " +
@@ -110,22 +111,37 @@ export function TvModeProvider({ children }: { children: React.ReactNode }) {
     root.classList.toggle("tv-mode", enabled);
     root.dataset.tvMode = enabled ? "on" : "off";
     if (!enabled) return;
+    installErrorMarks();
+    diagMark(`tv:init ${pathname}`);
 
     let userMoved = false;
+    let waitFrame = 0;
+    let waitedFrames = 0;
     const focusDefault = () => {
+      // Cards fade in from opacity 0; falling back meanwhile parks focus on the sidebar brand
+      // for a frame, which pops the sidebar overlay open before the page settles.
+      const pending = activeScope().querySelector<HTMLElement>("[data-tv-autofocus]");
+      if (!userMoved && pending && !isVisible(pending) && waitedFrames < 60) {
+        waitedFrames++;
+        waitFrame = requestAnimationFrame(focusDefault);
+        return;
+      }
       const active = document.activeElement as HTMLElement | null;
       const marked = preferredFocus();
       if (!userMoved && marked && active !== marked) {
+        diagMark(`tv:default ${describeElement(marked)}`);
         marked.focus({ preventScroll: true });
         return;
       }
       if (active === document.body || !active || !isVisible(active)) {
+        diagMark(`tv:refocus ${describeElement(marked)}`);
         marked?.focus({ preventScroll: true });
       }
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
+      diagMark(`key:${event.key}`);
       const target = event.target as Element | null;
       if (
         (event.key === "Enter" || event.key === " ") &&
@@ -187,6 +203,7 @@ export function TvModeProvider({ children }: { children: React.ReactNode }) {
         current.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
         return;
       }
+      diagMark(`tv:move ${describeElement(candidate.element)}`);
       candidate.element.focus({ preventScroll: true });
       // Scrolling a sticky sidebar item would only shift the content beside it.
       if (isPinned(candidate.element) || isFullyVisible(candidate.element)) return;
@@ -233,6 +250,7 @@ export function TvModeProvider({ children }: { children: React.ReactNode }) {
     return () => {
       cancelAnimationFrame(firstFrame);
       cancelAnimationFrame(secondFrame);
+      cancelAnimationFrame(waitFrame);
       observer.disconnect();
       delete window.__cstfHandleBack;
       window.removeEventListener("keydown", onKeyDown);

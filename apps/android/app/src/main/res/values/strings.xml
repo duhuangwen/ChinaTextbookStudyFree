@@ -16,6 +16,11 @@
     <string name="media_clear_message">将删除已导入的音频、课本页和故事插画。课程题库不会删除。</string>
     <string name="media_clear_confirm">删除</string>
     <string name="media_clear_done">离线资源已删除</string>
+    <string name="hang_title">页面没有响应</string>
+    <string name="hang_message">课堂页面已经有一段时间没有响应。请把这个画面拍照发给开发者，再选择「重新启动」。\n\n%1$s</string>
+    <string name="hang_restart">重新启动</string>
+    <string name="hang_wait">继续等待</string>
+    <string name="hang_exit">退出应用</string>
     <string name="usb_access_title">读取 U 盘</string>
     <string name="usb_access_message">需要允许读取存储空间，才能在 U 盘中查找离线资源压缩包。</string>
     <string name="usb_access_message_settings">需要在接下来的系统设置页中为本应用打开「允许访问所有文件」，才能在 U 盘中查找离线资源压缩包。开启后按返回键回到应用即可。</string>
