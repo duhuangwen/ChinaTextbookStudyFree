@@ -41,6 +41,11 @@ export function pickDirectionalCandidate<T extends FocusGeometry>(
   let bestScore = Number.POSITIVE_INFINITY;
   let bestEdge = Number.POSITIVE_INFINITY;
   const primaries: { candidate: T; edge: number }[] = [];
+  // Vertical moves fall back to off-cone controls fully past the current edge, so a footer action
+  // under another column (e.g. GradePicker's "继续") stays reachable. Horizontal moves keep the cone
+  // to avoid jumping from content to the sidebar.
+  let fallback: T | null = null;
+  let fallbackScore = Number.POSITIVE_INFINITY;
 
   for (const candidate of candidates) {
     const candidateX = centerX(candidate);
@@ -75,10 +80,16 @@ export function pickDirectionalCandidate<T extends FocusGeometry>(
     const axial = direction === "left" || direction === "right"
       ? Math.abs(candidateX - currentX)
       : Math.abs(candidateY - currentY);
-    if (!overlaps && secondary > axial * MAX_CONE_RATIO) continue;
-
     const edgeDistance = Math.max(0, primary);
     const score = edgeDistance + secondary * 1.8 + (overlaps ? 0 : 120);
+    if (!overlaps && secondary > axial * MAX_CONE_RATIO) {
+      const vertical = direction === "up" || direction === "down";
+      if (vertical && primary >= 0 && score < fallbackScore) {
+        fallback = candidate;
+        fallbackScore = score;
+      }
+      continue;
+    }
     if (candidate.primary && overlaps) primaries.push({ candidate, edge: edgeDistance });
     if (score < bestScore) {
       best = candidate;
@@ -88,5 +99,5 @@ export function pickDirectionalCandidate<T extends FocusGeometry>(
   }
 
   const rowPrimary = primaries.find(p => p.edge <= bestEdge + SAME_ROW_TOLERANCE);
-  return rowPrimary?.candidate ?? best;
+  return rowPrimary?.candidate ?? best ?? fallback;
 }
