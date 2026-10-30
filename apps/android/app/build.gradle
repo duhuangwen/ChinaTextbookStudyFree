@@ -14,8 +14,8 @@ android {
         applicationId 'org.chinatextbook.study'
         minSdk 23
         targetSdk 35
-        versionCode 7
-        versionName '0.3.4'
+        versionCode 8
+        versionName '0.3.5'
         buildConfigField 'String', 'WEB_APP_URL', '"' + webAppUrl.replace('\\', '\\\\').replace('"', '\\"') + '"'
         buildConfigField 'boolean', 'EMBEDDED_WEB', embeddedWeb ? 'true' : 'false'
     }
