@@ -39,12 +39,36 @@ public class MediaArchiveImporterTest {
         assertNull(MediaArchiveImporter.normalizeEntryName("C:/audio/a.opus"));
     }
 
+    @Test public void officialImageArchivesStoreEntriesWithoutTheirRootFolder() {
+        assertEquals("story-images", MediaArchiveImporter.defaultRoot("story-images.zip"));
+        assertEquals("textbook-pages", MediaArchiveImporter.defaultRoot("ChinaStudyFree-textbook-pages.zip"));
+        assertNull(MediaArchiveImporter.defaultRoot("audio.tar.gz"));
+        assertNull(MediaArchiveImporter.defaultRoot("custom.zip"));
+        assertEquals("textbook-pages/chinese-g1down/p10.jpg",
+                MediaArchiveImporter.normalizeEntryName("chinese-g1down/p10.jpg", "textbook-pages"));
+        assertEquals("story-images/b/1.jpg",
+                MediaArchiveImporter.normalizeEntryName("story-images/b/1.jpg", "story-images"));
+        assertNull(MediaArchiveImporter.normalizeEntryName("chinese-g1down/p10.jpg", null));
+        assertNull(MediaArchiveImporter.normalizeEntryName("../p10.jpg", "textbook-pages"));
+        assertNull(MediaArchiveImporter.normalizeEntryName("p10.txt", "textbook-pages"));
+    }
+
+    @Test public void verifiedOfficialZipWithoutRootFolderImports() throws Exception {
+        File root = temp.newFolder("offline-media");
+        byte[] zip = zip("chinese-g1down/chinese-g1down-s1.jpg", "chinese-g1down/chinese-g1down-s2.jpg");
+        MediaArchiveImporter.Result result = MediaArchiveImporter.importArchive(root,
+                new ByteArrayInputStream(zip), sha256(zip), "story-images", null);
+        assertEquals(2, result.files);
+        assertTrue(new File(root, "story-images/chinese-g1down/chinese-g1down-s2.jpg").isFile());
+        assertNoStaging(root);
+    }
+
     @Test public void importsUnverifiedZipAndReportsSourceProgress() throws IOException {
         File root = temp.newFolder("offline-media");
         byte[] zip = zip("story-images/b/1.jpg", "textbook-pages/b/p1.jpg", "www/index.html");
         List<long[]> progress = new ArrayList<>();
         MediaArchiveImporter.Result result = MediaArchiveImporter.importArchive(root,
-                new ByteArrayInputStream(zip), null, (source, files) -> progress.add(new long[]{source, files}));
+                new ByteArrayInputStream(zip), null, null, (source, files) -> progress.add(new long[]{source, files}));
         assertEquals(2, result.files);
         assertTrue(new File(root, "story-images/b/1.jpg").isFile());
         assertTrue(new File(root, "textbook-pages/b/p1.jpg").isFile());
@@ -59,7 +83,7 @@ public class MediaArchiveImporterTest {
         write(new File(root, "audio/ab/keep.opus"));
         byte[] zip = zip("story-images/b/1.jpg");
         MediaArchiveImporter.Result result = MediaArchiveImporter.importArchive(root,
-                new ByteArrayInputStream(zip), sha256(zip), null);
+                new ByteArrayInputStream(zip), sha256(zip), null, null);
         assertEquals(1, result.files);
         assertTrue(new File(root, "story-images/b/1.jpg").isFile());
         assertFalse(new File(root, "story-images/old/stale.jpg").exists());
@@ -71,7 +95,7 @@ public class MediaArchiveImporterTest {
         File root = temp.newFolder("offline-media");
         byte[] tgz = tarGz("audio/ab/1.opus", "audio/cd/2.opus");
         MediaArchiveImporter.Result result = MediaArchiveImporter.importArchive(root,
-                new ByteArrayInputStream(tgz), sha256(tgz), null);
+                new ByteArrayInputStream(tgz), sha256(tgz), null, null);
         assertEquals(2, result.files);
         assertTrue(new File(root, "audio/cd/2.opus").isFile());
         assertNoStaging(root);
@@ -82,7 +106,7 @@ public class MediaArchiveImporterTest {
         write(new File(root, "story-images/old/stale.jpg"));
         byte[] zip = zip("story-images/b/1.jpg");
         try {
-            MediaArchiveImporter.importArchive(root, new ByteArrayInputStream(zip), sha256(new byte[]{1}), null);
+            MediaArchiveImporter.importArchive(root, new ByteArrayInputStream(zip), sha256(new byte[]{1}), null, null);
             fail("expected checksum failure");
         } catch (IOException expected) {
             assertTrue(expected.getMessage().contains("SHA-256"));

@@ -57,12 +57,21 @@ final class MediaArchiveImporter {
         return null;
     }
 
+    /** The official image packs are zipped from inside their folder, so their entries carry no media root. */
+    static String defaultRoot(String displayName) {
+        if (displayName == null) return null;
+        String name = displayName.toLowerCase(Locale.US);
+        if (name.endsWith("story-images.zip")) return "story-images";
+        if (name.endsWith("textbook-pages.zip")) return "textbook-pages";
+        return null;
+    }
+
     /**
      * Imports an archive in a single read. With {@code expectedSha256}, entries are staged and only replace the
      * live media roots after the whole source (including trailing archive metadata) matches the checksum.
      */
-    static Result importArchive(File mediaRoot, InputStream source, String expectedSha256, Progress progress)
-            throws IOException {
+    static Result importArchive(File mediaRoot, InputStream source, String expectedSha256, String defaultRoot,
+                                Progress progress) throws IOException {
         MessageDigest digest = expectedSha256 == null ? null : newSha256();
         CountingInputStream counted = new CountingInputStream(
                 digest == null ? source : new DigestInputStream(source, digest));
@@ -77,8 +86,8 @@ final class MediaArchiveImporter {
             int a = input.read();
             int b = input.read();
             input.reset();
-            if (a == 'P' && b == 'K') importZip(input, writer);
-            else if (a == 0x1f && b == 0x8b) importTarGz(input, writer);
+            if (a == 'P' && b == 'K') importZip(input, defaultRoot, writer);
+            else if (a == 0x1f && b == 0x8b) importTarGz(input, defaultRoot, writer);
             else throw new IOException("Unsupported media archive");
             drain(input, writer.buffer);
             if (digest != null) {
@@ -93,22 +102,22 @@ final class MediaArchiveImporter {
     }
 
     // The entry streams' close() would close the shared source, which still has to be drained for the checksum.
-    private static void importZip(InputStream source, Writer writer) throws IOException {
+    private static void importZip(InputStream source, String defaultRoot, Writer writer) throws IOException {
         ZipInputStream zip = new ZipInputStream(source);
         ZipEntry entry;
         while ((entry = zip.getNextEntry()) != null) {
             if (entry.isDirectory()) continue;
-            String safe = normalizeEntryName(entry.getName());
+            String safe = normalizeEntryName(entry.getName(), defaultRoot);
             if (safe != null) writer.write(safe, zip);
         }
     }
 
-    private static void importTarGz(InputStream source, Writer writer) throws IOException {
+    private static void importTarGz(InputStream source, String defaultRoot, Writer writer) throws IOException {
         TarArchiveInputStream tar = new TarArchiveInputStream(new GzipCompressorInputStream(source));
         TarArchiveEntry entry;
         while ((entry = tar.getNextEntry()) != null) {
             if (!entry.isFile()) continue;
-            String safe = normalizeEntryName(entry.getName());
+            String safe = normalizeEntryName(entry.getName(), defaultRoot);
             if (safe != null) writer.write(safe, tar);
         }
     }
@@ -228,6 +237,10 @@ final class MediaArchiveImporter {
     }
 
     static String normalizeEntryName(String raw) {
+        return normalizeEntryName(raw, null);
+    }
+
+    static String normalizeEntryName(String raw, String defaultRoot) {
         if (raw == null) return null;
         String name = raw.replace('\\', '/');
         while (name.startsWith("./")) name = name.substring(2);
@@ -249,6 +262,7 @@ final class MediaArchiveImporter {
                 break;
             }
         }
+        if (relative == null && defaultRoot != null) relative = defaultRoot + "/" + name;
         if (relative == null) return null;
         for (String part : relative.split("/")) {
             if (part.isEmpty() || part.equals(".") || part.equals("..")) return null;

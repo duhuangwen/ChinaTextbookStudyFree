@@ -483,6 +483,7 @@ public class MainActivity extends Activity {
                         if (input == null) throw new IOException("Cannot open " + names[index]);
                         result = MediaArchiveImporter.importArchive(mediaRoot, input,
                                 MediaArchiveImporter.expectedSha256(names[index]),
+                                MediaArchiveImporter.defaultRoot(names[index]),
                                 (source, extracted) -> showImportProgress(index, count, names[index],
                                         sourceBefore + source, totalBytes, filesBefore + extracted, startedAt));
                     }
