@@ -8,6 +8,10 @@
     <string name="media_import_running">离线资源正在导入，请稍候。</string>
     <string name="media_import_done">导入完成：%1$d 个文件，约 %2$d MB。</string>
     <string name="media_import_failed">导入失败：%1$s</string>
+    <string name="media_import_progress_title">正在导入 %1$s（%2$d/%3$d）</string>
+    <string name="media_import_progress_detail">%1$d%% · %2$d / %3$d MB · 已解压 %4$d 个文件</string>
+    <string name="media_import_progress_eta">" · 预计还需约 %1$d 分钟"</string>
+    <string name="media_import_progress_unknown">已读取 %1$d MB · 已解压 %2$d 个文件</string>
     <string name="media_clear_title">删除离线资源</string>
     <string name="media_clear_message">将删除已导入的音频、课本页和故事插画。课程题库不会删除。</string>
     <string name="media_clear_confirm">删除</string>

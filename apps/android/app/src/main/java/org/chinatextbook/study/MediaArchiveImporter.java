@@ -3,12 +3,16 @@ package org.chinatextbook.study;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
@@ -19,9 +23,12 @@ import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 final class MediaArchiveImporter {
     private static final long MAX_FILE_BYTES = 128L * 1024 * 1024;
     private static final long MAX_TOTAL_BYTES = 4L * 1024 * 1024 * 1024;
+    private static final int BUFFER_BYTES = 256 * 1024;
+    private static final long PROGRESS_INTERVAL_NANOS = 250_000_000L;
+    private static final String STAGING = ".staging";
 
     interface Progress {
-        void onProgress(int files, long bytes);
+        void onProgress(long sourceBytes, int files);
     }
 
     static final class Result {
@@ -50,106 +57,174 @@ final class MediaArchiveImporter {
         return null;
     }
 
-    static String sha256(InputStream source) throws IOException {
+    /**
+     * Imports an archive in a single read. With {@code expectedSha256}, entries are staged and only replace the
+     * live media roots after the whole source (including trailing archive metadata) matches the checksum.
+     */
+    static Result importArchive(File mediaRoot, InputStream source, String expectedSha256, Progress progress)
+            throws IOException {
+        MessageDigest digest = expectedSha256 == null ? null : newSha256();
+        CountingInputStream counted = new CountingInputStream(
+                digest == null ? source : new DigestInputStream(source, digest));
+        File target = digest == null ? mediaRoot : new File(mediaRoot, STAGING);
+        if (digest != null && !MediaLibrary.deleteTree(target)) {
+            throw new IOException("Cannot reset staging directory");
+        }
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] buffer = new byte[128 * 1024];
-            int count;
-            try (InputStream input = source) {
-                while ((count = input.read(buffer)) != -1) digest.update(buffer, 0, count);
+            Writer writer = new Writer(target, counted, progress);
+            BufferedInputStream input = new BufferedInputStream(counted, BUFFER_BYTES);
+            input.mark(4);
+            int a = input.read();
+            int b = input.read();
+            input.reset();
+            if (a == 'P' && b == 'K') importZip(input, writer);
+            else if (a == 0x1f && b == 0x8b) importTarGz(input, writer);
+            else throw new IOException("Unsupported media archive");
+            drain(input, writer.buffer);
+            if (digest != null) {
+                if (!expectedSha256.equalsIgnoreCase(hex(digest.digest()))) throw new IOException("SHA-256 mismatch");
+                promote(target, mediaRoot);
             }
-            StringBuilder output = new StringBuilder(64);
-            for (byte value : digest.digest()) {
-                output.append(String.format(Locale.US, "%02x", value & 0xff));
+            writer.report(true);
+            return new Result(writer.files, writer.bytes);
+        } finally {
+            if (digest != null) MediaLibrary.deleteTree(target);
+        }
+    }
+
+    // The entry streams' close() would close the shared source, which still has to be drained for the checksum.
+    private static void importZip(InputStream source, Writer writer) throws IOException {
+        ZipInputStream zip = new ZipInputStream(source);
+        ZipEntry entry;
+        while ((entry = zip.getNextEntry()) != null) {
+            if (entry.isDirectory()) continue;
+            String safe = normalizeEntryName(entry.getName());
+            if (safe != null) writer.write(safe, zip);
+        }
+    }
+
+    private static void importTarGz(InputStream source, Writer writer) throws IOException {
+        TarArchiveInputStream tar = new TarArchiveInputStream(new GzipCompressorInputStream(source));
+        TarArchiveEntry entry;
+        while ((entry = tar.getNextEntry()) != null) {
+            if (!entry.isFile()) continue;
+            String safe = normalizeEntryName(entry.getName());
+            if (safe != null) writer.write(safe, tar);
+        }
+    }
+
+    private static void drain(InputStream input, byte[] buffer) throws IOException {
+        while (input.read(buffer) != -1) {
+            // Bytes after the last entry still belong to the checksum and to the progress total.
+        }
+    }
+
+    private static void promote(File staging, File mediaRoot) throws IOException {
+        for (String name : MediaLibrary.ROOTS) {
+            File fresh = new File(staging, name);
+            if (!fresh.isDirectory()) continue;
+            File live = new File(mediaRoot, name);
+            if (!MediaLibrary.deleteTree(live) || !fresh.renameTo(live)) {
+                throw new IOException("Cannot install " + name);
             }
-            return output.toString();
+        }
+    }
+
+    private static MessageDigest newSha256() throws IOException {
+        try {
+            return MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException impossible) {
             throw new IOException("SHA-256 unavailable", impossible);
         }
     }
 
-    static Result importArchive(File mediaRoot, InputStream source, Progress progress)
-            throws IOException {
-        BufferedInputStream input = new BufferedInputStream(source, 128 * 1024);
-        input.mark(4);
-        int a = input.read();
-        int b = input.read();
-        input.reset();
-        if (a == 'P' && b == 'K') return importZip(mediaRoot, input, progress);
-        if (a == 0x1f && b == 0x8b) return importTarGz(mediaRoot, input, progress);
-        throw new IOException("Unsupported media archive");
+    private static String hex(byte[] digest) {
+        StringBuilder output = new StringBuilder(64);
+        for (byte value : digest) output.append(String.format(Locale.US, "%02x", value & 0xff));
+        return output.toString();
     }
 
-    private static Result importZip(File root, InputStream source, Progress progress)
-            throws IOException {
-        int files = 0;
-        long bytes = 0;
-        try (ZipInputStream zip = new ZipInputStream(source)) {
-            ZipEntry entry;
-            while ((entry = zip.getNextEntry()) != null) {
-                if (entry.isDirectory()) continue;
-                String safe = normalizeEntryName(entry.getName());
-                if (safe == null) continue;
-                long copied = copyEntry(zip, new File(root, safe));
-                if (copied < 0 || bytes + copied > MAX_TOTAL_BYTES) {
-                    throw new IOException("Media archive is too large");
+    private static final class Writer {
+        final byte[] buffer = new byte[BUFFER_BYTES];
+        private final File root;
+        private final String rootPrefix;
+        private final CountingInputStream source;
+        private final Progress progress;
+        private final Set<String> checkedDirs = new HashSet<>();
+        private long lastReport;
+        int files;
+        long bytes;
+
+        Writer(File root, CountingInputStream source, Progress progress) throws IOException {
+            if (!root.isDirectory() && !root.mkdirs()) throw new IOException("Cannot create media directory");
+            this.root = root;
+            this.rootPrefix = root.getCanonicalPath() + File.separator;
+            this.source = source;
+            this.progress = progress;
+        }
+
+        void write(String safe, InputStream input) throws IOException {
+            int slash = safe.lastIndexOf('/');
+            File dir = new File(root, safe.substring(0, slash));
+            // Canonical checks per directory instead of per file: the audio pack has ~81k files in ~256 folders.
+            if (checkedDirs.add(safe.substring(0, slash))) {
+                if (!dir.isDirectory() && !dir.mkdirs()) throw new IOException("Cannot create media directory");
+                if (!(dir.getCanonicalPath() + File.separator).startsWith(rootPrefix)) {
+                    throw new IOException("Unsafe media path");
                 }
-                bytes += copied;
-                files++;
-                if (progress != null && files % 100 == 0) progress.onProgress(files, bytes);
             }
-        }
-        if (progress != null) progress.onProgress(files, bytes);
-        return new Result(files, bytes);
-    }
-
-    private static Result importTarGz(File root, InputStream source, Progress progress)
-            throws IOException {
-        int files = 0;
-        long bytes = 0;
-        try (GzipCompressorInputStream gzip = new GzipCompressorInputStream(source);
-             TarArchiveInputStream tar = new TarArchiveInputStream(gzip)) {
-            TarArchiveEntry entry;
-            while ((entry = tar.getNextTarEntry()) != null) {
-                if (!entry.isFile()) continue;
-                String safe = normalizeEntryName(entry.getName());
-                if (safe == null) continue;
-                long copied = copyEntry(tar, new File(root, safe));
-                if (copied < 0 || bytes + copied > MAX_TOTAL_BYTES) {
-                    throw new IOException("Media archive is too large");
+            File target = new File(dir, safe.substring(slash + 1));
+            if (target.exists() && !target.getCanonicalPath().startsWith(rootPrefix)) {
+                throw new IOException("Unsafe media path");
+            }
+            long total = 0;
+            try (OutputStream output = new FileOutputStream(target)) {
+                int count;
+                while ((count = input.read(buffer)) != -1) {
+                    total += count;
+                    if (total > MAX_FILE_BYTES) throw new IOException("Media file is too large");
+                    output.write(buffer, 0, count);
                 }
-                bytes += copied;
-                files++;
-                if (progress != null && files % 100 == 0) progress.onProgress(files, bytes);
             }
+            if (bytes + total > MAX_TOTAL_BYTES) throw new IOException("Media archive is too large");
+            bytes += total;
+            files++;
+            report(false);
         }
-        if (progress != null) progress.onProgress(files, bytes);
-        return new Result(files, bytes);
+
+        void report(boolean force) {
+            if (progress == null) return;
+            long now = System.nanoTime();
+            if (!force && now - lastReport < PROGRESS_INTERVAL_NANOS) return;
+            lastReport = now;
+            progress.onProgress(source.count, files);
+        }
     }
 
-    private static long copyEntry(InputStream input, File target) throws IOException {
-        File canonicalRoot = target.getParentFile();
-        while (canonicalRoot != null && !canonicalRoot.getName().equals("offline-media")) {
-            canonicalRoot = canonicalRoot.getParentFile();
+    private static final class CountingInputStream extends FilterInputStream {
+        volatile long count;
+
+        CountingInputStream(InputStream input) {
+            super(input);
         }
-        if (canonicalRoot == null || !target.getCanonicalPath().startsWith(canonicalRoot.getCanonicalPath() + File.separator)) {
-            throw new IOException("Unsafe media path");
+
+        @Override public int read() throws IOException {
+            int value = super.read();
+            if (value >= 0) count++;
+            return value;
         }
-        File parent = target.getParentFile();
-        if (parent != null && !parent.isDirectory() && !parent.mkdirs()) {
-            throw new IOException("Cannot create media directory");
+
+        @Override public int read(byte[] buffer, int offset, int length) throws IOException {
+            int read = super.read(buffer, offset, length);
+            if (read > 0) count += read;
+            return read;
         }
-        long total = 0;
-        try (OutputStream output = new FileOutputStream(target)) {
-            byte[] buffer = new byte[128 * 1024];
-            int count;
-            while ((count = input.read(buffer)) != -1) {
-                total += count;
-                if (total > MAX_FILE_BYTES) throw new IOException("Media file is too large");
-                output.write(buffer, 0, count);
-            }
+
+        @Override public long skip(long n) throws IOException {
+            long skipped = super.skip(n);
+            if (skipped > 0) count += skipped;
+            return skipped;
         }
-        return total;
     }
 
     static String normalizeEntryName(String raw) {

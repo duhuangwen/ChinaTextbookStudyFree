@@ -46,7 +46,7 @@ cd ../../apps/android && ./gradlew assembleDebug
 - [`story-images.zip`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/download/v1.2.0-assets/story-images.zip)
 - [`textbook-pages.zip`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/download/v1.2.0-assets/textbook-pages.zip)
 
-也可把 `audio/`、`story-images/`、`textbook-pages/` 三个目录放在一个 ZIP 中。应用会先校验三个官方文件名的 SHA-256，再流式解压到私有目录，完成后即使拔掉 U 盘或重启电视仍可使用。建议电视至少预留 2.5 GB 空间。
+也可把 `audio/`、`story-images/`、`textbook-pages/` 三个目录放在一个 ZIP 中。三个官方压缩包只从 U 盘读取一遍：应用边解压到私有目录下的临时目录，边计算 SHA-256；整包读完且校验一致后，才替换对应的已有目录，不一致则丢弃临时目录，已导入的资源保持不变。导入过程中会显示当前文件、百分比、已解压文件数和预计剩余时间，并保持屏幕常亮。完成后即使拔掉 U 盘或重启电视仍可使用。语音包约 1.3 GB、8 万多个小文件，耗时取决于 U 盘读速和电视存储性能。重新导入时临时目录和已有目录会同时占用空间，建议电视至少预留 4 GB 空间。
 
 选择文件的方式：
 

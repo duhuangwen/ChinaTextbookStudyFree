@@ -12,10 +12,12 @@ import android.content.res.Configuration;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.OpenableColumns;
@@ -24,6 +26,7 @@ import android.speech.tts.TextToSpeech;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowInsets;
+import android.view.WindowManager;
 import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -59,6 +62,10 @@ public class MainActivity extends Activity {
     private WebView web;
     private ProgressBar loading;
     private LinearLayout errorPanel;
+    private FrameLayout importOverlay;
+    private TextView importTitle;
+    private TextView importDetail;
+    private ProgressBar importBar;
     private File mediaRoot;
     private PermissionRequest microphoneRequest;
     private ValueCallback<Uri[]> fileCallback;
@@ -109,6 +116,7 @@ public class MainActivity extends Activity {
         errorPanel.addView(retry);
         root.addView(errorPanel, new FrameLayout.LayoutParams(-1, -1));
         errorPanel.setVisibility(View.GONE);
+        root.addView(createImportOverlay(), new FrameLayout.LayoutParams(-1, -1));
         setContentView(root);
         // API 35 enforces edge-to-edge. Keep lesson controls out of system bars and keyboard.
         if (Build.VERSION.SDK_INT >= 30) {
@@ -214,6 +222,43 @@ public class MainActivity extends Activity {
         if (state == null || web.restoreState(state) == null || !policy.isTrusted(web.getUrl())) {
             web.loadUrl(BuildConfig.WEB_APP_URL);
         } else retryUrl = web.getUrl();
+    }
+
+    private View createImportOverlay() {
+        importOverlay = new FrameLayout(this);
+        importOverlay.setBackgroundColor(0x66000000);
+        importOverlay.setClickable(true);
+        importOverlay.setVisibility(View.GONE);
+        LinearLayout panel = new LinearLayout(this);
+        panel.setOrientation(LinearLayout.VERTICAL);
+        panel.setPadding(dp(32), dp(24), dp(32), dp(24));
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(Color.WHITE);
+        background.setCornerRadius(dp(16));
+        panel.setBackground(background);
+        importTitle = new TextView(this);
+        importTitle.setTextSize(20);
+        importTitle.setTextColor(Color.BLACK);
+        panel.addView(importTitle);
+        importBar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
+        importBar.setMax(1000);
+        LinearLayout.LayoutParams barParams = new LinearLayout.LayoutParams(-1, dp(16));
+        barParams.topMargin = dp(16);
+        barParams.bottomMargin = dp(8);
+        panel.addView(importBar, barParams);
+        importDetail = new TextView(this);
+        importDetail.setTextSize(16);
+        importDetail.setTextColor(Color.DKGRAY);
+        panel.addView(importDetail);
+        TextView hint = new TextView(this);
+        hint.setText(R.string.media_import_started);
+        hint.setTextSize(14);
+        hint.setTextColor(Color.GRAY);
+        hint.setPadding(0, dp(12), 0, 0);
+        panel.addView(hint);
+        int width = Math.min(dp(560), getResources().getDisplayMetrics().widthPixels - dp(32));
+        importOverlay.addView(panel, new FrameLayout.LayoutParams(width, -2, Gravity.CENTER));
+        return importOverlay;
     }
 
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
@@ -406,34 +451,47 @@ public class MainActivity extends Activity {
     private void importMedia(List<Uri> uris) {
         if (importingMedia || uris.isEmpty()) return;
         importingMedia = true;
-        loading.setIndeterminate(true);
-        loading.setVisibility(View.VISIBLE);
-        Toast.makeText(this, R.string.media_import_started, Toast.LENGTH_LONG).show();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        importTitle.setText(R.string.media_import_running);
+        importDetail.setText("");
+        importBar.setIndeterminate(true);
+        importOverlay.setVisibility(View.VISIBLE);
         new Thread(() -> {
+            int count = uris.size();
+            String[] names = new String[count];
+            long[] sizes = new long[count];
+            long total = 0;
+            for (int i = 0; i < count; i++) {
+                names[i] = mediaDisplayName(uris.get(i));
+                sizes[i] = mediaSize(uris.get(i));
+                total = total < 0 || sizes[i] < 0 ? -1 : total + sizes[i];
+            }
+            final long totalBytes = total;
+            final long startedAt = SystemClock.elapsedRealtime();
             int files = 0;
             long bytes = 0;
+            long finishedSource = 0;
             String failure = null;
-            for (Uri uri : uris) {
-                String name = mediaDisplayName(uri);
+            for (int i = 0; i < count; i++) {
+                final int index = i;
+                final long sourceBefore = finishedSource;
+                final int filesBefore = files;
+                showImportProgress(index, count, names[index], sourceBefore, totalBytes, filesBefore, startedAt);
                 try {
-                    String expected = MediaArchiveImporter.expectedSha256(name);
-                    if (expected != null) {
-                        InputStream verify = getContentResolver().openInputStream(uri);
-                        if (verify == null) throw new IOException("Cannot open " + name);
-                        if (!expected.equalsIgnoreCase(MediaArchiveImporter.sha256(verify))) {
-                            throw new IOException("SHA-256 mismatch");
-                        }
-                    }
                     MediaArchiveImporter.Result result;
-                    try (InputStream input = getContentResolver().openInputStream(uri)) {
-                        if (input == null) throw new IOException("Cannot open " + name);
-                        result = MediaArchiveImporter.importArchive(mediaRoot, input, null);
+                    try (InputStream input = getContentResolver().openInputStream(uris.get(index))) {
+                        if (input == null) throw new IOException("Cannot open " + names[index]);
+                        result = MediaArchiveImporter.importArchive(mediaRoot, input,
+                                MediaArchiveImporter.expectedSha256(names[index]),
+                                (source, extracted) -> showImportProgress(index, count, names[index],
+                                        sourceBefore + source, totalBytes, filesBefore + extracted, startedAt));
                     }
                     if (result.files == 0) throw new IOException("No media found");
                     files += result.files;
                     bytes += result.bytes;
+                    finishedSource += Math.max(0, sizes[index]);
                 } catch (Exception error) {
-                    failure = name + ": " + error.getMessage();
+                    failure = names[index] + ": " + error.getMessage();
                     break;
                 }
             }
@@ -442,8 +500,8 @@ public class MainActivity extends Activity {
             final String importFailure = failure;
             runOnUiThread(() -> {
                 importingMedia = false;
-                loading.setIndeterminate(false);
-                loading.setVisibility(View.GONE);
+                importOverlay.setVisibility(View.GONE);
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 if (importFailure != null) {
                     Toast.makeText(this,
                             getString(R.string.media_import_failed, importFailure),
@@ -457,6 +515,45 @@ public class MainActivity extends Activity {
                 if (web != null) web.reload();
             });
         }, "cstf-media-import").start();
+    }
+
+    private void showImportProgress(int index, int count, String name, long done, long total, int files,
+                                    long startedAt) {
+        runOnUiThread(() -> {
+            if (!importingMedia) return;
+            long mb = 1024 * 1024;
+            importTitle.setText(getString(R.string.media_import_progress_title, name, index + 1, count));
+            if (total <= 0) {
+                importBar.setIndeterminate(true);
+                importDetail.setText(getString(R.string.media_import_progress_unknown, done / mb, files));
+                return;
+            }
+            importBar.setIndeterminate(false);
+            importBar.setProgress((int) Math.min(1000, done * 1000 / total));
+            String detail = getString(R.string.media_import_progress_detail,
+                    (int) Math.min(100, done * 100 / total), done / mb, total / mb, files);
+            long elapsed = SystemClock.elapsedRealtime() - startedAt;
+            if (elapsed > 5000 && done > 0 && done < total) {
+                long minutes = Math.max(1, Math.round(elapsed * (double) (total - done) / done / 60000));
+                detail += getString(R.string.media_import_progress_eta, minutes);
+            }
+            importDetail.setText(detail);
+        });
+    }
+
+    private long mediaSize(Uri uri) {
+        if ("file".equals(uri.getScheme()) && uri.getPath() != null) {
+            File file = new File(uri.getPath());
+            return file.isFile() ? file.length() : -1;
+        }
+        try (Cursor cursor = getContentResolver().query(
+                uri, new String[]{OpenableColumns.SIZE}, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                int index = cursor.getColumnIndex(OpenableColumns.SIZE);
+                if (index >= 0 && !cursor.isNull(index)) return cursor.getLong(index);
+            }
+        } catch (RuntimeException ignored) {}
+        return -1;
     }
 
     private String mediaDisplayName(Uri uri) {
