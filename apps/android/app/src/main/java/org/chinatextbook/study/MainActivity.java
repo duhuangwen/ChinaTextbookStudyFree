@@ -27,6 +27,7 @@ import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowManager;
@@ -84,13 +85,15 @@ public class MainActivity extends Activity {
     private String retryUrl = BuildConfig.WEB_APP_URL;
     private static final long HEARTBEAT_MILLIS = 2000;
     private static final long BACK_TIMEOUT_MILLIS = 2500;
-    private final DiagnosticTrail trail = new DiagnosticTrail(12);
+    private final DiagnosticTrail trail = new DiagnosticTrail(20);
     private final HangWatchdog watchdog = new HangWatchdog(8000);
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable heartbeat = this::heartbeat;
     private int pingId;
     private int backRequest;
     private AlertDialog hangDialog;
+    private volatile long lastJsTickAt = -1;
+    private volatile int jsTicks;
 
     @Override @SuppressLint("SetJavaScriptEnabled")
     public void onCreate(Bundle state) {
@@ -606,6 +609,10 @@ public class MainActivity extends Activity {
         @JavascriptInterface public void mark(String step) {
             trail.mark(System.currentTimeMillis(), step);
         }
+        @JavascriptInterface public void tick() {
+            lastJsTickAt = SystemClock.elapsedRealtime();
+            jsTicks++;
+        }
     }
 
     private void restartWatchdog() {
@@ -664,9 +671,38 @@ public class MainActivity extends Activity {
                 .append(" (API ").append(Build.VERSION.SDK_INT).append(")\n")
                 .append("WebView ").append(webViewVersion()).append('\n')
                 .append("App ").append(BuildConfig.VERSION_NAME).append('\n')
-                .append("Page ").append(web.getUrl() == null ? "-" : Uri.parse(web.getUrl()).getPath()).append('\n');
-        for (String step : trail.snapshot()) summary.append(step).append('\n');
+                .append("Page ").append(web.getUrl() == null ? "-" : Uri.parse(web.getUrl()).getPath()).append('\n')
+                .append("JS tick ").append(jsTicks).append(", last ")
+                .append(lastJsTickAt < 0 ? "never" : (SystemClock.elapsedRealtime() - lastJsTickAt) / 1000 + "s ago")
+                .append('\n')
+                .append("Focus ").append(focusName())
+                .append(" web.hasFocus=").append(web.hasFocus())
+                .append(" shown=").append(web.isShown())
+                .append(" window=").append(hasWindowFocus()).append('\n');
+        // Newest first: a remote can only move between dialog buttons, so lines below the fold stay unseen.
+        List<String> steps = trail.snapshot();
+        for (int i = steps.size() - 1; i >= 0; i--) summary.append(steps.get(i)).append('\n');
         return summary.toString();
+    }
+
+    private String focusName() {
+        View focused = getCurrentFocus();
+        if (focused == null) return "none";
+        return focused == web ? "web" : focused.getClass().getSimpleName();
+    }
+
+    @Override public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
+            trail.mark(System.currentTimeMillis(), "nkey "
+                    + KeyEvent.keyCodeToString(event.getKeyCode()).replace("KEYCODE_", "")
+                    + " focus=" + focusName());
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+    @Override public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        trail.mark(System.currentTimeMillis(), "nwin focus=" + hasFocus);
     }
 
     private String webViewVersion() {

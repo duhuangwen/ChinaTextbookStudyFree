@@ -1,7 +1,7 @@
 declare global {
   interface Window {
     /** Android shell bridge; it keeps the last steps so a hung page can still be diagnosed natively. */
-    CstfDiag?: { mark(step: string): void };
+    CstfDiag?: { mark(step: string): void; tick(): void };
   }
 }
 
@@ -19,11 +19,27 @@ export function describeElement(element: Element | null): string {
   return `${element.tagName.toLowerCase()}:${label.replace(/\s+/g, "").slice(0, 16)}`;
 }
 
-let errorsInstalled = false;
+let installed = false;
 
+/**
+ * Error, lifecycle and liveness marks. The 1 s tick lets the shell tell a busy JS thread
+ * (ticks stop) from a page that is alive but frozen or cut off from input (ticks continue).
+ */
 export function installErrorMarks(): void {
-  if (errorsInstalled) return;
-  errorsInstalled = true;
+  if (installed || !window.CstfDiag) return;
+  installed = true;
   window.addEventListener("error", event => diagMark(`error:${event.message}`));
   window.addEventListener("unhandledrejection", event => diagMark(`rejection:${String(event.reason)}`));
+  document.addEventListener("visibilitychange", () => diagMark(`vis:${document.visibilityState}`));
+  document.addEventListener("freeze", () => diagMark("page:freeze"));
+  document.addEventListener("resume", () => diagMark("page:resume"));
+  window.addEventListener("focus", () => diagMark("win:focus"));
+  window.addEventListener("blur", () => diagMark("win:blur"));
+  window.setInterval(() => {
+    try {
+      window.CstfDiag?.tick();
+    } catch {
+      // Diagnostics must never break the page.
+    }
+  }, 1000);
 }

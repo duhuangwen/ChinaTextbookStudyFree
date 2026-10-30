@@ -140,8 +140,8 @@ export function TvModeProvider({ children }: { children: React.ReactNode }) {
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
+      diagMark(`key:${event.key}${event.defaultPrevented ? " prevented" : ""}`);
       if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
-      diagMark(`key:${event.key}`);
       const target = event.target as Element | null;
       if (
         (event.key === "Enter" || event.key === " ") &&
