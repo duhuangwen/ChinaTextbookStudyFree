@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import ts from 'typescript';
-import { IntroNarrationPlayer, type IntroPlaybackSnapshot } from '../../apps/web/src/lib/introNarration';
+import { IntroNarrationPlayer, narrationSkippable, type IntroPlaybackSnapshot } from '../../apps/web/src/lib/introNarration';
 
 class FakeAudio extends EventTarget {
   currentTime = 0;
@@ -100,6 +100,12 @@ async function main() {
   const regressions = await Promise.allSettled([synchronousBlockedRegression(), primeRegression()]);
   const failures = regressions.flatMap((result, index) => result.status === 'rejected' ? [`${index === 0 ? 'synchronous NotAllowed classification' : 'real primer module'}: ${result.reason}`] : []);
   assert.deepEqual(failures, [], failures.join('\n'));
+
+  assert.equal(narrationSkippable('error', false), true, 'failed narration must not trap the learner behind "next"');
+  assert.equal(narrationSkippable('ready', true), true, 'muted learners read instead of listening');
+  for (const status of ['ready', 'loading', 'playing'] as const) {
+    assert.equal(narrationSkippable(status, false), false, `playable narration (${status}) still gates "next"`);
+  }
 
   const t = setup();
   t.audio[1].metadata(10); t.audio[2].metadata(30);

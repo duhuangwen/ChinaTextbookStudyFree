@@ -2387,7 +2387,10 @@ function IntroCard({
   }, [pageIdx]);
 
   function goNext() {
-    if (narration.locked) return;
+    if (narration.locked) {
+      if (!narration.skippable) return;
+      narration.continueWithoutAudio();
+    }
     cancelNarrate();
     if (isLast) {
       // 最后一步：从"学"过渡到"练"，多层音效 + 强反馈
@@ -2600,7 +2603,7 @@ function IntroCard({
             </motion.button>
           ) : null}
           <NarrationNextButton
-            locked={narration.locked}
+            locked={narration.locked && !narration.skippable}
             progress={narration.progress}
             isLast={isLast}
             onClick={goNext}

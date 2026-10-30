@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useProgressStore } from "@/store/progress";
 import { stopTTS } from "./tts";
-import { IntroNarrationPlayer, type IntroPlaybackSnapshot } from "./introNarration";
+import { IntroNarrationPlayer, narrationSkippable, type IntroPlaybackSnapshot } from "./introNarration";
 import { getIntroAudio } from "./introAudio";
 
 const INITIAL: IntroPlaybackSnapshot = { status: "ready", segment: -1, progress: null, remainingSeconds: null };
@@ -64,7 +64,7 @@ export function useIntroNarration(sources: Array<string | null | undefined>, key
     void playerRef.current?.start();
   }
   function continueWithoutAudio() {
-    if (snapshot.status !== "error" && !muted) return;
+    if (!narrationSkippable(snapshot.status, muted)) return;
     playerRef.current?.cancel();
     heardRef.current.add(key);
     setState({ ...INITIAL, status: "done", key, progress: 1, remainingSeconds: 0 });
@@ -72,6 +72,7 @@ export function useIntroNarration(sources: Array<string | null | undefined>, key
   return {
     ...snapshot,
     locked,
+    skippable: locked && narrationSkippable(snapshot.status, muted),
     muted,
     start,
     cancel: () => { playerRef.current?.cancel(); stopTTS(); },

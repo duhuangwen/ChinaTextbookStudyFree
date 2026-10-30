@@ -6,6 +6,9 @@ export interface IntroPlaybackSnapshot {
   remainingSeconds: number | null;
 }
 
+/** Narration only gates "next" while it can actually be heard; failed or muted audio lets the learner read on. */
+export const narrationSkippable = (status: IntroPlaybackStatus, muted: boolean) => muted || status === "error";
+
 /** A lesson introduction is complete only after every track emits ended. */
 export class IntroNarrationPlayer {
   private audio: HTMLAudioElement;
