@@ -17,7 +17,7 @@ import { DailyGoalRing } from "@/components/DailyGoalRing";
 import { DailyQuestsPanel } from "@/components/DailyQuestsPanel";
 import { AchievementWall } from "@/components/AchievementWall";
 import { WeeklyReportCard } from "@/components/WeeklyReportCard";
-import { OfflineMediaPanel } from "@/components/OfflineMediaPanel";
+import { OfflineMediaHint, OfflineMediaPanel } from "@/components/OfflineMediaPanel";
 import { AppShell } from "@/components/layout/AppShell";
 import {
   ArrowLeft,
@@ -81,199 +81,198 @@ export function ProfileClient() {
         </div>
       </div>
 
-      <div className="tv-profile max-w-2xl lg:max-w-4xl mx-auto px-4 py-8">
+      <div className="tv-profile max-w-2xl lg:max-w-4xl mx-auto px-4 py-8 space-y-8">
         {/* 📋 每日任务（移动端专属入口；桌面端在首页右栏 RightRail 展示同一组件） */}
-        <div className="lg:hidden mb-6">
+        <div className="lg:hidden">
           <DailyQuestsPanel />
         </div>
 
-        <OfflineMediaPanel />
+        <OfflineMediaHint />
 
-        {/* 顶部：聪聪 + 问候 + 每日目标环 */}
-        <div className="tv-profile-hero flex items-center gap-6 mb-8">
-          <motion.div
-            className="tv-hide"
-            initial={{ x: -40, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ type: "spring", damping: 18 }}
-          >
-            <Mascot mood="wave" size={120} />
-          </motion.div>
-          <div className="flex-1">
-            <div className="text-sm text-ink-light">欢迎回来</div>
-            <div className="text-2xl font-extrabold text-ink">聪明的同学</div>
-            <div className="text-sm text-ink-light mt-1">
-              {hydrated && streak > 0 ? `已连续学习 ${streak} 天` : "开始你的学习之旅"}
-            </div>
-          </div>
-          <DailyGoalRing size={100} />
-        </div>
-
-        {/* 统计卡片网格 */}
-        <div className="tv-profile-stats grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-          <StatCard
-            icon={<Lightning className="w-6 h-6" />}
-            label="总经验"
-            value={hydrated ? xp.toString() : "0"}
-            color="text-secondary"
-          />
-          <StatCard
-            icon={<Flame className="w-6 h-6" />}
-            label="连续天数"
-            value={hydrated ? streak.toString() : "0"}
-            color="text-warning"
-          />
-          <StatCard
-            icon={<Crown className="w-6 h-6" />}
-            label="完成课程"
-            value={completedCount.toString()}
-            color="text-primary"
-          />
-          <StatCard
-            icon={<Star className="w-6 h-6 fill-current" />}
-            label="获得星星"
-            value={totalStars.toString()}
-            color="text-gold"
-          />
-        </div>
-
-        {/* 桌面 2x2 网格：商店 / 成就 / 错题本 / 家长设置 */}
-        <div className="tv-profile-grid lg:grid lg:grid-cols-2 lg:gap-5">
-        {/* 累计宝石 + 商店入口 */}
-        <SoundLink
-          href="/shop"
-          hapticIntensity="medium"
-          className="group flex items-center gap-4 bg-white rounded-3xl border-2 border-secondary/30 p-5 mb-6 lg:mb-0 hover:border-secondary transition-colors"
-          style={{ boxShadow: "0 4px 0 0 #d8b4fe" }}
-        >
-          <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors">
-            <Gem className="w-6 h-6" />
-          </div>
-          <div className="flex-1">
-            <div className="text-base font-extrabold text-ink">美妆商店</div>
-            <div className="text-sm text-ink-light">
-              累计获得 <span className="font-extrabold text-secondary-dark">{hydrated ? lifetimeGems : 0}</span> 颗宝石 · 去给聪聪换装吧
-            </div>
-          </div>
-          <div className="text-ink-softer text-xl">›</div>
-        </SoundLink>
-
-        {/* 本周报告 */}
-        <div className="tv-profile-late mb-6 lg:mb-0">
-          {hydrated && <WeeklyReportCard />}
-        </div>
-
-        {/* 连胜护盾小卡片 */}
-        <section
-          className="bg-white rounded-3xl border-2 border-bg-softer p-5 mb-6 lg:mb-0"
-          style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
-        >
-          <div className="text-base font-extrabold text-ink mb-3">连胜护盾</div>
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center">
-              <Snowflake className="w-6 h-6" />
-            </div>
+        <div className="tv-profile-overview grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:items-center">
+          <div className="tv-profile-hero flex items-center gap-6">
+            <motion.div
+              className="tv-hide"
+              initial={{ x: -40, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "spring", damping: 18 }}
+            >
+              <Mascot mood="wave" size={120} />
+            </motion.div>
             <div className="flex-1">
-              <div className="text-sm font-extrabold text-ink">
-                剩余 <span className="text-secondary tabular-nums">{hydrated ? freezes : 0}</span> 个
+              <div className="text-sm text-ink-light">欢迎回来</div>
+              <div className="text-2xl font-extrabold text-ink">聪明的同学</div>
+              <div className="text-sm text-ink-light mt-1">
+                {hydrated && streak > 0 ? `已连续学习 ${streak} 天` : "开始你的学习之旅"}
               </div>
-              <div className="text-xs text-ink-light">周一自动补给一个 · 防止连胜中断</div>
+            </div>
+            <DailyGoalRing size={100} />
+          </div>
+
+          <div className="tv-profile-stats grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <StatCard
+              icon={<Lightning className="w-6 h-6" />}
+              label="总经验"
+              value={hydrated ? xp.toString() : "0"}
+              color="text-secondary"
+            />
+            <StatCard
+              icon={<Flame className="w-6 h-6" />}
+              label="连续天数"
+              value={hydrated ? streak.toString() : "0"}
+              color="text-warning"
+            />
+            <StatCard
+              icon={<Crown className="w-6 h-6" />}
+              label="完成课程"
+              value={completedCount.toString()}
+              color="text-primary"
+            />
+            <StatCard
+              icon={<Star className="w-6 h-6 fill-current" />}
+              label="获得星星"
+              value={totalStars.toString()}
+              color="text-gold"
+            />
+          </div>
+        </div>
+
+        <ProfileGroup title="学习">
+          <div className="grid gap-4 lg:grid-cols-3">
+            <SoundLink
+              href="/review"
+              hapticIntensity="medium"
+              className="group flex items-center gap-4 bg-white rounded-3xl border-2 border-bg-softer p-5 hover:border-primary transition-colors"
+              style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
+            >
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                <Bookmark className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <div className="text-base font-extrabold text-ink">错题本</div>
+                <div className="text-sm text-ink-light">
+                  {mistakesCount > 0 ? `${mistakesCount} 道题待复习` : "暂无错题"}
+                </div>
+              </div>
+              <div className="text-ink-softer text-xl">›</div>
+            </SoundLink>
+
+            <SoundLink
+              href="/shop"
+              hapticIntensity="medium"
+              className="group flex items-center gap-4 bg-white rounded-3xl border-2 border-secondary/30 p-5 hover:border-secondary transition-colors"
+              style={{ boxShadow: "0 4px 0 0 #d8b4fe" }}
+            >
+              <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors">
+                <Gem className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <div className="text-base font-extrabold text-ink">美妆商店</div>
+                <div className="text-sm text-ink-light">
+                  累计获得 <span className="font-extrabold text-secondary-dark">{hydrated ? lifetimeGems : 0}</span> 颗宝石 · 去给聪聪换装吧
+                </div>
+              </div>
+              <div className="text-ink-softer text-xl">›</div>
+            </SoundLink>
+
+            <section
+              className="flex items-center gap-4 bg-white rounded-3xl border-2 border-bg-softer p-5"
+              style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
+            >
+              <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center">
+                <Snowflake className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <div className="text-base font-extrabold text-ink">
+                  连胜护盾 · 剩余 <span className="text-secondary tabular-nums">{hydrated ? freezes : 0}</span> 个
+                </div>
+                <div className="text-sm text-ink-light">周一自动补给一个 · 防止连胜中断</div>
+              </div>
+            </section>
+
+            <div className="lg:col-span-3">
+              {hydrated && <WeeklyReportCard />}
             </div>
           </div>
-        </section>
+        </ProfileGroup>
 
-        {/* 成就墙（占满整行） */}
-        <div className="tv-profile-wide lg:col-span-2 mb-6 lg:mb-0">
+        <div className="tv-profile-wide">
           {hydrated && <AchievementWall />}
         </div>
 
-        {/* 快速入口 */}
-        <SoundLink
-          href="/review"
-          hapticIntensity="medium"
-          className="group flex items-center gap-4 bg-white rounded-3xl border-2 border-bg-softer p-5 hover:border-primary transition-colors mb-6 lg:mb-0"
-          style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
-        >
-          <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-            <Bookmark className="w-6 h-6" />
-          </div>
-          <div className="flex-1">
-            <div className="text-base font-extrabold text-ink">错题本</div>
-            <div className="text-sm text-ink-light">
-              {mistakesCount > 0 ? `${mistakesCount} 道题待复习` : "暂无错题"}
-            </div>
-          </div>
-          <div className="text-ink-softer text-xl">›</div>
-        </SoundLink>
+        <ProfileGroup title="设置与数据">
+          <div className="grid gap-4 lg:grid-cols-2 [&>*]:h-full">
+            <OfflineMediaPanel />
 
-        {/* 外观：免费深色模式三态开关（跟随系统 / 亮 / 暗） */}
-        <section
-          className="tv-profile-late bg-white rounded-3xl border-2 border-bg-softer p-5 mb-6 lg:mb-0"
-          style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
-        >
-          <div className="flex items-center justify-between mb-1">
-            <div className="text-base font-extrabold text-ink">外观 · 深色模式</div>
-          </div>
-          <div className="text-xs text-ink-light mb-3">
-            跟随系统自动切换，或手动选择亮色 / 暗色 · 免费使用
-          </div>
-          <ThemeModeToggle />
-        </section>
+            {/* 家长设置：每日学习时间上限（默认关闭，家长自愿启用） */}
+            <section
+              className="bg-white rounded-3xl border-2 border-bg-softer p-5"
+              style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <div className="text-base font-extrabold text-ink">家长设置 · 每日时间上限</div>
+                <span className="text-[10px] text-ink-softer uppercase tracking-wider">
+                  防沉迷
+                </span>
+              </div>
+              <div className="text-xs text-ink-light mb-3">
+                达到上限后会暂停新课程，鼓励休息眼睛 · 不影响已开始的课程
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {([
+                  { label: "不限制", min: 0 },
+                  { label: "20 分钟", min: 20 },
+                  { label: "30 分钟", min: 30 },
+                  { label: "45 分钟", min: 45 },
+                  { label: "60 分钟", min: 60 },
+                ] as const).map(opt => {
+                  const active = hydrated && dailyTimeLimitMs === opt.min * 60_000;
+                  return (
+                    <button
+                      key={opt.min}
+                      type="button"
+                      onClick={() => pickLimit(opt.min)}
+                      className={`h-9 px-4 inline-flex items-center rounded-2xl text-sm font-extrabold border-2 transition-colors ${
+                        active
+                          ? "bg-primary text-white border-primary"
+                          : "bg-white text-ink-light border-bg-softer hover:border-primary/40"
+                      }`}
+                      style={
+                        active
+                          ? { boxShadow: "0 3px 0 0 #58A700" }
+                          : { boxShadow: "0 2px 0 0 var(--shadow-card-color)" }
+                      }
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
 
-        {/* 家长设置：每日学习时间上限（默认关闭，家长自愿启用） */}
-        <section
-          className="tv-profile-late bg-white rounded-3xl border-2 border-bg-softer p-5"
-          style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
-        >
-          <div className="flex items-center justify-between mb-1">
-            <div className="text-base font-extrabold text-ink">家长设置 · 每日时间上限</div>
-            <span className="text-[10px] text-ink-softer uppercase tracking-wider">
-              防沉迷
-            </span>
-          </div>
-          <div className="text-xs text-ink-light mb-3">
-            达到上限后会暂停新课程，鼓励休息眼睛 · 不影响已开始的课程
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {([
-              { label: "不限制", min: 0 },
-              { label: "20 分钟", min: 20 },
-              { label: "30 分钟", min: 30 },
-              { label: "45 分钟", min: 45 },
-              { label: "60 分钟", min: 60 },
-            ] as const).map(opt => {
-              const active = hydrated && dailyTimeLimitMs === opt.min * 60_000;
-              return (
-                <button
-                  key={opt.min}
-                  type="button"
-                  onClick={() => pickLimit(opt.min)}
-                  className={`h-9 px-4 inline-flex items-center rounded-2xl text-sm font-extrabold border-2 transition-colors ${
-                    active
-                      ? "bg-primary text-white border-primary"
-                      : "bg-white text-ink-light border-bg-softer hover:border-primary/40"
-                  }`}
-                  style={
-                    active
-                      ? { boxShadow: "0 3px 0 0 #58A700" }
-                      : { boxShadow: "0 2px 0 0 var(--shadow-card-color)" }
-                  }
-                >
-                  {opt.label}
-                </button>
-              );
-            })}
-          </div>
-        </section>
+            {/* 外观：免费深色模式三态开关（跟随系统 / 亮 / 暗） */}
+            <section
+              className="bg-white rounded-3xl border-2 border-bg-softer p-5"
+              style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <div className="text-base font-extrabold text-ink">外观 · 深色模式</div>
+              </div>
+              <div className="text-xs text-ink-light mb-3">
+                跟随系统自动切换，或手动选择亮色 / 暗色 · 免费使用
+              </div>
+              <ThemeModeToggle />
+            </section>
 
-        {/* 💾 数据 · 存档备份（E2）：导出 / 导入，BackupEnvelope v1 双端互通 */}
-        <BackupSection />
+            {/* 💾 数据 · 存档备份（E2）：导出 / 导入，BackupEnvelope v1 双端互通 */}
+            <BackupSection />
+          </div>
 
-        {/* 🚩 已报告的问题（E2）：本地列表 + 一键导出 */}
-        <div className="tv-profile-late tv-profile-span2 lg:col-span-2 mt-6 lg:mt-0">
-          {hydrated && <ReportsSection />}
-        </div>
-        </div>
+          {/* 🚩 已报告的问题（E2）：本地列表 + 一键导出 */}
+          <div className="mt-4">
+            {hydrated && <ReportsSection />}
+          </div>
+        </ProfileGroup>
       </div>
     </main>
     </AppShell>
@@ -361,7 +360,7 @@ function BackupSection() {
 
   return (
     <section
-      className="tv-profile-late bg-white rounded-3xl border-2 border-bg-softer p-5 mt-6 lg:mt-0"
+      className="bg-white rounded-3xl border-2 border-bg-softer p-5"
       style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
     >
       <div className="flex items-center justify-between mb-1">
@@ -539,6 +538,15 @@ function ReportsSection() {
           只显示最近 {shown.length} 条，导出可以看到全部 {reports.length} 条
         </div>
       )}
+    </section>
+  );
+}
+
+function ProfileGroup({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section aria-label={title}>
+      <h2 className="text-sm font-extrabold text-ink-light mb-3">{title}</h2>
+      {children}
     </section>
   );
 }

@@ -37,7 +37,9 @@ function readStatus(): MediaStatus {
   }
 }
 
-export function OfflineMediaPanel() {
+const IMPORT_BUTTON_ID = "offline-media-import";
+
+function useOfflineMediaStatus() {
   const [available, setAvailable] = useState(false);
   const [status, setStatus] = useState<MediaStatus>(EMPTY);
 
@@ -50,11 +52,48 @@ export function OfflineMediaPanel() {
     return () => window.clearInterval(timer);
   }, []);
 
+  return { available, status };
+}
+
+/** One-line reminder at the top of the profile; the full panel lives with the other settings. */
+export function OfflineMediaHint() {
+  const { available, status } = useOfflineMediaStatus();
+  if (!available || status.complete) return null;
+  const missing = [
+    !status.audio && "语音",
+    !status.pages && "课本页",
+    !status.images && "故事图",
+  ].filter(Boolean).join("、");
+
+  return (
+    <div className="flex items-center gap-3 rounded-2xl border-2 border-secondary/35 bg-secondary/5 px-4 py-2.5">
+      <BookOpen className="w-5 h-5 text-secondary shrink-0" />
+      <div className="flex-1 min-w-0 text-sm font-bold text-ink-light">还没导入{missing}</div>
+      <button
+        type="button"
+        data-tv-autofocus="true"
+        onClick={() => {
+          playSfx("tap");
+          const target = document.getElementById(IMPORT_BUTTON_ID);
+          target?.scrollIntoView({ block: "center" });
+          target?.focus({ preventScroll: true });
+        }}
+        className="h-9 px-4 shrink-0 rounded-2xl text-sm font-extrabold text-secondary-dark border-2 border-secondary/40 bg-white"
+      >
+        去导入
+      </button>
+    </div>
+  );
+}
+
+export function OfflineMediaPanel({ className = "" }: { className?: string }) {
+  const { available, status } = useOfflineMediaStatus();
+
   if (!available) return null;
 
   return (
     <section
-      className="mb-6 rounded-3xl border-2 border-secondary/35 bg-white p-5"
+      className={`rounded-3xl border-2 border-secondary/35 bg-white p-5 ${className}`}
       style={{ boxShadow: "0 4px 0 0 var(--shadow-card-color)" }}
       aria-label="离线媒体资源"
     >
@@ -83,8 +122,8 @@ export function OfflineMediaPanel() {
       </div>
       <div className="mt-4 flex flex-wrap gap-3">
         <button
+          id={IMPORT_BUTTON_ID}
           type="button"
-          data-tv-autofocus="true"
           onClick={() => {
             playSfx("tap");
             window.MediaImport?.open();
