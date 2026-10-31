@@ -221,7 +221,7 @@ export function CurrentBookBadge({
           {book.gradeName}的全部教材，点一下就换
         </div>
 
-        <div className="flex flex-col gap-2 max-h-[52vh] overflow-y-auto pr-0.5">
+        <div className="tv-book-switch flex flex-col gap-2 max-h-[52vh] overflow-y-auto pr-0.5">
           {sorted.map(b => {
             const s = SUBJECT_STYLE[subjectOf(b)];
             const isCurrent = b.id === book.id;

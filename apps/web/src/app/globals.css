@@ -438,6 +438,23 @@ html.tv-mode .tv-story-text span {
   line-height: 1.7 !important;
 }
 
+/* Book switcher: one row per subject (上册 | 下册) so a whole grade fits without scrolling. */
+html.tv-mode div:has(> .tv-book-switch) {
+  max-width: 44rem !important;
+}
+
+html.tv-mode .tv-book-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-height: none;
+  overflow: visible;
+}
+
+html.tv-mode .tv-book-switch > button {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 html.tv-mode .tv-char-pad {
   grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
   margin-top: 1rem !important;
