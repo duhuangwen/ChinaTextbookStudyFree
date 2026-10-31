@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -86,6 +87,7 @@ public class MainActivity extends Activity {
     private static final long HEARTBEAT_MILLIS = 2000;
     private static final long BACK_TIMEOUT_MILLIS = 2500;
     private final DiagnosticTrail trail = new DiagnosticTrail(20);
+    private final NativeRecorder recorder = new NativeRecorder();
     private final HangWatchdog watchdog = new HangWatchdog(8000);
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable heartbeat = this::heartbeat;
@@ -113,6 +115,7 @@ public class MainActivity extends Activity {
         web.addJavascriptInterface(new TtsBridge(), "AndroidTts");
         web.addJavascriptInterface(new MediaImportBridge(), "MediaImport");
         web.addJavascriptInterface(new DiagnosticsBridge(), "CstfDiag");
+        web.addJavascriptInterface(new NativeMicBridge(), "NativeMic");
         root.addView(web, new FrameLayout.LayoutParams(-1, -1));
         loading = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
         root.addView(loading, new FrameLayout.LayoutParams(-1, dp(3), Gravity.TOP));
@@ -615,6 +618,23 @@ public class MainActivity extends Activity {
         }
     }
 
+    private final class NativeMicBridge {
+        /** "ok", "permission" while the runtime dialog is up, or a failure reason. */
+        @JavascriptInterface public String start() {
+            if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                runOnUiThread(() -> requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, MICROPHONE));
+                return "permission";
+            }
+            String failure = recorder.start((AudioManager) getSystemService(AUDIO_SERVICE));
+            if (failure == null) return "ok";
+            trail.mark(System.currentTimeMillis(), "mic " + failure);
+            return failure;
+        }
+        @JavascriptInterface public String stop() {
+            return recorder.stop();
+        }
+    }
+
     private void restartWatchdog() {
         pingId++;
         watchdog.reset();
@@ -678,7 +698,9 @@ public class MainActivity extends Activity {
                 .append("Focus ").append(focusName())
                 .append(" web.hasFocus=").append(web.hasFocus())
                 .append(" shown=").append(web.isShown())
-                .append(" window=").append(hasWindowFocus()).append('\n');
+                .append(" window=").append(hasWindowFocus()).append('\n')
+                .append("Mic inputs ").append(NativeRecorder.describeInputs((AudioManager) getSystemService(AUDIO_SERVICE)))
+                .append('\n');
         // Newest first: a remote can only move between dialog buttons, so lines below the fold stay unseen.
         List<String> steps = trail.snapshot();
         for (int i = steps.size() - 1; i >= 0; i--) summary.append(steps.get(i)).append('\n');
@@ -780,6 +802,7 @@ public class MainActivity extends Activity {
         resumed = false;
         handler.removeCallbacks(heartbeat);
         if (!awaitingRuntimePermission) cancelMicrophone();
+        recorder.stop();
         if (web != null) web.onPause();
         super.onPause();
     }
@@ -805,6 +828,7 @@ public class MainActivity extends Activity {
         handler.removeCallbacksAndMessages(null);
         if (hangDialog != null) hangDialog.dismiss();
         cancelMicrophone();
+        recorder.stop();
         if (fileCallback != null) fileCallback.onReceiveValue(null);
         if (speech != null) {
             speech.stop();

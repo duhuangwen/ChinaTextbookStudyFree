@@ -178,8 +178,8 @@ export function PassageReader({ passage, backHref }: Props) {
       if (abortRef.current) break;
 
       // 2) 录音（最长 8 秒，或用户手动停止）
-      await rec.start();
-      if (rec.state === "error") {
+      if (!(await rec.start())) {
+        abortRef.current = true;
         break;
       }
       const durationMs = Math.max(3000, s.text.length * 280);
@@ -462,7 +462,7 @@ export function PassageReader({ passage, backHref }: Props) {
         </div>
         {rec.error && (
           <div className="max-w-md lg:max-w-6xl mx-auto px-4 pb-2 text-xs text-danger">
-            麦克风错误：{rec.error}
+            {rec.error}
           </div>
         )}
       </div>
