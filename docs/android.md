@@ -31,12 +31,13 @@ webAppUrl=https://你的课堂地址/
 Android APK 会把 `apps/web/out/` 复制到 `assets/www`。构建前必须先准备完整课程数据并导出静态 Web：
 
 ```sh
-python3 scripts/install-web-data.py
-cd apps/web && npx next build
+python3 scripts/install-web-data.py --dest /tmp/release-data
+cd apps/web && node --experimental-strip-types scripts/build-data.ts --prebuilt /tmp/release-data
+npx next build
 cd ../../apps/android && ./gradlew assembleDebug
 ```
 
-`install-web-data.py` 只下载约 4.9 MB 的 `data.zip`，不会下载 2 GB 音频和图片。APK 内含全部互动课程、题库、页面、字体、图标和课程 JSON；没有预生成 MP3 时，题目和讲解的喇叭按钮调用电视系统 TTS。课本原页、故事插画和预生成语音不打包进 APK，相关页面仍可显示文字内容。GitHub Actions 的 `Android APK` 工作流会自动执行这些步骤。
+课程和题目由 `build-data.ts` 直接从仓库 `output/` 题库生成，题库修正随代码进入 APK。`install-web-data.py` 只下载约 4.9 MB 的 `data.zip`，不会下载 2 GB 音频和图片；`--prebuilt` 用它提供课文听读、故事数据和「哪些文本有预录语音」的索引，改过的题目文字没有预录语音，改用系统 TTS。APK 内含全部互动课程、题库、页面、字体、图标和课程 JSON；没有预生成 MP3 时，题目和讲解的喇叭按钮调用电视系统 TTS。课本原页、故事插画和预生成语音不打包进 APK，相关页面仍可显示文字内容。GitHub Actions 的 `Android APK` 工作流会自动执行这些步骤。
 
 ## U 盘导入课本页、插画和语音
 

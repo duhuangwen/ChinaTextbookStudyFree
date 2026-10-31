@@ -5,9 +5,8 @@ on:
       - 'apps/android/**'
       - 'apps/web/**'
       - 'packages/core/**'
+      - 'output/**'
       - 'scripts/install-web-data.py'
-      - 'scripts/apply-content-errata.py'
-      - 'scripts/content-errata.json'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/android.yml'
@@ -16,9 +15,8 @@ on:
       - 'apps/android/**'
       - 'apps/web/**'
       - 'packages/core/**'
+      - 'output/**'
       - 'scripts/install-web-data.py'
-      - 'scripts/apply-content-errata.py'
-      - 'scripts/content-errata.json'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/android.yml'
@@ -59,9 +57,13 @@ jobs:
       - name: Install Web dependencies
         working-directory: .
         run: npm ci --ignore-scripts
-      - name: Install complete course data
+      - name: Download prebuilt Release data for passages, stories and recorded audio
         working-directory: .
-        run: python3 scripts/install-web-data.py
+        run: python3 scripts/install-web-data.py --dest "$RUNNER_TEMP/release-data"
+      - name: Build course data from the in-repo quiz bank
+        working-directory: apps/web
+        # Not tsx: the lockfile lacks esbuild's Linux binary, so run with Node's own type stripping.
+        run: node --experimental-strip-types scripts/build-data.ts --prebuilt "$RUNNER_TEMP/release-data"
       - name: Build self-contained Web bundle
         working-directory: apps/web
         run: npx next build

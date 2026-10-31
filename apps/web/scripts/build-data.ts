@@ -42,6 +42,11 @@ const AUDIO_ROOT = path.resolve(ROOT, "public", "audio");
 const PAGES_ROOT = path.resolve(ROOT, "public", "textbook-pages");
 const STORY_IMAGES_ROOT = path.resolve(ROOT, "public", "story-images");
 
+// Android CI has neither data/ sources nor the 2 GB audio; a prebuilt Release data dir
+// (install-web-data.py --dest) supplies passages/stories and the set of recorded texts.
+const PREBUILT_FLAG = process.argv.indexOf("--prebuilt");
+const PREBUILT_DATA = PREBUILT_FLAG >= 0 ? path.resolve(process.argv[PREBUILT_FLAG + 1] ?? "") : null;
+
 // ============================================================
 // TTS 音频映射：与 scripts/tts/collect_texts.py 的 hash 规则保持一致
 //   - normalize: trim + 折叠空白
@@ -87,6 +92,32 @@ async function buildAudioIndex(): Promise<Set<string>> {
   }
   audioIndex = set;
   return set;
+}
+
+async function listJsonFiles(dir: string): Promise<string[]> {
+  const entries = await fs.readdir(dir, { withFileTypes: true, recursive: true });
+  return entries.filter(e => e.isFile() && e.name.endsWith(".json")).map(e => path.join(e.parentPath, e.name));
+}
+
+async function indexPrebuiltAudio(set: Set<string>): Promise<void> {
+  for (const file of await listJsonFiles(PREBUILT_DATA!)) {
+    const text = await fs.readFile(file, "utf-8");
+    for (const m of text.matchAll(/"\/audio\/([0-9a-f]{2}\/[0-9a-f]{40}\.opus)"/g)) set.add(m[1]);
+  }
+}
+
+async function copyPrebuiltBookFiles(fileName: string): Promise<Set<string>> {
+  const books = new Set<string>();
+  const booksDir = path.join(PREBUILT_DATA!, "books");
+  for (const bookId of await fs.readdir(booksDir)) {
+    const src = path.join(booksDir, bookId, fileName);
+    if (!existsSync(src)) continue;
+    await fs.mkdir(path.join(DATA_DST, "books", bookId), { recursive: true });
+    await fs.copyFile(src, path.join(DATA_DST, "books", bookId, fileName));
+    books.add(bookId);
+  }
+  console.log(`  [预构建] 从 ${PREBUILT_DATA} 复制 ${books.size} 本教材的 ${fileName}`);
+  return books;
 }
 
 function audioFor(text: string | undefined | null): string | undefined {
@@ -228,6 +259,7 @@ async function loadPagesMapping(bookId: string): Promise<Map<string, PagesInfo>>
 async function buildPassages(): Promise<Set<string>> {
   const withPassages = new Set<string>();
   if (!existsSync(PASSAGES_SRC)) {
+    if (PREBUILT_DATA) return copyPrebuiltBookFiles("passages.json");
     console.log("  [跳过] data/passages/ 不存在，无课文听读数据");
     return withPassages;
   }
@@ -363,6 +395,7 @@ function decorateStoryQuestion(q: StoryQuestion): StoryQuestion {
 async function buildStories(): Promise<Set<string>> {
   const withStories = new Set<string>();
   if (!existsSync(STORIES_SRC)) {
+    if (PREBUILT_DATA) return copyPrebuiltBookFiles("stories.json");
     console.log("  [跳过] data/stories/ 不存在，无故事数据");
     return withStories;
   }
@@ -698,6 +731,12 @@ async function main() {
   console.log(`   源: ${OUTPUT_SRC}`);
   console.log(`   目标: ${DATA_DST}`);
 
+  if (PREBUILT_DATA) {
+    if (!existsSync(path.join(PREBUILT_DATA, "index.json"))) throw new Error(`--prebuilt 目录无 index.json: ${PREBUILT_DATA}`);
+    const rel = path.relative(DATA_DST, PREBUILT_DATA);
+    if (!rel.startsWith("..") && !path.isAbsolute(rel)) throw new Error("--prebuilt 不能位于 public/data 内");
+  }
+
   // 清空目标目录
   await fs.rm(DATA_DST, { recursive: true, force: true });
   await fs.mkdir(DATA_DST, { recursive: true });
@@ -705,6 +744,7 @@ async function main() {
 
   // 索引已生成的 TTS 音频文件
   const audio = await buildAudioIndex();
+  if (PREBUILT_DATA) await indexPrebuiltAudio(audio);
   console.log(`🔊 已索引 ${audio.size} 个 TTS 音频文件`);
 
   // 构建课文听读 + 故事阅读（在教材处理之前跑一次，得到 bookId → 有无课文/故事 的映射）

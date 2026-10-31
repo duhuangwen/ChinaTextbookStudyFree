@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""Install only the Web data bundle used by the embedded Android app."""
+"""Install the prebuilt Web data bundle (course JSON) from the assets Release."""
 import argparse
 import hashlib
 import json
 import shutil
-import subprocess
-import sys
 import tempfile
 import urllib.request
 import zipfile
@@ -37,6 +35,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tag", default=DEFAULT_TAG)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--dest", type=Path, help="target directory (default: <root>/apps/web/public/data)")
     args = parser.parse_args()
     base = f"https://github.com/{RELEASE_REPO}/releases/download/{args.tag}"
 
@@ -58,7 +57,7 @@ def main() -> None:
         if data_path.stat().st_size != item["bytes"] or sha256(data_path) != item["sha256"]:
             raise ValueError("data.zip size or SHA-256 mismatch")
 
-        destination = args.root / "apps/web/public/data"
+        destination = args.dest or args.root / "apps/web/public/data"
         destination.mkdir(parents=True, exist_ok=True)
         with zipfile.ZipFile(data_path) as archive:
             for entry in archive.infolist():
@@ -70,9 +69,7 @@ def main() -> None:
                 with archive.open(entry) as source, target.open("wb") as output:
                     shutil.copyfileobj(source, output)
 
-    print(f"Installed Web data into {(args.root / 'apps/web/public/data').resolve()}")
-    subprocess.run([sys.executable, str(Path(__file__).with_name("apply-content-errata.py")),
-                    "--data", str(destination)], check=True)
+    print(f"Installed Web data into {destination.resolve()}")
 
 
 if __name__ == "__main__":

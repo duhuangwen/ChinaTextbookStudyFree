@@ -18,7 +18,7 @@ npm run lint --workspace=china-study-free           # next lint
 ```
 
 - `build:data` 经 `apps/web/scripts/run-python.ts` 调用 `scripts/tts/web_audio.py`：按 `PYTHON` 环境变量 → Windows `py -3`/`python`/`python3`，其它系统 `python3`/`python` 的顺序探测 Python 3.9+，并追加 `-X utf8`。npm script 中不要直接写 `python3`。只需要数据/页面时可在 `apps/web` 下直接 `npx tsx scripts/build-data.ts` 再 `npx next build`，跳过 MP3 转码。
-- 资源（音频/插画/课本页/`public/data`/`data/`）不在 Git 中，由 Release 下载：完整包 `python scripts/install-release.py --tag v1.2.0-assets`（约 2 GB，需 FFmpeg/libmp3lame 生成 Web MP3）；只要课程 JSON 用 `python scripts/install-web-data.py`（约 5 MB，Android CI 用这个）。
+- 资源（音频/插画/课本页/`public/data`/`data/`）不在 Git 中，由 Release 下载：完整包 `python scripts/install-release.py --tag v1.2.0-assets`（约 2 GB，需 FFmpeg/libmp3lame 生成 Web MP3）；只要课程 JSON 用 `python scripts/install-web-data.py`（约 5 MB）。Android CI 用 `install-web-data.py --dest <dir>` 下载到别处，再 `build-data.ts --prebuilt <dir>` 从 `output/` 生成课程，只借用 Release 包里的课文/故事与预录音频索引。
 - 行为回归脚本（不在 `npm test` 中，需手动跑）：
   - `npx tsx scripts/checks/intro-narration.ts`、`npx tsx scripts/checks/tts-legacy-audio.ts`、`node scripts/checks/service-worker.mjs`
   - `python scripts/checks/web-audio-compat.py [--self-test]`、`python scripts/checks/docker-site.py --origin http://localhost:8080`
