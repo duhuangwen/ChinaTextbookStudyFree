@@ -64,6 +64,12 @@ export default function StoryReaderClient({ story, backHref }: Props) {
     return () => { abortRef.current = true; stopTTS(); };
   }, []);
 
+  // On TV the sentence list scrolls inside its card, so follow the sentence being read aloud.
+  useEffect(() => {
+    if (currentIndex === null) return;
+    document.querySelector(`[data-story-sentence="${currentIndex}"]`)?.scrollIntoView({ block: "nearest" });
+  }, [currentIndex]);
+
   const hasAudio = story.sentences.some(s => s.audio);
 
   const playSingle = useCallback(async (idx: number) => {
@@ -182,13 +188,13 @@ export default function StoryReaderClient({ story, backHref }: Props) {
             {/* 桌面双栏：配图(左) + 正文(右)；移动端顺序堆叠 */}
             <div
               className={cn(
-                "max-w-md lg:max-w-6xl mx-auto",
+                "tv-story-read max-w-md lg:max-w-6xl mx-auto",
                 story.image && "lg:grid lg:grid-cols-[3fr_2fr] lg:gap-6 lg:items-start",
               )}
             >
               {/* 配图 */}
               {story.image && (
-                <div className="px-4 pt-4 lg:pt-5">
+                <div className="tv-story-image px-4 pt-4 lg:pt-5">
                   <div className="relative rounded-2xl overflow-hidden bg-white border border-bg-softer shadow-sm">
                     <img
                       src={story.image}
@@ -200,13 +206,14 @@ export default function StoryReaderClient({ story, backHref }: Props) {
               )}
 
               {/* 正文 */}
-              <div className="px-4 pt-5 lg:pt-5">
+              <div className="tv-story-text px-4 pt-5 lg:pt-5">
                 <div className="rounded-2xl bg-white border border-bg-softer p-4 shadow-sm">
                   {story.sentences.map((s, i) => {
                     const active = currentIndex === i;
                     return (
                       <div
                         key={i}
+                        data-story-sentence={i}
                         className={cn(
                           "flex items-start gap-2 rounded-lg px-2 py-2 my-0.5 transition-colors",
                           active && "bg-primary/10 ring-1 ring-primary/40",
@@ -250,9 +257,9 @@ export default function StoryReaderClient({ story, backHref }: Props) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.25 }}
-            className="max-w-md lg:max-w-2xl mx-auto px-4 py-5"
+            className="tv-question-area max-w-md lg:max-w-2xl mx-auto px-4 py-5"
           >
-            <div className="bg-white rounded-2xl border border-bg-softer p-5 mb-4 shadow-sm">
+            <div className="tv-question-stage bg-white rounded-2xl border border-bg-softer p-5 mb-4 shadow-sm">
               <QuestionRenderer
                 question={currentQuestion}
                 answer={answer}

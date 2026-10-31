@@ -402,6 +402,42 @@ html.tv-mode .tv-feedback > button {
   grid-row: 1 / span 2;
 }
 
+/* Story reading fits between the header and the fixed action bar; long texts scroll inside their card. */
+html.tv-mode main:has(.tv-story-read) {
+  padding-bottom: 0 !important;
+}
+
+html.tv-mode .tv-story-read {
+  height: calc(100vh - 9.75rem);
+  align-items: stretch !important;
+}
+
+html.tv-mode .tv-story-read > * {
+  min-height: 0;
+  height: 100%;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem;
+}
+
+html.tv-mode .tv-story-image > div {
+  height: 100%;
+}
+
+html.tv-mode .tv-story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+html.tv-mode .tv-story-text > div {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+html.tv-mode .tv-story-text span {
+  line-height: 1.7 !important;
+}
+
 html.tv-mode .tv-char-pad {
   grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
   margin-top: 1rem !important;
