@@ -50,9 +50,9 @@ export function usePinyinRubySetting(): [boolean, (on: boolean) => void] {
   return [on, update];
 }
 
-/** Chinese lessons carry a `chinese-` book/lesson prefix; only grades 1–2 get pinyin. */
-export function isLowerGradeChinese(id: string | undefined): boolean {
-  return !!id && /^chinese-g[12](up|down)\b/.test(id);
+/** Grades 1–2 of every Chinese-language subject get pinyin: `chinese-g1up…`, math `g1up…`, `science-g1up…`. */
+export function isLowerGradePinyin(id: string | undefined): boolean {
+  return !!id && /^(chinese-|science-)?g[12](up|down)\b/.test(id);
 }
 
 export function isChineseContent(id: string | undefined): boolean {
@@ -67,15 +67,16 @@ export function revealsPronunciation(question: Question): boolean {
 
 export function PinyinRubyScope({ contentId, children }: { contentId: string | undefined; children: ReactNode }) {
   const [setting] = usePinyinRubySetting();
-  return <RubyEnabled.Provider value={setting && isLowerGradeChinese(contentId)}>{children}</RubyEnabled.Provider>;
+  return <RubyEnabled.Provider value={setting && isLowerGradePinyin(contentId)}>{children}</RubyEnabled.Provider>;
 }
 
 /**
  * Chinese content: school-style ɑ/ɡ glyphs for Latin letters (.zh-content), plus pinyin for grades 1–2.
+ * Lower-grade math and science get the pinyin only; their Latin letters are units and variables.
  * `display: contents` keeps the wrapper out of the page layout.
  */
 export function ChineseContent({ contentId, children }: { contentId: string | undefined; children: ReactNode }) {
-  if (!isChineseContent(contentId)) return <>{children}</>;
+  if (!isChineseContent(contentId)) return <PinyinRubyScope contentId={contentId}>{children}</PinyinRubyScope>;
   return (
     <div className="zh-content" style={{ display: "contents" }}>
       <PinyinRubyScope contentId={contentId}>{children}</PinyinRubyScope>
