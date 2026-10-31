@@ -121,7 +121,6 @@ export function WordOrderQuestion({
             <motion.button
               key={`pick-${i}`}
               type="button"
-              layout
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
@@ -145,7 +144,6 @@ export function WordOrderQuestion({
             key={`opt-${i}`}
             ref={remaining[0] === i ? tvFocusRef : undefined}
             type="button"
-            layout
             whileTap={!disabled ? { scale: 0.98 } : undefined}
             onClick={() => pick(i)}
             disabled={disabled}
