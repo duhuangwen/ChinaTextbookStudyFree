@@ -190,13 +190,14 @@ export function ProfileClient() {
               </div>
             </section>
 
-            <div className="lg:col-span-3">
+            {/* Focusable so the TV remote can stop here and scroll the whole card into view. */}
+            <div className="lg:col-span-3 rounded-3xl" tabIndex={0}>
               {hydrated && <WeeklyReportCard />}
             </div>
           </div>
         </ProfileGroup>
 
-        <div className="tv-profile-wide">
+        <div className="tv-profile-wide rounded-3xl" tabIndex={0}>
           {hydrated && <AchievementWall />}
         </div>
 
