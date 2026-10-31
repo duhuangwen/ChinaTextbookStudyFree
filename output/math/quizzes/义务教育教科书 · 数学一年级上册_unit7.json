@@ -68,15 +68,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "钟面结构的认识",
-        "question": "钟面上最长的针叫什么名字？",
+        "question": "钟面上又长又细的针叫什么名字？",
         "options": [
           "时针",
           "分针",
-          "秒针",
-          "长针"
+          "钟面",
+          "数字"
         ],
         "answer": "分针",
-        "explanation": "一年级标准教材定义：长针是分针，短针是时针。秒针暂不涉及。"
+        "explanation": "一年级认识钟表：长针是分针，短针是时针。"
       },
       {
         "id": 7,
@@ -132,7 +132,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "作息时间的先后逻辑",
-        "question": "小红上午9时去图书馆，11时回家。他在图书馆待了几个小时？",
+        "question": "小红上午9时去图书馆，11时回家。她在图书馆待了几个小时？",
         "options": [
           "1小时",
           "2小时",
@@ -360,10 +360,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "作息时间的先后逻辑",
-        "question": "早晨太阳从东方升起，这时大约是6时。",
+        "question": "小学生通常在早上7时左右起床。",
         "options": [],
         "answer": "对",
-        "explanation": "符合常识及时间认知。"
+        "explanation": "符合小学生的作息规律，早上7时左右起床上学。"
       },
       {
         "id": 4,
@@ -504,7 +504,7 @@
         "type": "choice",
         "score": 5,
         "difficulty": 2,
-        "knowledge_point": "整时的認读与记录",
+        "knowledge_point": "整时的认读与记录",
         "question": "时针指向3，分针指向12，正确的读法是：",
         "options": [
           "12时",
@@ -521,7 +521,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "作息时间的先后逻辑",
-        "question": "妈妈今天 7时 出出门，9时 回家，妈妈出门了多久？",
+        "question": "妈妈今天 7时 出门，9时 回家，妈妈出门了多久？",
         "options": [
           "1小时",
           "2小时",
@@ -553,7 +553,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "整时的认读与记录",
-        "question": "钟面上，时针走过数字10，分针指向12，这时是：",
+        "question": "钟面上，时针指向10，分针指向12，这时是：",
         "options": [
           "10时",
           "11时",
@@ -569,15 +569,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "作息时间的先后逻辑",
-        "question": "以下哪个时间我们已经在深度睡眠？",
+        "question": "下面哪个时间，我们通常正在睡觉？",
         "options": [
-          "2:00",
-          "12:00",
-          "18:00",
-          "20:00"
+          "凌晨2时",
+          "中午12时",
+          "下午3时",
+          "上午10时"
         ],
-        "answer": "2:00",
-        "explanation": "凌晨2时是深度睡眠时间。"
+        "answer": "凌晨2时",
+        "explanation": "凌晨2时是半夜，我们正在睡觉；其他时间都是白天。"
       },
       {
         "id": 18,
@@ -587,7 +587,7 @@
         "knowledge_point": "整时的认读与记录",
         "question": "在电子钟上，冒号右边显示“00”代表什么？",
         "options": [
-          "0分钟",
+          "1时",
           "整时",
           "没电了",
           "下午"

@@ -172,7 +172,7 @@
           "h-o-a"
         ],
         "answer": "h-u-a",
-        "explanation": "花hhuā是三拼音节，声母h，介母u，韵母a。"
+        "explanation": "花huā是三拼音节，声母h，介母u，韵母a。"
       },
       {
         "id": 13,
@@ -228,10 +228,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "复韵母辨析与拼读",
-        "question": "‘梅花’的‘梅’字的复韵母是（___）。",
+        "question": "“梅花”的“梅”读méi，它的韵母ei是单韵母还是复韵母？",
         "options": [],
-        "answer": "ei",
-        "explanation": "梅méi，复韵母是ei。"
+        "answer": "复韵母",
+        "explanation": "ei由e和i组成，是复韵母。"
       },
       {
         "id": 17,
@@ -239,10 +239,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "前鼻韵母与后鼻韵母区分",
-        "question": "‘今天’的‘今’字是前鼻音，它的韵母是（___）。",
+        "question": "“今天”的“今”读jīn，它的韵母是前鼻韵母还是后鼻韵母？",
         "options": [],
-        "answer": "in",
-        "explanation": "今jīn，韵母是in。"
+        "answer": "前鼻韵母",
+        "explanation": "今jīn，韵母in以n结尾，是前鼻韵母。"
       },
       {
         "id": 18,
@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "前鼻韵母与后鼻韵母区分",
-        "question": "‘月亮’的‘亮’字，韵母属于后鼻韵母（___）。",
+        "question": "“月亮”的“亮”读liàng，它的韵母是前鼻韵母还是后鼻韵母？",
         "options": [],
-        "answer": "ang",
-        "explanation": "亮liàng，韵母是ang。"
+        "answer": "后鼻韵母",
+        "explanation": "亮liàng以ng结尾，是后鼻韵母。"
       },
       {
         "id": 19,
@@ -477,7 +477,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "复韵母辨析与拼读",
-        "question": "短文选读：‘小牛过河，河水浅。小燕子说：河水可深啦！’句中‘牛’和‘流’的韵母是：",
+        "question": "“小牛喝水，河水流。”句中“牛”和“流”的韵母是：",
         "options": [
           "iu",
           "ui",
@@ -562,10 +562,10 @@
           "京",
           "安",
           "雄",
-          "门"
+          "北"
         ],
         "answer": "安",
-        "explanation": "安ān是典型的开音节前鼻音。"
+        "explanation": "安ān的韵母an是前鼻韵母；京、雄是后鼻韵母，北的韵母是ei。"
       },
       {
         "id": 16,
@@ -573,10 +573,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "前鼻韵母与后鼻韵母区分",
-        "question": "‘春天’的‘春’，韵母是（___）。",
+        "question": "“春天”的“春”读chūn，它的韵母是前鼻韵母还是后鼻韵母？",
         "options": [],
-        "answer": "un",
-        "explanation": "春chūn，韵母是un。"
+        "answer": "前鼻韵母",
+        "explanation": "春chūn，韵母un以n结尾，是前鼻韵母。"
       },
       {
         "id": 17,
@@ -584,10 +584,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "复韵母辨析与拼读",
-        "question": "‘学校’的‘校’字，其中的复韵母是（___）。",
+        "question": "“学校”的“校”读xiào，其中的ao是单韵母还是复韵母？",
         "options": [],
-        "answer": "ao",
-        "explanation": "校xiào，介母是i，韵母是ao。"
+        "answer": "复韵母",
+        "explanation": "ao由a和o组成，是复韵母。"
       },
       {
         "id": 18,
@@ -595,10 +595,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "整体认读音节应用",
-        "question": "‘白云’的‘云’字的整体认读音节是（___）。",
+        "question": "“白云”的“云”读yún，它是不是整体认读音节？填“是”或“不是”。",
         "options": [],
-        "answer": "yun",
-        "explanation": "云yún是整体认读音节。"
+        "answer": "是",
+        "explanation": "yun是整体认读音节，直接读出。"
       },
       {
         "id": 19,
@@ -667,10 +667,10 @@
           "弟弟",
           "在灯下",
           "看书",
-          "认真的"
+          "认真地"
         ],
-        "answer": "弟弟,在灯下,认真的,看书",
-        "explanation": "修饰语‘认真的’放在动词‘看书’前面。"
+        "answer": "弟弟,在灯下,认真地,看书",
+        "explanation": "修饰动作的“认真地”放在“看书”前面。"
       }
     ]
   },

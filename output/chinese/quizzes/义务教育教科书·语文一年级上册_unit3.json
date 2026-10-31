@@ -24,10 +24,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "单韵母及其四声调认读",
-        "question": "韵母 'o' 的第二声读音就像我们在马路上遇到熟人打招呼时的 '哦'。",
+        "question": "韵母o的第二声ó，读起来像我们有疑问时说的“哦？”。",
         "options": [],
         "answer": "对",
-        "explanation": "o的二声向上扬，发音类似于惊讶或打招呼的'ó'。"
+        "explanation": "ó向上扬，像有疑问时说的“哦？”。"
       },
       {
         "id": 3,
@@ -228,10 +228,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "两拼音节的拼读方法",
-        "question": "拼一拼：b—ù—( ____ )。",
+        "question": "拼一拼：b—ù→bù。“我（ ____ ）怕黑。”括号里填哪个字？",
         "options": [],
-        "answer": "布",
-        "explanation": "b和ù相拼得出bù，常见汉字是'布'。"
+        "answer": "不",
+        "explanation": "b和ù相拼得bù，“我不怕黑”填“不”。"
       },
       {
         "id": 17,
@@ -239,10 +239,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "单韵母及其四声调认读",
-        "question": "单韵母 a, o, ( ____ ), i, u, ü，括号里应该填哪个字母？",
+        "question": "单韵母 a、o、e、i、u、ü，一共有（ ____ ）个。",
         "options": [],
-        "answer": "e",
-        "explanation": "单韵母的顺序通常是a o e i u ü。"
+        "answer": "六",
+        "explanation": "单韵母有a、o、e、i、u、ü六个。"
       },
       {
         "id": 18,
@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "两拼音节的拼读方法",
-        "question": "声母 'p' 和韵母 'à' 拼在一起，对应的汉字是' ( ____ ) 步'。",
+        "question": "声母 p 和韵母 à 拼在一起读 pà。“我不（ ____ ）。”括号里填哪个字？",
         "options": [],
-        "answer": "跑",
-        "explanation": "此处考察pà，对应汉字'怕'，但在语境中题目指拼音，若结合常见词，p-à拼出pà。"
+        "answer": "怕",
+        "explanation": "p-à→pà，“我不怕”。"
       },
       {
         "id": 19,
@@ -261,19 +261,19 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "两拼音节的拼读方法",
-        "question": "请将图片中的事物与对应的拼音连线。",
+        "question": "请将词语与对应的拼音连线。",
         "options": [
           "喇叭",
-          "词典",
-          "地毯",
+          "木马",
+          "大米",
           "瀑布",
           "mù mǎ",
           "pù bù",
           "lǎ ba",
-          "dì tǎn"
+          "dà mǐ"
         ],
-        "answer": "A-3,B-4,C-2,D-1",
-        "explanation": "喇叭-lǎ ba, 词典-此处指dì tǎn(地毯)与lǎ ba(喇叭)之类音节匹配。重新核对：A-喇叭对应7（lǎ ba），B-词典对应8(此题模板限定4x4)，修正：A喇叭-lǎ ba, B瀑布-pù bù, C木马-mù mǎ, D地毯-dì tǎn"
+        "answer": "A-3,B-1,C-4,D-2",
+        "explanation": "喇叭-lǎ ba，木马-mù mǎ，大米-dà mǐ，瀑布-pù bù。"
       },
       {
         "id": 20,
@@ -420,10 +420,10 @@
           "jū",
           "qǔ",
           "xù",
-          "nū"
+          "jǚ"
         ],
-        "answer": "nū",
-        "explanation": "n和ü相拼必须保留两点写成nǚ，nū是n与u拼，属于合法音节但在ü的规则下此处nū无两点不能表示'女'。"
+        "answer": "jǚ",
+        "explanation": "j、q、x和ü相拼时要去掉两点，jǚ应写成jǔ。"
       },
       {
         "id": 7,
@@ -479,7 +479,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "两拼音节的拼读方法",
-        "question": "看到一位大佛，'佛'字的声母是：",
+        "question": "“头发”的“发”字，声母是：",
         "options": [
           "b",
           "p",
@@ -487,7 +487,7 @@
           "f"
         ],
         "answer": "f",
-        "explanation": "佛的读音是fó，声母是f。"
+        "explanation": "发的读音是fà，声母是f。"
       },
       {
         "id": 11,
@@ -511,15 +511,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "两拼音节的拼读方法",
-        "question": "下列哪个音节的声调标错了？",
+        "question": "下列哪个音节是第三声？",
         "options": [
           "bā",
           "tǎ",
-          "mǒ",
+          "mō",
           "pú"
         ],
-        "answer": "mǒ",
-        "explanation": "m-ǒ虽然拼法正确，但作为题干检查，此处应观察是否有不合日常常用词规律。考点在于拼读准确性。"
+        "answer": "tǎ",
+        "explanation": "tǎ上面的声调符号是拐弯的“ˇ”，是第三声。"
       },
       {
         "id": 13,
@@ -575,10 +575,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "两拼音节的拼读方法",
-        "question": "我会填：m — ( ____ ) — mǎ。",
+        "question": "拼一拼：m—ǎ→mǎ。小（ ____ ）在吃草。括号里填哪个字？",
         "options": [],
-        "answer": "ǎ",
-        "explanation": "m和ǎ相拼得到mǎ。"
+        "answer": "马",
+        "explanation": "m和ǎ相拼得mǎ，是“马”。"
       },
       {
         "id": 17,
@@ -586,10 +586,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "单韵母及其四声调认读",
-        "question": "按声调顺序，'ā' 的后面一个声调是 ( ____ )。",
+        "question": "ā 是第一声，á 是第（ ____ ）声。",
         "options": [],
-        "answer": "á",
-        "explanation": "一声后面是二声。"
+        "answer": "二",
+        "explanation": "一声平ā，二声扬á。"
       },
       {
         "id": 18,
@@ -597,10 +597,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "j、q、x与ü相拼规则",
-        "question": "拼一拼：x — ü — ( ____ )。",
+        "question": "x 和 ü 相拼时，ü 上的两点要（ ____ ）掉。",
         "options": [],
-        "answer": "xu",
-        "explanation": "x遇到ü去两点写成xu。"
+        "answer": "去",
+        "explanation": "小ü见到j、q、x，去掉两点还念ü。"
       },
       {
         "id": 19,

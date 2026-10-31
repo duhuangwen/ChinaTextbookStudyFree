@@ -24,10 +24,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "图形与时间的综合回顾",
-        "question": "长方体有 6 个面，而且每个面都是长方形。",
+        "question": "长方体有 6 个面，而且面都是平平的。",
         "options": [],
-        "answer": "错",
-        "explanation": "长方体有6个面，但有的长方体其中两个相对的面可能是正方形。"
+        "answer": "对",
+        "explanation": "长方体有 6 个面，每个面都是平平的。"
       },
       {
         "id": 3,
@@ -212,12 +212,12 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "20以内数与运算的综合",
-        "question": "$16 - 3$ 的符号应该填什么？$16 - 3 \bigcirc 14$",
+        "question": "在 $16 - 3 \\bigcirc 14$ 的圆圈里应该填什么符号？",
         "options": [
           ">",
           "<",
           " =",
-          "≈"
+          "+"
         ],
         "answer": "<",
         "explanation": "$16 - 3 = 13$，$13 < 14$。"
@@ -409,7 +409,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "20以内数与运算的综合",
-        "question": "算式 $8 + \bigcirc = 15$ 中，$\bigcirc$ 里的数应该是多少？",
+        "question": "算式 $8 + \\bigcirc = 15$ 中，$\\bigcirc$ 里的数应该是多少？",
         "options": [
           "6",
           "7",
@@ -505,12 +505,12 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "20以内数与运算的综合",
-        "question": "$10 - 2 \bigcirc 5 + 3$，圆圈里填什么？",
+        "question": "$10 - 2 \\bigcirc 5 + 3$，圆圈里填什么？",
         "options": [
           ">",
           "<",
           " =",
-          "≈"
+          "+"
         ],
         "answer": " =",
         "explanation": "$10 - 2 = 8$，$5 + 3 = 8$，两个算式结果相等。"
@@ -569,15 +569,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "图形与时间的综合回顾",
-        "question": "一个正方体一共有多少个顶点？",
+        "question": "一个正方体一共有多少个面？",
         "options": [
           "4",
           "6",
           "8",
           "12"
         ],
-        "answer": "8",
-        "explanation": "正方体（类似魔方）上面 4 个顶点，下面 4 个顶点，共 8 个。"
+        "answer": "6",
+        "explanation": "正方体有上、下、前、后、左、右 6 个面。"
       },
       {
         "id": 18,
@@ -585,15 +585,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "多步实际问题的解决",
-        "question": "有 13 个小朋友玩捉迷藏，已经捉住了 3 个，还有几个人没被捉住？",
+        "question": "有 13 个小朋友藏起来玩捉迷藏，已经被找到了 3 个，还有几个没被找到？",
         "options": [
           "10",
           "9",
           "11",
           "8"
         ],
-        "answer": "9",
-        "explanation": "总共 13 人，其中 1 人是寻找者，被捉对象有 $13 - 1 = 12$ 人。$12 - 3 = 9$ 人。验算：$9 + 3 + 1 = 13$ ✓。"
+        "answer": "10",
+        "explanation": "藏起来的一共13个，找到了3个：$13 - 3 = 10$（个）。验算：$10 + 3 = 13$ ✓。"
       },
       {
         "id": 19,
@@ -623,7 +623,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "20以内数与运算的综合",
-        "question": "在算式 $19 - \bigcirc = 10$ 中，$\bigcirc$ 里的数是 ___。",
+        "question": "在算式 $19 - \\bigcirc = 10$ 中，$\\bigcirc$ 里的数是 ___。",
         "options": [],
         "answer": "9",
         "explanation": "减法算式中，减数 = 被减数 - 差。$19 - 10 = 9$。"

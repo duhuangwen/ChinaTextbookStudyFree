@@ -72,7 +72,7 @@
         "options": [
           "春风吹",
           "冬雪落",
-          "秋霜降",
+          "秋霜吹",
           "夏雨飘"
         ],
         "answer": "春风吹",
@@ -116,7 +116,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "汉语拼音字母表",
-        "question": "字母表顺序中，J KL ( ) N，括号里应该填：",
+        "question": "字母表顺序中，J K L ( ) N，括号里应该填：",
         "options": [
           "I",
           "M",
@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "姓氏介绍与拆字法",
-        "question": "“双口”合起来是什么姓？",
+        "question": "两个“口”上下摞在一起，是什么姓？",
         "options": [
           "吕",
           "回",
@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "字谜逻辑推理",
-        "question": "一加一（猜一个字）：",
+        "question": "两个“木”字并排站（猜一个字）：",
         "options": [],
-        "answer": "王",
-        "explanation": "“一”下面加“十”是土，再加一横是“王”；本题通常指“王”字的构造。"
+        "answer": "林",
+        "explanation": "两个“木”左右并排组成“林”字。"
       },
       {
         "id": 19,
@@ -404,10 +404,10 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "字谜逻辑推理",
-        "question": "谜语“双木不成林”的谜底是“相”字。",
+        "question": "“三个木”合起来是“林”字。",
         "options": [],
         "answer": "错",
-        "explanation": "“双木”是“林”，此处题目说法不具逻辑，通常是指“相”字包含木，但双木是林。"
+        "explanation": "两个“木”是“林”，三个“木”是“森”。"
       },
       {
         "id": 6,
@@ -463,7 +463,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "形声字构字规律（青字族）",
-        "question": "选词填空：我们要保护（___）的小青蛙。",
+        "question": "选字填空：我们要保护小（___）蛙。",
         "options": [
           "清",
           "晴",
@@ -479,7 +479,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "字谜逻辑推理",
-        "question": "字迷：“一人一张口，口下长只手。”谜底是：",
+        "question": "字谜：“一人一张口，口下长只手。”谜底是：",
         "options": [
           "合",
           "拿",
@@ -535,7 +535,7 @@
           "好坏"
         ],
         "answer": "时间",
-        "explanation": "春夏秋三季是按一年中的时间先后排序的。"
+        "explanation": "夏、秋、冬三个季节是按一年中的时间先后排列的。"
       },
       {
         "id": 14,

@@ -276,10 +276,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "校园植物调查",
-        "question": "我们在校园里观察了（___）个不同地点的植物。",
+        "question": "我们在花坛里观察了3棵植物，在草地上观察了2棵植物，一共观察了（___）棵植物。",
         "options": [],
-        "answer": "1",
-        "explanation": "由于一年级实操性强，通常以一个具体区域（如花坛）为起点进行深度调查。"
+        "answer": "5",
+        "explanation": "把两个地方观察的植物合起来：$3 + 2 = 5$（棵）。"
       },
       {
         "id": 20,
@@ -298,10 +298,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "植物的器官",
-        "question": "植物进行光合作用获取能量的主要器官是（___）。",
+        "question": "植物身上绿绿的、薄薄的，长在茎上的部分是（___）。",
         "options": [],
         "answer": "叶",
-        "explanation": "叶片是植物呼吸和制造养分的场所。"
+        "explanation": "叶通常是绿色的、薄薄的，长在茎上。"
       },
       {
         "id": 22,
@@ -320,10 +320,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "观察态度",
-        "question": "我们在观察植物时，要做到不伤害（___）。",
+        "question": "我们在观察植物时，不能伤害植物，因为植物是有（___）的。",
         "options": [],
         "answer": "生命",
-        "explanation": "科学观察的基础是尊重和爱护每一个生命。"
+        "explanation": "植物是有生命的，科学观察要尊重和爱护每一个生命。"
       }
     ]
   },
@@ -601,10 +601,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "生活经验",
-        "question": "大多数花朵包含（___）个基本部分（花萼、花瓣、雄蕊、雌蕊）。",
+        "question": "我们观察一棵小草，看到了它的根、茎、叶，一共是（___）个部分。",
         "options": [],
-        "answer": "4",
-        "explanation": "完全花由四个部分组成。"
+        "answer": "3",
+        "explanation": "根、茎、叶，一共3个部分。"
       },
       {
         "id": 20,
