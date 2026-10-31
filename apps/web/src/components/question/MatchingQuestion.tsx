@@ -272,7 +272,7 @@ export function MatchingQuestion({
           <motion.div
             initial={{ y: 6, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="mt-4 space-y-2"
+            className="tv-match-answers mt-4 space-y-2"
           >
             <div className="text-center text-sm font-bold text-ink-light">正确配对：</div>
             {LEFT_KEYS.slice(0, pairTotal).map((k, i) =>

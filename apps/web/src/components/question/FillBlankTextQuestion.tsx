@@ -157,7 +157,7 @@ export function FillBlankTextQuestion({
 
       {/* 汉字键盘 */}
       <div
-        className="mt-6 grid gap-3 select-none"
+        className="tv-char-pad mt-6 grid gap-3 select-none"
         style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
       >
         {candidates.map((ch, i) => (

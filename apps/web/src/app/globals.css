@@ -374,6 +374,56 @@ html.tv-mode .tv-question-stage > div > :first-child {
   margin-bottom: 0;
 }
 
+/* The answer feedback covers the lower third of a 720px screen; one row keeps the answer above it visible. */
+html.tv-mode .tv-feedback {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  column-gap: 2rem;
+  align-items: center;
+  max-width: min(920px, 94vw) !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+html.tv-mode .tv-feedback > * {
+  grid-column: 1;
+}
+
+html.tv-mode .tv-feedback > :first-child {
+  margin-bottom: 0.25rem !important;
+}
+
+html.tv-mode .tv-feedback > :nth-child(2) {
+  margin-bottom: 0 !important;
+}
+
+html.tv-mode .tv-feedback > button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+html.tv-mode .tv-char-pad {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  margin-top: 1rem !important;
+}
+
+html.tv-mode .tv-match-answers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-top: 0.75rem !important;
+}
+
+html.tv-mode .tv-match-answers > * {
+  margin-top: 0 !important;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+html.tv-mode .tv-match-answers > :first-child {
+  grid-column: 1 / -1;
+}
+
 html.tv-mode .tv-control-hint {
   display: block;
   position: fixed;
