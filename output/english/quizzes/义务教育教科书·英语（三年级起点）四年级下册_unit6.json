@@ -230,7 +230,7 @@
         "knowledge_point": "询问商品价格",
         "question": "___ much is this shirt?",
         "options": [],
-        "answer": "how",
+        "answer": "How",
         "explanation": "询问价格固定搭配 How much。"
       },
       {
@@ -363,10 +363,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "询问商品价格",
-        "question": "询问‘这几封信多少钱’可以说 'How much is these letters?'",
+        "question": "询问‘这些手套多少钱’可以说 'How much is these gloves?'",
         "options": [],
         "answer": "错",
-        "explanation": "these letters 是复数，必须用 How much are...?"
+        "explanation": "these gloves 是复数，必须用 How much are...?"
       },
       {
         "id": 3,
@@ -487,15 +487,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "询问商品价格",
-        "question": "Can I try ________?",
+        "question": "These shoes are nice. Can I try ________?",
         "options": [
-          "this on",
-          "on this",
           "them on",
-          "it on"
+          "on them",
+          "it on",
+          "on it"
         ],
         "answer": "them on",
-        "explanation": "虽然 A 或 D 在语法上也可，但在该单元通常指代试穿复数衣物（如鞋子）或概括性试穿，选项中 them on 是最典型的代词宾语提前用法。"
+        "explanation": "these shoes 是复数，用 them 指代；try on 的宾语是代词时放在中间：try them on。"
       },
       {
         "id": 12,
@@ -551,7 +551,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "描述与评价商品",
-        "question": "Waitress: Size 6? Customer: No, it's ________.",
+        "question": "—Size 6? —No, it's ________. Can I have size 7?",
         "options": [
           "too small",
           "just right",
@@ -559,7 +559,7 @@
           "too big"
         ],
         "answer": "too small",
-        "explanation": "对话中暗示不合适，too small 或 too big 符合逻辑，这里选 A。"
+        "explanation": "顾客要换大一号的 7 号，说明 6 号太小了（too small）。"
       },
       {
         "id": 16,
@@ -676,7 +676,7 @@
           "shoes"
         ],
         "answer": "How,much,are,the,shoes",
-        "explanation": "复数问价结构：How much + are + identifying noun。"
+        "explanation": "复数问价结构：How much + are + 复数名词？"
       }
     ]
   },

@@ -46,10 +46,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "语法规则",
-        "question": "在英国，人们过马路时靠右侧走。",
+        "question": "在英国，汽车靠道路右侧行驶。",
         "options": [],
         "answer": "错",
-        "explanation": "In the UK, people drive/walk on the left side (左侧)。"
+        "explanation": "In the UK, drivers drive on the left side of the road. 英国车辆靠左行驶。"
       },
       {
         "id": 5,
@@ -88,11 +88,11 @@
         "options": [
           "Go",
           "Fast",
-          "Stop",
-          "Wait"
+          "Slow down",
+          "Run"
         ],
-        "answer": "Wait",
-        "explanation": "黄灯表示等待（Wait）。"
+        "answer": "Slow down",
+        "explanation": "黄灯要减速并停下：Slow down and stop at a yellow light."
       },
       {
         "id": 8,
@@ -196,15 +196,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "交通安全",
-        "question": "Don't ___ on the road. It's dangerous.",
+        "question": "Don't ___ football on the road. It's dangerous.",
         "options": [
-          "walk",
-          "run",
+          "play",
+          "look",
           "go",
-          "look"
+          "walk"
         ],
-        "answer": "run",
-        "explanation": "不能在马路上奔跑。"
+        "answer": "play",
+        "explanation": "不要在马路上踢足球(play football)，很危险。"
       },
       {
         "id": 15,
@@ -228,7 +228,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "词汇拼写",
-        "question": "I go to the USA by ___.",
+        "question": "I go to the USA by ___ (飞机).",
         "options": [],
         "answer": "plane",
         "explanation": "去美国距离远，常选飞机plane。"
@@ -250,7 +250,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "句型转换",
-        "question": "Don't go at a red light. We must ___.",
+        "question": "Don't go at a red light. We must ___ (停下).",
         "options": [],
         "answer": "stop",
         "explanation": "红灯必须停下。"
@@ -330,17 +330,19 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "肯定的肯定句规则",
-        "question": "连词成句：must, We, attention, pay, to, lights",
+        "question": "连词成句：must, We, attention, pay, to, the, traffic, lights",
         "options": [
           "must",
           "We",
           "attention",
           "pay",
           "to",
+          "the",
+          "traffic",
           "lights"
         ],
-        "answer": "We,must,pay,attention,to,lights",
-        "explanation": "We must pay attention to... 我们必须注意..."
+        "answer": "We,must,pay,attention,to,the,traffic,lights",
+        "explanation": "We must pay attention to the traffic lights. 我们必须注意交通信号灯。"
       }
     ]
   },
@@ -490,15 +492,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "建议句型",
-        "question": "___ see a doctor if you feel ill.",
+        "question": "You ___ see a doctor if you feel ill.",
         "options": [
-          "Do",
-          "Go",
-          "Let",
-          "Should"
+          "should",
+          "are",
+          "do",
+          "is"
         ],
-        "answer": "Go",
-        "explanation": "Go see a doctor是祈使句建议。"
+        "answer": "should",
+        "explanation": "提建议用 should + 动词原形：You should see a doctor."
       },
       {
         "id": 12,
@@ -581,7 +583,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "频度副词",
-        "question": "I ___ go by bus, but sometimes I go on foot.",
+        "question": "I ___ (经常) go by bus, but sometimes I go on foot.",
         "options": [],
         "answer": "often",
         "explanation": "often对应sometimes，表示频率对比。"
@@ -674,13 +676,13 @@
         "knowledge_point": "祈使句",
         "question": "连词成句：Run, on, road, the, Don't",
         "options": [
-          "Run",
+          "run",
           "on",
           "road",
           "the",
           "Don't"
         ],
-        "answer": "Don't,Run,on,the,road",
+        "answer": "Don't,run,on,the,road",
         "explanation": "否定祈使句Don't + 动词原形。"
       }
     ]

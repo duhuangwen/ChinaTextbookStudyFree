@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "活动词组",
-        "question": "Let's go and ____ a film.",
+        "question": "Let's go and ____ a film. (看，3个字母)",
         "options": [],
         "answer": "see",
-        "explanation": "看电影搭配动词see。"
+        "explanation": "看电影 see a film，3个字母的是 see。"
       },
       {
         "id": 19,
@@ -376,10 +376,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "语义逻辑",
-        "question": "我们通常晚上(evening)去看电影(see a film)。",
+        "question": "'see a film' 的意思是'看电影'。",
         "options": [],
         "answer": "对",
-        "explanation": "语境逻辑成立。"
+        "explanation": "see a film 意为看电影。"
       },
       {
         "id": 4,
@@ -445,11 +445,11 @@
         "options": [
           "Yes, I want a book",
           "I like you",
-          "No, thanks",
+          "Yes, you can",
           "No, I can help you"
         ],
         "answer": "Yes, I want a book",
-        "explanation": "商店或服务性用语的礼貌回答。"
+        "explanation": "别人问 Can I help you? 时，说明自己的需要 Yes, I want a book 是得体回答。"
       },
       {
         "id": 9,
@@ -509,11 +509,11 @@
         "options": [
           "visiting",
           "visit",
-          "see",
-          "watch"
+          "visits",
+          "visited"
         ],
         "answer": "visit",
-        "explanation": "探望某人常用visit。"
+        "explanation": "want to 后接动词原形，探望某人用 visit。"
       },
       {
         "id": 13,

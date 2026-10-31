@@ -140,7 +140,7 @@
           "周长的一半"
         ],
         "answer": "半径",
-        "explanation": "割补法推导面积时，长方形的款等于圆的半径 $r$，长等于圆周长的一半 $\\pi r$。"
+        "explanation": "割补法推导面积时，长方形的宽等于圆的半径 $r$，长等于圆周长的一半 $\\pi r$。"
       },
       {
         "id": 11,
@@ -188,7 +188,7 @@
           "27"
         ],
         "answer": "3",
-        "explanation": "周长 $C = 2\\pi r$，周长与半径成正比，所以也是3倍。"
+        "explanation": "周长 $C = 2\\pi r$，半径扩大到原来的 3 倍，周长也扩大到原来的 3 倍。"
       },
       {
         "id": 14,
@@ -290,7 +290,7 @@
         "question": "一个半径为1分米的圆，它的面积是 ___ 平方厘米。（π取3.14）",
         "options": [],
         "answer": "314",
-        "explanation": "1分米=10厘米。$S = 3.14 \\times 10 \\times 10 = 314$平方厘米。验算：$314 \\div 3.14 = 100$, $\\sqrt{100} = 10$ ✓。"
+        "explanation": "1分米=10厘米。$S = 3.14 \\times 10 \\times 10 = 314$（平方厘米）。"
       },
       {
         "id": 21,
@@ -300,8 +300,8 @@
         "knowledge_point": "圆的周长计算",
         "question": "一个半圆的半径是10厘米，它的周长是 ___ 厘米。（π取3.14）",
         "options": [],
-        "answer": "51",
-        "explanation": "半圆周长 = 圆周长的一半 + 直径。$3.14 \\times 10 + 10 \\times 2 = 31.4 + 20 = 51.4$。按整数字符串要求填51（注：实际教学中通常保留小数，此处为适配系统要求取整）。"
+        "answer": "51.4",
+        "explanation": "半圆周长 = 圆周长的一半 + 直径。$3.14 \\times 10 + 10 \\times 2 = 31.4 + 20 = 51.4$（厘米）。"
       },
       {
         "id": 22,
@@ -311,8 +311,8 @@
         "knowledge_point": "圆的认识与特征",
         "question": "已知 $r = 5$，则 $2 \\times 3.14 \\times r = ?$",
         "options": [],
-        "answer": "31",
-        "explanation": "$2 \\times 3.14 \\times 5 = 31.4$，取整为31。"
+        "answer": "31.4",
+        "explanation": "$2 \\times 3.14 \\times 5 = 31.4$。"
       },
       {
         "id": 23,
@@ -322,8 +322,8 @@
         "knowledge_point": "圆的面积公式推导与应用",
         "question": "计算：$3.14 \\times 2^2 = ?$",
         "options": [],
-        "answer": "13",
-        "explanation": "$3.14 \\times 4 = 12.56$，取整为13。"
+        "answer": "12.56",
+        "explanation": "$3.14 \\times 4 = 12.56$。"
       }
     ]
   },
@@ -341,7 +341,7 @@
         "question": "圆心确定圆的位置，半径确定圆的大小。",
         "options": [],
         "answer": "对",
-        "explanation": "这是圆的基本性质：圆心定位，半径定法。"
+        "explanation": "这是圆的基本性质：圆心定位置，半径定大小。"
       },
       {
         "id": 2,
@@ -446,7 +446,7 @@
           "62.8",
           "31.4",
           "12.56",
-          "62.8"
+          "125.6"
         ],
         "answer": "62.8",
         "explanation": "$S = \\pi(R^2 - r^2) = 3.14 \\times (36 - 16) = 3.14 \\times 20 = 62.8$。"
@@ -505,15 +505,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "圆的面积公式推导与应用",
-        "question": "等底等高的长方形和圆相比，面积关系如何？",
+        "question": "把一个圆剪拼成一个近似的长方形，这个长方形的面积和原来圆的面积相比：",
         "options": [
           "长方形大",
           "圆大",
           "一样大",
           "无法比较"
         ],
-        "answer": "无法比较",
-        "explanation": "圆没有底和高的概念，通常与正方形比较。此题考查概念界定。"
+        "answer": "一样大",
+        "explanation": "剪拼只改变形状，不改变大小，所以近似长方形的面积等于圆的面积，由此推出 $S = \\pi r^2$。"
       },
       {
         "id": 14,
@@ -593,7 +593,7 @@
           "2"
         ],
         "answer": "6.28",
-        "explanation": "周长变化量 $\\Delta C = 2\\pi \\Delta r = 2 \\times 3.14 \\times 1 = 6.28$。"
+        "explanation": "原周长 $2 \\times 3.14 \\times r$，新周长 $2 \\times 3.14 \\times (r + 1)$，增加 $2 \\times 3.14 \\times 1 = 6.28$（厘米）。"
       },
       {
         "id": 19,
@@ -601,10 +601,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "圆的周长计算",
-        "question": "一个圆的直径是5厘米，周长是 ___ 厘米。（结果取整）",
+        "question": "一个圆的直径是5厘米，周长是 ___ 厘米。（π取3.14）",
         "options": [],
-        "answer": "16",
-        "explanation": "$3.14 \\times 5 = 15.7$，取整为16。验算：$16 \\div 5 \\approx 3.2$ 符合π范围。"
+        "answer": "15.7",
+        "explanation": "$C = \\pi d = 3.14 \\times 5 = 15.7$（厘米）。"
       },
       {
         "id": 20,
@@ -612,10 +612,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "圆的面积公式推导与应用",
-        "question": "半径是2米的圆，它的面积是 ___ 平方米。（结果取整）",
+        "question": "半径是2米的圆，它的面积是 ___ 平方米。（π取3.14）",
         "options": [],
-        "answer": "13",
-        "explanation": "$3.14 \\times 2 \\times 2 = 12.56$, 取整为13。"
+        "answer": "12.56",
+        "explanation": "$S = \\pi r^2 = 3.14 \\times 2 \\times 2 = 12.56$（平方米）。"
       },
       {
         "id": 21,

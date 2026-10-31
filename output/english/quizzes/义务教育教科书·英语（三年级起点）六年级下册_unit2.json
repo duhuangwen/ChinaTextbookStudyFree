@@ -164,7 +164,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "短语搭配",
-        "question": "It _______ good.",
+        "question": "Last night my mum cooked noodles. They _______ good.",
         "options": [
           "look",
           "looks",
@@ -172,7 +172,7 @@
           "looked"
         ],
         "answer": "looked",
-        "explanation": "描述过去发生的事情，系动词look使用过去式looked。"
+        "explanation": "Last night 表示过去，系动词look使用过去式looked。"
       },
       {
         "id": 13,
@@ -241,8 +241,8 @@
         "knowledge_point": "否定回答",
         "question": "Did you watch TV? No, I ________.",
         "options": [],
-        "answer": "didnt",
-        "explanation": "一般过去时否定的简略回答用didn't(此处要求全小写字母不含符号)。"
+        "answer": "didn't",
+        "explanation": "一般过去时否定的简略回答用didn't。"
       },
       {
         "id": 18,
@@ -252,7 +252,7 @@
         "knowledge_point": "特殊疑问词",
         "question": "________ did you do yesterday afternoon?",
         "options": [],
-        "answer": "what",
+        "answer": "What",
         "explanation": "问做了什么事用what。"
       },
       {
@@ -438,7 +438,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "不规则动词",
-        "question": "I _____ it on TV yesterday.",
+        "question": "I _____ TV yesterday.",
         "options": [
           "see",
           "watch",
@@ -446,7 +446,7 @@
           "watched"
         ],
         "answer": "watched",
-        "explanation": "看电视节目的习惯用语是watch TV，过去式为watched。"
+        "explanation": "看电视的习惯用语是watch TV，yesterday 表示过去，过去式为watched。"
       },
       {
         "id": 9,
@@ -537,12 +537,12 @@
         "question": "What did you do ______ your holiday?",
         "options": [
           "on",
-          "in",
+          "of",
           "at",
-          "for"
+          "to"
         ],
         "answer": "on",
-        "explanation": "在假期中常用on your holiday。"
+        "explanation": "在假期中可以说on your holiday，of/at/to 不能这样搭配。"
       },
       {
         "id": 15,
@@ -577,10 +577,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "一般过去时否定形式",
-        "question": "I ________ (not watch) TV last night.",
+        "question": "I didn't ________ (watch) TV last night.",
         "options": [],
-        "answer": "didnt watch",
-        "explanation": "否定形式为didn't + 动词原形(不含标点写成didnt watch)。"
+        "answer": "watch",
+        "explanation": "否定形式为didn't + 动词原形，所以填watch。"
       },
       {
         "id": 18,
@@ -599,7 +599,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "形容词",
-        "question": "The show was ________ (好极了).",
+        "question": "The show was ________ (好极了，以字母 e 开头).",
         "options": [],
         "answer": "excellent",
         "explanation": "好极了、优秀的英文是excellent。"
@@ -671,11 +671,12 @@
           "Did",
           "look",
           "you",
+          "the",
           "children",
           "after"
         ],
-        "answer": "Did,you,look,after,children",
-        "explanation": "look after 意为照顾。结构为Did+主语+动词词组+宾语。"
+        "answer": "Did,you,look,after,the,children",
+        "explanation": "look after 意为照顾。结构为Did+主语+动词词组+宾语the children。"
       }
     ]
   },

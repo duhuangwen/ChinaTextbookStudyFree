@@ -297,14 +297,14 @@
           "in the desk",
           "near the window",
           "on the fridge",
-          "behind the door",
-          "在门后",
+          "under the bed",
+          "在床下",
           "在书桌里",
           "在冰箱上",
           "在窗户旁"
         ],
         "answer": "A-2,B-4,C-3,D-1",
-        "explanation": "in the desk-在书桌里, near the window-在窗户旁, on the fridge-在冰箱上, behind the door-在门后。"
+        "explanation": "in the desk-在书桌里, near the window-在窗户旁, on the fridge-在冰箱上, under the bed-在床下。"
       },
       {
         "id": 22,
@@ -362,10 +362,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "家具词汇",
-        "question": "'sofa' 是沙发的音译词。",
+        "question": "'sofa' 的意思是沙发。",
         "options": [],
         "answer": "对",
-        "explanation": "sofa 对应中文“沙发”。"
+        "explanation": "sofa 意为沙发，中文“沙发”就是由 sofa 音译而来。"
       },
       {
         "id": 3,
@@ -376,7 +376,7 @@
         "question": "询问‘他们在哪里？’应该说 'Where is they?'",
         "options": [],
         "answer": "错",
-        "explanation": "they 是复数，应配合 use are，即 Where are they?"
+        "explanation": "they 是复数，be 动词应用 are，即 Where are they?"
       },
       {
         "id": 4,
@@ -395,7 +395,7 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "元音字母u在开音节中的发音",
-        "question": "单词 'mule' 里的字母 'u' 发音跟 'cute' 里的 'u' 一样。",
+        "question": "单词 'use' 里的字母 'u' 发音跟 'cute' 里的 'u' 一样。",
         "options": [],
         "answer": "对",
         "explanation": "两者都是 u-e 结构，发 /juː/。"
@@ -550,7 +550,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "家具词汇",
-        "question": "The ______ is on the table. Speak 'Hello'.",
+        "question": "The ______ is on the table. Say 'Hello'.",
         "options": [
           "bed",
           "phone",

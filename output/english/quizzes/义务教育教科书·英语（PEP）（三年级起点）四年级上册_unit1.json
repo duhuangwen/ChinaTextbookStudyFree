@@ -88,11 +88,11 @@
         "options": [
           "at",
           "in",
-          "under",
+          "of",
           "to"
         ],
         "answer": "in",
-        "explanation": "in the desk是在课桌里，是常见的方位搭配。"
+        "explanation": "in the desk 意为在课桌里，其余介词不能与 the desk 搭配表示位置。"
       },
       {
         "id": 8,
@@ -437,7 +437,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "元音字母a在开音节中的发音",
-        "question": "选出划线部分读音不同的一项：",
+        "question": "选出字母 a 发音不同的一项：",
         "options": [
           "make",
           "cake",
@@ -501,7 +501,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "教室物品词汇认读",
-        "question": "This is my new desk. It's ______.",
+        "question": "This is my new desk. What colour is it? It's ______.",
         "options": [
           "green",
           "thin",
@@ -509,7 +509,7 @@
           "long"
         ],
         "answer": "green",
-        "explanation": "green（绿色）是描述颜色，符合小学常用语境。"
+        "explanation": "问句询问颜色（What colour），只有 green（绿色）是颜色词。"
       },
       {
         "id": 13,
@@ -536,12 +536,12 @@
         "question": "Where is the cat? — It's ______ the door.",
         "options": [
           "of",
-          "behind",
-          "at",
+          "near",
+          "for",
           "to"
         ],
-        "answer": "behind",
-        "explanation": "behind是在...后面，猫在门后是常见表述。"
+        "answer": "near",
+        "explanation": "near 意为在……附近，It's near the door. 表示它在门旁边。"
       },
       {
         "id": 15,
@@ -565,10 +565,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "询问及描述物品方位",
-        "question": "The fan is ______ (在...上面) the desk.",
+        "question": "The book is ______ (在……上) the desk.",
         "options": [],
-        "answer": "above",
-        "explanation": "风扇通常悬挂在桌子上方但不接触，用above或在屋顶用on the ceiling。"
+        "answer": "on",
+        "explanation": "书放在课桌上，与桌面接触，用介词 on。"
       },
       {
         "id": 17,
@@ -629,19 +629,19 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "课堂指令动作执行",
-        "question": "动作与地点配对：",
+        "question": "动作与物品配对：",
         "options": [
           "Open",
-          "Sweep",
+          "Turn on",
+          "Put up",
           "Clean",
-          "Close",
-          "the window",
+          "the light",
+          "the blackboard",
           "the door",
-          "the floor",
-          "the desk"
+          "the picture"
         ],
-        "answer": "A-2,B-3,C-4,D-1",
-        "explanation": "常见组合：Open the door; Sweep the floor; Clean the desk; Close the window。"
+        "answer": "A-3,B-1,C-4,D-2",
+        "explanation": "Turn on the light（开灯）；Put up the picture（张贴图画）；黑板不能“打开”，所以 Open the door、Clean the blackboard。"
       },
       {
         "id": 22,

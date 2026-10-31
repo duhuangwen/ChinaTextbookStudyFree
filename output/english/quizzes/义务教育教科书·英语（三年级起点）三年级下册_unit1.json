@@ -470,15 +470,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "自我介绍与询问来源地",
-        "question": "I ___ from the USA. (我也来自美国。)",
+        "question": "I am from the USA, ___. (我也来自美国。)",
         "options": [
-          "am too",
-          "is too",
           "too",
-          "am also too"
+          "to",
+          "two",
+          "and"
         ],
-        "answer": "am too",
-        "explanation": "too 放在肯定句句末表示“也”。"
+        "answer": "too",
+        "explanation": "too 放在肯定句句末表示“也”，前面常用逗号隔开。"
       },
       {
         "id": 11,
@@ -526,7 +526,7 @@
           "an"
         ],
         "answer": "a",
-        "explanation": "虽然 he is a teacher, 这里 a 修饰职业名词。"
+        "explanation": "teacher 是可数名词单数，以辅音音素开头，前面用 a。"
       },
       {
         "id": 14,
@@ -566,10 +566,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "国家名称与核心词汇",
-        "question": "I from the ___ . (我来自美国。注：请填USA小写)",
+        "question": "I'm from the ___. (我来自美国。)",
         "options": [],
-        "answer": "usa",
-        "explanation": "usa 代表美国。"
+        "answer": "USA",
+        "explanation": "USA 是美国的缩写，字母全部大写，常与 the 连用：the USA。"
       },
       {
         "id": 17,
@@ -579,8 +579,8 @@
         "knowledge_point": "人称代词用法",
         "question": "___ is a teacher. (他是一名老师。)",
         "options": [],
-        "answer": "he",
-        "explanation": "he 指代男性他。"
+        "answer": "He",
+        "explanation": "he 指代男性“他”，位于句首首字母大写为 He。"
       },
       {
         "id": 18,

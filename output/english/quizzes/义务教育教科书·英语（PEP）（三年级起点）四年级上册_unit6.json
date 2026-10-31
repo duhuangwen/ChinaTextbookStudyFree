@@ -116,7 +116,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "指示代词",
-        "question": "My parents and ______ make three.",
+        "question": "Look! It's a photo of my parents and ______.",
         "options": [
           "I",
           "me",
@@ -124,7 +124,7 @@
           "mine"
         ],
         "answer": "me",
-        "explanation": "在此处作宾语，表示包含我在内，常用 me。"
+        "explanation": "介词 of 后接人称代词宾格，“我”的宾格是 me。"
       },
       {
         "id": 10,
@@ -281,10 +281,10 @@
           "司机",
           "医生",
           "农民",
-          "护工"
+          "护士"
         ],
         "answer": "A-2,B-4,C-3,D-1",
-        "explanation": "doctor医生，nurse护士/护工，farmer农民，driver司机。"
+        "explanation": "doctor医生，nurse护士，farmer农民，driver司机。"
       },
       {
         "id": 21,
@@ -298,13 +298,13 @@
           "aunt",
           "parents",
           "cousin",
-          "堂兄弟/表姐妹",
+          "堂（表）兄弟姐妹",
           "父母",
           "叔叔",
           "阿姨"
         ],
         "answer": "A-3,B-4,C-2,D-1",
-        "explanation": "uncle叔叔，aunt阿姨，parents父母，cousin堂/表亲。"
+        "explanation": "uncle叔叔，aunt阿姨，parents父母，cousin堂（表）兄弟姐妹。"
       },
       {
         "id": 22,
@@ -504,7 +504,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "发音辨析",
-        "question": "Which word has the same sound as 'go'?",
+        "question": "Which word has the same 'o' sound as 'go'?",
         "options": [
           "no",
           "box",
@@ -640,7 +640,7 @@
           "her",
           "他的",
           "她",
-          "他的(主格)",
+          "他",
           "她的"
         ],
         "answer": "A-3,B-2,C-1,D-4",

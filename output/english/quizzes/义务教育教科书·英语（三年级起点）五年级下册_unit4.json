@@ -188,7 +188,7 @@
           "No, it does"
         ],
         "answer": "Yes, it is",
-        "explanation": "Is it开关的一般疑问句，肯定回答为Yes, it is。"
+        "explanation": "Is 开头的一般疑问句，肯定回答为 Yes, it is。"
       },
       {
         "id": 14,
@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "综合理解",
-        "question": "Today is Monday. Tomorrow is the ______ day of the week.",
+        "question": "January is the first month. February is the second month. March is the ______ month.",
         "options": [
           "second",
           "three",
@@ -204,7 +204,7 @@
           "two"
         ],
         "answer": "third",
-        "explanation": "周日是第一天，周一是第二天，周二（明天）是第三天third。"
+        "explanation": "三月是一年中的第三个月，序数词用 third。"
       },
       {
         "id": 15,
@@ -252,7 +252,7 @@
         "knowledge_point": "询问活动日期",
         "question": "___ is the English test? It's on June 2nd.",
         "options": [],
-        "answer": "when",
+        "answer": "When",
         "explanation": "提问具体时间使用疑问词when。"
       },
       {
@@ -261,10 +261,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "序数词用法",
-        "question": "There are 31 days in May. The last day is May ___.",
+        "question": "There are 30 days in June. The last day is June ___.",
         "options": [],
-        "answer": "thirty-first",
-        "explanation": "31号应使用序数词thirty-first。"
+        "answer": "thirtieth",
+        "explanation": "30号用序数词 thirtieth（thirty 变 y 为 ie 再加 th）。"
       },
       {
         "id": 20,
@@ -426,7 +426,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "序数词前冠词用法",
-        "question": "Tuesday is ______ day of the week.",
+        "question": "March is ______ month of the year.",
         "options": [
           "a third",
           "the third",
@@ -434,7 +434,7 @@
           "the three"
         ],
         "answer": "the third",
-        "explanation": "序数词前通常要加定冠词the。"
+        "explanation": "三月是一年中的第三个月，序数词前通常要加定冠词 the，即 the third。"
       },
       {
         "id": 8,
@@ -476,13 +476,13 @@
         "knowledge_point": "物主代词",
         "question": "My birthday is on March 3rd. What about ______?",
         "options": [
-          "you",
+          "I",
           "your",
           "yours",
           "she"
         ],
         "answer": "yours",
-        "explanation": "yours在此处相当于your birthday。"
+        "explanation": "yours 在此相当于 your birthday；I、she 作主格不能放在介词 about 后，your 后须接名词。"
       },
       {
         "id": 11,
@@ -494,8 +494,8 @@
         "options": [
           "nineth",
           "ninth",
-          "nineth",
-          "ninter"
+          "nienth",
+          "ninthe"
         ],
         "answer": "ninth",
         "explanation": "nine变序数词需去掉末尾的e再加th。"
@@ -570,10 +570,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "序数词应用",
-        "question": "There are some special days in June. The ___ day is Father's Day.",
+        "question": "Father's Day is on the ___ Sunday in June.",
         "options": [],
         "answer": "third",
-        "explanation": "父亲节在六月的第三个(third)星期日。"
+        "explanation": "父亲节在六月的第三个星期日，用序数词 third。"
       },
       {
         "id": 17,
@@ -583,7 +583,7 @@
         "knowledge_point": "疑问句",
         "question": "___ is the school trip? It's in May.",
         "options": [],
-        "answer": "when",
+        "answer": "When",
         "explanation": "询问日期或月份使用疑问词when。"
       },
       {
@@ -605,7 +605,7 @@
         "knowledge_point": "句型转换",
         "question": "We have an English test on April 10th. (对日期提问) ___ is the English test?",
         "options": [],
-        "answer": "when",
+        "answer": "When",
         "explanation": "对具体日期提问用when。"
       },
       {

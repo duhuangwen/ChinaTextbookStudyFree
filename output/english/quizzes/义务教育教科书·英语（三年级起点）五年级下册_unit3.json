@@ -230,7 +230,7 @@
         "knowledge_point": "十二月份的名称与缩写",
         "question": "The first month of a year is ________.",
         "options": [],
-        "answer": "january",
+        "answer": "January",
         "explanation": "一年中的第一个月是一月。"
       },
       {
@@ -241,7 +241,7 @@
         "knowledge_point": "十二月份的名称与缩写",
         "question": "The month between May and July is ________.",
         "options": [],
-        "answer": "june",
+        "answer": "June",
         "explanation": "五月和七月之间是六月。"
       },
       {
@@ -252,7 +252,7 @@
         "knowledge_point": "询问活动举办的时间",
         "question": "— ________ is the school trip? — It's in May.",
         "options": [],
-        "answer": "when",
+        "answer": "When",
         "explanation": "询问时间用疑问词when。"
       },
       {
@@ -263,7 +263,7 @@
         "knowledge_point": "节日、活动与月份的对应",
         "question": "Children's Day is in ________.",
         "options": [],
-        "answer": "june",
+        "answer": "June",
         "explanation": "儿童节在6月。"
       },
       {
@@ -297,14 +297,14 @@
           "Easter",
           "National Day",
           "New Year",
-          "sports meet",
+          "Children's Day",
           "一月",
           "四月",
           "十月",
-          "运动会"
+          "六月"
         ],
         "answer": "A-2,B-3,C-1,D-4",
-        "explanation": "复活节通常在四月，国庆在十月，新年在一月，sports meet是运动会。"
+        "explanation": "复活节通常在四月，国庆节在十月，新年在一月，儿童节在六月。"
       },
       {
         "id": 22,
@@ -412,11 +412,11 @@
         "options": [
           "sheep",
           "short",
-          "china",
+          "chicken",
           "fish"
         ],
-        "answer": "china",
-        "explanation": "china中的ch发/tʃ/。"
+        "answer": "chicken",
+        "explanation": "chicken 中的 ch 发 /tʃ/，其余三词的 sh 发 /ʃ/。"
       },
       {
         "id": 7,
@@ -570,7 +570,7 @@
         "knowledge_point": "十二月份的名称与缩写",
         "question": "The month after October is ________.",
         "options": [],
-        "answer": "november",
+        "answer": "November",
         "explanation": "十月之后是十一月。"
       },
       {
@@ -590,10 +590,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "字母组合ch和sh的发音规律",
-        "question": "You eat ________ with your mouth. (单词含有ch组合)",
+        "question": "I eat ________ at school at 12:00. (单词含有ch组合，意为“午饭”)",
         "options": [],
         "answer": "lunch",
-        "explanation": "lunch中含有ch发音。"
+        "explanation": "lunch 意为午饭，含有 ch 组合，发 /tʃ/。"
       },
       {
         "id": 19,

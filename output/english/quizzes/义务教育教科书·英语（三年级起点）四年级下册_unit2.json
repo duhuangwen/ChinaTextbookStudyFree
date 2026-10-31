@@ -57,10 +57,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "日常活动词汇与短语",
-        "question": "o'clock 必须用在点钟（整点）之后。",
+        "question": "o'clock 只能用在整点时间里，如 seven o'clock。",
         "options": [],
         "answer": "对",
-        "explanation": "o'clock 意为“……点钟”，常接在整点数字后。"
+        "explanation": "o'clock 意为“……点钟”，只用于整点，如 seven o'clock；7:30 不能说 seven thirty o'clock。"
       },
       {
         "id": 6,
@@ -298,13 +298,13 @@
           "go home",
           "go to bed",
           "over",
-          "去上学",
+          "回家",
           "起床",
           "上床睡觉",
           "结束"
         ],
         "answer": "A-2,B-1,C-3,D-4",
-        "explanation": "注意选项中有 go home/school 的混淆，但此题主要测试起床、回家睡觉和结束的动作。"
+        "explanation": "get up-起床；go home-回家；go to bed-上床睡觉；over-结束。"
       },
       {
         "id": 22,
@@ -389,7 +389,7 @@
         "question": "Time to go home. 这是 It's time to go home. 的简写形式。",
         "options": [],
         "answer": "对",
-        "explanation": "口语中常省略 IT is。"
+        "explanation": "口语中常省略 It's，Time to go home. 即 It's time to go home."
       },
       {
         "id": 5,
@@ -581,8 +581,8 @@
         "knowledge_point": "时间表达与询问",
         "question": "___ time is it? It's nine.",
         "options": [],
-        "answer": "what",
-        "explanation": "特殊疑问词开头小写（按题目规范）。"
+        "answer": "What",
+        "explanation": "询问时间用 What time is it? 句首字母大写。"
       },
       {
         "id": 18,

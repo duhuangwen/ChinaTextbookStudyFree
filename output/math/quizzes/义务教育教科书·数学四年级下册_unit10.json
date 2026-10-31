@@ -27,7 +27,7 @@
         "question": "等腰三角形不可能是钝角三角形。",
         "options": [],
         "answer": "错",
-        "explanation": "等腰三角形可能存在钝角，例如顶角为120度，底角各为30代的三角形就是等腰钝角三角形。"
+        "explanation": "等腰三角形可能存在钝角，例如顶角为120度，底角各为30度的三角形就是等腰钝角三角形。"
       },
       {
         "id": 3,
@@ -244,7 +244,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "综合计算与验算能力",
-        "question": "计算 $125 \\times 32$ 最简便的方法是应用了什么？",
+        "question": "计算 $125 \\times 32$，下面哪种方法最简便？",
         "options": [
           "$125 \\times 8 \\times 4$",
           "$125 \\times 4 \\times 8$",
@@ -491,12 +491,12 @@
         "knowledge_point": "综合计算与验算能力",
         "question": "用简便方法计算 $78 \\times 102$ 是哪个？",
         "options": [
-          "78 \\times 100 + 2",
-          "78 \\times 100 \\times 2",
-          "78 \\times 100 + 78 \\times 2",
-          "70 \\times 100 + 8 \\times 2"
+          "$78 \\times 100 + 2$",
+          "$78 \\times 100 \\times 2$",
+          "$78 \\times 100 + 78 \\times 2$",
+          "$70 \\times 100 + 8 \\times 2$"
         ],
-        "answer": "78 \\times 100 + 78 \\times 2",
+        "answer": "$78 \\times 100 + 78 \\times 2$",
         "explanation": "$78 \\times 102 = 78 \\times (100 + 2) = 78 \\times 100 + 78 \\times 2$。"
       },
       {
@@ -623,10 +623,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "数学反思与自我评价",
-        "question": "小马虎在计算 $(20+a) \\times 5$ 时，错成了 $20+a \\times 5$。得到的结果与正确答案相差多少？填写差值数字。",
+        "question": "小马虎在计算 $(20+\\square) \\times 5$ 时，错算成了 $20+\\square \\times 5$（两个□里是同一个数）。正确结果比错误结果多 ___。",
         "options": [],
         "answer": "80",
-        "explanation": "正确：$(20+a) \\times 5 = 100 + 5a$。错误：$20 + 5a$。差值为：$(100+5a) - (20+5a) = 80$。"
+        "explanation": "正确算式是 20 和 □ 都乘 5：$(20+\\square) \\times 5 = 20 \\times 5 + \\square \\times 5$；错误算式只有 □ 乘了 5，20 没有乘 5。所以相差 $20 \\times 5 - 20 = 100 - 20 = 80$。"
       },
       {
         "id": 22,

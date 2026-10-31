@@ -312,14 +312,14 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "句子结构",
-        "question": "将下列单词连成句子：[like, what, you, would]",
+        "question": "将下列单词连成句子：[like, What, you, would]",
         "options": [
           "like",
-          "what",
+          "What",
           "you",
           "would"
         ],
-        "answer": "what,would,you,like",
+        "answer": "What,would,you,like",
         "explanation": "特殊疑问句结构：疑问词+情态动词+主语+动词。"
       },
       {
@@ -533,15 +533,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "动宾搭配",
-        "question": "—Pass me the ___ please. —Here you are.",
+        "question": "—I'd like some soup. Pass me a ___, please. —Here you are.",
         "options": [
-          "soup",
-          "milk",
           "bowl",
-          "water"
+          "fork",
+          "knife",
+          "chopsticks"
         ],
         "answer": "bowl",
-        "explanation": "soup, milk, water是液体通常用容器装，bowl(碗)可以直接递。"
+        "explanation": "盛汤要用碗（bowl）；叉子、小刀不能盛汤，chopsticks 前也不能用 a。"
       },
       {
         "id": 15,
@@ -587,10 +587,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "词汇拼写",
-        "question": "Pass ___ the knife.",
+        "question": "Pass ___ (我) the knife.",
         "options": [],
         "answer": "me",
-        "explanation": "递给我，用代词me。"
+        "explanation": "pass 后接人称代词宾格，“我”的宾格是 me。"
       },
       {
         "id": 19,
@@ -598,10 +598,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "否定回答",
-        "question": "No, ___ . I'm full.",
+        "question": "No, thank ___ . I'm full.",
         "options": [],
-        "answer": "thanks",
-        "explanation": "婉拒对方的食物邀请通常用No, thanks。"
+        "answer": "you",
+        "explanation": "婉拒对方的食物邀请可以说 No, thank you。"
       },
       {
         "id": 20,

@@ -164,15 +164,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "常用搭配",
-        "question": "— Silly me! — ___",
+        "question": "当你发现要找的帽子就戴在自己头上时，你可以说：",
         "options": [
-          "Thanks.",
+          "Silly me!",
           "Goodbye.",
-          "Haha!",
+          "Thank you.",
           "Great!"
         ],
-        "answer": "Haha!",
-        "explanation": "当别人说'我真傻'时，通常是幽默的互动，对应答语常用Haha。"
+        "answer": "Silly me!",
+        "explanation": "Silly me! 意为“我真笨！”，用于自嘲自己犯了小糊涂。"
       },
       {
         "id": 13,
@@ -489,7 +489,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "方位方位",
-        "question": "Look! The boat is ___ the water.",
+        "question": "Look! The boat is ___ the box. (在盒子上面)",
         "options": [
           "on",
           "under",
@@ -497,7 +497,7 @@
           "at"
         ],
         "answer": "on",
-        "explanation": "小船在水面上行驶，用on。"
+        "explanation": "on 表示在……上面，小船在盒子上面用 on。"
       },
       {
         "id": 12,
@@ -582,7 +582,7 @@
         "knowledge_point": "人称代词",
         "question": "Where is the ball? ___ is under the chair.",
         "options": [],
-        "answer": "it",
+        "answer": "It",
         "explanation": "指代物体单数用it。"
       },
       {
@@ -604,7 +604,7 @@
         "knowledge_point": "礼貌语",
         "question": "___ me, where is my book?",
         "options": [],
-        "answer": "excuse",
+        "answer": "Excuse",
         "explanation": "Excuse me用于礼貌地提问。"
       },
       {

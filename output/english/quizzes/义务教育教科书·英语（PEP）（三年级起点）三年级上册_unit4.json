@@ -204,7 +204,7 @@
           "It's a dog."
         ],
         "answer": "It's a bird.",
-        "explanation": "只有bird会飞。"
+        "explanation": "“鸟”的英文是 bird，所以说 It's a bird."
       },
       {
         "id": 15,
@@ -452,7 +452,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "动物词汇识记",
-        "question": "选出代表“猪”的图片单词：",
+        "question": "选出表示“猪”的单词：",
         "options": [
           "dog",
           "duck",
@@ -505,10 +505,10 @@
           "L",
           "J",
           "K",
-          "N"
+          "I"
         ],
         "answer": "L",
-        "explanation": "L, M, N 都包含 [e] 的音。"
+        "explanation": "L /el/ 与 M /em/ 都含 /e/ 音；J、K 含 /eɪ/，I 含 /aɪ/。"
       },
       {
         "id": 13,
@@ -548,7 +548,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "物体的辨认与指示",
-        "question": "当吴斌斌指着远处的一个物体问这是什么时，陈洁不认识，陈洁会说：",
+        "question": "当吴斌斌指着远处的一个物体问那是什么时，陈杰不认识，陈杰会说：",
         "options": [
           "It's a duck.",
           "I don't know.",
@@ -599,8 +599,8 @@
         "knowledge_point": "物体的辨认与指示",
         "question": "___ that? It's a bear.",
         "options": [],
-        "answer": "whats",
-        "explanation": "询问是什么，缩写形式为what's（按要求全小写无标点）。"
+        "answer": "What's",
+        "explanation": "询问远处的东西用 What's that?，What's 是 What is 的缩写。"
       },
       {
         "id": 20,

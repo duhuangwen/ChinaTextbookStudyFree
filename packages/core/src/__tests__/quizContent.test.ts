@@ -41,9 +41,9 @@ describe("corrected source questions (PR #4)", () => {
 
   it("accepts a text response for the microorganism visibility blank", () => {
     const question = sourceQuestions("science", "义务教育教科书·科学六年级上册_unit1.json")
-      .find(q => q.knowledge_point === "微生物大小" && q.question.includes("肉眼（）"))!;
+      .find(q => q.knowledge_point === "微生物大小" && q.question.includes("借助（）"))!;
     expect(question.type).toBe("fill_blank_text");
-    expect(gradeAnswer(question, "无法")).toBe(true);
+    expect(gradeAnswer(question, "显微镜")).toBe(true);
     expect(gradeAnswer(question, "0")).toBe(false);
   });
 });

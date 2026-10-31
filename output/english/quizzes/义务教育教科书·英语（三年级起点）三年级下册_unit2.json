@@ -252,8 +252,8 @@
         "knowledge_point": "询问并确认人物身份",
         "question": "___ is that woman? She is my teacher.",
         "options": [],
-        "answer": "who",
-        "explanation": "询问身份用特殊疑问词who。"
+        "answer": "Who",
+        "explanation": "询问身份用特殊疑问词 who，位于句首首字母大写为 Who。"
       },
       {
         "id": 19,
@@ -299,7 +299,7 @@
           "my friend",
           "that woman",
           "那个女人",
-          "那是我的朋友",
+          "我的朋友",
           "我的家庭",
           "那个男人"
         ],
@@ -432,7 +432,7 @@
           "brother"
         ],
         "answer": "grandmother",
-        "explanation": "母亲的母亲是外祖母（姥姥/奶奶）。"
+        "explanation": "母亲的母亲是外祖母（姥姥/外婆），英语中同样用 grandmother 表示。"
       },
       {
         "id": 8,
@@ -440,7 +440,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "元音字母e在闭音节中的发音",
-        "question": "选出下列单词中画线部分发音相同的一项：",
+        "question": "选出下列每组单词中字母 e 发音相同的一项：",
         "options": [
           "red, leg",
           "he, ten",
@@ -448,7 +448,7 @@
           "me, red"
         ],
         "answer": "red, leg",
-        "explanation": "只有A组两个单词中e都发/e/。"
+        "explanation": "red 和 leg 中的 e 都发短元音 /e/；he、she、me 中的 e 发 /iː/。"
       },
       {
         "id": 9,
@@ -612,7 +612,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "家庭成员称谓认读",
-        "question": "将称谓的缩写与完整形式匹配。",
+        "question": "将下列称谓词与中文意思连线。",
         "options": [
           "dad",
           "grandpa",

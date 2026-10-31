@@ -196,11 +196,11 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "动物卵的结构与分类",
-        "question": "观察干鸡蛋时，发现蛋壳上有很多小孔，它们的作用是（）。",
+        "question": "用放大镜观察鸡蛋时，发现蛋壳上有很多小孔，它们的作用是（）。",
         "options": [
           "让蛋轻一点",
           "透气",
-          "利于孵化",
+          "装蛋黄",
           "没有什么用"
         ],
         "answer": "透气",
@@ -287,10 +287,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "蚕的生长发育阶段",
-        "question": "蚕的一生共要经历（___）次蜕皮。",
+        "question": "蚕的幼虫在生长过程中要蜕（___）次皮。",
         "options": [],
-        "answer": "6",
-        "explanation": "幼虫期4次，蚕茧内2次（蜕皮变蛹和变蛾）。"
+        "answer": "4",
+        "explanation": "蚕的幼虫一般要蜕4次皮，蜕皮后身体长大一龄。"
       },
       {
         "id": 21,
@@ -571,7 +571,7 @@
         "knowledge_point": "昆虫的身体结构特征",
         "question": "关于蚕蛾的雌雄特征，正确的是（）。",
         "options": [
-          "雌蛾体大、翅大",
+          "雌蛾体小、爬行快",
           "雄蛾爬行慢、体小",
           "雌蛾体大、爬行慢",
           "雄蛾没翅膀"
@@ -612,10 +612,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "蚕的生长发育阶段",
-        "question": "蚕在蚕房中度过的幼虫阶段大约是（___）天。",
+        "question": "蚕的一生要经历卵、幼虫、蛹、成虫（___）个阶段。",
         "options": [],
-        "answer": "30",
-        "explanation": "根据实验观察，蚕的幼虫期约一个月。"
+        "answer": "4",
+        "explanation": "蚕的一生经历卵、幼虫、蛹、成虫4个阶段。"
       },
       {
         "id": 21,
@@ -634,10 +634,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "动物卵的结构与分类",
-        "question": "鸡蛋内部的（___）能发育成生命。",
+        "question": "鸡蛋卵黄上有一个能发育成小鸡的小点，它是（___）色的。",
         "options": [],
-        "answer": "胚",
-        "explanation": "胚（或胚盘）是生命发育的起点。"
+        "answer": "白",
+        "explanation": "卵黄上的小白点叫胚，将来能发育成小鸡。"
       },
       {
         "id": 23,
@@ -645,10 +645,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "动物的生命周期规律",
-        "question": "动物繁殖后代的意义在于保持种族的（___）。",
+        "question": "动物通过（___）产生后代，使生命一代一代延续下去。",
         "options": [],
-        "answer": "延续",
-        "explanation": "繁殖使生命不断流传下去。"
+        "answer": "繁殖",
+        "explanation": "繁殖使生命不断延续下去。"
       }
     ]
   },

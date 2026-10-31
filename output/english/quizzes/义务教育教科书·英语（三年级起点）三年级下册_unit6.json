@@ -164,7 +164,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "五个元音字母短音综合辨析",
-        "question": "找出划线发音不同的单词：h__e__lp, b__e__d, p__e__n, sh__e__",
+        "question": "找出字母 e 发音与其他三个不同的单词：",
         "options": [
           "help",
           "bed",
@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "数字11-20的认读与拼写",
-        "question": "I have ___ apples. (只有1个用单词表示)",
+        "question": "I have ___ apple. (1个)",
         "options": [],
         "answer": "one",
-        "explanation": "基数词1即为one。"
+        "explanation": "1 的英文是 one，one 后接名词单数 apple。"
       },
       {
         "id": 19,
@@ -316,12 +316,12 @@
         "options": [
           "many",
           "you",
-          "how",
+          "How",
           "see",
           "do",
           "cats"
         ],
-        "answer": "how,many,cats,do,you,see",
+        "answer": "How,many,cats,do,you,see",
         "explanation": "How many + 名词复数 + do you + 动词原形？"
       },
       {
@@ -408,7 +408,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "五个元音字母短音综合辨析",
-        "question": "Which one has a different sounds for 'a'?",
+        "question": "Which one has a different sound for 'a'?",
         "options": [
           "cat",
           "bag",
@@ -424,15 +424,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "数字11-20的认读与拼写",
-        "question": "How many minutes are in an hour? (一个小结有多少分钟？)",
+        "question": "What is twelve and eight? (12+8=?)",
         "options": [
-          "thirty",
-          "forty",
-          "sixty",
-          "fifty"
+          "twenty",
+          "eighteen",
+          "sixteen",
+          "fourteen"
         ],
-        "answer": "sixty",
-        "explanation": "常识题，60分钟但在三年级下常考查对基数词的认知，选符合逻辑的数值词。"
+        "answer": "twenty",
+        "explanation": "12 加 8 等于 20，20 的英文是 twenty。"
       },
       {
         "id": 8,
@@ -456,7 +456,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "数字11-20的认读与拼写",
-        "question": "Eleven and prime number four is ______.",
+        "question": "Eleven and four is ______.",
         "options": [
           "fifteen",
           "fourteen",
@@ -474,10 +474,10 @@
         "knowledge_point": "询问数量的句型应用",
         "question": "Look at the black boat! ______ beautiful!",
         "options": [
-          "How",
-          "What",
           "So",
-          "Very"
+          "What",
+          "Where",
+          "Who"
         ],
         "answer": "So",
         "explanation": "So beautiful! 太漂亮了！符合课文句型。"
@@ -536,15 +536,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "数字11-20的认读与拼写",
-        "question": "The ______ (第16号) kite is my kite.",
+        "question": "I have ______ kites. (16个)",
         "options": [
           "sixteen",
-          "sixteenth",
-          "6",
-          "no. 16"
+          "sixty",
+          "six",
+          "seventeen"
         ],
-        "answer": "no. 16",
-        "explanation": "表示编号用No.加数字。"
+        "answer": "sixteen",
+        "explanation": "16 的英文是 sixteen，注意与 sixty（60）、six（6）区分。"
       },
       {
         "id": 15,
@@ -552,15 +552,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "询问数量的句型应用",
-        "question": "—Whose kities are they? —______",
+        "question": "—How many kites do you see? —______",
         "options": [
-          "They are seventeen.",
+          "I see seventeen.",
           "It is small.",
           "They are my kites.",
-          "I have two."
+          "Yes, I do."
         ],
-        "answer": "They are my kites.",
-        "explanation": "Whose询问是谁的，应回答领属关系。"
+        "answer": "I see seventeen.",
+        "explanation": "How many...do you see? 询问看到的数量，用 I see + 数字 回答。"
       },
       {
         "id": 16,
@@ -632,15 +632,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "询问数量的句型应用",
-        "question": "对话连线：",
+        "question": "英汉连线：",
         "options": [
           "How many?",
           "How are you?",
           "What is it?",
           "Is it a cat?",
           "它是猫吗",
-          "它是什",
-          "我很好",
+          "它是什么",
+          "你好吗",
           "有多少"
         ],
         "answer": "A-4,B-3,C-2,D-1",
@@ -655,13 +655,13 @@
         "question": "单词排队：balls, how, you, have, many, do",
         "options": [
           "balls",
-          "how",
+          "How",
           "you",
           "have",
           "many",
           "do"
         ],
-        "answer": "how,many,balls,do,you,have",
+        "answer": "How,many,balls,do,you,have",
         "explanation": "询问并列物品数量的固定句式。"
       },
       {
@@ -670,15 +670,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "数字11-20的认读与拼写",
-        "question": "单词排队：The, is, one, black",
+        "question": "单词排队：I, see, twelve, birds",
         "options": [
-          "The",
-          "is",
-          "one",
-          "black"
+          "I",
+          "see",
+          "twelve",
+          "birds"
         ],
-        "answer": "The,one,is,black",
-        "explanation": "主系表结构，描述那个是黑色的。"
+        "answer": "I,see,twelve,birds",
+        "explanation": "主语 + see + 数量 + 名词复数：我看到十二只鸟。"
       }
     ]
   },

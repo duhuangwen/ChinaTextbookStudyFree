@@ -68,7 +68,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "饮食名词词汇",
-        "question": "I'd like some _____. They are healthy.",
+        "question": "I'd like some _____. It's healthy.",
         "options": [
           "salad",
           "hamburgers",
@@ -84,7 +84,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "味道形容词",
-        "question": "This tea is _____. I don't like it.",
+        "question": "This tea is too _____. I can't drink it now.",
         "options": [
           "hot",
           "fresh",
@@ -92,7 +92,7 @@
           "healthy"
         ],
         "answer": "hot",
-        "explanation": "tea通常与hot搭配，且在负面语境下可能指太烫了。"
+        "explanation": "茶太烫（hot）了，现在没法喝。"
       },
       {
         "id": 8,
@@ -228,7 +228,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "饮食名词",
-        "question": "I'd like a chicken _____ for lunch.",
+        "question": "I'd like a chicken _____ (三明治) for lunch.",
         "options": [],
         "answer": "sandwich",
         "explanation": "鸡肉三明治是本单元核心词汇。"
@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "味道形容词",
-        "question": "The grapes are _____. They are not sweet.",
+        "question": "The grapes are very _____ (甜的). I like them.",
         "options": [],
-        "answer": "sour",
-        "explanation": "如果不甜且描述葡萄，通常是酸的（sour）。"
+        "answer": "sweet",
+        "explanation": "甜的对应本单元词汇 sweet。"
       },
       {
         "id": 19,
@@ -407,15 +407,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "饮食词汇",
-        "question": "Today is Monday. We have _____ on Mondays.",
+        "question": "We have _____ for lunch on Mondays.",
         "options": [
-          "hot dogs",
+          "hot",
           "beef",
           "sweet",
           "fresh"
         ],
         "answer": "beef",
-        "explanation": "名词作宾语，beef最合适。"
+        "explanation": "have 后需接食物名词，只有 beef 是名词。"
       },
       {
         "id": 7,
@@ -578,7 +578,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "名词变复数",
-        "question": "Sarah likes _____. She eats two every day.",
+        "question": "Sarah likes _____ (苹果). She eats two every day.",
         "options": [],
         "answer": "apples",
         "explanation": "eats two 指示后面接名词复数。"
@@ -631,7 +631,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "描述词匹配",
-        "question": "将形容词与其描述的对象连线。",
+        "question": "将下列单词与对应的中文意思连线。",
         "options": [
           "hungry",
           "sandwich",

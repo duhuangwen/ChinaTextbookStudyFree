@@ -13,10 +13,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "口算除法",
-        "question": "因为 $4 \\times 2 = 8$，所以 $800 \\times 2 = 400$。",
+        "question": "因为 $8 \\div 2 = 4$，所以 $800 \\div 2 = 40$。",
         "options": [],
         "answer": "错",
-        "explanation": "因为 $8 \\times 2 = 16$，所以 $800 \\times 2 = 1600$。题目中的等式错误。"
+        "explanation": "$8 \\div 2 = 4$，800 是 8 个百，8 个百除以 2 得 4 个百，所以 $800 \\div 2 = 400$，不是 40。"
       },
       {
         "id": 2,
@@ -49,7 +49,7 @@
         "question": "验算有余数的除法时，可以用：商 $\\times$ 除数 $+$ 余数 = 被除数。",
         "options": [],
         "answer": "对",
-        "explanation": "这是有余数除法的标准验算公式。验算：$7 \\times 3 + 1 = 22$，$22 \\times 3 = 7$ 余 1。"
+        "explanation": "这是有余数除法的标准验算公式。例如 $22 \\div 3 = 7 \\cdots\\cdots 1$，验算：$7 \\times 3 + 1 = 22$。"
       },
       {
         "id": 5,
@@ -60,7 +60,7 @@
         "question": "一个三位数除以一个一位数，商不一定是三位数。",
         "options": [],
         "answer": "对",
-        "explanation": "如果被除数的最高位小于除数，商就是两位数。例如 $100 \\times 2 = 50$。"
+        "explanation": "如果被除数的最高位小于除数，商就是两位数。例如 $100 \\div 2 = 50$。"
       },
       {
         "id": 6,
@@ -76,7 +76,7 @@
           "20"
         ],
         "answer": "30",
-        "explanation": "$240 \\times 8 = 30$。口算：$24 \\times 8 = 3$，再在后面添一个 0。"
+        "explanation": "$240 \\div 8 = 30$。口算：$24 \\div 8 = 3$，再在后面添一个 0。"
       },
       {
         "id": 7,
@@ -84,7 +84,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "一位数除两位数、三位数的笔算",
-        "question": "计算 $486 \\times 2$ 时，商的最高位在什么位上？",
+        "question": "计算 $486 \\div 2$ 时，商的最高位在什么位上？",
         "options": [
           "个位",
           "十位",
@@ -108,7 +108,7 @@
           "40"
         ],
         "answer": "30",
-        "explanation": "$118 \\times 4 \\times 120 \\times 4 = 30$。把 118 看作 120 进行估算。"
+        "explanation": "$118 \\div 4 \\approx 120 \\div 4 = 30$。把 118 看作 120 进行估算。"
       },
       {
         "id": 9,
@@ -116,7 +116,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "商中间或末尾有0的除法",
-        "question": "$60 \\times 3$ 的商末尾有几个 0？",
+        "question": "$60 \\div 3$ 的商末尾有几个 0？",
         "options": [
           "0",
           "1",
@@ -124,7 +124,7 @@
           "3"
         ],
         "answer": "1",
-        "explanation": "$60 \\times 3 = 20$，商的末尾有 1 个 0。"
+        "explanation": "$60 \\div 3 = 20$，商的末尾有 1 个 0。"
       },
       {
         "id": 10,
@@ -132,7 +132,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "除法的验算",
-        "question": "已知 $A \\times 4 = 125 \\times \\times \\times 1$，那么 A 的值是多少？",
+        "question": "已知 $A \\div 4 = 125 \\cdots\\cdots 1$，那么 A 的值是多少？",
         "options": [
           "501",
           "500",
@@ -156,7 +156,7 @@
           "1200"
         ],
         "answer": "120",
-        "explanation": "$720 \\times 6 = 120$。笔算过程省略，验算：$120 \\times 6 = 720$。"
+        "explanation": "$720 \\div 6 = 120$。笔算过程省略，验算：$120 \\times 6 = 720$。"
       },
       {
         "id": 12,
@@ -172,7 +172,7 @@
           "121"
         ],
         "answer": "369",
-        "explanation": "$369 \\times 3 = 123$。可以通过各个数位之和能否被 3 整除判断。"
+        "explanation": "逐个试除：$424 \\div 3 = 141 \\cdots\\cdots 1$，$562 \\div 3 = 187 \\cdots\\cdots 1$，$369 \\div 3 = 123$，$121 \\div 3 = 40 \\cdots\\cdots 1$。只有 369 没有余数。"
       },
       {
         "id": 13,
@@ -180,7 +180,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "商中间或末尾有0的除法",
-        "question": "$804 \\times 4$ 的商中间有几个 0？",
+        "question": "$804 \\div 4$ 的商中间有几个 0？",
         "options": [
           "0",
           "1",
@@ -188,7 +188,7 @@
           "3"
         ],
         "answer": "1",
-        "explanation": "$8 \\times 4 = 2$，$0 \\times 4 = 0$，$4 \\times 4 = 1$，结果是 201，中间有 1 个 0。"
+        "explanation": "$8 \\div 4 = 2$，十位 0 不够商 1，商 0 占位，$4 \\div 4 = 1$，结果是 201，中间有 1 个 0。"
       },
       {
         "id": 14,
@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "除法估算",
-        "question": "$298 \\times 6$ 的结果最接近哪个数？",
+        "question": "$298 \\div 6$ 的结果最接近哪个数？",
         "options": [
           "40",
           "50",
@@ -204,7 +204,7 @@
           "70"
         ],
         "answer": "50",
-        "explanation": "$298 \\times 6 \\times 300 \\times 6 = 50$。"
+        "explanation": "$298 \\div 6 \\approx 300 \\div 6 = 50$。"
       },
       {
         "id": 15,
@@ -228,7 +228,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "一位数除两位数、三位数的笔算",
-        "question": "要使 $\\square 35 \\times 5$ 的商是两位数，$\\square$ 里最大填几？",
+        "question": "要使 $\\square 35 \\div 5$ 的商是两位数，$\\square$ 里最大填几？",
         "options": [
           "4",
           "5",
@@ -236,7 +236,7 @@
           "9"
         ],
         "answer": "4",
-        "explanation": "商是两位数，则百位数字必须小于除数 5。$\\\\square < 5$，最大填 4。"
+        "explanation": "商是两位数，则百位数字必须小于除数 5，即 $\\square < 5$，最大填 4。"
       },
       {
         "id": 17,
@@ -252,7 +252,7 @@
           "80"
         ],
         "answer": "50",
-        "explanation": "$400 \\times 8 = 50$。验算：$50 \\times 8 = 400$。"
+        "explanation": "$400 \\div 8 = 50$。验算：$50 \\times 8 = 400$。"
       },
       {
         "id": 18,
@@ -262,13 +262,13 @@
         "knowledge_point": "商中间或末尾有0的除法",
         "question": "下面算式中，商末尾是 0 的是：",
         "options": [
-          "630 \times 6",
-          "720 \times 4",
-          "450 \times 5",
-          "123 \times 3"
+          "630 ÷ 6",
+          "728 ÷ 4",
+          "450 ÷ 5",
+          "123 ÷ 3"
         ],
-        "answer": "450 \times 5",
-        "explanation": "$450 \\times 5 = 90$。$630 \\times 6 = 105$，$720 \\times 4 = 180$。此处需选商整除且末尾为0的典型。"
+        "answer": "450 ÷ 5",
+        "explanation": "$450 \\div 5 = 90$，商末尾是 0；$630 \\div 6 = 105$，$728 \\div 4 = 182$，$123 \\div 3 = 41$，商末尾都不是 0。"
       },
       {
         "id": 19,
@@ -279,7 +279,7 @@
         "question": "学校买来 180 本新书，平均分给 9 个班，每个班分 ___ 本。",
         "options": [],
         "answer": "20",
-        "explanation": "$180 \\times 9 = 20$（本）。验算：$20 \\times 9 = 180$ ✓。"
+        "explanation": "$180 \\div 9 = 20$（本）。验算：$20 \\times 9 = 180$ ✓。"
       },
       {
         "id": 20,
@@ -290,7 +290,7 @@
         "question": "542 是 2 的 ___ 倍。",
         "options": [],
         "answer": "271",
-        "explanation": "$542 \\times 2 = 271$。验算：$271 \\times 2 = 542$ ✓。"
+        "explanation": "$542 \\div 2 = 271$。验算：$271 \\times 2 = 542$ ✓。"
       },
       {
         "id": 21,
@@ -309,10 +309,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "一位数除两位数、三位数的笔算",
-        "question": "计算：$48 \\times 4 = ?$",
+        "question": "计算：$48 \\div 4 = ?$",
         "options": [],
         "answer": "12",
-        "explanation": "$48 \\times 4 = 12$。验算：$12 \\times 4 = 48$ ✓。"
+        "explanation": "$48 \\div 4 = 12$。验算：$12 \\times 4 = 48$ ✓。"
       },
       {
         "id": 23,
@@ -320,10 +320,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "商中间或末尾有0的除法",
-        "question": "计算：$309 \\times 3 = ?$",
+        "question": "计算：$309 \\div 3 = ?$",
         "options": [],
         "answer": "103",
-        "explanation": "$309 \\times 3 = 103$。验算：$103 \\times 3 = 309$ ✓。"
+        "explanation": "$309 \\div 3 = 103$。验算：$103 \\times 3 = 309$ ✓。"
       }
     ]
   },
@@ -338,10 +338,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "口算除法",
-        "question": "$400 \\times 5$ 的商是 8。",
+        "question": "$400 \\div 5$ 的商是 8。",
         "options": [],
         "answer": "错",
-        "explanation": "$400 \\times 5 = 80$。商应该是 80。"
+        "explanation": "$400 \\div 5 = 80$。商应该是 80。"
       },
       {
         "id": 2,
@@ -352,7 +352,7 @@
         "question": "三位数除以一位数，商一定是三位数。",
         "options": [],
         "answer": "错",
-        "explanation": "商可能是三位数也可能是两位数。例如 $120 \\times 6 = 20$。"
+        "explanation": "商可能是三位数也可能是两位数。例如 $120 \\div 6 = 20$。"
       },
       {
         "id": 3,
@@ -363,7 +363,7 @@
         "question": "被除数的末尾有 0，商的末尾一定有 0。",
         "options": [],
         "answer": "错",
-        "explanation": "例如 $10 \\times 2 = 5$，商的末尾没有 0。"
+        "explanation": "例如 $10 \\div 2 = 5$，商的末尾没有 0。"
       },
       {
         "id": 4,
@@ -371,10 +371,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "除法估算",
-        "question": "估算 $213 \\times 7$ 时，可以把 213 看作 210 来估算。",
+        "question": "估算 $213 \\div 7$ 时，可以把 213 看作 210 来估算。",
         "options": [],
         "answer": "对",
-        "explanation": "把 213 看作接近的 210，口算简单且接近原值，$210 \\times 7 = 30$。"
+        "explanation": "把 213 看作接近的 210，口算简单且接近原值，$210 \\div 7 = 30$。"
       },
       {
         "id": 5,
@@ -385,7 +385,7 @@
         "question": "被除数中间有 0，商中间也一定有 0。",
         "options": [],
         "answer": "错",
-        "explanation": "例如 $102 \\times 3 = 34$，商中间没有 0。"
+        "explanation": "例如 $102 \\div 3 = 34$，商中间没有 0。"
       },
       {
         "id": 6,
@@ -401,7 +401,7 @@
           "25"
         ],
         "answer": "50",
-        "explanation": "$200 \\times 4 = 50$。验算：$50 \\times 4 = 200$。"
+        "explanation": "$200 \\div 4 = 50$。验算：$50 \\times 4 = 200$。"
       },
       {
         "id": 7,
@@ -409,7 +409,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "一位数除两位数、三位数的笔算",
-        "question": "$515 \\times 5$ 的商是：",
+        "question": "$515 \\div 5$ 的商是：",
         "options": [
           "103",
           "13",
@@ -417,7 +417,7 @@
           "100"
         ],
         "answer": "103",
-        "explanation": "$5 \\times 5 = 1$，$1 \\times 5$ 不够除，商 0 占位，$15 \\times 5 = 3$，结果为 103。"
+        "explanation": "$5 \\div 5 = 1$，十位 1 不够除，商 0 占位，$15 \\div 5 = 3$，结果为 103。"
       },
       {
         "id": 8,
@@ -433,7 +433,7 @@
           "90"
         ],
         "answer": "80",
-        "explanation": "$238 \\times 3 \\times 240 \\times 3 = 80$。"
+        "explanation": "$238 \\div 3 \\approx 240 \\div 3 = 80$。"
       },
       {
         "id": 9,
@@ -459,12 +459,12 @@
         "knowledge_point": "除法的验算",
         "question": "验算有余数的除法，下列等式正确的是：",
         "options": [
-          "商 \times 除数 = 被除数",
+          "商 × 除数 = 被除数",
           "商 + 余数 = 被除数",
-          "商 \times 除数 + 余数 = 被除数",
-          "被除数 \times 除数 = 商"
+          "商 × 除数 + 余数 = 被除数",
+          "被除数 × 除数 = 商"
         ],
-        "answer": "商 \times 除数 + 余数 = 被除数",
+        "answer": "商 × 除数 + 余数 = 被除数",
         "explanation": "这是标准的有余数除法验算规律。"
       },
       {
@@ -473,7 +473,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "商中间或末尾有0的除法",
-        "question": "要使 $6\\square2 \\times 6$ 的商中间有 0，且没有余数，$\\square$ 里应填：",
+        "question": "要使 $6\\square2 \\div 6$ 的商中间有 0，且没有余数，$\\square$ 里应填：",
         "options": [
           "0",
           "1",
@@ -481,7 +481,7 @@
           "3"
         ],
         "answer": "1",
-        "explanation": "填 1 时，$612 \\times 6 = 102$，符合商中间有0且整除。"
+        "explanation": "填 1 时，$612 \\div 6 = 102$，符合商中间有0且整除。"
       },
       {
         "id": 12,
@@ -497,7 +497,7 @@
           "88"
         ],
         "answer": "110",
-        "explanation": "连续减去多少个 8 等于 0，就是求 880 里面有多少个 8。$880 \\times 8 = 110$。"
+        "explanation": "连续减去多少个 8 等于 0，就是求 880 里面有多少个 8。$880 \\div 8 = 110$。"
       },
       {
         "id": 13,
@@ -529,7 +529,7 @@
           "5000"
         ],
         "answer": "500",
-        "explanation": "$30 \\times 6 = 5$，后面补两个 0，结果为 500。"
+        "explanation": "$30 \\div 6 = 5$，后面补两个 0，结果为 500。"
       },
       {
         "id": 15,
@@ -539,13 +539,13 @@
         "knowledge_point": "除法估算",
         "question": "下列哪个算式的商最接近 70？",
         "options": [
-          "254 \times 5",
-          "400 \times 6",
-          "488 \times 7",
-          "210 \times 3"
+          "254 ÷ 5",
+          "400 ÷ 6",
+          "488 ÷ 7",
+          "240 ÷ 3"
         ],
-        "answer": "488 \times 7",
-        "explanation": "$488 \\times 7 \\times 490 \\times 7 = 70$。其他选项：$250 \\times 5 = 50$，$400 \\times 6 \\times 66$，$210 \\times 3 = 70$（但 210/3 刚好等于 70，从估算角度 488/7 也非常接近）。"
+        "answer": "488 ÷ 7",
+        "explanation": "$488 \\div 7 \\approx 490 \\div 7 = 70$；$254 \\div 5 \\approx 250 \\div 5 = 50$；$400 \\div 6 \\approx 420 \\div 6 = 70$ 但实际只有 66 多；$240 \\div 3 = 80$。最接近 70 的是 $488 \\div 7$。"
       },
       {
         "id": 16,
@@ -561,7 +561,7 @@
           "21"
         ],
         "answer": "31",
-        "explanation": "$124 \\times 4 = 31$。"
+        "explanation": "$124 \\div 4 = 31$。"
       },
       {
         "id": 17,
@@ -577,7 +577,7 @@
           "40"
         ],
         "answer": "46",
-        "explanation": "$325 \\times 7 = 46$ 余 3。最多扎成 46 束。"
+        "explanation": "$325 \\div 7 = 46$ 余 3。最多扎成 46 束。"
       },
       {
         "id": 18,
@@ -593,7 +593,7 @@
           "300"
         ],
         "answer": "30",
-        "explanation": "$90 \\times 3 = 30$。"
+        "explanation": "$90 \\div 3 = 30$。"
       },
       {
         "id": 19,
@@ -604,7 +604,7 @@
         "question": "560 是 7 的 ___ 倍。",
         "options": [],
         "answer": "80",
-        "explanation": "$560 \\times 7 = 80$。验算：$80 \\times 7 = 560$ ✓。"
+        "explanation": "$560 \\div 7 = 80$。验算：$80 \\times 7 = 560$ ✓。"
       },
       {
         "id": 20,
@@ -615,7 +615,7 @@
         "question": "三年级共有 248 名学生，分 4 批去参观博物馆，平均每批去 ___ 人。",
         "options": [],
         "answer": "62",
-        "explanation": "$248 \\times 4 = 62$（人）。验算：$62 \\times 4 = 248$ ✓。"
+        "explanation": "$248 \\div 4 = 62$（人）。验算：$62 \\times 4 = 248$ ✓。"
       },
       {
         "id": 21,
@@ -626,7 +626,7 @@
         "question": "一个数除以 5，商是 120，余数是 4，这个数是 ___ 。",
         "options": [],
         "answer": "604",
-        "explanation": "$120 \\times 5 + 4 = 600 + 4 = 604$。验算：$604 \\times 5 = 120$ 余 4 ✓。"
+        "explanation": "$120 \\times 5 + 4 = 600 + 4 = 604$。验算：$604 \\div 5 = 120$ 余 4 ✓。"
       },
       {
         "id": 22,
@@ -634,10 +634,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "口算除法",
-        "question": "计算：$640 \\times 8 = ?$",
+        "question": "计算：$640 \\div 8 = ?$",
         "options": [],
         "answer": "80",
-        "explanation": "$640 \\times 8 = 80$。验算：$80 \\times 8 = 640$ ✓。"
+        "explanation": "$640 \\div 8 = 80$。验算：$80 \\times 8 = 640$ ✓。"
       },
       {
         "id": 23,
@@ -645,10 +645,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "商中间或末尾有0的除法",
-        "question": "计算：$816 \\times 4 = ?$",
+        "question": "计算：$816 \\div 4 = ?$",
         "options": [],
         "answer": "204",
-        "explanation": "$816 \\times 4 = 204$。验算：$204 \\times 4 = 816$ ✓。"
+        "explanation": "$816 \\div 4 = 204$。验算：$204 \\times 4 = 816$ ✓。"
       }
     ]
   },

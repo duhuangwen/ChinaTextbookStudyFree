@@ -228,10 +228,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "学校场所词汇认读与拼写",
-        "question": "Go to the ________. Hand in the homework. (提示：去老师办公室交作业)",
+        "question": "Go to the teachers' ________. Hand in the homework.",
         "options": [],
         "answer": "office",
-        "explanation": "teachers' office可以简称office，此处填office符合题意。"
+        "explanation": "teachers' office 意为“教师办公室”，空格处填 office。"
       },
       {
         "id": 17,
@@ -432,7 +432,7 @@
           "teacher's"
         ],
         "answer": "teachers'",
-        "explanation": "教师办公室是指多位老师共用的，复数名词所有格在s后面加逗号。"
+        "explanation": "教师办公室是多位老师共用的，复数名词 teachers 的所有格在 s 后加撇号：teachers'。"
       },
       {
         "id": 8,
@@ -592,8 +592,8 @@
         "knowledge_point": "确认场所的一般疑问句",
         "question": "________ you have a library? Yes, we do.",
         "options": [],
-        "answer": "do",
-        "explanation": "主语为you，一般疑问句开头用do。"
+        "answer": "Do",
+        "explanation": "主语为 you，实义动词 have 的一般疑问句用 Do 开头，句首字母大写。"
       },
       {
         "id": 19,

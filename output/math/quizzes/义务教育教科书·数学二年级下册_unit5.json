@@ -46,10 +46,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "同级运算顺序",
-        "question": "$16 \\times 2 \\times 0$ 的结果是 0。",
+        "question": "$16 \\div 2 \\div 8$ 的结果是 1。",
         "options": [],
         "answer": "对",
-        "explanation": "任何数乘以 0 都得 0。虽然是从左往右计算，但最后一步结果必为 0。"
+        "explanation": "只有除法，从左往右算：$16 \\div 2 = 8$，$8 \\div 8 = 1$。"
       },
       {
         "id": 5,
@@ -89,10 +89,10 @@
           "$30 - 15 \\times 2$",
           "$4 \\times 8 \\times 2$",
           "$12 + 24 \\times 6$",
-          "$54 \\times 9 + 3$"
+          "$54 \\div 9 + 3$"
         ],
-        "answer": "$54 \\times 9 + 3$",
-        "explanation": "$54 \\times 9 + 3$ 应为先计算除法（注：此处纠正为乘除优先于加减规则），选项中应理解为考察乘除优先权。"
+        "answer": "$54 \\div 9 + 3$",
+        "explanation": "$54 \\div 9 + 3$ 中有除法和加法，要先算除法；其他算式里都没有除法。"
       },
       {
         "id": 8,
@@ -108,7 +108,7 @@
           "$20 + 10 - 5$"
         ],
         "answer": "$3 \\times (6 + 4)$",
-        "explanation": "$3 \\times (6 + 4) = 3 \\times 10 = 30$。验算：$30 \\times 10 = 3$ ✓。"
+        "explanation": "$3 \\times (6 + 4) = 3 \\times 10 = 30$。验算：$30 \\div 10 = 3$ ✓。"
       },
       {
         "id": 9,
@@ -132,15 +132,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "乘除法与加减法混合运算",
-        "question": "$4 - 4 \\times 8$ 的结果与下面哪个算式相同？",
+        "question": "$40 - 4 \\times 8$ 的结果与下面哪个算式相同？",
         "options": [
-          "$32 - 4$",
-          "$4 - 32$",
-          "$28$",
+          "$36 \\times 8$",
+          "$40 - 32$",
+          "$40 - 4$",
           "以上都不对"
         ],
-        "answer": "$4 - 32$",
-        "explanation": "$4 - 4 \\times 8 = 4 - 32$，对应先算乘法法则。"
+        "answer": "$40 - 32$",
+        "explanation": "先算乘法 $4 \\times 8 = 32$，所以 $40 - 4 \\times 8 = 40 - 32$。"
       },
       {
         "id": 11,
@@ -148,15 +148,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "带有小括号的混合运算",
-        "question": "把 $12 + 18 = 30$ 和 $30 \\times 5 = 6$ 合并成一个综合算式是？",
+        "question": "把 $12 + 18 = 30$ 和 $30 \\div 5 = 6$ 合并成一个综合算式是？",
         "options": [
-          "$12 + 18 \\times 5$",
-          "$(12 + 18) \\times 5$",
-          "$12 + (18 \\times 5)$",
-          "$(12 + 18) \\times 6$"
+          "$12 + 18 \\div 5$",
+          "$(12 + 18) \\div 5$",
+          "$12 + (18 \\div 5)$",
+          "$(12 + 18) \\div 6$"
         ],
-        "answer": "$(12 + 18) \\times 5$",
-        "explanation": "必须先算出 12+18 的和再除以 5，所以需要加括号改变顺序。"
+        "answer": "$(12 + 18) \\div 5$",
+        "explanation": "要先算 12 加 18 的和，再除以 5，所以要给加法加上小括号：$(12 + 18) \\div 5 = 30 \\div 5 = 6$。"
       },
       {
         "id": 12,
@@ -180,15 +180,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "同级运算顺序",
-        "question": "比较大小：$2 \\times 4 \\times 8$ < $2 \\times (4 \\times 8)$，这个结论？",
+        "question": "比较 $2 \\times 3 \\times 3$ 和 $2 \\times (3 \\times 3)$ 的结果，结论是？",
         "options": [
           "相等",
-          "大于",
-          "小于",
+          "前一个大",
+          "前一个小",
           "无法比较"
         ],
         "answer": "相等",
-        "explanation": "$2 \\times 4 \\times 8 = 64$，$2 \\times (4 \\times 8) = 64$，所以应填“相等”。"
+        "explanation": "$2 \\times 3 \\times 3 = 6 \\times 3 = 18$，$2 \\times (3 \\times 3) = 2 \\times 9 = 18$，所以结果相等。"
       },
       {
         "id": 14,
@@ -212,9 +212,9 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "带有小括号的混合运算",
-        "question": "$48 \\times (12 - 4)$ 的第一步算什么？",
+        "question": "$48 \\div (12 - 4)$ 的第一步算什么？",
         "options": [
-          "48 \times 12",
+          "48 ÷ 12",
           "12 - 4",
           "48 - 4",
           "无法计算"
@@ -260,7 +260,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "同级运算顺序",
-        "question": "$36 \\times 4 \\times 3$ 的运算结果是？",
+        "question": "$36 \\div 4 \\times 3$ 的运算结果是？",
         "options": [
           "27",
           "3",
@@ -268,7 +268,7 @@
           "4"
         ],
         "answer": "27",
-        "explanation": "$36 \\times 4 = 9$，$9 \\times 3 = 27$。验算：$27 \\times 3 = 9$ ✓。"
+        "explanation": "只有乘除法，从左往右算：$36 \\div 4 = 9$，$9 \\times 3 = 27$。验算：$27 \\div 3 = 9$ ✓。"
       },
       {
         "id": 19,
@@ -279,7 +279,7 @@
         "question": "二年级一班有 22 名男同学，20 名女同学。每 6 人一组，全班可以分成 ___ 组。",
         "options": [],
         "answer": "7",
-        "explanation": "列式：$(22 + 20) \\times 6 = 42 \\times 6 = 7$（组）。验算：$7 \\times 6 = 42$ ✓。"
+        "explanation": "列式：$(22 + 20) \\div 6 = 42 \\div 6 = 7$（组）。验算：$7 \\times 6 = 42$ ✓。"
       },
       {
         "id": 20,
@@ -298,10 +298,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "带有小括号的混合运算",
-        "question": "计算 $81 \\times (14 - 5)$ 的结果是 ___。",
+        "question": "计算 $81 \\div (14 - 5)$ 的结果是 ___。",
         "options": [],
         "answer": "9",
-        "explanation": "列式：$81 \\times (14 - 5) = 81 \\times 9 = 9$。验算：$9 \\times 9 = 81$ ✓。"
+        "explanation": "列式：$81 \\div (14 - 5) = 81 \\div 9 = 9$。验算：$9 \\times 9 = 81$ ✓。"
       },
       {
         "id": 22,
@@ -320,10 +320,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "乘除法与加减法混合运算",
-        "question": "计算：$72 \\times 8 - 4 = ?$",
+        "question": "计算：$72 \\div 8 - 4 = ?$",
         "options": [],
         "answer": "5",
-        "explanation": "$72 \\times 8 - 4 = 9 - 4 = 5$。验算：$5 + 4 = 9$，$9 \\times 8 = 72$ ✓。"
+        "explanation": "$72 \\div 8 - 4 = 9 - 4 = 5$。验算：$5 + 4 = 9$，$9 \\times 8 = 72$ ✓。"
       }
     ]
   },
@@ -338,10 +338,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "同级运算顺序",
-        "question": "$24 \\times 3 \\times 2 = 4$。",
+        "question": "$24 \\div 3 \\div 2 = 4$。",
         "options": [],
         "answer": "对",
-        "explanation": "$24 \\times 3 = 8$，$8 \\times 2 = 4$。验算：$4 \\times 2 = 8$, $8 \\times 3 = 24$ ✓。"
+        "explanation": "$24 \\div 3 = 8$，$8 \\div 2 = 4$。验算：$4 \\times 2 = 8$，$8 \\times 3 = 24$ ✓。"
       },
       {
         "id": 2,
@@ -425,7 +425,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "乘除法与加减法混合运算",
-        "question": "$8 + 16 \\times 8$ 的结果是？",
+        "question": "$8 + 16 \\div 8$ 的结果是？",
         "options": [
           "10",
           "3",
@@ -433,7 +433,7 @@
           "11"
         ],
         "answer": "10",
-        "explanation": "$8 + 16 \\times 8 = 8 + 2 = 10$。先算除法。"
+        "explanation": "$8 + 16 \\div 8 = 8 + 2 = 10$。先算除法，再算加法。"
       },
       {
         "id": 9,
@@ -473,7 +473,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "同级运算顺序",
-        "question": "比较大小：$32 \\times 4 \\times 2$ ( ) $32 \\times (4 \\times 2)$",
+        "question": "比较大小：$32 \\div 4 \\div 2$ ( ) $32 \\div (4 \\times 2)$",
         "options": [
           ">",
           "<",
@@ -481,7 +481,7 @@
           "≈"
         ],
         "answer": "=",
-        "explanation": "$32 \\times 4 \\times 2 = 8 \\times 2 = 4$；$32 \\times (4 \\times 2) = 32 \\times 8 = 4$。相等。"
+        "explanation": "$32 \\div 4 \\div 2 = 8 \\div 2 = 4$；$32 \\div (4 \\times 2) = 32 \\div 8 = 4$。相等。"
       },
       {
         "id": 12,
@@ -489,7 +489,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "带有小括号的混合运算",
-        "question": "$(25 + 15) \\times 8$ 的结果是多少？",
+        "question": "$(25 + 15) \\div 8$ 的结果是多少？",
         "options": [
           "5",
           "40",
@@ -497,7 +497,7 @@
           "8"
         ],
         "answer": "5",
-        "explanation": "$(25 + 15) \\times 8 = 40 \\times 8 = 5$。"
+        "explanation": "$(25 + 15) \\div 8 = 40 \\div 8 = 5$。"
       },
       {
         "id": 13,
@@ -507,12 +507,12 @@
         "knowledge_point": "带有小括号的混合运算",
         "question": "下列算式中结果最大的是？",
         "options": [
-          "$24 - 12 \\times 6$",
-          "$(24 - 12) \\times 6$",
-          "$24 + 12 \\times 6$",
+          "$24 - 12 \\div 6$",
+          "$(24 - 12) \\div 6$",
+          "$24 + 12 \\div 6$",
           "$24 - (12 - 6)$"
         ],
-        "answer": "$24 + 12 \\times 6$",
+        "answer": "$24 + 12 \\div 6$",
         "explanation": "A=22, B=2, C=26, D=18。最大的是 C。"
       },
       {
@@ -537,15 +537,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "解决两步计算的实际问题",
-        "question": "小华有 50 元钱，买了一个 28 元的足球，剩下的钱想买 2 元一支的铅笔，能买几支？",
+        "question": "小华有 50 元钱，买了一个 32 元的足球，剩下的钱想买 2 元一支的铅笔，能买几支？",
         "options": [
           "11 支",
           "12 支",
           "10 支",
           "9 支"
         ],
-        "answer": "11 支",
-        "explanation": "$(50 - 28) \\times 2 = 22 \\times 2 = 11$（支）。"
+        "answer": "9 支",
+        "explanation": "$(50 - 32) \\div 2 = 18 \\div 2 = 9$（支）。"
       },
       {
         "id": 16,
@@ -569,7 +569,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "乘除法与加减法混合运算",
-        "question": "小明家养了 8 只白兔，黑兔的只数是白兔的 3 倍。一共有多少只兔？",
+        "question": "小明家养了 8 只白兔，还养了 3 笼黑兔，每笼 8 只。一共有多少只兔？",
         "options": [
           "24 只",
           "11 只",
@@ -601,10 +601,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "解决两步计算的实际问题",
-        "question": "篮子上有 30 个鸡蛋，拿走了 6 个，剩下的平均放在折子里，每个折子放 6 个，需要 ___ 个折子。",
+        "question": "篮子里有 30 个鸡蛋，拿走了 6 个，剩下的平均放在盒子里，每个盒子放 6 个，需要 ___ 个盒子。",
         "options": [],
         "answer": "4",
-        "explanation": "列式：$(30 - 6) \\times 6 = 24 \\times 6 = 4$。验算：$4 \\times 6 = 24$ ✓。"
+        "explanation": "列式：$(30 - 6) \\div 6 = 24 \\div 6 = 4$（个）。验算：$4 \\times 6 = 24$ ✓。"
       },
       {
         "id": 20,
@@ -612,10 +612,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "同级运算顺序",
-        "question": "计算 $4 \\times 9 \\times 6 = $ ___。",
+        "question": "计算 $4 \\times 9 \\div 6 = $ ___。",
         "options": [],
         "answer": "6",
-        "explanation": "列式：$36 \\times 6 = 6$。验算：$6 \\times 6 = 36$ ✓。"
+        "explanation": "从左往右算：$4 \\times 9 = 36$，$36 \\div 6 = 6$。验算：$6 \\times 6 = 36$ ✓。"
       },
       {
         "id": 21,
@@ -634,10 +634,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "带有小括号的混合运算",
-        "question": "计算：$(28 + 12) \\times 5 = ?$",
+        "question": "计算：$(28 + 12) \\div 5 = ?$",
         "options": [],
         "answer": "8",
-        "explanation": "$(28 + 12) \\times 5 = 40 \\times 5 = 8$。验算：$8 \\times 5 = 40$ ✓。"
+        "explanation": "$(28 + 12) \\div 5 = 40 \\div 5 = 8$。验算：$8 \\times 5 = 40$ ✓。"
       },
       {
         "id": 23,

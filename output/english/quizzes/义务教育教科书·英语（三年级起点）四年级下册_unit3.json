@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "Weather vocabulary",
-        "question": "It's ____ (凉爽的) in autumn.",
+        "question": "It's ____ (凉爽的) today.",
         "options": [],
         "answer": "cool",
-        "explanation": "秋天天气凉爽，单词是cool。"
+        "explanation": "凉爽的对应单词是 cool。"
       },
       {
         "id": 19,
@@ -263,8 +263,8 @@
         "knowledge_point": "Weather asking",
         "question": "____ the weather like today?",
         "options": [],
-        "answer": "whats",
-        "explanation": "缩写形式为what's，此处要求全小写字母不含标点。"
+        "answer": "What's",
+        "explanation": "询问天气用 What's the weather like ...? What's 是 What is 的缩写，句首字母大写。"
       },
       {
         "id": 20,
@@ -375,10 +375,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "Activity logic",
-        "question": "It's rainy outside. We can't play football.",
+        "question": "判断说法是否合理：外面在下雨（It's rainy outside），所以我们不能在外面踢足球（We can't play football outside）。",
         "options": [],
         "answer": "对",
-        "explanation": "外面下雨，不适合踢足球。"
+        "explanation": "下雨天不适合在户外踢足球，这个说法合理。"
       },
       {
         "id": 4,
@@ -397,10 +397,10 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "Geography & Weather",
-        "question": "It's always snowy in Sydney in July.",
+        "question": "'It's hot in Sydney.' 的意思是'悉尼很冷'。",
         "options": [],
         "answer": "错",
-        "explanation": "悉尼属于澳大利亚，7月虽是冬季但极少下雪（常识性判断天气的变化）。"
+        "explanation": "hot 意为“炎热的”，这句话的意思是“悉尼很热”，不是“很冷”（cold）。"
       },
       {
         "id": 6,
@@ -581,8 +581,8 @@
         "knowledge_point": "Asking about weather",
         "question": "____ the weather like in Kunming?",
         "options": [],
-        "answer": "whats",
-        "explanation": "what is的缩写。要求全小写字母。"
+        "answer": "What's",
+        "explanation": "What's 是 What is 的缩写，询问天气用 What's the weather like in ...?"
       },
       {
         "id": 18,
@@ -668,16 +668,17 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "Sentence structure",
-        "question": "连词成句：[Can, I, outside, playing, go]",
+        "question": "连词成句：[Can, I, outside, play, and, go]",
         "options": [
           "Can",
           "I",
-          "go",
           "outside",
-          "playing"
+          "play",
+          "and",
+          "go"
         ],
-        "answer": "Can,I,go,outside,playing",
-        "explanation": "此句表达：我可以去外面玩吗？结构为Can I go outside + 动词ing形式。"
+        "answer": "Can,I,go,outside,and,play",
+        "explanation": "Can I go outside and play? 意为“我可以出去玩吗？”，Can I + 动词原形。"
       }
     ]
   },

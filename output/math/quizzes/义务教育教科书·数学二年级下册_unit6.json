@@ -84,7 +84,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "余数与除数的关系",
-        "question": "在 $\\Box \\div 5 = 6 \\dots \\Box$ 中，余数最大是多少？",
+        "question": "在 $\\Box \\div 5 = 6 \\dots \\triangle$ 中，余数 $\\triangle$ 最大是多少？",
         "options": [
           "4",
           "5",

@@ -228,7 +228,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "描述动物外貌特征的形容词",
-        "question": "The elephant has a long nose and a ___ tail.",
+        "question": "The elephant has a long nose and a ___ tail. (短的)",
         "options": [],
         "answer": "short",
         "explanation": "大象有长鼻子和短尾巴。"
@@ -311,7 +311,7 @@
         "type": "word_order",
         "score": 5,
         "difficulty": 2,
-        "knowledge_point": "描述描述身体部位的特征表达",
+        "knowledge_point": "描述身体部位的特征表达",
         "question": "连词成句：(at, the, Look, giraffe)",
         "options": [
           "at",
@@ -331,12 +331,12 @@
         "question": "连词成句：(has, it, nose, a, long)",
         "options": [
           "has",
-          "it",
+          "It",
           "nose",
           "a",
           "long"
         ],
-        "answer": "it,has,a,long,nose",
+        "answer": "It,has,a,long,nose",
         "explanation": "描述物体的固定句型：It has + a + 形容词 + 部位。"
       }
     ]
@@ -352,7 +352,7 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "描述动物外貌特征的形容词",
-        "question": "Elephant is small.",
+        "question": "The elephant is small.",
         "options": [],
         "answer": "错",
         "explanation": "大象通常被描述为big。"
@@ -363,7 +363,7 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "元音字母i在闭音节中的发音",
-        "question": "'gift' 中的 'i' 和 'pig' 中的 'i' 发音是相同的。",
+        "question": "'six' 中的 'i' 和 'pig' 中的 'i' 发音是相同的。",
         "options": [],
         "answer": "对",
         "explanation": "都发短元音/ɪ/。"
@@ -407,15 +407,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "描述动物外貌特征的形容词",
-        "question": "It's so ________. It has a long tail.",
+        "question": "Look at that giraffe. It's so ________.",
         "options": [
-          "long",
           "tall",
           "short",
-          "small"
+          "small",
+          "thin"
         ],
         "answer": "tall",
-        "explanation": "根据PEP三年级下册情境，通常指猴子或长颈鹿，在此空应选描述整体的形容词。"
+        "explanation": "长颈鹿个子很高，用 tall 描述。"
       },
       {
         "id": 7,
@@ -438,7 +438,7 @@
         "type": "choice",
         "score": 5,
         "difficulty": 1,
-        "knowledge_point": "描述描述身体部位的特征表达",
+        "knowledge_point": "描述身体部位的特征表达",
         "question": "The elephant ________ a short tail.",
         "options": [
           "is",
@@ -455,7 +455,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "描述动物外貌特征的形容词",
-        "question": "Look at the monkey. It's ________.",
+        "question": "The pig is fat, but the monkey is ________.",
         "options": [
           "fat",
           "thin",
@@ -463,7 +463,7 @@
           "big"
         ],
         "answer": "thin",
-        "explanation": "课文描述中通常称猴子为thin。"
+        "explanation": "but 表示转折，与 fat（胖的）相对的是 thin（瘦的）。"
       },
       {
         "id": 10,
@@ -503,7 +503,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "描述身体部位的特征表达",
-        "question": "—Look at that bear! —Wow! It's ________.",
+        "question": "—Look at that bear! —Wow! It's ________. (好胖)",
         "options": [
           "so fat",
           "so tall",
@@ -511,7 +511,7 @@
           "so long"
         ],
         "answer": "so fat",
-        "explanation": "熊的特征通常是壮且胖。"
+        "explanation": "so fat 意为“好胖”，fat 表示胖的。"
       },
       {
         "id": 13,
@@ -577,7 +577,7 @@
         "type": "fill_blank_text",
         "score": 5,
         "difficulty": 2,
-        "knowledge_point": "描述描述身体部位的特征表达",
+        "knowledge_point": "描述身体部位的特征表达",
         "question": "It ___ a short tail.",
         "options": [],
         "answer": "has",
@@ -589,7 +589,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "描述动物外貌特征的形容词",
-        "question": "The giraffe is tall, but the dog is ___.",
+        "question": "The giraffe is tall, but the dog is ___. (矮的)",
         "options": [],
         "answer": "short",
         "explanation": "与tall相反的形容词是short。"
@@ -600,7 +600,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "描述动物外貌特征的形容词",
-        "question": "Look at the elephant! It is so ___.",
+        "question": "Look at the elephant! It is so ___. (大的)",
         "options": [],
         "answer": "big",
         "explanation": "描述大象巨大体型的典型词汇。"
@@ -617,13 +617,13 @@
           "tall",
           "long",
           "fat",
-          "short",
+          "short（矮的）",
           "small",
           "thin",
-          "short"
+          "short（短的）"
         ],
         "answer": "A-2,B-1,C-4,D-3",
-        "explanation": "big-small, tall-short(矮), long-short(短), fat-thin。"
+        "explanation": "big-small, tall-short（矮的）, long-short（短的）, fat-thin。"
       },
       {
         "id": 21,

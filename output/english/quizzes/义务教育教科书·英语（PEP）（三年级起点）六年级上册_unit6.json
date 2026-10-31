@@ -116,15 +116,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "词义理解",
-        "question": "I failed the math test. I am very ______.",
+        "question": "My dog is ill. I am very ______.",
         "options": [
           "happy",
-          "proud",
           "sad",
-          "excited"
+          "fine",
+          "great"
         ],
         "answer": "sad",
-        "explanation": "考试不及格通常感到伤心（sad）。"
+        "explanation": "小狗生病了会感到伤心（sad）。"
       },
       {
         "id": 10,
@@ -212,7 +212,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "综合情境",
-        "question": "Your friend is going to have a big match. He is nervous. You can say: ______",
+        "question": "Your friend is going to have a big match. He is worried. You can say: ______",
         "options": [
           "Don't worry.",
           "You are right.",
@@ -220,7 +220,7 @@
           "Good idea."
         ],
         "answer": "Don't worry.",
-        "explanation": "安慰紧张的人可以使用'Don't worry'（不要担心）。"
+        "explanation": "安慰担心的人可以说 Don't worry.（不要担心）。"
       },
       {
         "id": 16,
@@ -584,7 +584,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "动词词组",
-        "question": "You should take a deep ______ when you are nervous.",
+        "question": "You should take a deep ______ when you are angry.",
         "options": [],
         "answer": "breath",
         "explanation": "呼吸的名词是breath（在take a deep breath中）。"
@@ -599,15 +599,15 @@
         "options": [
           "count to ten",
           "see a doctor",
-          "take a breath",
           "wear warm clothes",
-          "feel better",
+          "do more exercise",
+          "run faster",
           "calm down",
-          "get healthy",
+          "get well",
           "stay warm"
         ],
-        "answer": "A-2,B-3,C-1,D-4",
-        "explanation": "count to ten-冷静；see a doctor-恢复健康；take a breath-感觉好点；wear warm clothes-保暖。"
+        "answer": "A-2,B-3,C-4,D-1",
+        "explanation": "count to ten-冷静下来；see a doctor-病好起来；wear warm clothes-保暖；do more exercise-跑得更快。"
       },
       {
         "id": 21,
@@ -620,14 +620,14 @@
           "lose a pen",
           "go to a park",
           "father is ill",
-          "bad weather",
-          "unhappy",
+          "see a big dog",
+          "afraid",
           "worried",
           "sad",
           "happy"
         ],
         "answer": "A-3,B-4,C-2,D-1",
-        "explanation": "丢笔-伤心；去公园-开心；父亲生病-担心；天气不好-不开心。"
+        "explanation": "丢笔-伤心；去公园-开心；父亲生病-担心；看到大狗-害怕。"
       },
       {
         "id": 22,

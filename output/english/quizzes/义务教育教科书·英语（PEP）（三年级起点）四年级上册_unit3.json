@@ -414,7 +414,7 @@
           "hat"
         ],
         "answer": "quiet",
-        "explanation": "此处需要形容词修饰girl，形容词化的只有quiet。"
+        "explanation": "a ___ girl 需要形容词修饰 girl，blue 虽是形容词但不能描述女孩，shoes、hat 是名词，只有 quiet（安静的）合适。"
       },
       {
         "id": 7,
@@ -486,7 +486,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "选择疑问回答",
-        "question": "-A boy or girl? -______",
+        "question": "-A boy or a girl? -______",
         "options": [
           "Yes, he is.",
           "A boy.",
@@ -577,7 +577,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "身体部位",
-        "question": "Touching my ______(鼻子) and your face.",
+        "question": "Touch my ______(鼻子) and your face.",
         "options": [],
         "answer": "nose",
         "explanation": "鼻子英文为nose。"

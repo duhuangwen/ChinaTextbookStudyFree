@@ -132,7 +132,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "寓言故事理解",
-        "question": "The Robin Hood story tells us we should ______.",
+        "question": "In a story, a little mouse helps a big lion. The story tells us we should ______.",
         "options": [
           "be mean",
           "stay at home",
@@ -140,7 +140,7 @@
           "be angry"
         ],
         "answer": "help others",
-        "explanation": "罗宾汉的故事寓意是帮助他人。"
+        "explanation": "小老鼠帮助大狮子的故事告诉我们要帮助他人(help others)。"
       },
       {
         "id": 11,
@@ -212,15 +212,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "语音与停顿",
-        "question": "Which sentence has a natural pause (V)?",
+        "question": "Where is the natural pause in 'First, go to the bookstore.'?",
         "options": [
-          "Wait V for the V green light.",
-          "I want V to go V to the cinema.",
-          "First, V go to the bookstore.",
-          "Turn V left V at the V light."
+          "after First",
+          "after go",
+          "after to",
+          "after the"
         ],
-        "answer": "First, V go to the bookstore.",
-        "explanation": "句子开头的连接词（如First）后通常有自然停顿。"
+        "answer": "after First",
+        "explanation": "句首的 First 后有逗号，通常在此自然停顿。"
       },
       {
         "id": 16,
@@ -294,7 +294,7 @@
         "knowledge_point": "情绪英汉配对",
         "question": "请将情绪词汇与其对应的中文意思连线。",
         "options": [
-          "scared",
+          "afraid",
           "angry",
           "worried",
           "excited",
@@ -304,7 +304,7 @@
           "生气的"
         ],
         "answer": "A-2,B-4,C-1,D-3",
-        "explanation": "scared-害怕, angry-生气, worried-担心, excited-兴奋。"
+        "explanation": "afraid-害怕, angry-生气, worried-担心, excited-兴奋。"
       },
       {
         "id": 22,
@@ -454,7 +454,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "连读现象",
-        "question": "Where is the li-nk-up (连读) in 'Stand up'?",
+        "question": "Where is the link-up (连读) in 'Stand up'?",
         "options": [
           "S-t",
           "t-a",

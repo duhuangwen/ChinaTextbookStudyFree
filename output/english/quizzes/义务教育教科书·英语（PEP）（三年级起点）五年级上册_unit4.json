@@ -24,7 +24,7 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "乐器与球类运动的冠词规则",
-        "question": "玩足球应该说 'play the football'。",
+        "question": "踢足球应该说 'play the football'。",
         "options": [],
         "answer": "错",
         "explanation": "在英语中，球类运动前不加定冠词the，应该是play football。"
@@ -214,7 +214,7 @@
         "knowledge_point": "个人能力动词短语",
         "question": "We have an English party next Tuesday. We can ______.",
         "options": [
-          "do some kung fu",
+          "wash the clothes",
           "play some football",
           "sing some English songs",
           "do some homework"
@@ -239,7 +239,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "情态动词can的肯否定用法",
-        "question": "What _____ you do for the party?",
+        "question": "What _____ (能) you do for the party?",
         "options": [],
         "answer": "can",
         "explanation": "询问对方能做什么，使用情态动词can。"
@@ -292,7 +292,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "个人能力动词短语",
-        "question": "请将乐器与动作匹配。",
+        "question": "请将下列短语与中文意思匹配。",
         "options": [
           "play the pipa",
           "play the piano",
@@ -385,7 +385,7 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "情态动词can的肯否定用法",
-        "question": "He can plays the pipa.",
+        "question": "句子 'He can plays the pipa.' 是正确的。",
         "options": [],
         "answer": "错",
         "explanation": "不管主语是否为第三人称单数，can后面的动词都必须用原形。"
@@ -503,15 +503,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "个人能力动词短语",
-        "question": "We can help you _____.",
+        "question": "You can't speak English well. We can help you _____ English.",
         "options": [
           "swim",
-          "speak",
+          "cook",
           "learn",
           "do"
         ],
         "answer": "learn",
-        "explanation": "help you learn是‘帮你学习’，符合逻辑。"
+        "explanation": "help you learn English 意为帮你学英语，其余动词不能与 English 搭配。"
       },
       {
         "id": 13,
@@ -521,7 +521,7 @@
         "knowledge_point": "个人能力动词短语",
         "question": "Which of the following is a sport(运动)?",
         "options": [
-          "play the lute",
+          "play the pipa",
           "play football",
           "sing songs",
           "draw cartoons"
@@ -578,10 +578,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "乐器与球类运动的冠词规则",
-        "question": "I often play _____ football with my friends.",
+        "question": "I often _____ football with my friends.",
         "options": [],
         "answer": "play",
-        "explanation": "根据题干，这里缺动词play。"
+        "explanation": "踢足球是 play football，球类运动前不加 the。"
       },
       {
         "id": 18,

@@ -16,7 +16,7 @@
         "question": "因为 $2 \\times 3 = 6$，所以 $20 \\times 30 = 60$。",
         "options": [],
         "answer": "错",
-        "explanation": "$20 \\times 30 = 600$。计算 $20 \\times 30$ 时，先算 $2 \\times 3 = 6$，再在积的末尾添上两个 0，结果是 600。验算：$600 \\times 10 \\times 10 = 6 \\times 100 = 600$ ✓。"
+        "explanation": "$20 \\times 30 = 600$。计算 $20 \\times 30$ 时，先算 $2 \\times 3 = 6$，再在积的末尾添上两个 0，结果是 600。验算：$600 \\div 10 \\div 10 = 6$ ✓。"
       },
       {
         "id": 2,
@@ -118,13 +118,13 @@
         "knowledge_point": "不进位与进位的笔算乘法",
         "question": "下面各题中，积最接近 1200 的是：",
         "options": [
-          "21 \times 59",
-          "30 \times 41",
-          "38 \times 32",
-          "19 \times 49"
+          "21 × 59",
+          "30 × 41",
+          "38 × 32",
+          "19 × 49"
         ],
-        "answer": "30 \times 41",
-        "explanation": "$21 \\times 59 \\times \\text{≈} 1200$；$30 \\times 41 = 1230$；$38 \\times 32 \\times \\text{≈} 1200$；$30 \\times 41$ 最接近。"
+        "answer": "38 × 32",
+        "explanation": "$21 \\times 59 = 1239$，$30 \\times 41 = 1230$，$38 \\times 32 = 1216$，$19 \\times 49 = 931$。1216 与 1200 只差 16，最接近。"
       },
       {
         "id": 10,
@@ -172,7 +172,7 @@
           "1200"
         ],
         "answer": "800",
-        "explanation": "$42 \\times \\text{≈} 40$，$21 \\times \\text{≈} 20$，$40 \\times 20 = 800$。"
+        "explanation": "$42 \\approx 40$，$21 \\approx 20$，$40 \\times 20 = 800$。"
       },
       {
         "id": 13,
@@ -180,7 +180,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "解决两步计算的应用题",
-        "question": "3 名老师带 40 名学生去公园，学生票每张 15 元，一共需要：",
+        "question": "3 名老师带 40 名学生去公园，学生票每张 15 元，买学生票一共需要多少元？",
         "options": [
           "600",
           "45",
@@ -188,7 +188,7 @@
           "15"
         ],
         "answer": "600",
-        "explanation": "题目问学生共需多少，或者默认为学生票费用。$40 \\times 15 = 600$ 元。"
+        "explanation": "只买学生票，$40 \\times 15 = 600$（元）。"
       },
       {
         "id": 14,
@@ -204,7 +204,7 @@
           "5400"
         ],
         "answer": "54",
-        "explanation": "$540 \\times \\text{÷} 10 = 54$。"
+        "explanation": "$540 \\div 10 = 54$。"
       },
       {
         "id": 15,
@@ -252,7 +252,7 @@
           "120"
         ],
         "answer": "10",
-        "explanation": "$60 \\times \\text{÷} 2 = 30$（1 只 3 天），$30 \\times \\text{÷} 3 = 10$（1 只 1 天）。"
+        "explanation": "$60 \\div 2 = 30$（1 只 3 天），$30 \\div 3 = 10$（1 只 1 天）。"
       },
       {
         "id": 18,
@@ -312,7 +312,7 @@
         "question": "$12 \\times 300 = ?$",
         "options": [],
         "answer": "3600",
-        "explanation": "$12 \\times 3 = 36$，末尾补两个 0 得到 3600。验算：$3600 \\times \\text{÷} 300 = 12$ ✓。"
+        "explanation": "$12 \\times 3 = 36$，末尾补两个 0 得到 3600。验算：$3600 \\div 300 = 12$ ✓。"
       },
       {
         "id": 23,
@@ -323,7 +323,7 @@
         "question": "$34 \\times 12 = ?$",
         "options": [],
         "answer": "408",
-        "explanation": "$34 \\times 2 = 68$，$34 \\times 10 = 340$，$68 + 340 = 408$。验算：$408 \\times \\text{÷} 12 = 34$ ✓。"
+        "explanation": "$34 \\times 2 = 68$，$34 \\times 10 = 340$，$68 + 340 = 408$。验算：$408 \\div 12 = 34$ ✓。"
       }
     ]
   },
@@ -395,12 +395,12 @@
         "knowledge_point": "口算乘法",
         "question": "得数大于 1200 的算式是：",
         "options": [
-          "30 \times 30",
-          "20 \times 50",
-          "40 \times 32",
-          "25 \times 40"
+          "30 × 30",
+          "20 × 50",
+          "40 × 32",
+          "25 × 40"
         ],
-        "answer": "40 \times 32",
+        "answer": "40 × 32",
         "explanation": "$30 \\times 30 = 900$; $20 \\times 50 = 1000$; $40 \\times 32 = 1280$; $25 \\times 40 = 1000$。只有 1280 > 1200。"
       },
       {
@@ -465,7 +465,7 @@
           "4"
         ],
         "answer": "2",
-        "explanation": "$460 \\times \\text{÷} 20 = 23$，所以 $\\text{□}$ 是 2。"
+        "explanation": "$460 \\div 20 = 23$，所以 $\\text{□}$ 是 2。"
       },
       {
         "id": 11,
@@ -477,8 +477,8 @@
         "options": [
           "450+45",
           "450+11",
-          "45 \times 10+1",
-          "45 \times 1+10"
+          "45 × 10+1",
+          "45 × 1+10"
         ],
         "answer": "450+45",
         "explanation": "$45 \\times 11 = 45 \\times (10+1) = 45 \\times 10 + 45 \\times 1 = 450 + 45$。"
@@ -508,8 +508,8 @@
         "question": "$20 \\times 40$ 与 $10 \\times 80$ 的结果：",
         "options": [
           "一样大",
-          "20 \times 40 大",
-          "10 \times 80 大",
+          "20 × 40 大",
+          "10 × 80 大",
           "无法比较"
         ],
         "answer": "一样大",
@@ -577,7 +577,7 @@
           "120"
         ],
         "answer": "150",
-        "explanation": "距离 $60 \\times 10 = 600$ 米，$600 \\times \\text{÷} 4 = 150$ 米。"
+        "explanation": "距离 $60 \\times 10 = 600$ 米，$600 \\div 4 = 150$ 米。"
       },
       {
         "id": 18,
@@ -626,7 +626,7 @@
         "question": "小明每分钟打 45 个字，半个小时打 ___ 个字。",
         "options": [],
         "answer": "1350",
-        "explanation": "半小时是 30 分钟。$45 \\times 30 = 1350$。验算：$135 \\times \\text{÷} 3 = 45$ ✓。"
+        "explanation": "半小时是 30 分钟。$45 \\times 30 = 1350$。验算：$1350 \\div 30 = 45$ ✓。"
       },
       {
         "id": 22,
@@ -637,7 +637,7 @@
         "question": "$80 \\times 70 = ?$",
         "options": [],
         "answer": "5600",
-        "explanation": "$8 \\times 7 = 56$，末尾补两个 0 为 5600。验算：$5600 \\times \\text{÷} 70 = 80$ ✓。"
+        "explanation": "$8 \\times 7 = 56$，末尾补两个 0 为 5600。验算：$5600 \\div 70 = 80$ ✓。"
       },
       {
         "id": 23,

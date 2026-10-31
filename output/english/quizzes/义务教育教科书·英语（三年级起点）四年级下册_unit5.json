@@ -148,7 +148,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "名词性物主代词",
-        "question": "The blue hat is ______. (那是我的。)",
+        "question": "The blue hat is ______. (蓝帽子是我的。)",
         "options": [
           "mine",
           "my",
@@ -252,8 +252,8 @@
         "knowledge_point": "名词所有格",
         "question": "Whose hat is this? It's ______ (迈克的).",
         "options": [],
-        "answer": "mike's",
-        "explanation": "专有名词所有格形式为在名字后加's。"
+        "answer": "Mike's",
+        "explanation": "人名后加 's 表示所属，Mike's 意为“迈克的”，人名首字母大写。"
       },
       {
         "id": 19,
@@ -361,10 +361,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "语法规则",
-        "question": "当我们说 'my shoes' 时，这里的 'shoes' 可以换成单数 'shoe'。",
+        "question": "说“我的一双鞋”时，应该用单数 'my shoe'。",
         "options": [],
         "answer": "错",
-        "explanation": "鞋子通常是成双出现，用复数shoes。"
+        "explanation": "鞋子通常成双出现，“我的一双鞋”要用复数 my shoes。"
       },
       {
         "id": 3,
@@ -549,15 +549,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "时态语境",
-        "question": "What are you doing? I am ______ my clothes.",
+        "question": "My shirt is not clean. I can ______ it.",
         "options": [
-          "washing",
           "wash",
-          "to wash",
+          "washing",
+          "washes",
           "washed"
         ],
-        "answer": "washing",
-        "explanation": "现在进行时 be + doing 结构。"
+        "answer": "wash",
+        "explanation": "can 后接动词原形，wash 意为“洗”。"
       },
       {
         "id": 16,
@@ -589,7 +589,7 @@
         "knowledge_point": "疑问词",
         "question": "______ (谁的) pants are these?",
         "options": [],
-        "answer": "whose",
+        "answer": "Whose",
         "explanation": "whose在句首询问谁的。"
       },
       {
@@ -600,7 +600,7 @@
         "knowledge_point": "复数指示代词",
         "question": "______ (那些) are Sarah's socks.",
         "options": [],
-        "answer": "those",
+        "answer": "Those",
         "explanation": "表示远处的复数物体用those。"
       },
       {

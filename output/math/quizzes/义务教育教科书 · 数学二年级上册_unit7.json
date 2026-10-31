@@ -27,7 +27,7 @@
         "question": "分针走1圈是60分，也就是1时。",
         "options": [],
         "answer": "对",
-        "explanation": "分针走1小格是1分，1圈是60小格即60分。分针走一圈，时针正好走一加格，即1时。✓"
+        "explanation": "分针走1小格是1分，1圈是60小格即60分。分针走一圈，时针正好走一大格，即1时。✓"
       },
       {
         "id": 3,
@@ -132,7 +132,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "钟面时刻的认读",
-        "question": "时针走一个大格，分钟走___小格？",
+        "question": "时针走一个大格，分针走___小格？",
         "options": [
           "1",
           "5",
@@ -220,7 +220,7 @@
           "30分"
         ],
         "answer": "15分",
-        "explanation": "1小时的四分之一是15分，生活习惯称15分为“一刻”。✓"
+        "explanation": "1时=60分，60分里有4个15分，生活中把15分叫作“一刻”。✓"
       },
       {
         "id": 16,
@@ -279,7 +279,7 @@
         "question": "2时 = ___ 分",
         "options": [],
         "answer": "120",
-        "explanation": "因为 1时=60分。列式：$60 \\times 2 = 120$（分）。验算：$120 \\times 60 = 2$。✓"
+        "explanation": "因为 1时=60分，2时就是 $60 + 60 = 120$（分）。✓"
       },
       {
         "id": 20,
@@ -320,7 +320,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "钟面时刻的认读",
-        "question": "5 \times 9 = ?",
+        "question": "计算：$5 \\times 9 = ?$",
         "options": [],
         "answer": "45",
         "explanation": "五九四十五，对应分针指在数字9时的分数。✓"
@@ -569,7 +569,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "时、分、秒的换算与关系",
-        "question": "分针从12走到12，经过的时间是？",
+        "question": "分针从12开始走了一整圈，又回到12，经过的时间是？",
         "options": [
           "1分",
           "1时",
@@ -612,7 +612,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "时间先后的推理",
-        "question": "现在现实时刻是 8 时 55 分，再过 5 分钟是 ___ 时。",
+        "question": "现在是 8 时 55 分，再过 5 分钟是 ___ 时。",
         "options": [],
         "answer": "9",
         "explanation": "$55 + 5 = 60$，满60分进1位到时。$8 + 1 = 9$ 时。✓"
@@ -623,10 +623,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "钟面时刻的认读",
-        "question": "时针指向 3，分针指向 12，这个时刻用电子数表法表示，分钟部分应填数字 ___。",
+        "question": "时针指向 3，分针指向 12，这时是 3 时整，也可以说是 3 时 ___ 分。",
         "options": [],
         "answer": "0",
-        "explanation": "整时时分钟部分为00。✓"
+        "explanation": "分针指向12表示整时，3时整就是3时0分，电子表上显示为3:00。✓"
       },
       {
         "id": 22,
@@ -645,10 +645,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "时、分、秒的换算与关系",
-        "question": "15 \times 4 = ?",
+        "question": "计算：$15 + 15 + 15 + 15 = ?$",
         "options": [],
         "answer": "60",
-        "explanation": "4个一刻钟等于一小时。$15 \\times 4 = 60$。✓"
+        "explanation": "4个一刻钟等于1时。$15 + 15 = 30$，$30 + 30 = 60$。✓"
       }
     ]
   },

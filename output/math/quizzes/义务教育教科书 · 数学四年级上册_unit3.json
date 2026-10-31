@@ -124,7 +124,7 @@
           "量角器"
         ],
         "answer": "量角器",
-        "explanation": "量角器是专业的角长度度量工具。"
+        "explanation": "量角器是测量角的大小（度数）的工具。"
       },
       {
         "id": 10,
@@ -276,7 +276,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "线段、直线、射线",
-        "question": "线段有 ___ 条端点。",
+        "question": "线段有 ___ 个端点。",
         "options": [],
         "answer": "2",
         "explanation": "线段有两个端点。验算：直线0个，射线1个，线段2个 ✓。"

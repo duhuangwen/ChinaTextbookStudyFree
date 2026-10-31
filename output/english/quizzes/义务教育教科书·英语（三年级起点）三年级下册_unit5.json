@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "水果类词汇及其复数形式",
-        "question": "The ___ is huge and green.",
+        "question": "The ___ is big and green.",
         "options": [
           "strawberry",
           "orange",
@@ -204,7 +204,7 @@
           "watermelon"
         ],
         "answer": "watermelon",
-        "explanation": "西瓜是巨大的且表皮通常是绿色的。"
+        "explanation": "西瓜个头大，表皮是绿色的。"
       },
       {
         "id": 15,
@@ -241,8 +241,8 @@
         "knowledge_point": "表达喜好与征求许可",
         "question": "______ you like strawberries?",
         "options": [],
-        "answer": "do",
-        "explanation": "助动词引导的疑问句首选do。"
+        "answer": "Do",
+        "explanation": "以 like 为实义动词的一般疑问句用助动词 do 开头，句首大写为 Do。"
       },
       {
         "id": 18,
@@ -406,15 +406,15 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "水果类词汇及其复数形式",
-        "question": "Which fruit is red and has small seeds on the skin?",
+        "question": "It's red and small. What is it?",
         "options": [
           "banana",
           "pear",
           "strawberry",
-          "grape"
+          "watermelon"
         ],
         "answer": "strawberry",
-        "explanation": "草莓是红色的且外表有小籽。"
+        "explanation": "草莓又红又小；香蕉是黄色的，西瓜很大，梨不是红色的。"
       },
       {
         "id": 7,
@@ -474,11 +474,11 @@
         "options": [
           "duck",
           "run",
-          "pupil",
+          "student",
           "under"
         ],
-        "answer": "pupil",
-        "explanation": "pupil中的u发/ju:/，其他发/ʌ/。"
+        "answer": "student",
+        "explanation": "student 中的 u 发 /juː/，其他三个词中的 u 发 /ʌ/。"
       },
       {
         "id": 11,
@@ -568,8 +568,8 @@
         "knowledge_point": "表达喜好与征求许可",
         "question": "— Do you like apples? — No, I ______.",
         "options": [],
-        "answer": "dont",
-        "explanation": "否定回答使用do not的缩写形式（此处按要求不含标点，输入为dont）。"
+        "answer": "don't",
+        "explanation": "Do you...? 的否定回答为 No, I don't.，don't 是 do not 的缩写。"
       },
       {
         "id": 17,
@@ -577,10 +577,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "水果类词汇及其复数形式",
-        "question": "I buy three ______.",
+        "question": "I buy three ______. (梨)",
         "options": [],
         "answer": "pears",
-        "explanation": "填入一种水果的复数形式。"
+        "explanation": "梨是 pear，three 后接复数 pears。"
       },
       {
         "id": 18,
@@ -590,8 +590,8 @@
         "knowledge_point": "表达喜好与征求许可",
         "question": "______ about you?",
         "options": [],
-        "answer": "what",
-        "explanation": "句首单词应为what，询问对方意见。"
+        "answer": "What",
+        "explanation": "What about you? 意为“你呢？”，句首首字母大写。"
       },
       {
         "id": 19,
@@ -599,10 +599,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "水果类词汇及其复数形式",
-        "question": "An apple a day keeps the ______ away.",
+        "question": "I like ______. (苹果，用复数形式)",
         "options": [],
-        "answer": "doctor",
-        "explanation": "英语谚语：一天一苹果，医生远离我。"
+        "answer": "apples",
+        "explanation": "表示喜欢某类水果用复数，apple 的复数是 apples。"
       },
       {
         "id": 20,

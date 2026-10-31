@@ -180,7 +180,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "名词辨析",
-        "question": "Please put your ____ in your schoolbag.",
+        "question": "I have three ____ in my schoolbag.",
         "options": [
           "candies",
           "candy",
@@ -188,7 +188,7 @@
           "the candy"
         ],
         "answer": "candies",
-        "explanation": "根据教材情景，表达书包里的多颗糖果，常用复数candies。"
+        "explanation": "three 后接可数名词复数，candy 的复数是 candies。"
       },
       {
         "id": 14,
@@ -228,7 +228,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "拼写-书包",
-        "question": "Put your books into your s_________.",
+        "question": "Put your books into your ______ (书包).",
         "options": [],
         "answer": "schoolbag",
         "explanation": "本单元主题词汇，书包的英文是schoolbag。"
@@ -261,7 +261,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "书籍-数学",
-        "question": "I have one ______ book and two storybooks.",
+        "question": "I have one ______ (数学) book and two storybooks.",
         "options": [],
         "answer": "maths",
         "explanation": "数学书对应maths book。"
@@ -541,10 +541,10 @@
           "a apple",
           "an apple",
           "apple",
-          "apples"
+          "an apples"
         ],
         "answer": "an apple",
-        "explanation": "apple单数前面用an。"
+        "explanation": "apple 以元音音素开头，单数前用 an，即 an apple。"
       },
       {
         "id": 15,
@@ -568,10 +568,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "糖果词汇",
-        "question": "I have some ______ (糖果) in my hand.",
+        "question": "I have three ______ (糖果) in my hand.",
         "options": [],
-        "answer": "candy",
-        "explanation": "candy即可数也可不可数，在此填原形。"
+        "answer": "candies",
+        "explanation": "three 后接可数名词复数，candy 的复数是 candies。"
       },
       {
         "id": 17,
@@ -579,7 +579,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "动词习惯用法",
-        "question": "Please ______ me your storybook.",
+        "question": "Please ______ (给……看) me your storybook.",
         "options": [],
         "answer": "show",
         "explanation": "给我看看..., 动词是show。"
@@ -590,10 +590,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "方位介词",
-        "question": "The keys are ______ the door.",
+        "question": "The keys are ______ (在……里) the door.",
         "options": [],
         "answer": "in",
-        "explanation": "钥匙插在门锁里，固定表达用in the door。"
+        "explanation": "钥匙插在门锁里，用 in the door。"
       },
       {
         "id": 19,
@@ -640,11 +640,11 @@
           "An English book?",
           "Yes. And a kite.",
           "I can help you.",
-          "I'm sorry to hear.",
+          "I'm sorry to hear that.",
           "It's very nice."
         ],
         "answer": "A-3,B-2,C-4,D-1",
-        "explanation": "丢失了-难过；很重-帮助；看包-漂亮；是书吗-对还有纸鸢。"
+        "explanation": "丢了书包—表示难过；太重了—我来帮你；看我的新书包—很漂亮；是英语书吗—是的，还有一只风筝。"
       },
       {
         "id": 22,

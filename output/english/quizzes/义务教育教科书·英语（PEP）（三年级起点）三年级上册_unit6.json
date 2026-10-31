@@ -124,7 +124,7 @@
           "the plate"
         ],
         "answer": "plates",
-        "explanation": "How many询问数量，后面需由名词复数形式。"
+        "explanation": "How many 询问数量，后面接名词复数形式。"
       },
       {
         "id": 10,
@@ -132,7 +132,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "词汇理解",
-        "question": "Sarah, this is my brother, Sam.",
+        "question": "— Sarah, this is Sam.\n— ________",
         "options": [
           "Happy birthday!",
           "Great!",
@@ -261,10 +261,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "指示代词",
-        "question": "Let's eat ___ cake.",
+        "question": "Let's eat ___ cake. (我们吃这个蛋糕吧。)",
         "options": [],
-        "answer": "the",
-        "explanation": "吃那个蛋糕，特指生日蛋糕用the。"
+        "answer": "this",
+        "explanation": "“这个”的英文是 this，Let's eat this cake."
       },
       {
         "id": 20,
@@ -385,7 +385,7 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "量词逻辑",
-        "question": "当我们说 'two plates' 时，'plates' 后面要加 's'。",
+        "question": "当我们说 'two plates' 时，'plate' 后面要加 's'。",
         "options": [],
         "answer": "对",
         "explanation": "复数名词需要加s。"
@@ -503,7 +503,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "综合运用",
-        "question": "Look at the candles. I am _____.",
+        "question": "— How old are you?\n— I am _____.",
         "options": [
           "fine",
           "too",
@@ -511,7 +511,7 @@
           "this"
         ],
         "answer": "nine",
-        "explanation": "根据蜡烛的数量判断年龄。"
+        "explanation": "How old are you? 询问年龄，用数字回答：I am nine."
       },
       {
         "id": 13,
@@ -567,7 +567,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "数字书写",
-        "question": "I have 8 books. (拼写8)",
+        "question": "I have ___ books. (8)",
         "options": [],
         "answer": "eight",
         "explanation": "数字8的英文拼写。"
@@ -602,8 +602,8 @@
         "knowledge_point": "逻辑填空",
         "question": "___ see! One, two, three...",
         "options": [],
-        "answer": "let",
-        "explanation": "Let us see/Let's see 让我们看看。"
+        "answer": "Let's",
+        "explanation": "Let's see! 意为“让我看看！”，Let's 是 Let us 的缩写。"
       },
       {
         "id": 20,
@@ -631,7 +631,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "字母关联",
-        "question": "将首字母与对应的单词连线。",
+        "question": "将下列单词与其中含有的字母连线。",
         "options": [
           "umbrella",
           "box",
@@ -643,7 +643,7 @@
           "U"
         ],
         "answer": "A-4,B-3,C-2,D-1",
-        "explanation": "umbrella-U, box-X(结尾字母), yellow-Y, zoo-Z。"
+        "explanation": "umbrella 含 U, box 含 X, yellow 含 Y, zoo 含 Z。"
       },
       {
         "id": 22,

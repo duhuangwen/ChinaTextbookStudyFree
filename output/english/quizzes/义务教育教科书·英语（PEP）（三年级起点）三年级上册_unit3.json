@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "字母Ee至Ii的音形辨析",
-        "question": "哪个单词中的字母 'i' 发音与 'ice cream' 不同？(考查首字母单词记忆)",
+        "question": "下列哪个单词以字母 i 开头？",
         "options": [
           "ink",
           "green",
@@ -204,7 +204,7 @@
           "blue"
         ],
         "answer": "ink",
-        "explanation": "本单元学习的 i 对应单词有 ice cream 和 ink。"
+        "explanation": "ink（墨水）以字母 i 开头，其他是颜色词。"
       },
       {
         "id": 15,
@@ -292,19 +292,19 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "字母与单词配对",
-        "question": "请将下列首字母与对应的单词配对。",
+        "question": "请将下列单词与对应的中文意思配对。",
         "options": [
           "egg",
           "fish",
           "gift",
-          "hippo",
+          "hand",
           "鱼",
           "礼物",
-          "河马",
+          "手",
           "鸡蛋"
         ],
         "answer": "A-4,B-1,C-2,D-3",
-        "explanation": "egg-鸡蛋, fish-鱼, gift-礼物, hippo-河马。"
+        "explanation": "egg-鸡蛋, fish-鱼, gift-礼物, hand-手。"
       },
       {
         "id": 22,
@@ -312,7 +312,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "健康状况询问与回应",
-        "question": "连词成句：[well",
+        "question": "连词成句：",
         "options": [
           "Very",
           "well",
@@ -394,10 +394,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "身体部位词汇识记",
-        "question": "'foot' 指的是脚，'feet' 是它的复数形式。",
+        "question": "'foot' 的中文意思是 '脚'。",
         "options": [],
         "answer": "对",
-        "explanation": "这是英语中的不规则复数变化。"
+        "explanation": "foot 意为脚，如 Stamp your foot. 跺跺你的脚。"
       },
       {
         "id": 6,
@@ -453,7 +453,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "身体动作指令表达",
-        "question": "当你说指令 'Stamp your foot.' 时，动作是：",
+        "question": "当你听到指令 'Stamp your foot.' 时，动作是：",
         "options": [
           "拍手",
           "跺脚",
@@ -587,10 +587,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "身体部位词汇识记",
-        "question": "Wash your ________. (手)",
+        "question": "Touch your ________. (摸摸你的脸)",
         "options": [],
-        "answer": "hands",
-        "explanation": "洗手通常是洗双手，用复数形式 hands。"
+        "answer": "face",
+        "explanation": "脸的英文是 face，Touch your face. 意为摸摸你的脸。"
       },
       {
         "id": 19,
@@ -633,15 +633,15 @@
         "options": [
           "Look at me.",
           "I'm fine.",
-          "Very well.",
+          "Very well, thanks.",
           "Great!",
-          "我很健康",
+          "非常好，谢谢",
           "太棒了",
           "看看我",
           "我很好"
         ],
         "answer": "A-3,B-4,C-1,D-2",
-        "explanation": "考查本单元核心交际用语翻译。"
+        "explanation": "Look at me.-看看我, I'm fine.-我很好, Very well, thanks.-非常好，谢谢, Great!-太棒了。"
       },
       {
         "id": 22,

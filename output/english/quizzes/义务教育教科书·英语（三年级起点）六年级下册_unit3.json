@@ -164,15 +164,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "交际用语",
-        "question": "— Did you like the food there? — ___",
+        "question": "— Did you like the food there? — ___ It was delicious.",
         "options": [
           "Yes, I do.",
           "Yes, I did.",
           "No, I didn't.",
-          "Both B and C"
+          "No, I don't."
         ],
-        "answer": "Both B and C",
-        "explanation": "一般过去时的一般疑问句，肯定回答用Yes, I did. 否定用No, I didn't."
+        "answer": "Yes, I did.",
+        "explanation": "一般过去时的一般疑问句，肯定回答用Yes, I did.；后句说食物很美味，所以是肯定回答。"
       },
       {
         "id": 13,
@@ -215,7 +215,7 @@
         "question": "I ___ many pictures during my holiday.",
         "options": [
           "took",
-          "saw",
+          "went",
           "was",
           "ate"
         ],
@@ -230,7 +230,7 @@
         "knowledge_point": "疑问词",
         "question": "___ did you go with? My friend.",
         "options": [],
-        "answer": "who",
+        "answer": "Who",
         "explanation": "询问人使用who。"
       },
       {
@@ -250,7 +250,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "时间短语",
-        "question": "I went to Beijing ___ summer.",
+        "question": "I went to Beijing ___ summer. (去年夏天)",
         "options": [],
         "answer": "last",
         "explanation": "表示“去年夏天”用last summer。"
@@ -379,7 +379,7 @@
         "question": "一般过去时的句子中一定要有 yesterday。",
         "options": [],
         "answer": "错",
-        "explanation": "不一定，last series, ago或语境也可以表示过去。"
+        "explanation": "不一定，last week、last weekend、ago 或上下文语境也可以表示过去。"
       },
       {
         "id": 4,
@@ -553,15 +553,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "语境理解",
-        "question": "The Labour Day holiday was ___.",
+        "question": "— How was your Labour Day holiday? — It was ___. I played with my friends and had a good time.",
         "options": [
           "fun",
-          "sunny",
-          "long",
-          "all of these"
+          "bad",
+          "sad",
+          "tired"
         ],
-        "answer": "all of these",
-        "explanation": "假期可以是好玩的、晴朗的或漫长的。"
+        "answer": "fun",
+        "explanation": "后句说和朋友玩得很开心，所以假期很有趣（fun）。"
       },
       {
         "id": 16,
@@ -572,7 +572,7 @@
         "question": "How did you go to Shanghai? By ___ (飞机).",
         "options": [],
         "answer": "plane",
-        "explanation": "机词填空。"
+        "explanation": "By plane 乘飞机，飞机是plane。"
       },
       {
         "id": 17,
@@ -604,7 +604,7 @@
         "knowledge_point": "疑问词",
         "question": "___ did you go? To the park.",
         "options": [],
-        "answer": "where",
+        "answer": "Where",
         "explanation": "问地点。"
       },
       {

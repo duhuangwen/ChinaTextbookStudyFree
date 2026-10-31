@@ -132,7 +132,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "语音：字母组合ou的发音规律",
-        "question": "Which word has the same sound as 'sound'?",
+        "question": "Which word has the same 'ou' sound as 'sound'?",
         "options": [
           "young",
           "count",
@@ -292,7 +292,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "自然景观类词汇",
-        "question": "请将自然景观与特征描述连线。",
+        "question": "请将下列英语单词与对应的中文意思连线。",
         "options": [
           "forest",
           "bridge",
@@ -632,7 +632,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "自然景观类词汇",
-        "question": "Match the questions and answers.",
+        "question": "Match the questions with their Chinese meanings.",
         "options": [
           "Is it far?",
           "Are there any?",
@@ -651,7 +651,7 @@
         "type": "word_order",
         "score": 5,
         "difficulty": 2,
-        "knowledge_point": " देयर बी 句型的一般疑问句",
+        "knowledge_point": "There be 句型的一般疑问句",
         "question": "Reorder the words to make a sentence.",
         "options": [
           "Is",
@@ -668,7 +668,7 @@
         "type": "word_order",
         "score": 5,
         "difficulty": 3,
-        "knowledge_point": " देयर बी 句型的一般疑问句",
+        "knowledge_point": "There be 句型的一般疑问句",
         "question": "Reorder the words to make a sentence.",
         "options": [
           "any",

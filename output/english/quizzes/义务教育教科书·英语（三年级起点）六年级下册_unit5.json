@@ -84,7 +84,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "词汇分类",
-        "question": "Which word doesn't belong to others? (哪一个单词不属于同一类?)",
+        "question": "Which word doesn't belong with the others? (哪一个单词不属于同一类?)",
         "options": [
           "scientist",
           "pilot",
@@ -164,7 +164,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "连词用法",
-        "question": "____ comes after 'Then' in a story sequence?",
+        "question": "Which one often comes after 'Then' in a story?",
         "options": [
           "Before",
           "Yesterday",
@@ -214,13 +214,13 @@
         "knowledge_point": "综合理解",
         "question": "John: I'm going to be a teacher. Amy: ____.",
         "options": [
-          "Good luck",
-          "That's sounds great",
+          "Yes, I did",
+          "That sounds great",
           "Me either",
           "I am a teacher"
         ],
-        "answer": "That's sounds great",
-        "explanation": "当别人说出理想时，合适的反馈是表示赞赏。"
+        "answer": "That sounds great",
+        "explanation": "当别人说出理想时，合适的反馈是表示赞赏：That sounds great."
       },
       {
         "id": 16,
@@ -228,10 +228,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "一般将来时",
-        "question": "We are going to ____ a film tonight.",
+        "question": "We are going to ____ (see) a film tonight.",
         "options": [],
         "answer": "see",
-        "explanation": "看电影固定搭配为see a film。"
+        "explanation": "be going to 后接动词原形，填see。"
       },
       {
         "id": 17,
@@ -241,7 +241,7 @@
         "knowledge_point": "叙事连接词",
         "question": "First, I wash my face. ____ that, I have breakfast.",
         "options": [],
-        "answer": "after",
+        "answer": "After",
         "explanation": "After that是固定的衔接短语。"
       },
       {
@@ -261,10 +261,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "一般将来时",
-        "question": "Where ____ you go next Sunday?",
+        "question": "Where ____ you go next Sunday? I will go to the park.",
         "options": [],
         "answer": "will",
-        "explanation": "对将来地点的询问，可用will加动词原形。"
+        "explanation": "next Sunday 表示将来，答句用 will，问句同样用will加动词原形。"
       },
       {
         "id": 20,
@@ -375,7 +375,7 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "词汇分类",
-        "question": "'Dictionary', 'book', 'newspaper' follow the same logic as reading materials.",
+        "question": "'dictionary', 'book' and 'newspaper' are all things we can read.",
         "options": [],
         "answer": "对",
         "explanation": "它们都属于阅读材料类。"
@@ -386,10 +386,10 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "叙事连接词",
-        "question": "'Instead' can be used to show the sequence of time in a story.",
+        "question": "'Because' can be used to show the order of events (先后顺序) in a story.",
         "options": [],
         "answer": "错",
-        "explanation": "instead表示替代，不是时间顺序连接词。"
+        "explanation": "because表示原因，不是表示先后顺序的连接词。"
       },
       {
         "id": 5,
@@ -447,8 +447,8 @@
           "At last",
           "Then"
         ],
-        "answer": "Finally",
-        "explanation": "根据上下文，睡觉前做的最后一件事是作业，用Finally或后接Then构成的序列中有误，此处选Finally最符合结束感。"
+        "answer": "First",
+        "explanation": "先做作业，然后睡觉，第一件事用First，后面用Then衔接。"
       },
       {
         "id": 9,
@@ -520,7 +520,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "情景交际",
-        "question": "How can I get to the Fuxing Hospital? ____",
+        "question": "How can I get to Fuxing Hospital? ____",
         "options": [
           "It's near.",
           "Take the No. 5 bus.",
@@ -592,7 +592,7 @@
         "knowledge_point": "叙事连接词",
         "question": "____, he went to the bookstore. Finally, he went home.",
         "options": [],
-        "answer": "then",
+        "answer": "Then",
         "explanation": "表示动作的先后顺序，常用Then。"
       },
       {
@@ -601,9 +601,9 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "日期表达",
-        "question": "Childern's Day is on the first of ____.",
+        "question": "Children's Day is on the first of ____.",
         "options": [],
-        "answer": "june",
+        "answer": "June",
         "explanation": "六一儿童节在六月。"
       },
       {

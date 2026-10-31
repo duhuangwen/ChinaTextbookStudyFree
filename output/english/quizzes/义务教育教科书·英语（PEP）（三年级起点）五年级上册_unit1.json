@@ -57,10 +57,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "性格与外貌特征词汇",
-        "question": "'hard-working' 的对应词是 'lazy'。",
+        "question": "'hard-working' 的意思是'勤奋的'。",
         "options": [],
         "answer": "对",
-        "explanation": "hard-working 是努力的，其反义词是 lazy（懒惰的）。"
+        "explanation": "hard-working 是形容词，意为勤奋的、努力的。"
       },
       {
         "id": 6,
@@ -252,8 +252,8 @@
         "knowledge_point": "确认特征的一般疑问句",
         "question": "— Is he funny? — No, he ______.",
         "options": [],
-        "answer": "isnt",
-        "explanation": "is not 的缩写，此处填 isnt 符合小写要求。"
+        "answer": "isn't",
+        "explanation": "is not 的缩写是 isn't，否定回答 No, he isn't."
       },
       {
         "id": 19,
@@ -261,10 +261,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "性格与外貌特征词汇",
-        "question": "Our head teacher is very ______. She never gets angry.",
+        "question": "Our head teacher is very ______ (亲切的). She never gets angry.",
         "options": [],
         "answer": "kind",
-        "explanation": "不生气说明很亲切温柔，填 kind。"
+        "explanation": "亲切的、和蔼的对应 kind。"
       },
       {
         "id": 20,
@@ -292,7 +292,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "性格与外貌特征词汇",
-        "question": "将下列单词及其对应词/反义词意思连线。",
+        "question": "将下列单词与其对应的汉语意思连线。",
         "options": [
           "old",
           "kind",
@@ -439,7 +439,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "确认特征的一般疑问句",
-        "question": "— Is Ms Wang funny? — No, ______. she is very strict.",
+        "question": "— Is Ms Wang funny? — No, ______. She is very strict.",
         "options": [
           "he is",
           "he isn't",
@@ -447,7 +447,7 @@
           "she isn't"
         ],
         "answer": "she isn't",
-        "explanation": "Ms Wang 是女性，排除 he；后文说她严肃，说明前面是否定回答。"
+        "explanation": "Ms Wang 是女性，排除 he；后文说她很严厉（strict），说明前面是否定回答。"
       },
       {
         "id": 9,
@@ -487,7 +487,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "询问人物特征的特殊疑问句",
-        "question": "— ______ is your head teacher? — He is kind.",
+        "question": "— ______ is your head teacher like? — He is kind.",
         "options": [
           "Who",
           "How",
@@ -495,7 +495,7 @@
           "What"
         ],
         "answer": "What",
-        "explanation": "What is ... like? 省略了 like 时，常问的是身份或概括。但标准课本中 What's ... like? 完整问性格。"
+        "explanation": "询问人的性格特征用 What is ... like? 句中已有 is，故填 What。"
       },
       {
         "id": 12,
@@ -535,7 +535,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "性格与外貌特征词汇",
-        "question": "Robin is a robot. He is ______ but he isn't ______.",
+        "question": "Mr Li is ______ but he isn't ______. He is very nice to us and he never gets angry.",
         "options": [
           "short; kind",
           "kind; strict",
@@ -543,7 +543,7 @@
           "strict; kind"
         ],
         "answer": "kind; strict",
-        "explanation": "根据 PEP 五上 Unit 1 对 Robin 的描述，他是 kind 的，但不 strict。"
+        "explanation": "对我们很好、从不生气，说明他亲切（kind）但不严厉（strict）。"
       },
       {
         "id": 15,
@@ -567,10 +567,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "性格与外貌特征词汇",
-        "question": "Sarah never speaks in public. She's very ______.",
+        "question": "Sarah is very ______ (害羞的). She doesn't talk much in class.",
         "options": [],
         "answer": "shy",
-        "explanation": "害羞的对应词是 shy。"
+        "explanation": "害羞的对应 shy。"
       },
       {
         "id": 17,
@@ -600,10 +600,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "性格与外貌特征词汇",
-        "question": "Our PE teacher is not thin. He is ______.",
+        "question": "Our PE teacher is not thin. He is ______ (强壮的).",
         "options": [],
         "answer": "strong",
-        "explanation": "不瘦的对应描写常是强壮的 strong。"
+        "explanation": "强壮的对应 strong。"
       },
       {
         "id": 20,
@@ -631,19 +631,19 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "性格与外貌特征词汇",
-        "question": "将下列反义词/对应词与其意思配对。",
+        "question": "将下列单词与其汉语意思配对。",
         "options": [
           "young",
-          "active",
-          "strict",
-          "tall",
+          "quiet",
+          "kind",
+          "short",
           "安静的",
           "矮的",
-          "老的",
+          "年轻的",
           "亲切的"
         ],
         "answer": "A-3,B-1,C-4,D-2",
-        "explanation": "反义/对应关系：young-老的(意指反义词意思), active-安静的, strict-亲切的, tall-矮的。"
+        "explanation": "young-年轻的, quiet-安静的, kind-亲切的, short-矮的。"
       },
       {
         "id": 22,

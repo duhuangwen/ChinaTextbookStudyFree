@@ -329,16 +329,16 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "空间位置的综合描述",
-        "question": "连词成句：[The, is, plant, beside, clock, the]",
+        "question": "连词成句：[My, is, plant, beside, clock, the]",
         "options": [
-          "The",
+          "My",
           "is",
           "plant",
           "beside",
           "clock",
           "the"
         ],
-        "answer": "The,plant,is,beside,the,clock",
+        "answer": "My,plant,is,beside,the,clock",
         "explanation": "物品A + is + 方位介词 + 物品B。"
       }
     ]
@@ -354,7 +354,7 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "There be 句型的单复数运用",
-        "question": "There are some bikes in the park.",
+        "question": "句子 'There are some bikes in the park.' 语法是正确的。",
         "options": [],
         "answer": "对",
         "explanation": "some bikes 为复数，使用 are 正确。"
@@ -387,7 +387,7 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "语音：字母组合ai和ay的发音",
-        "question": "'play' 和 'paint' 中画线部分的发音是一样的。",
+        "question": "'play' 中的 ay 和 'paint' 中的 ai 发音是一样的。",
         "options": [],
         "answer": "对",
         "explanation": "ay 和 ai 都在这两个词中发 /eɪ/。"
@@ -465,7 +465,7 @@
           "balls"
         ],
         "answer": "picture",
-        "explanation": "is a 说明后面是单数，picture 符合。"
+        "explanation": "冠词 a 后接可数名词单数，只有 picture 符合。"
       },
       {
         "id": 10,
@@ -481,7 +481,7 @@
           "There are"
         ],
         "answer": "Are there",
-        "explanation": "任何句型变疑问，be 提前。students 是复数，用 Are there。"
+        "explanation": "There be 句型变一般疑问句时把 be 动词提前；students 是复数，用 Are there。"
       },
       {
         "id": 11,
@@ -633,7 +633,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "空间位置的综合描述",
-        "question": "Match the furniture words.",
+        "question": "Match the words with their Chinese meanings.",
         "options": [
           "clock",
           "plant",

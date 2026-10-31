@@ -252,7 +252,7 @@
         "knowledge_point": "询问并回答作息时间",
         "question": "_____ do you finish class in Spain?",
         "options": [],
-        "answer": "when",
+        "answer": "When",
         "explanation": "询问时间用疑问词when。"
       },
       {
@@ -261,10 +261,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "日常作息动词短语",
-        "question": "I play _____ with my friends at 4:30.",
+        "question": "I play _____ (体育运动) with my friends at 4:30.",
         "options": [],
         "answer": "sports",
-        "explanation": "play sports 是本单元核心词组，意为体育运动。"
+        "explanation": "play sports 意为进行体育运动，括号提示“体育运动”，填 sports。"
       },
       {
         "id": 20,

@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "Hobbies",
-        "question": "Choosing '集邮' in English.",
+        "question": "Choose the English for '集邮'.",
         "options": [
           "collecting stamps",
           "drawing pictures",
@@ -395,7 +395,7 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "Pronoun",
-        "question": "名词用 his 还是 her 取决于人称性别。",
+        "question": "用 his 还是 her，取决于所指的人是男性还是女性。",
         "options": [],
         "answer": "对",
         "explanation": "his 他的，her 她的。"
@@ -491,7 +491,7 @@
           "come",
           "comes",
           "coming",
-          "tome"
+          "to come"
         ],
         "answer": "comes",
         "explanation": "He is from... 或 He comes from...。"
@@ -518,7 +518,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "Sentence meaning",
-        "question": "He like reading ________.",
+        "question": "He likes reading ________.",
         "options": [
           "comic books",
           "a books",
@@ -588,10 +588,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "Possessive",
-        "question": "This is Peter. ________ (他的) hobbies are singing.",
+        "question": "This is Peter. ________ (他的) hobby is singing.",
         "options": [],
         "answer": "his",
-        "explanation": "由于首字母大写限制，此处作为知识点填入小写 his 即可（逻辑符合题干）。"
+        "explanation": "他的 = his，放在句首时写作 His。"
       },
       {
         "id": 19,

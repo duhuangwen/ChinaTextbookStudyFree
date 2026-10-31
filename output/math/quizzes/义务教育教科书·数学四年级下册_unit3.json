@@ -57,10 +57,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "连除的简便性质",
-        "question": "$480 16 5 = 480 16 5$ 无法简算，必须按顺序算。",
+        "question": "计算 $480 \\div 16 \\div 5$ 时，只能按从左往右的顺序算，不能用其他方法。",
         "options": [],
         "answer": "错",
-        "explanation": "$480 16 5 = 480 5 16$ 或 $480 80$)。故错误。"
+        "explanation": "根据连除的性质，$480 \\div 16 \\div 5 = 480 \\div (16 \\times 5) = 480 \\div 80 = 6$；也可以按顺序算：$480 \\div 16 = 30$，$30 \\div 5 = 6$。所以说法错误。"
       },
       {
         "id": 6,
@@ -105,7 +105,7 @@
           "$25 \\times (4 + 8)$ 和 $25 \\times 4 + 8$",
           "$45 \\times 101$ 和 $45 \\times 100 + 1$",
           "$12 \\times 97 + 12 \\times 3$ 和 $12 \\times (97 + 3)$",
-          "$（32 + 8）\\times 5$ 和 $32 \\times 5 + 8$"
+          "$(32 + 8)\\times 5$ 和 $32 \\times 5 + 8$"
         ],
         "answer": "$12 \\times 97 + 12 \\times 3$ 和 $12 \\times (97 + 3)$",
         "explanation": "符合乘法分配律的逆运算：$a \\times b + a \\times c = a \\times (b + c)$。"
@@ -320,10 +320,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "连除的简便性质",
-        "question": "$3600 25 4 = ?$",
+        "question": "$3600 \\div 25 \\div 4 = ?$",
         "options": [],
         "answer": "36",
-        "explanation": "$3600 25 4) = 3600 100 = 36$。验算：$36 4 = 144, 144 25 = 3600$ ✓。"
+        "explanation": "$3600 \\div 25 \\div 4 = 3600 \\div (25 \\times 4) = 3600 \\div 100 = 36$。验算：$36 \\times 4 = 144$，$144 \\times 25 = 3600$ ✓。"
       }
     ]
   },
@@ -360,10 +360,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "连除的简便性质",
-        "question": "$1200 25 4 = 1200 100$",
+        "question": "$1200 \\div 25 \\div 4 = 1200 \\div 100$",
         "options": [],
         "answer": "对",
-        "explanation": "连除性质：$a 25 4) = a 100$。"
+        "explanation": "连除性质：$a \\div b \\div c = a \\div (b \\times c)$，所以 $1200 \\div 25 \\div 4 = 1200 \\div (25 \\times 4) = 1200 \\div 100$。"
       },
       {
         "id": 4,
@@ -457,7 +457,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "连除的简便性质",
-        "question": "算式 $420 7 6$",
+        "question": "算式 $420 \\div 7 \\div 6$ 的结果是：",
         "options": [
           "10",
           "60",
@@ -465,7 +465,7 @@
           "40"
         ],
         "answer": "10",
-        "explanation": "$420 6 7 = 420 42 = 10$。"
+        "explanation": "$420 \\div 7 \\div 6 = 420 \\div (7 \\times 6) = 420 \\div 42 = 10$。"
       },
       {
         "id": 11,
@@ -601,7 +601,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "加法交换律与结合律",
-        "question": "计算 $368 + 231 + 132$。利用加法交换律可以先算 368 + 132，其和是 ___。",
+        "question": "计算 $368 + 231 + 132$。利用加法交换律和结合律可以先算 368 + 132，其和是 ___。",
         "options": [],
         "answer": "500",
         "explanation": "$368 + 132 = 500$。验算：$500 - 132 = 368$ ✓。"

@@ -261,10 +261,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "代词",
-        "question": "Is ________ (he) washing his clothes?",
+        "question": "— Is ________ washing his clothes? — Yes, he is.",
         "options": [],
         "answer": "he",
-        "explanation": "句子缺主语，且be动词是is，故填he。"
+        "explanation": "由答语 Yes, he is 及 his clothes 可知主语是 he。"
       },
       {
         "id": 20,
@@ -296,15 +296,15 @@
         "options": [
           "dance",
           "read",
+          "run",
+          "write",
           "running",
+          "writing",
           "dancing",
-          "跑",
-          "跳舞",
-          "阅读",
-          "run"
+          "reading"
         ],
-        "answer": "A-2,B-3,C-1,D-4",
-        "explanation": "此题考查单词对应关系，dance对应dancing，read对应阅读，running对应run。"
+        "answer": "A-3,B-4,C-1,D-2",
+        "explanation": "dance-dancing（去e加ing），read-reading，run-running（双写n加ing），write-writing（去e加ing）。"
       },
       {
         "id": 22,
@@ -577,10 +577,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "地点介词",
-        "question": "They are talking in ________ library.",
+        "question": "Our school has a big library. We often read books in ________ library.",
         "options": [],
         "answer": "the",
-        "explanation": "在图书馆固定搭配是in the library。"
+        "explanation": "前文已提到 a big library，再次提及特指这座图书馆，用定冠词 the。"
       },
       {
         "id": 18,

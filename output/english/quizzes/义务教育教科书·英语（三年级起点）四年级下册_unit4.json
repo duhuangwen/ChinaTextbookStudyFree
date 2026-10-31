@@ -118,13 +118,13 @@
         "knowledge_point": "情态动词表建议",
         "question": "Look at the green beans. They are _______ long.",
         "options": [
-          "too",
           "so",
           "to",
-          "two"
+          "two",
+          "for"
         ],
         "answer": "so",
-        "explanation": "so long表示“很长”，too通常含否定意味（太长了）。"
+        "explanation": "so long 表示“这么长”，表达赞叹；to、two、for 放在这里都不通。"
       },
       {
         "id": 10,
@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "动物词汇",
-        "question": "They are ________. They provide milk.",
+        "question": "They are ________. They give us milk.",
         "options": [
           "hens",
           "ducks",
@@ -220,7 +220,7 @@
           "horses"
         ],
         "answer": "horses",
-        "explanation": "horses（马）是动物，可以吃草吃。"
+        "explanation": "horses（马）是动物，可以吃草。"
       },
       {
         "id": 16,
@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "动物词汇",
-        "question": "I like the black and white animal. It's a ___.",
+        "question": "It's a black and white animal on the farm. It gives us milk. It's a ___.",
         "options": [],
         "answer": "cow",
-        "explanation": "黑白相间的动物通常指奶牛。"
+        "explanation": "农场上黑白相间、产奶的动物是奶牛 cow。"
       },
       {
         "id": 19,
@@ -395,10 +395,10 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "不可数名词概念",
-        "question": "英语中 'milk' 是不可数的，不能直接加 's'。",
+        "question": "'some milk' 的意思是'一些牛奶'。",
         "options": [],
         "answer": "对",
-        "explanation": "milk属于物质名词，是不可数的。"
+        "explanation": "some milk 意为“一些牛奶”，milk 前面不加 a，词尾也不加 s。"
       },
       {
         "id": 6,
@@ -474,11 +474,11 @@
         "options": [
           "sheeps",
           "sheep",
-          "goats",
+          "goat",
           "cow"
         ],
         "answer": "sheep",
-        "explanation": "fifteen后接复数，sheep复数不变，goats若对需加s（选项已有），cow需加s。"
+        "explanation": "fifteen 后接名词复数，sheep 单复数同形；sheeps 错误，goat 和 cow 是单数。"
       },
       {
         "id": 11,
@@ -550,7 +550,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "语音规律",
-        "question": "Which word 'ar' sounds like 'car'?",
+        "question": "下列哪个单词中 ar 的发音与 car 中的 ar 相同？",
         "options": [
           "warm",
           "card",
@@ -566,10 +566,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "颜色与植物",
-        "question": "They are round and red. They are ___.",
+        "question": "They are round and red. They are ___ (西红柿).",
         "options": [],
         "answer": "tomatoes",
-        "explanation": "圆圆的红色的蔬菜是西红柿。"
+        "explanation": "西红柿的英文是 tomato，复数为 tomatoes。"
       },
       {
         "id": 17,
@@ -579,7 +579,7 @@
         "knowledge_point": "远指代词",
         "question": "___ are horses over there.",
         "options": [],
-        "answer": "those",
+        "answer": "Those",
         "explanation": "over there指远处，horses是复数，用those。"
       },
       {
@@ -588,10 +588,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "名词变复数规律",
-        "question": "I have two ___. (以potato为例)",
+        "question": "I have two ___ (potato).",
         "options": [],
         "answer": "potatoes",
-        "explanation": "以o结尾的有生命名词通常加es。"
+        "explanation": "potato 以 o 结尾，变复数加 es：potatoes。"
       },
       {
         "id": 19,
@@ -599,10 +599,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "农场地点",
-        "question": "Welcome to my ___.",
+        "question": "Welcome to my ___ (农场).",
         "options": [],
         "answer": "farm",
-        "explanation": "本单元关键词：农场。"
+        "explanation": "农场的英文是 farm。"
       },
       {
         "id": 20,

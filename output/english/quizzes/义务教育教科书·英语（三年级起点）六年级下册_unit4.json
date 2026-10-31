@@ -100,7 +100,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "形容词最高级",
-        "question": "The sun is the ______ star in our system.",
+        "question": "Summer is the ______ season of the year.",
         "options": [
           "hot",
           "hotter",
@@ -108,7 +108,7 @@
           "the hottest"
         ],
         "answer": "hottest",
-        "explanation": "形容词最高级前已有the，后面直接填hottest。"
+        "explanation": "夏天是一年中最热的季节，形容词最高级前已有the，填hottest。"
       },
       {
         "id": 9,
@@ -228,7 +228,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "地点名词",
-        "question": "You can play basketball in the ____.",
+        "question": "You can play basketball in the ____ (体育馆).",
         "options": [],
         "answer": "gym",
         "explanation": "gym健身房/体育馆。"
@@ -328,15 +328,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "现在时表状态",
-        "question": "连词成句：(I, active, now, am)",
+        "question": "连词成句：(Now, active, I, am)",
         "options": [
-          "I",
+          "Now",
           "active",
-          "now",
+          "I",
           "am"
         ],
-        "answer": "I,am,active,now",
-        "explanation": "主系表结构描述现在的状态。"
+        "answer": "Now,I,am,active",
+        "explanation": "Now 放句首表示现在，主系表结构描述现在的状态。"
       }
     ]
   },
@@ -395,10 +395,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "语境判断",
-        "question": "20 years ago, there was no Internet. 这句话符合历史事实。",
+        "question": "Today, many people can use the Internet. 这句话符合事实。",
         "options": [],
         "answer": "对",
-        "explanation": "20年前互联网在中国尚未普及。"
+        "explanation": "现在很多人都能使用互联网，这句话符合事实。"
       },
       {
         "id": 6,
@@ -406,7 +406,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "There be 句型",
-        "question": "There _____ no gym in late 1990s.",
+        "question": "There _____ no gym in my school twenty years ago.",
         "options": [
           "is",
           "was",
@@ -414,7 +414,7 @@
           "be"
         ],
         "answer": "was",
-        "explanation": "过去的年份用过去时。"
+        "explanation": "twenty years ago 表示过去，gym 是单数，用was。"
       },
       {
         "id": 7,
@@ -422,7 +422,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "名词辨析",
-        "question": "The moon and the ____ are in the sky.",
+        "question": "At night, the moon and the ____ (星星，复数) are in the sky.",
         "options": [],
         "answer": "stars",
         "explanation": "stars 星星。"
@@ -455,7 +455,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "反义词",
-        "question": "The cat is small, but the elephant is ____.",
+        "question": "The cat is small, but the elephant is ____ (大的，以字母 l 开头).",
         "options": [],
         "answer": "large",
         "explanation": "small对比large。"
@@ -482,7 +482,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "词义理解",
-        "question": "We stay at home and study by ______.",
+        "question": "We stay at home and study on the ______.",
         "options": [
           "computer",
           "star",
@@ -490,7 +490,7 @@
           "grass"
         ],
         "answer": "computer",
-        "explanation": "借助电脑在线学习。"
+        "explanation": "在电脑上学习：study on the computer。"
       },
       {
         "id": 13,
@@ -538,7 +538,7 @@
           "the library"
         ],
         "answer": "libraries",
-        "explanation": "no后面通常接名词复数。"
+        "explanation": "were 说明后面的名词是复数，所以用libraries。"
       },
       {
         "id": 16,
@@ -564,13 +564,13 @@
         "knowledge_point": "介词搭配",
         "question": "I looked ______ my old photos yesterday.",
         "options": [
-          "up",
+          "of",
           "at",
           "to",
-          "for"
+          "on"
         ],
         "answer": "at",
-        "explanation": "look at 看着某物。"
+        "explanation": "look at 看着某物；look of/to/on 在此不搭配。"
       },
       {
         "id": 18,
@@ -616,13 +616,13 @@
           "now",
           "old",
           "new",
-          "以前",
-          "现在",
+          "新的",
           "旧的",
-          "新的"
+          "以前",
+          "现在"
         ],
-        "answer": "A-1,B-2,C-3,D-4",
-        "explanation": "时间与状态的词汇对应。"
+        "answer": "A-3,B-4,C-2,D-1",
+        "explanation": "before以前，now现在，old旧的，new新的。"
       },
       {
         "id": 21,
@@ -650,16 +650,16 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "复杂句式",
-        "question": "连词成句：(a, dream, I, had, tonight)",
+        "question": "连词成句：(a, dream, I, had, last night)",
         "options": [
           "a",
           "dream",
           "I",
           "had",
-          "tonight"
+          "last night"
         ],
-        "answer": "I,had,a,dream,tonight",
-        "explanation": "过去发生的事情用had。"
+        "answer": "I,had,a,dream,last night",
+        "explanation": "last night 表示过去，过去发生的事情用had。"
       },
       {
         "id": 23,

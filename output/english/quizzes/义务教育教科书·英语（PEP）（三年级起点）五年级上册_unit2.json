@@ -35,7 +35,7 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "语音：字母组合ee和ea的发音",
-        "question": "单词 'beef' 和 'tea' 中划线部分发音相同。",
+        "question": "单词 'beef' 中的 ee 和 'tea' 中的 ea 发音相同。",
         "options": [],
         "answer": "对",
         "explanation": "ee 和 ea 在这些单词中都发长元音 /i:/。"
@@ -46,10 +46,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "询问及描述课程安排",
-        "question": "在句子 'What do you have on Mondays?' 中，Monday 必须用复数形式表示每个周一。",
+        "question": "在句子 'What do you have on Mondays?' 中，Mondays 表示每个星期一。",
         "options": [],
         "answer": "对",
-        "explanation": "on Mondays 表示每个周一，符合习惯表达。"
+        "explanation": "on Mondays 用复数，表示每个星期一（经常性的安排）。"
       },
       {
         "id": 5,
@@ -261,10 +261,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "频度副词often的用法",
-        "question": "I ______ watch TV on Saturdays.",
+        "question": "I ______ (经常) watch TV on Saturdays.",
         "options": [],
         "answer": "often",
-        "explanation": "填入频度副词表示经常。"
+        "explanation": "经常对应频度副词 often，放在实义动词前。"
       },
       {
         "id": 20,
@@ -375,7 +375,7 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "询问及描述课程安排",
-        "question": "'What do you have on Mondays?' 只能回答学科，不能回答活动。",
+        "question": "'What do you have on Mondays?' 通常用来询问星期一有什么课。",
         "options": [],
         "answer": "对",
         "explanation": "have 通常接课程/学科，问活动常用 What do you do。"
@@ -397,10 +397,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "星期与课程安排词汇",
-        "question": "英语国家的一周第一天通常是 Sunday。",
+        "question": "美国的日历上，一周通常从 Sunday 开始排列。",
         "options": [],
         "answer": "对",
-        "explanation": "西方文化习惯周日为首日。"
+        "explanation": "美国习惯把周日排在一周的第一天。"
       },
       {
         "id": 6,
@@ -413,7 +413,7 @@
           "a Chinese",
           "Chinese",
           "Chineses",
-          "a Chinese classs"
+          "the Chinese"
         ],
         "answer": "Chinese",
         "explanation": "学科名词前不加冠词，Chinese 作为学科是不可数名词。"
@@ -427,7 +427,7 @@
         "question": "— Is it Friday today? — ______",
         "options": [
           "Yes, it is.",
-          "No, it is Wednesday.",
+          "No, it is.",
           "It's Friday.",
           "Yes, it's."
         ],
@@ -440,7 +440,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "星期与课程安排词汇",
-        "question": "I like ______. Because I can play football.",
+        "question": "I like ______ because I can play football.",
         "options": [
           "PE",
           "music",

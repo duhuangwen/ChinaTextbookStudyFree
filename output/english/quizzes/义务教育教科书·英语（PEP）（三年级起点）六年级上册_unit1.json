@@ -299,12 +299,12 @@
           "next to",
           "far from",
           "直行",
-          "离...近",
+          "离...远",
           "左转",
           "在旁边"
         ],
         "answer": "A-3,B-1,C-4,D-2",
-        "explanation": "turn left-左转, go straight-直行, next to-在旁边, far from-离...远(此处D对应逻辑余项)。"
+        "explanation": "turn left-左转, go straight-直行, next to-在旁边, far from-离...远。"
       },
       {
         "id": 22,
@@ -503,7 +503,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "公共场所词汇识别",
-        "question": "Is there a ______? Yes, I want to watch a movie.",
+        "question": "I want to see a film. Is there a ______ near here?",
         "options": [
           "cinema",
           "museum",
@@ -511,7 +511,7 @@
           "school"
         ],
         "answer": "cinema",
-        "explanation": "看电影去电影院(cinema)。"
+        "explanation": "想看电影要去电影院(cinema)。"
       },
       {
         "id": 13,
@@ -538,12 +538,12 @@
         "question": "The restaurant is near ______ bookstore.",
         "options": [
           "the",
-          "a",
           "an",
-          "/"
+          "/",
+          "two"
         ],
         "answer": "the",
-        "explanation": "特指具体的书店，通常用定冠词 the。"
+        "explanation": "bookstore 是单数可数名词，前面不能不加冠词，也不能用 an 或 two，应用 the。"
       },
       {
         "id": 15,
@@ -589,7 +589,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "指路指令与方位短语",
-        "question": "Turn ______ at the school and you'll see it on the right.",
+        "question": "Turn ______ (向左) at the school and you'll see it on the right.",
         "options": [],
         "answer": "left",
         "explanation": "turn left 核心短语。"
@@ -600,7 +600,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "指路指令与方位短语",
-        "question": "Go straight at the ______.",
+        "question": "Go straight at the ______ (十字路口).",
         "options": [],
         "answer": "crossing",
         "explanation": "crossing 指十字路口。"

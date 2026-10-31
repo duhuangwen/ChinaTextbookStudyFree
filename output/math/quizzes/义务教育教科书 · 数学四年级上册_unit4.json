@@ -246,12 +246,12 @@
         "knowledge_point": "三位数乘两位数笔算",
         "question": "与 $480 \\times 40$ 的积不相等的算式是：",
         "options": [
-          "48 \\times 400",
-          "4800 \\times 4",
-          "240 \\times 80",
-          "480 \\times 4"
+          "$48 \\times 400$",
+          "$4800 \\times 4$",
+          "$240 \\times 80$",
+          "$480 \\times 4$"
         ],
-        "answer": "480 \\times 4",
+        "answer": "$480 \\times 4$",
         "explanation": "$480 \\times 40 = 19200$。D 选项只有 1920，少乘了 10。"
       },
       {
@@ -523,12 +523,12 @@
         "knowledge_point": "三位数乘两位数笔算",
         "question": "下面各算式中，结果最接近 8000 的是：",
         "options": [
-          "201 \\times 39",
-          "402 \\times 19",
-          "250 \\times 31",
-          "198 \\times 41"
+          "$201 \\times 39$",
+          "$402 \\times 19$",
+          "$250 \\times 31$",
+          "$198 \\times 41$"
         ],
-        "answer": "198 \\times 41",
+        "answer": "$198 \\times 41$",
         "explanation": "$198 \\times 41 \\approx 200 \\times 40 = 8000$。具体计算为 8118，差异最小。"
       },
       {
@@ -539,12 +539,12 @@
         "knowledge_point": "常见数量关系（单价与速度）",
         "question": "“一辆汽车 3 小时行驶了 210 千米，平均每小时行驶多少千米？”解决这个问题所用的数量关系式是：",
         "options": [
-          "单价 \\times 数量 = 总价",
-          "速度 \\times 时间 = 路程",
-          "路程 \\div 时间 = 速度",
-          "路程 \\div 速度 = 时间"
+          "单价 × 数量 = 总价",
+          "速度 × 时间 = 路程",
+          "路程 ÷ 时间 = 速度",
+          "路程 ÷ 速度 = 时间"
         ],
-        "answer": "路程 \\div 时间 = 速度",
+        "answer": "路程 ÷ 时间 = 速度",
         "explanation": "已知路程 210 和时间 3，求速度，用除法。"
       },
       {
@@ -571,12 +571,12 @@
         "knowledge_point": "三位数乘两位数笔算",
         "question": "下列算式中与 $25 \\times 400$ 结果相同的是：",
         "options": [
-          "250 \\times 40",
-          "25 \\times 40",
-          "250 \\times 4",
-          "25 \\times 4"
+          "$250 \\times 40$",
+          "$25 \\times 40$",
+          "$250 \\times 4$",
+          "$25 \\times 4$"
         ],
-        "answer": "250 \\times 40",
+        "answer": "$250 \\times 40$",
         "explanation": "根据积的变化规律，一个因数缩小 10 倍，另一个扩大 10 倍，积不变。"
       },
       {

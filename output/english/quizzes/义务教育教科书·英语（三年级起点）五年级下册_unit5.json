@@ -24,10 +24,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "现在进行时态 (be+doing)",
-        "question": "正在爬树可以表达为 'climbing'。",
+        "question": "“正在爬”可以用 climb 的 -ing 形式 'climbing' 表达。",
         "options": [],
         "answer": "对",
-        "explanation": "climb的动词ing形式是climbing。"
+        "explanation": "climb 的 -ing 形式是 climbing，与 be 动词连用表示正在攀爬，如 It is climbing a tree."
       },
       {
         "id": 3,
@@ -250,10 +250,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "现在进行时态 (be+doing)",
-        "question": "— What are they doing? — They are ___.",
+        "question": "— What are they doing? — They are ___ (eat) lunch.",
         "options": [],
         "answer": "eating",
-        "explanation": "正在吃东西用eating。"
+        "explanation": "现在进行时 be + 动词ing，eat 的 -ing 形式是 eating。"
       },
       {
         "id": 19,
@@ -263,7 +263,7 @@
         "knowledge_point": "询问物品归属 (Whose句型)",
         "question": "___ pens are these? They are hers.",
         "options": [],
-        "answer": "whose",
+        "answer": "Whose",
         "explanation": "询问谁的钢笔用whose。"
       },
       {
@@ -567,10 +567,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "名词性物主代词的用法",
-        "question": "The picture of the park is ___.",
+        "question": "This picture of the park is Mike's. It is ___.",
         "options": [],
         "answer": "his",
-        "explanation": "指代他的照片用his。"
+        "explanation": "Mike's picture 即“他的画”，不接名词时用名词性物主代词 his。"
       },
       {
         "id": 17,
@@ -589,7 +589,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "现在进行时态 (be+doing)",
-        "question": "The children are ___ under the desk.",
+        "question": "The children are ___ (hide) under the desk.",
         "options": [],
         "answer": "hiding",
         "explanation": "hide的ing形式是hiding（去e加ing）。"
@@ -600,7 +600,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "现在进行时态 (be+doing)",
-        "question": "I am ___ a letter.",
+        "question": "I am ___ (write) a letter.",
         "options": [],
         "answer": "writing",
         "explanation": "write的ing形式是writing。"

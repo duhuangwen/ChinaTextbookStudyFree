@@ -565,10 +565,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "问候语",
-        "question": "___! I'm Mike.",
+        "question": "___! I'm Mike.（填一个由两个字母组成的打招呼用语）",
         "options": [],
-        "answer": "hi",
-        "explanation": "常用hi或hello打招呼。"
+        "answer": "Hi",
+        "explanation": "两个字母组成的打招呼用语是 Hi，Hi, I'm Mike. 意为“你好，我是迈克。”"
       },
       {
         "id": 17,
@@ -614,14 +614,14 @@
           "eraser",
           "crayon",
           "pencil box",
-          "sharpener",
+          "ruler",
           "蜡笔",
           "橡皮",
-          "卷笔刀",
+          "尺子",
           "铅笔盒"
         ],
         "answer": "A-2,B-1,C-4,D-3",
-        "explanation": "eraser-橡皮, crayon-蜡笔, pencil box-铅笔盒, sharpener-卷笔刀。"
+        "explanation": "eraser-橡皮, crayon-蜡笔, pencil box-铅笔盒, ruler-尺子。"
       },
       {
         "id": 21,

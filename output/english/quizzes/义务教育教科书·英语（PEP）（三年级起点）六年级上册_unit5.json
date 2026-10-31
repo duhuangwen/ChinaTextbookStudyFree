@@ -46,10 +46,10 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "职业与爱好的关联",
-        "question": "If you like sports, you can be a head teacher.",
+        "question": "If you like sports, you can be a coach.",
         "options": [],
-        "answer": "错",
-        "explanation": "喜欢运动的人更适合作为运动员(athlete)或体育老师(PE teacher)。"
+        "answer": "对",
+        "explanation": "喜欢运动的人可以当教练(coach)。"
       },
       {
         "id": 5,
@@ -102,13 +102,13 @@
         "knowledge_point": "介词搭配",
         "question": "My aunt works ______ a university.",
         "options": [
-          "in",
+          "of",
           "at",
           "on",
           "to"
         ],
         "answer": "at",
-        "explanation": "在大学工作固定搭配为work at a university。"
+        "explanation": "在大学工作可说 work at a university。"
       },
       {
         "id": 9,
@@ -148,7 +148,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "词汇拼写",
-        "question": "My mother is a ______ . She can sing many songs.",
+        "question": "My mother is a ______. She can sing many songs.",
         "options": [
           "singer",
           "sister",
@@ -336,7 +336,7 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "词汇理解",
-        "question": "'coach' 这个词的意思是'主教练'。",
+        "question": "'coach' 这个词的意思是'教练'。",
         "options": [],
         "answer": "对",
         "explanation": "coach在体育语境下意为教练。"
@@ -439,7 +439,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "职业关联",
-        "question": "If you like swimming, you can be a ______.",
+        "question": "He works at sea and sees lots of fish every day. He is a ______.",
         "options": [
           "fisherman",
           "cleaner",
@@ -447,7 +447,7 @@
           "singer"
         ],
         "answer": "fisherman",
-        "explanation": "逻辑关联，游泳和渔民都与水相关。"
+        "explanation": "在海上工作、每天见到很多鱼的人是渔民(fisherman)。"
       },
       {
         "id": 10,
@@ -562,7 +562,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "职业单词",
-        "question": "He works in a gym. He is a ______.",
+        "question": "He works in a gym. He is a ______ (教练).",
         "options": [],
         "answer": "coach",
         "explanation": "在体育馆工作的教练是coach。"

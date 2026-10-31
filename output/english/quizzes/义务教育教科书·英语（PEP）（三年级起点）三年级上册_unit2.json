@@ -46,10 +46,10 @@
         "score": 2,
         "difficulty": 1,
         "knowledge_point": "介绍他人与社交礼仪",
-        "question": "初次见面打招呼应说: 'Good morning.'",
+        "question": "初次见面，对方说 'Nice to meet you.'，你应该回答：'Good morning.'",
         "options": [],
         "answer": "错",
-        "explanation": "初次见面应说Nice to meet you。"
+        "explanation": "回应 Nice to meet you. 应说 Nice to meet you, too."
       },
       {
         "id": 5,
@@ -68,7 +68,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "颜色词汇与色彩感知",
-        "question": "下图中香蕉通常是什么颜色的？",
+        "question": "香蕉通常是什么颜色的？",
         "options": [
           "red",
           "blue",
@@ -164,7 +164,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "字母Aa至Dd的音形辨析",
-        "question": "字母 'Cc' 指向的单词是：",
+        "question": "下列哪个单词以字母 Cc 开头？",
         "options": [
           "duck",
           "cat",
@@ -180,7 +180,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "颜色词汇与色彩感知",
-        "question": "黑白相间的动物是：",
+        "question": "大熊猫身上是哪两种颜色？",
         "options": [
           "orange and green",
           "red and blue",
@@ -188,7 +188,7 @@
           "brown and yellow"
         ],
         "answer": "black and white",
-        "explanation": "描述熊猫或斑马常用的颜色词。"
+        "explanation": "大熊猫是黑白相间的：black and white。"
       },
       {
         "id": 14,
@@ -228,7 +228,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "颜色词汇与色彩感知",
-        "question": "Show me ________. (出示蓝色给看看)",
+        "question": "Show me ________. (出示蓝色给我看看)",
         "options": [],
         "answer": "blue",
         "explanation": "蓝色的英文是blue。"
@@ -263,8 +263,8 @@
         "knowledge_point": "介绍他人与社交礼仪",
         "question": "________ is Mr Jones. (这是琼斯先生)",
         "options": [],
-        "answer": "this",
-        "explanation": "句子开头首词填空，注意此处填小写单词原型即可（系统判定核心词汇）。"
+        "answer": "This",
+        "explanation": "介绍他人用 This is...，This is Mr Jones. 意为“这是琼斯先生。”"
       },
       {
         "id": 20,
@@ -292,19 +292,19 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "字母Aa至Dd的音形辨析",
-        "question": "字母首字母单词匹配",
+        "question": "将下列单词与对应的中文意思连线。",
         "options": [
           "ant",
           "book",
           "cat",
           "duck",
-          "小岛",
+          "猫",
           "书本",
           "鸭子",
           "蚂蚁"
         ],
         "answer": "A-4,B-2,C-1,D-3",
-        "explanation": "注：C-1 对应 cat-猫(本题前4为词后4为义/序，猫不在后4中，应匹配逻辑关系，此处选项需校对。调整：A-蚂蚁(4), B-书(2), C-选项中无猫，匹配鸭子不妥。修正匹配项)。"
+        "explanation": "ant-蚂蚁, book-书本, cat-猫, duck-鸭子。"
       },
       {
         "id": 22,
@@ -406,14 +406,14 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "颜色词汇与色彩感知",
-        "question": "Which is 'red'?",
+        "question": "下列哪种东西通常是红色（red）的？",
         "options": [
-          "Apple",
-          "Sky",
-          "Grass",
-          "Banana"
+          "苹果",
+          "天空",
+          "草地",
+          "香蕉"
         ],
-        "answer": "Apple",
+        "answer": "苹果",
         "explanation": "苹果通常是红色的。"
       },
       {
@@ -422,7 +422,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "颜色词汇与色彩感知",
-        "question": "The ________ is orange.",
+        "question": "The ________ is orange. (这个橙子是橙色的)",
         "options": [
           "dog",
           "orange",
@@ -454,7 +454,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "颜色词汇与色彩感知",
-        "question": "Black and ________ are basic colours.",
+        "question": "Show me black and ________. (给我看看黑色和白色)",
         "options": [
           "white",
           "ant",
@@ -462,7 +462,7 @@
           "this"
         ],
         "answer": "white",
-        "explanation": "Black和white是反义颜色词。"
+        "explanation": "白色的英文是 white。"
       },
       {
         "id": 10,
@@ -534,15 +534,15 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "字母Aa至Dd的音形辨析",
-        "question": "下列哪个单词代表的动物不会飞？",
+        "question": "下列哪个单词表示“猫”？",
         "options": [
           "ant",
-          "bird",
+          "bag",
           "duck",
           "cat"
         ],
         "answer": "cat",
-        "explanation": "词义理解，cat（猫）是陆生不飞动物。"
+        "explanation": "cat 意为猫，以字母 c 开头。"
       },
       {
         "id": 15,

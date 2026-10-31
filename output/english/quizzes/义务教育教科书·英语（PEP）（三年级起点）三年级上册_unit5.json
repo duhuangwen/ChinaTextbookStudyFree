@@ -38,7 +38,7 @@
         "question": "当别人说 Thank you 时，你应该回答 You're welcome。",
         "options": [],
         "answer": "对",
-        "explanation": "You're welcome 是对感谢的标准礼貌回问。"
+        "explanation": "You're welcome 是对感谢的标准礼貌回应。"
       },
       {
         "id": 4,
@@ -116,7 +116,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "字母Oo至Tt的音形辨析",
-        "question": "找出下列字母中发音含有 /p/ 音的单词：",
+        "question": "找出下列单词中发音含有 /p/ 音的一项：",
         "options": [
           "pig",
           "dog",
@@ -183,7 +183,7 @@
         "question": "— Have some milk. — _______.",
         "options": [
           "Good",
-          "OK",
+          "Goodbye",
           "Thanks",
           "Fine"
         ],
@@ -239,10 +239,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "表达饮食需求与礼貌用语",
-        "question": "I ______ like some rice. (我想要一些米饭。)",
+        "question": "I'd like some ______. (我想要一些米饭。)",
         "options": [],
-        "answer": "would",
-        "explanation": "I'd like 是 I would like 的缩写形式。"
+        "answer": "rice",
+        "explanation": "米饭的英文是 rice。"
       },
       {
         "id": 18,
@@ -487,15 +487,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "食物词汇识记",
-        "question": "Drinking too much ______ is not good for you.",
+        "question": "Drink some ______. (喝些果汁吧。)",
         "options": [
           "bread",
           "rice",
-          "coke",
+          "juice",
           "fish"
         ],
-        "answer": "coke",
-        "explanation": "Drinking 后接液体饮料，只有 coke 符合。"
+        "answer": "juice",
+        "explanation": "果汁的英文是 juice，Drink some juice. 意为喝些果汁吧。"
       },
       {
         "id": 12,
@@ -617,7 +617,7 @@
           "I'd like some milk.",
           "I'm hungry.",
           "Thank you.",
-          "Give you some bread.",
+          "Have some bread.",
           "You're welcome.",
           "I'm fine, thanks.",
           "Here you are."
@@ -668,7 +668,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "表达饮食需求与礼貌用语",
-        "question": "连词成句：welcome, You, welcome, are",
+        "question": "连词成句：",
         "options": [
           "You",
           "are",

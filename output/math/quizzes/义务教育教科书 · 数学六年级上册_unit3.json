@@ -393,7 +393,7 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "倒数的认识",
-        "question": "$\\\\frac{5}{9} \\times ( ) = 1$",
+        "question": "$\\frac{5}{9} \\times (\\quad) = 1$，括号里应填：",
         "options": [
           "$\\frac{5}{9}$",
           "$\\frac{9}{5}$",
@@ -417,7 +417,7 @@
           "$a \\times \\frac{1}{3}$"
         ],
         "answer": "$a \\div \\frac{2}{3}$",
-        "explanation": "$a \\div \\frac{2}{3} = a \\times \\frac{3}{2} = 1.5a$。其他选项分别为 $0.66a, 0.66a, 0.33a$。"
+        "explanation": "$a \\div \\frac{2}{3} = a \\times \\frac{3}{2}$；其他三项分别是 $a \\times \\frac{2}{3}$、$a \\times \\frac{2}{3}$、$a \\times \\frac{1}{3}$，都小于 $a$。所以 $a \\div \\frac{2}{3}$ 最大。"
       },
       {
         "id": 8,
@@ -433,7 +433,7 @@
           "任意数"
         ],
         "answer": "1",
-        "explanation": "只有除以 1 等于乘以 1。或者算式变形为 $1/a = a \\Rightarrow a^2 = 1 \\Rightarrow a = 1$。"
+        "explanation": "除以一个数等于乘它的倒数，要使 $\\frac{4}{7} \\div a = \\frac{4}{7} \\times a$，$a$ 必须等于它自己的倒数，只有 1 符合（0 没有倒数）。"
       },
       {
         "id": 9,

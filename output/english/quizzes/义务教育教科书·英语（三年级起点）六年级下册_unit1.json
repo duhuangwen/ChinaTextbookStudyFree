@@ -116,7 +116,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "形容词辨析",
-        "question": "Your feet are bigger than mine. You wear size ____.",
+        "question": "My shoes are size 37. Your feet are bigger than mine. You wear size ____.",
         "options": [
           "37",
           "40",
@@ -124,7 +124,7 @@
           "kg"
         ],
         "answer": "40",
-        "explanation": "脚大所以鞋码数字应较大。37和40中40更大。"
+        "explanation": "我的鞋码是37，你的脚比我的大，所以鞋码应大于37，选40。"
       },
       {
         "id": 10,
@@ -166,13 +166,13 @@
         "knowledge_point": "固定搭配",
         "question": "Please ____ it into the hall.",
         "options": [
-          "get",
           "take",
-          "bring",
-          "put"
+          "read",
+          "sing",
+          "eat"
         ],
         "answer": "take",
-        "explanation": "take...into 把...带进...。"
+        "explanation": "take...into 把……带进……；read/sing/eat 与 into the hall 不能搭配。"
       },
       {
         "id": 13,
@@ -367,7 +367,7 @@
         "question": "If Tom is 1.6m and Sam is 1.5m, then Sam is taller.",
         "options": [],
         "answer": "错",
-        "explanation": "1.6米高于1.5米，所以应该是Tom更矮（shorter）。"
+        "explanation": "1.6米高于1.5米，所以Tom更高（taller），Sam更矮（shorter），原句说Sam更高是错的。"
       },
       {
         "id": 3,
@@ -389,7 +389,7 @@
         "question": "'What size are your shoes?' 意思是 '你的鞋子是什么颜色的？'",
         "options": [],
         "answer": "错",
-        "explanation": "Weat size是询问尺寸，而非颜色。"
+        "explanation": "What size是询问尺寸（鞋码），而非颜色。"
       },
       {
         "id": 5,
@@ -456,7 +456,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "联系上下文",
-        "question": "The sun goes down, our shadows are ____.",
+        "question": "When the sun goes down, our shadows get ____.",
         "options": [
           "longer",
           "shorter",
@@ -464,7 +464,7 @@
           "short"
         ],
         "answer": "longer",
-        "explanation": "根据常识，太阳下山影子变长。"
+        "explanation": "根据常识，太阳下山时影子会变长，get longer 表示“变得更长”。"
       },
       {
         "id": 10,
@@ -480,7 +480,7 @@
           "oldder"
         ],
         "answer": "older",
-        "explanation": "than引导比较句，使用比较级older।"
+        "explanation": "than引导比较句，使用比较级older。"
       },
       {
         "id": 11,
@@ -492,8 +492,8 @@
         "options": [
           "Lucy",
           "Lily",
-          "They are same",
-          "I don't know"
+          "They are the same.",
+          "I don't know."
         ],
         "answer": "Lily",
         "explanation": "1.55米大于1.5米。"
@@ -504,7 +504,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "词汇应用",
-        "question": "Your feet are No.38. Mine are No.36. Your feet are ____.",
+        "question": "Your shoes are size 38. Mine are size 36. Your feet are ____.",
         "options": [
           "smaller",
           "shorter",
@@ -512,7 +512,7 @@
           "taller"
         ],
         "answer": "bigger",
-        "explanation": "鞋码大说明脚大。"
+        "explanation": "鞋码大说明脚大，所以你的脚更大（bigger）。"
       },
       {
         "id": 13,
@@ -520,15 +520,15 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "介词辨析",
-        "question": "Look! The sun is shining ____ the window.",
+        "question": "Look! My shoes are ____ the bed. (在床下)",
         "options": [
           "at",
-          "through",
+          "under",
           "on",
           "in"
         ],
-        "answer": "through",
-        "explanation": "through the window 穿过窗户。"
+        "answer": "under",
+        "explanation": "under the bed 在床下面。"
       },
       {
         "id": 14,
@@ -579,10 +579,10 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "单位表达",
-        "question": "I am 1.65 ___ tall.",
+        "question": "I am 1.65 ___ tall. (填 metre 的复数形式)",
         "options": [],
         "answer": "metres",
-        "explanation": "描述身高单位为米，复数形式为metres。"
+        "explanation": "描述身高单位为米，metre 的复数形式为metres。"
       },
       {
         "id": 18,
