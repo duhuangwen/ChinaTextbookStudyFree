@@ -24,6 +24,7 @@ import { playTTS } from "@/lib/tts";
 import { useAutoNarrate } from "@/lib/useAutoNarrate";
 import { useTvQuestionFocus } from "@/lib/useTvQuestionFocus";
 import type { QuestionRendererProps } from "./QuestionRenderer";
+import { PinyinText } from "@/lib/pinyinRuby";
 
 export function WordOrderQuestion({
   question,
@@ -131,7 +132,7 @@ export function WordOrderQuestion({
               className="h-10 px-4 inline-flex items-center rounded-xl bg-secondary text-white font-extrabold text-base"
               style={{ boxShadow: "0 3px 0 0 #1899d6" }}
             >
-              {options[i]}
+              <PinyinText text={options[i]} />
             </motion.button>
           ))}
         </AnimatePresence>
@@ -151,7 +152,7 @@ export function WordOrderQuestion({
             className="h-10 px-4 inline-flex items-center rounded-xl bg-white border-2 border-bg-softer text-ink font-extrabold text-base hover:border-secondary transition-colors"
             style={{ boxShadow: "0 3px 0 0 var(--shadow-card-color)" }}
           >
-            {options[i]}
+            <PinyinText text={options[i]} />
           </motion.button>
         ))}
         {remaining.length === 0 && disabled === false && (

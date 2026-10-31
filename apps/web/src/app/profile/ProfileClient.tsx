@@ -30,6 +30,7 @@ import {
   Gem,
 } from "@/components/icons";
 import { ThemeModeToggle } from "@/components/ThemeModeToggle";
+import { usePinyinRubySetting } from "@/lib/pinyinRuby";
 import { playSfx } from "@/lib/sfx";
 import { haptic } from "@/lib/haptic";
 
@@ -263,6 +264,7 @@ export function ProfileClient() {
                 跟随系统自动切换，或手动选择亮色 / 暗色 · 免费使用
               </div>
               <ThemeModeToggle />
+              <PinyinRubyToggle />
             </section>
 
             {/* 💾 数据 · 存档备份（E2）：导出 / 导入，BackupEnvelope v1 双端互通 */}
@@ -540,6 +542,35 @@ function ReportsSection() {
         </div>
       )}
     </section>
+  );
+}
+
+function PinyinRubyToggle() {
+  const [on, setOn] = usePinyinRubySetting();
+  return (
+    <div className="flex items-center gap-3 mt-4">
+      <div className="flex-1 min-w-0">
+        <div className="text-sm font-extrabold text-ink">汉字注音</div>
+        <div className="text-xs text-ink-light">一、二年级语文的题目和讲解在汉字上方标拼音</div>
+      </div>
+      {([true, false] as const).map(value => (
+        <button
+          key={String(value)}
+          type="button"
+          onClick={() => {
+            playSfx("tap");
+            setOn(value);
+          }}
+          className={`h-9 px-4 inline-flex items-center rounded-2xl text-sm font-extrabold border-2 transition-colors ${
+            on === value
+              ? "bg-primary text-white border-primary"
+              : "bg-white text-ink-light border-bg-softer hover:border-primary/40"
+          }`}
+        >
+          {value ? "开" : "关"}
+        </button>
+      ))}
+    </div>
   );
 }
 

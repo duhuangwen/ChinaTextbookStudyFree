@@ -57,6 +57,42 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Pinyin in Chinese content uses school-style single-storey ɑ/ɡ (SIL Andika, OFL; see public/fonts/Andika-OFL.txt).
+   unicode-range limits it to Latin letters and tone vowels, so Han characters and digits keep the system font. */
+@font-face {
+  font-family: "Pinyin School";
+  src: url("/fonts/andika-pinyin-regular.woff2") format("woff2");
+  font-weight: 100 600;
+  font-display: swap;
+  unicode-range: U+0041-005A, U+0061-007A, U+00E0-00E1, U+00E8-00EA, U+00EC-00ED, U+00F2-00F3, U+00F9-00FA, U+00FC, U+0101, U+0113, U+011B, U+012B, U+014D, U+016B, U+01CE, U+01D0, U+01D2, U+01D4, U+01D6, U+01D8, U+01DA, U+01DC, U+0251, U+0261;
+}
+
+@font-face {
+  font-family: "Pinyin School";
+  src: url("/fonts/andika-pinyin-bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-display: swap;
+  unicode-range: U+0041-005A, U+0061-007A, U+00E0-00E1, U+00E8-00EA, U+00EC-00ED, U+00F2-00F3, U+00F9-00FA, U+00FC, U+0101, U+0113, U+011B, U+012B, U+014D, U+016B, U+01CE, U+01D0, U+01D2, U+01D4, U+01D6, U+01D8, U+01DA, U+01DC, U+0251, U+0261;
+}
+
+.zh-content {
+  --font-sans: "Pinyin School", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Pinyin School", "Arial Rounded MT Bold", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-sans);
+}
+
+.pinyin-ruby {
+  ruby-align: center;
+}
+
+.pinyin-ruby rt {
+  font-family: "Pinyin School", var(--font-sans);
+  font-size: 0.5em;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
 /* 系统圆体优先，中文 fallback 到 PingFang；display 类用于标题和按钮 */
 .font-display,
 h1,

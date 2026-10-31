@@ -8,7 +8,7 @@
  */
 
 import dynamic from "next/dynamic";
-import { Fragment } from "react";
+import { PinyinText } from "@/lib/pinyinRuby";
 
 // react-katex + katex 的体积较大 (~100KB+)，改为按需加载，
 // 让 LessonRunner 初次渲染时不阻塞在 KaTeX chunk 上。
@@ -68,7 +68,7 @@ export function MathText({ text, block = false }: MathTextProps) {
   return (
     <span>
       {parts.map((p, idx) => {
-        if (p.type === "text") return <Fragment key={idx}>{p.value}</Fragment>;
+        if (p.type === "text") return <PinyinText key={idx} text={p.value} />;
         if (p.type === "block")
           return (
             <span key={idx} className="block my-2">

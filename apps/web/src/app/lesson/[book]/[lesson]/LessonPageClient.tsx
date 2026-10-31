@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import type { Lesson } from "@/types";
 import type { ChestSlot } from "@/lib/chestLogic";
+import { ChineseContent } from "@/lib/pinyinRuby";
 
 const LessonRunner = dynamic(
   () => import("@/components/LessonRunner").then(m => ({ default: m.LessonRunner })),
@@ -27,5 +28,9 @@ export default function LessonPageClient({
   lesson: Lesson;
   chestSlot: ChestSlot | null;
 }) {
-  return <LessonRunner lesson={lesson} chestSlot={chestSlot} />;
+  return (
+    <ChineseContent contentId={lesson.bookId}>
+      <LessonRunner lesson={lesson} chestSlot={chestSlot} />
+    </ChineseContent>
+  );
 }

@@ -14,6 +14,7 @@ import { FillBlankQuestion } from "./FillBlankQuestion";
 import { FillBlankTextQuestion } from "./FillBlankTextQuestion";
 import { WordOrderQuestion } from "./WordOrderQuestion";
 import { MatchingQuestion } from "./MatchingQuestion";
+import { PinyinRubyOff, revealsPronunciation } from "@/lib/pinyinRuby";
 
 export type QuestionPhase = "answering" | "checked";
 
@@ -31,6 +32,14 @@ export interface QuestionRendererProps {
 }
 
 export function QuestionRenderer(props: QuestionRendererProps) {
+  return (
+    <PinyinRubyOff off={revealsPronunciation(props.question)}>
+      <QuestionBody {...props} />
+    </PinyinRubyOff>
+  );
+}
+
+function QuestionBody(props: QuestionRendererProps) {
   const { question } = props;
 
   switch (question.type) {

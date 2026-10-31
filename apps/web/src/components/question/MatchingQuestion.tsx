@@ -27,6 +27,7 @@ import { useAutoNarrate } from "@/lib/useAutoNarrate";
 import { useTvQuestionFocus } from "@/lib/useTvQuestionFocus";
 import { shouldIgnoreKey } from "./keyboard";
 import type { QuestionRendererProps } from "./QuestionRenderer";
+import { PinyinText } from "@/lib/pinyinRuby";
 
 const LEFT_KEYS = ["A", "B", "C", "D"] as const;
 const RIGHT_KEYS = ["1", "2", "3", "4"] as const;
@@ -202,7 +203,7 @@ export function MatchingQuestion({
                     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-current text-xs shrink-0">
                       {k}
                     </span>
-                    <span className="flex-1">{txt}</span>
+                    <span className="flex-1"><PinyinText text={txt} /></span>
                     {/* 桌面端键盘角标 1-4 */}
                     <span className="w-5 h-5 rounded border-2 border-bg-softer hidden [@media(pointer:fine)]:flex items-center justify-center font-extrabold text-ink-softer text-[10px] tabular-nums shrink-0">
                       {i + 1}
@@ -246,7 +247,7 @@ export function MatchingQuestion({
                     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-current text-xs shrink-0">
                       {k}
                     </span>
-                    <span className="flex-1">{txt}</span>
+                    <span className="flex-1"><PinyinText text={txt} /></span>
                     {/* 桌面端键盘角标 5-8 */}
                     <span className="w-5 h-5 rounded border-2 border-bg-softer hidden [@media(pointer:fine)]:flex items-center justify-center font-extrabold text-ink-softer text-[10px] tabular-nums shrink-0">
                       {i + 5}

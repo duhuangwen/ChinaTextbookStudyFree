@@ -28,6 +28,7 @@ import {
   REVIEW_HEART_MIN_CORRECT,
 } from "@/store/progress";
 import { QuestionRenderer, type QuestionPhase } from "@/components/question/QuestionRenderer";
+import { ChineseContent } from "@/lib/pinyinRuby";
 import { MathText } from "@/components/MathText";
 import { Mascot } from "@/components/Mascot";
 import { EmptyState } from "@/components/StateMessages";
@@ -281,13 +282,15 @@ export function ReviewRunnerClient() {
               exit={{ x: -30, y: 0, opacity: 0 }}
               transition={{ type: "spring", damping: 22, stiffness: 240 }}
             >
-              <QuestionRenderer
-                question={current.question}
-                answer={answer}
-                phase={phase}
-                isCorrect={isCorrect}
-                onChange={setAnswer}
-              />
+              <ChineseContent contentId={current.lessonId}>
+                <QuestionRenderer
+                  question={current.question}
+                  answer={answer}
+                  phase={phase}
+                  isCorrect={isCorrect}
+                  onChange={setAnswer}
+                />
+              </ChineseContent>
             </motion.div>
           </AnimatePresence>
         </div>
