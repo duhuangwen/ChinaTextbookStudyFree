@@ -35,7 +35,7 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "行列约束推理（数独初步）",
-        "question": "在 $3 \times 3$ 的方格中，每一行和每一列的数字都不能重复。",
+        "question": "在 $3 \\times 3$ 的方格中，每一行和每一列的数字都不能重复。",
         "options": [],
         "answer": "对",
         "explanation": "根据数独初步规则，行和列的数字均需不重复。判断正确。"
@@ -164,7 +164,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "行列约束推理（数独初步）",
-        "question": "在一个 $4 \times 4$ 的方格中，每行每列都有数字 1、2、3、4。某一行已经有了 1、2、4，那么这一行空格里应填多少？",
+        "question": "在一个 $4 \\times 4$ 的方格中，每行每列都有数字 1、2、3、4。某一行已经有了 1、2、4，那么这一行空格里应填多少？",
         "options": [
           "1",
           "2",
@@ -309,10 +309,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "简单的逻辑排除法",
-        "question": "$9 \times 4 = ?$",
+        "question": "$9 \\times 4 = ?$",
         "options": [],
         "answer": "36",
-        "explanation": "直接应用乘法口诀：四九三十六。$9 \times 4 = 36$。验算：$36 \times 4 = 9$ ✓。"
+        "explanation": "直接应用乘法口诀：四九三十六。$9 \\times 4 = 36$。验算：$36 \\times 4 = 9$ ✓。"
       },
       {
         "id": 23,
@@ -320,10 +320,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "简单的逻辑排除法",
-        "question": "$45 \times 0 = ?$",
+        "question": "$45 \\times 0 = ?$",
         "options": [],
         "answer": "0",
-        "explanation": "任何数与 0 相乘都得 0。$45 \times 0 = 0$。验算：$0 \times 45 = 0$ ✓。"
+        "explanation": "任何数与 0 相乘都得 0。$45 \\times 0 = 0$。验算：$0 \\times 45 = 0$ ✓。"
       }
     ]
   },
@@ -382,7 +382,7 @@
         "score": 2,
         "difficulty": 3,
         "knowledge_point": "行列约束推理（数独初步）",
-        "question": "在一个 $4 \times 4$ 的格子中，已知某行已经填了 3 个不同的数，那么该行第 4 个数是唯一确定的。",
+        "question": "在一个 $4 \\times 4$ 的格子中，已知某行已经填了 3 个不同的数，那么该行第 4 个数是唯一确定的。",
         "options": [],
         "answer": "对",
         "explanation": "总共 4 个数，确定了 3 个，剩余的一个必然是唯一确定的。判断正确。"
@@ -521,7 +521,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "行列约束推理（数独初步）",
-        "question": "在一个 $3 \times 3$ 方格中，第一行是 1, 2, 3。第二行第一个数是 3，第二个数是 1。第二行第三个数是多少？",
+        "question": "在一个 $3 \\times 3$ 方格中，第一行是 1, 2, 3。第二行第一个数是 3，第二个数是 1。第二行第三个数是多少？",
         "options": [
           "1",
           "2",
@@ -612,7 +612,7 @@
         "score": 5,
         "difficulty": 3,
         "knowledge_point": "行列约束推理（数独初步）",
-        "question": "在一个 $4 \times 4$ 方格中，第一列已经填了 1, 2, 3，那么第一列最后一个格子应填数字 ___。",
+        "question": "在一个 $4 \\times 4$ 方格中，第一列已经填了 1, 2, 3，那么第一列最后一个格子应填数字 ___。",
         "options": [],
         "answer": "4",
         "explanation": "每列必须包含 1, 2, 3, 4 且不重复。现有 1, 2, 3，剩下只能是 4。验证：$4-3-2-1=0$ 不是加减法，是逻辑填空 ✓。"
@@ -634,10 +634,10 @@
         "score": 5,
         "difficulty": 1,
         "knowledge_point": "简单的逻辑排除法",
-        "question": "$81 \times 1 = ?$",
+        "question": "$81 \\times 1 = ?$",
         "options": [],
         "answer": "81",
-        "explanation": "$81 \times 1 = 81$。任何数与 1 相乘仍得该数。验算：$81 \times 1 = 81$ ✓。"
+        "explanation": "$81 \\times 1 = 81$。任何数与 1 相乘仍得该数。验算：$81 \\times 1 = 81$ ✓。"
       },
       {
         "id": 23,
@@ -645,10 +645,10 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "简单的逻辑排除法",
-        "question": "$7 \times 8 + 4 = ?$",
+        "question": "$7 \\times 8 + 4 = ?$",
         "options": [],
         "answer": "60",
-        "explanation": "先做乘法：$7 \times 8 = 56$。再做加法：$56 + 4 = 60$。验算：$60 - 4 = 56$，$56 \times 7 = 8$ ✓。"
+        "explanation": "先做乘法：$7 \\times 8 = 56$。再做加法：$56 + 4 = 60$。验算：$60 - 4 = 56$，$56 \\times 7 = 8$ ✓。"
       }
     ]
   },

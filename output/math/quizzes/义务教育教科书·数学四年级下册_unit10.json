@@ -371,7 +371,7 @@
         "score": 2,
         "difficulty": 2,
         "knowledge_point": "综合计算与验算能力",
-        "question": "$a \times b + a = a \times (b + 1)$ 应用了乘法分配律。",
+        "question": "$a \\times b + a = a \\times (b + 1)$ 应用了乘法分配律。",
         "options": [],
         "answer": "对",
         "explanation": "根据乘法分配律，$a \\times (b + 1) = a \\times b + a \\times 1 = a \\times b + a$。这里利用了分配律的逆运算。"

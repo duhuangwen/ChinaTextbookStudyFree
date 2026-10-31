@@ -648,7 +648,7 @@
         "question": "计算 $(18 + 12) \\times \\frac{3}{5} = ?$",
         "options": [],
         "answer": "18",
-        "explanation": "$30 \\times 0.6 = 18$。验算：$18 \b \\div 0.6 = 30$ ✓。"
+        "explanation": "$30 \\times 0.6 = 18$。验算：$18 \\div 0.6 = 30$ ✓。"
       }
     ]
   },
