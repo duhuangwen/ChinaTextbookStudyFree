@@ -44,7 +44,9 @@ export function MatchingQuestion({
 }: QuestionRendererProps) {
   const disabled = phase === "checked";
   const options = question.options ?? [];
-  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id, {
+    texts: [question.question],
+  });
   const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
   const left = options.slice(0, 4);
   const right = options.slice(4, 8);

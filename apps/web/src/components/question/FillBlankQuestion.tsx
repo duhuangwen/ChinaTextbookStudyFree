@@ -37,7 +37,9 @@ export function FillBlankQuestion({
   locked = false,
 }: QuestionRendererProps) {
   const disabled = phase === "checked";
-  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id, {
+    texts: [question.question],
+  });
   const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   function handleKey(k: string) {

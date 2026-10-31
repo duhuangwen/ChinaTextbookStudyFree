@@ -77,8 +77,30 @@ export function stopTTS(expectedSrc?: string | null) {
   currentSrc = null;
 }
 
+const LATEX_SPEECH: Array<[RegExp, string]> = [
+  [/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, "$2分之$1"],
+  [/\\text\{([^{}]*)\}/g, "$1"],
+  [/\\times/g, "乘"],
+  [/\\div/g, "除以"],
+  [/\\(square|Box)/g, "方框"],
+  [/\\bigcirc/g, "圆圈"],
+  [/\\triangle/g, "三角形"],
+  [/\\(geq|ge)\b/g, "大于等于"],
+  [/\\(leq|le)\b/g, "小于等于"],
+  [/\\(neq|ne)\b/g, "不等于"],
+  [/\\pi\b/g, "π"],
+  [/\\[a-zA-Z]+/g, ""],
+  [/[${}]/g, ""],
+];
+
+/** System TTS reads LaTeX source letter by letter, so formulas are turned into Chinese words first. */
+export function speakableText(text: string): string {
+  return LATEX_SPEECH.reduce((s, [pattern, words]) => s.replace(pattern, words), text);
+}
+
 /** Native Android TTS fallback for embedded builds without generated MP3 files. */
-export function playSpeechText(text: string | undefined | null): Promise<TTSPlaybackResult> {
+export function playSpeechText(raw: string | undefined | null): Promise<TTSPlaybackResult> {
+  const text = raw ? speakableText(raw) : raw;
   if (!text?.trim()) return Promise.resolve("missing");
   if (isMuted()) return Promise.resolve("muted");
   if (typeof window === "undefined") return Promise.resolve("missing");

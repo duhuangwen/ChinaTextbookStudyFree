@@ -36,7 +36,9 @@ export function WordOrderQuestion({
 }: QuestionRendererProps) {
   const disabled = phase === "checked";
   const options = question.options ?? [];
-  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id, {
+    texts: [question.question],
+  });
   const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   // 已选索引列表（指向 options 中的 index）

@@ -34,7 +34,9 @@ export function ChoiceQuestion({
   const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   // 自动朗读题干（只在进入该题时一次；点选项立即打断）
-  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id, {
+    texts: [question.question],
+  });
 
   /** 选中某个选项（点击 / 键盘共用）：朗读 + 音效 + 触感 + 写回 answer */
   function selectLetter(letter: string) {

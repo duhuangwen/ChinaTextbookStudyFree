@@ -24,7 +24,9 @@ export function TrueFalseQuestion({
   locked = false,
 }: QuestionRendererProps) {
   const correctIsTrue = TRUE_VALUES.has(question.answer.trim());
-  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id);
+  const cancelNarrate = useAutoNarrate([question.audio?.question], question.id, {
+    texts: [question.question],
+  });
   const tvFocusRef = useTvQuestionFocus<HTMLButtonElement>(question.id);
 
   function select(label: "对" | "错") {

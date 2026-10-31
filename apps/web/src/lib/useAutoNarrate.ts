@@ -4,11 +4,11 @@
  * useAutoNarrate — 面向低龄的自动朗读 hook。
  *
  * 场景：进入一道题、一张知识卡、一次答题反馈时，
- * 自动串行播放给定音频（只播有 src 的部分），避免小学生找不到喇叭。
+ * 自动串行播放给定音频，避免小学生找不到喇叭；传了 texts 的段落在没有预录音频时改用系统 TTS。
  *
  * 行为：
  *   - 当 key 变化（或 autoNarrate / muted 开关切换到可播）时触发
- *   - 串行播 srcs 里所有非空 src，每段之间留 gapMs 间隔
+ *   - 串行播 srcs（或对应 texts）里所有非空段，每段之间留 gapMs 间隔
  *   - 组件卸载 / key 再次变化 / 调用返回的 cancel() → 立刻停止
  *   - autoNarrate=false 或全局 muted → 不播
  *
@@ -19,7 +19,7 @@
  */
 
 import { useCallback, useEffect, useRef } from "react";
-import { playTTS, stopTTS } from "./tts";
+import { playSpeechText, playTTSResult, stopTTS } from "./tts";
 import { useProgressStore } from "@/store/progress";
 
 interface Opts {
@@ -31,6 +31,8 @@ interface Opts {
   onSrcStart?: (idx: number) => void;
   /** 全部播放完毕（或被取消）时回调，可用于清理高亮状态。 */
   onAllDone?: () => void;
+  /** 与 srcs 一一对应的文字：该段没有预录音频或播放失败时改用系统 TTS 朗读。 */
+  texts?: Array<string | null | undefined>;
 }
 
 export function useAutoNarrate(
@@ -38,7 +40,7 @@ export function useAutoNarrate(
   key: string | number,
   opts: Opts = {},
 ): () => void {
-  const { gapMs = 200, startDelayMs = 0, onSrcStart, onAllDone } = opts;
+  const { gapMs = 200, startDelayMs = 0, onSrcStart, onAllDone, texts } = opts;
   const autoNarrate = useProgressStore(s => s.autoNarrate);
   const muted = useProgressStore(s => s.muted);
 
@@ -46,6 +48,8 @@ export function useAutoNarrate(
   // 触发重播只依赖语义 key / 开关。
   const srcsRef = useRef(srcs);
   srcsRef.current = srcs;
+  const textsRef = useRef(texts);
+  textsRef.current = texts;
   const onSrcStartRef = useRef(onSrcStart);
   onSrcStartRef.current = onSrcStart;
   const onAllDoneRef = useRef(onAllDone);
@@ -69,13 +73,18 @@ export function useAutoNarrate(
         if (cancelledRef.current) return;
       }
 
-      const list = srcsRef.current.filter(
-        (s): s is string => typeof s === "string" && s.length > 0,
-      );
+      const list = srcsRef.current
+        .map((src, i) => ({ src: src || null, text: textsRef.current?.[i] || null }))
+        .filter(seg => seg.src || seg.text);
       for (let i = 0; i < list.length; i++) {
         if (cancelledRef.current) return;
         onSrcStartRef.current?.(i);
-        await playTTS(list[i]);
+        const { src, text } = list[i];
+        const result = src ? await playTTSResult(src) : "missing";
+        if (cancelledRef.current) return;
+        if (text && (result === "missing" || result === "error" || result === "blocked")) {
+          await playSpeechText(text);
+        }
         if (cancelledRef.current) return;
         if (i < list.length - 1) await sleep(gapMs);
       }
