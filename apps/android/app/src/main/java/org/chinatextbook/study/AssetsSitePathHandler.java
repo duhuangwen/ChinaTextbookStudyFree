@@ -29,6 +29,8 @@ final class AssetsSitePathHandler implements WebViewAssetLoader.PathHandler {
                 || assetPath.startsWith("textbook-pages/")) {
             WebResourceResponse media = openMedia(assetPath);
             if (media != null) return media;
+            String opus = EmbeddedAssetPath.opusFallback(assetPath);
+            if (opus != null && (media = openMedia(opus)) != null) return media;
         }
         try {
             InputStream stream = assets.open("www/" + assetPath, AssetManager.ACCESS_STREAMING);

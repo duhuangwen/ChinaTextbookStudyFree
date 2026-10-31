@@ -29,6 +29,16 @@ final class EmbeddedAssetPath {
                 : relative;
     }
 
+    /**
+     * The Web build transcodes narration to MP3 and some UI cues hard-code that name, but the official audio
+     * pack imported from USB only carries the original Opus files.
+     */
+    static String opusFallback(String relative) {
+        return relative.startsWith("audio/") && relative.endsWith(".mp3")
+                ? relative.substring(0, relative.length() - ".mp3".length()) + ".opus"
+                : null;
+    }
+
     static String mimeType(String path) {
         String lower = path.toLowerCase();
         if (lower.endsWith(".html")) return "text/html";

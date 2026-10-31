@@ -15,6 +15,11 @@ public class EmbeddedAssetPathTest {
         assertEquals("text/javascript", EmbeddedAssetPath.mimeType("app.js"));
         assertEquals("image/png", EmbeddedAssetPath.mimeType("icon.png"));
     }
+    @Test public void fallsBackFromWebMp3ToImportedOpus() {
+        assertEquals("audio/cc/abc.opus", EmbeddedAssetPath.opusFallback("audio/cc/abc.mp3"));
+        assertNull(EmbeddedAssetPath.opusFallback("audio/cc/abc.opus"));
+        assertNull(EmbeddedAssetPath.opusFallback("story-images/a.mp3"));
+    }
     @Test public void rejectsTraversal() {
         assertNull(EmbeddedAssetPath.resolve("/../secret"));
         assertNull(EmbeddedAssetPath.resolve("/safe/../../secret"));
