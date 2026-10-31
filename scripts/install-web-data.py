@@ -4,6 +4,8 @@ import argparse
 import hashlib
 import json
 import shutil
+import subprocess
+import sys
 import tempfile
 import urllib.request
 import zipfile
@@ -69,6 +71,8 @@ def main() -> None:
                     shutil.copyfileobj(source, output)
 
     print(f"Installed Web data into {(args.root / 'apps/web/public/data').resolve()}")
+    subprocess.run([sys.executable, str(Path(__file__).with_name("apply-content-errata.py")),
+                    "--data", str(destination)], check=True)
 
 
 if __name__ == "__main__":

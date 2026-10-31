@@ -196,7 +196,7 @@
         "score": 5,
         "difficulty": 2,
         "knowledge_point": "1~10各数的数数与认读",
-        "question": "从1倒着数到5，第3个数是？",
+        "question": "从10倒着数到5，第3个数是？",
         "options": [
           "10",
           "9",
