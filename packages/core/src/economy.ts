@@ -124,9 +124,9 @@ export function lessonGemDrip(input: LessonGemDripInput): number {
 /** 红心上限 */
 export const MAX_HEARTS = 5;
 /** 每颗红心的回复时长（秒） */
-export const HEART_REGEN_SECONDS = 300;
+export const HEART_REGEN_SECONDS = 60;
 /** 一次性补满红心的宝石价格 */
-export const HEART_REFILL_COST = 350;
+export const HEART_REFILL_COST = 50;
 
 /**
  * 复习奖励红心：一轮错题复习里至少答对 REVIEW_HEART_MIN_CORRECT 题，

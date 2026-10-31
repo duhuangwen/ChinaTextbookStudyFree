@@ -2649,7 +2649,7 @@ function FailScreen({
             <div className="text-3xl font-extrabold text-danger tabular-nums mt-1">
               {formatMsCountdown(msToNext)}
             </div>
-            <p className="text-xs text-ink-softer mt-1">每 5 分钟恢复 1 颗心</p>
+            <p className="text-xs text-ink-softer mt-1">每 1 分钟恢复 1 颗心</p>
           </div>
         )}
 

@@ -105,9 +105,9 @@ enum Economy {
     /// 红心上限
     static let maxHearts = 5
     /// 每颗红心的回复时长（秒）
-    static let heartRegenSeconds = 300
+    static let heartRegenSeconds = 60
     /// 一次性补满红心的宝石价格
-    static let heartRefillCost = 350
+    static let heartRefillCost = 50
 
     /// 复习奖励红心：一轮错题复习里至少答对 `reviewHeartMinCorrect` 题，
     /// 补回 `reviewHeartReward` 颗心（不超过 `maxHearts`）。

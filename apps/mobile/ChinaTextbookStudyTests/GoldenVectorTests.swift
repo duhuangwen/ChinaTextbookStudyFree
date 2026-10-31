@@ -327,8 +327,8 @@ final class GoldenVectorTests: XCTestCase {
 
     func testEconomyConstantsMatchSpec() {
         XCTAssertEqual(Economy.maxHearts, 5)
-        XCTAssertEqual(Economy.heartRegenSeconds, 300)
-        XCTAssertEqual(Economy.heartRefillCost, 350)
+        XCTAssertEqual(Economy.heartRegenSeconds, 60)
+        XCTAssertEqual(Economy.heartRefillCost, 50)
         XCTAssertEqual(Economy.freezeCost, 200)
         XCTAssertEqual(Economy.maxFreezes, 2)
         XCTAssertEqual(Economy.initialFreezes, 2)

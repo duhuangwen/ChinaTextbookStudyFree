@@ -822,7 +822,7 @@ private struct HeartDetailSheet: View {
                             .font(.system(size: 40, weight: .black, design: .rounded))
                             .foregroundStyle(DuoColors.danger)
                             .monospacedDigit()
-                        Text("每 5 分钟恢复 1 颗红心")
+                        Text("每 1 分钟恢复 1 颗红心")
                             .duoFont(.micro)
                             .foregroundStyle(DuoColors.darkInkMuted)
                     }

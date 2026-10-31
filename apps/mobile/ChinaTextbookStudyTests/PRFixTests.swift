@@ -308,7 +308,7 @@ final class PRFixTests: XCTestCase {
         XCTAssertEqual(store.hearts, 0)
         XCTAssertNotNil(store.progress.nextHeartAt, "缺心必须带着回心计时落地")
 
-        // 5 分钟后回 1 颗心。
+        // 1 分钟后回 1 颗心。
         store.tickHeartRecharge(now: day("2026-08-26").addingTimeInterval(ProgressStore.heartRechargeSeconds))
         XCTAssertEqual(store.hearts, 1)
     }

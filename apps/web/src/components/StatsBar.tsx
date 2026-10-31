@@ -166,9 +166,9 @@ export function StatsBar({ compact = false }: StatsBarProps = {}) {
               <div className="text-3xl font-extrabold text-danger tabular-nums mt-1">
                 {formatMsCountdown(msToNext)}
               </div>
-              <p className="text-xs text-ink-softer mt-2">每 5 分钟恢复 1 颗心</p>
+              <p className="text-xs text-ink-softer mt-2">每 1 分钟恢复 1 颗心</p>
 
-              {/* 350💎 立即补满 */}
+              {/* 宝石立即补满 */}
               <button
                 type="button"
                 onClick={() => {

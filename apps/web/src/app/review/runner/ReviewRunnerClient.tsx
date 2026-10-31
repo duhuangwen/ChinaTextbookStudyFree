@@ -498,7 +498,7 @@ function ReviewCompletionScreen({
             <Heart className="w-4 h-4" />
             <span>
               复习辛苦啦！一轮里答对 {REVIEW_HEART_MIN_CORRECT} 题就能补回 1 颗心，
-              红心也会每 5 分钟自己恢复 1 颗～
+              红心也会每 1 分钟自己恢复 1 颗～
             </span>
           </div>
         )}

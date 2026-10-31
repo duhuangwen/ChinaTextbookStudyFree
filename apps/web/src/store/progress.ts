@@ -324,7 +324,7 @@ interface ProgressState {
    * 返回实际补到的红心数（0 = 没到门槛 / 今天领过 / 已满心）。
    */
   awardReviewHeart: (correctCount: number) => number;
-  /** 花 350 宝石立即补满红心（先刷新自然回复；已满不扣费返回 false） */
+  /** 花 HEART_REFILL_COST 宝石立即补满红心（先刷新自然回复；已满不扣费返回 false） */
   buyHeartRefill: () => boolean;
   /** 花 200 宝石购买一枚连胜护盾（持有上限 2，满则返回 false） */
   buyStreakFreeze: () => boolean;
